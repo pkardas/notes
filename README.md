@@ -1,5 +1,13 @@
 ## My learning notes
 
+I use **Typora** to wrote the notes. 
+
+
+
+Notes are created while reading books to help me understand various concepts better and faster. I recommend this method :)
+
+--
+
 ### Books
 [Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems](books/hands-on-ml.md)
 
