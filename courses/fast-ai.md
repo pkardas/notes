@@ -43,3 +43,47 @@ You need to be super careful what is the input data (initial bias, stereotypic d
 
 Segmentation - marking areas on images (trees, cars, ...)
 
+#### Lesson 2
+
+Architecture - eg. resnet64 - name of the architecture (64 layers) - function that we are optimising.
+
+Epoch - eg. looking at every image in the training set = 1 epoch, 1 loop
+
+Metric - function measuring quality of the model's predictions (error_rate, accuracy), we care about it.
+
+Loss != Metric, loss - computer uses this to update parameters, computer cares about it. For example tweaking parameters just a little might nit change accuracy or error rate.
+
+
+
+Model might cheat - "I have seen this image, this is a cat", we don't want model to memorise images. That is why we need splitting into training and validation.
+
+
+
+For validating time-series, drop the offset (end of the dataset).
+
+
+
+Transfer learning - Using a pretrained model for a task different to what it was originally trained for. Take pretrained (initial weights), add more epochs on your specific dataset and you will end up with way more better model.
+
+
+
+Fine tuning - Transfer learning technique. Weights of pretrained updated by training for additional epochs using different task to that used for pretraining.
+
+
+
+Methods for computer vision are good for recognising sounds (sound in time as picture).
+
+
+
+Set of pretrained models: https://modelzoo.co/
+
+
+
+How to decide if there is a relationship?
+
+Null hypothesis - eg. "no relationship between X and Y" -> Gather data -> How often do we see a relationship?
+
+P-Value - probability of an observed result assuming that the null hypothesis is true.
+
+
+
