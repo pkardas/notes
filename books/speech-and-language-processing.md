@@ -182,6 +182,10 @@ Sentence Segmentation
 
 
 
+*MInimum Edit Distance* - minimum number of editing operations (add, delete, substitution) needed to transform one string into another.
+
+How to find Minimal Edit Distance? This can be think of as a shortest path problem. Shortest sequence of edits from one string to another. This can be solved using dynamic programming (table-driven method for solving problems by combining solutions to sub-problems). 
+
 
 
 
