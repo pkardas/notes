@@ -21,3 +21,9 @@ Notes are created while reading books to help me understand various concepts bet
 
 ### Courses
 [Course @ FastAI](courses/fast-ai.md)
+
+
+
+### Conferences
+
+[AWS Innovate: Ai/ML Edition 2021](conferences/aws-innovate-ai-ml-21.md)
