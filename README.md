@@ -1,6 +1,16 @@
 ## My learning notes
 
-I use **Typora** to wrote the notes. 
+I use **Typora** to wrote the notes. If you really need to ready my notes, I strongly encourage you to open them in Typora because of much better formatting:
+
+###### Typora:
+
+![readme-formatting-typora](./_images/readme-formatting-typora.png)
+
+###### GitHub in the browser...:
+
+![readme-formatting-github](./_images/readme-formatting-github.png)
+
+Typora is truly superior :)
 
 
 
