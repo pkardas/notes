@@ -188,5 +188,41 @@ How to find Minimal Edit Distance? This can be think of as a shortest path probl
 
 
 
+#### Chapter 2: N-gram Language Models
 
+Assigning probabilities of upcoming words in a sentence is a very important task in speech recognition, spelling correction, machine translation and AAC systems. Systems that assign probabilities to sequences of models are called **language models**. Simplest model is a n-gram.
+
+
+
+*P(w|h)* - the probability of a word *w* given some history *h*.
+$$
+P(the|its\ water\ is\ so\ transparent\ that) = \dfrac{count(its\ water\ is\ so\ transparent\ that\ the)}{count(its\ water\ is\ so\ transparent\ that)}
+$$
+You can compute these probabilities for a large corpus, eg. wikipedia. This method works fine in many cases, but it turned out even the web can not give us good estimates in most cases - language is dynamic, you are not able to count ALL the possible sentences. Hence, there is a need for introducing more clever way for estimating the probability *P(w|h)*.
+
+Instead of computing the probability of a word given its entire history, we can approximate the history by just the last few words. The bigram model approximates the probability by taking the last word, so for the example we had earlier (so in general: n-gram takes *n - 1* words into the past, trigrams are most commonly used, 4/5-grams are used when there is sufficient training data):
+$$
+P(the|its\ water\ is\ so\ transparent\ that) \approx P(the|that)
+$$
+This assumption, that next word depends on the previous one is called a **Markov** assumption.
+
+Probability of a sentence can be calculated using chain rule of probability:
+$$
+P(<s>\ i\ want\ english\ food\ </s>) = P(i|<s>)P(want|i)P(english|want)P(food|english)P(</s>|food) =\ ...
+$$
+Such technique is able to capture eg. cultural things - people more often look for Chinese food than English. Language models are always computed in log format - log probabilities. Why? Probability always fall between 0 and 1, multiplying small float numbers - you end up with numerical underflow, using logarithms you get numbers that are not as small.
+
+*Evaluating Language Models*
+
+Best way to evaluate the performance of a language model is to embed it in an application and measure how much the application improves - **extrinsic evaluation**. However this technique requires running multiple models in order to measure the improvement. Better approach is to use  **intrinsic evaluation** - standard approach from ML, training set and validation (unseen) set. So the better predictions on the test set, the better model you got. Sample from test set can not appear in training set - this introduces bias - probabilities gets too high (unreliable) - huge inaccuracies in perplexity - probability based metric. If a particular test set is used too often, we implicitly tune to its characteristics. 
+
+*Perplexity*
+
+PP for short, metric used for evaluating language model. Perplexity on a test set ts the inverse probability od the test set, normalised by the number of words. Minimising perplexity is equivalent to maximising the test set probability according to the language model. 
+
+Another way of thinking about perplexity: weighted average branching factor (branching factor - number of possible next words that can follow any words).
+
+The more information the n-gram gives us about the word sequence, the lower the perplexity (unigram: 962, bigram: 170, trigram: 109).
+
+An intrinsic improvement in perplexity does not guarantee an extrinsic improvement in the performance. In other words: because some metric shows your model is great, it does not mean it will do so great in real life. Perplexity should be confirmed by an end-to-end evaluation of a real task.
 
