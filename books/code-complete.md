@@ -9,7 +9,9 @@ Book by Steve McConnell
 
 Construction - proces of building (planning, designing, checking the work). Construction is mostly coding and debugging but also involves designing, planning, unit testing, ... Centre of the software development process. The only activity that is guaranteed to be done (planning might be imperfect, etc.).
 
+#### Chapter 2: Metaphors for a Richer Understanding of Software Development
 
+Metaphors contribute to a greater understanding of software-development issues - paper writing metaphor, farming metaphor, etc...
 
 #### Chapter 8: Defensive Programming
 
@@ -47,3 +49,20 @@ Exceptions:
 - include all the information that led to the exception
 - avoid empty catch blocks
 - standardise project's use of exceptions 
+
+Barricades:
+
+- similar to having isolated compartments in the hull of a ship, damaged parts are isolated
+- use validation classes that are responsible for cleaning the data
+- assume data is unsafe and you need to sanitise it
+
+*Offensive programming* - exceptional cases should be handled in a way that makes them obvious during development and recoverable when production code is running. During development, you want errors to be as visible as possible but during production it should not be observable. 
+
+#### Chapter 20: The Software-Quality Landscape
+
+There are many quality metrics: correctness, usability, efficiency, reliability, integrity, adaptivity, accuracy, robustness - these are metrics important to the user, for a programmer more important metrics are: maintainability, flexibility, portability, reusability, readability, testability, understandability. 
+
+*Techniques for Improving Software Quality*: set up software quality objectives, perform quality assurance activities, prototyping.
+
+
+

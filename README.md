@@ -1,6 +1,6 @@
 ## My learning notes
 
-I use **Typora** to wrote the notes. If you really need to ready my notes, I strongly encourage you to open them in Typora because of much better formatting:
+I use **Typora** to write the notes. If you really need to read my notes, I strongly encourage you to open them in Typora because of much better formatting:
 
 ###### Typora:
 
@@ -14,7 +14,7 @@ Typora is truly superior :)
 
 
 
-Notes are created while reading books to help me understand various concepts better and faster. I recommend this method :)
+Notes are created while reading the books to help me understand various concepts better and faster. I recommend this method :)
 
 --
 
