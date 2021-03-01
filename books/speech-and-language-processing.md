@@ -188,7 +188,7 @@ How to find Minimal Edit Distance? This can be think of as a shortest path probl
 
 
 
-#### Chapter 2: N-gram Language Models
+#### Chapter 3: N-gram Language Models
 
 Assigning probabilities of upcoming words in a sentence is a very important task in speech recognition, spelling correction, machine translation and AAC systems. Systems that assign probabilities to sequences of models are called **language models**. Simplest model is a n-gram.
 
@@ -218,7 +218,7 @@ Best way to evaluate the performance of a language model is to embed it in an ap
 
 *Perplexity*
 
-PP for short, metric used for evaluating language model. Perplexity on a test set ts the inverse probability od the test set, normalised by the number of words. Minimising perplexity is equivalent to maximising the test set probability according to the language model. 
+PP for short, metric used for evaluating language model. Perplexity on a test set is the inverse probability of the test set, normalised by the number of words. Minimising perplexity is equivalent to maximising the test set probability according to the language model. 
 
 Another way of thinking about perplexity: weighted average branching factor (branching factor - number of possible next words that can follow any words).
 
@@ -226,3 +226,35 @@ The more information the n-gram gives us about the word sequence, the lower the 
 
 An intrinsic improvement in perplexity does not guarantee an extrinsic improvement in the performance. In other words: because some metric shows your model is great, it does not mean it will do so great in real life. Perplexity should be confirmed by an end-to-end evaluation of a real task.
 
+*Generalisation and zeros*
+
+N-gram model is highly dependant on the training model, also it does better job as we increase *n*. You need to use similar genres for the training - Shakespearian English is far different from WSJ's English. To build model for translating legal documents you need to train it on legal documents, you need to build a questions answering system, you need to use questions for training. It is important to use appropriate dialects and variety (African American Language, Nigerian English, ...).
+
+Zeros: Imagine you trained a model on a corpus, "denied the: allegations, speculation, rumours, report", but for the test you check phrases like "denied the: offer, loan", model would estimate probability as 0:
+$$
+P(offer|denied\ the) = 0
+$$
+This is bad... if you want to calculate perplexity, you would need to divide by zero. Which is kinda problematic. 
+
+So what about words we haven't seen before (open vocabulary -> out of vocabulary words / unknown words)? Add pseudo word `<UNK>`. You can use this tag to replace all the words that occur fewer than some small number *n*.
+
+*Smoothing* (discounting) - process of shaving off a bit of probability mass from some more frequent events and give it to the events we have never seen. There are variety of ways to do smoothing:
+
+- Laplace Smoothing (add-one smoothing) - adds 1 to all bigram counts before we normalise them into probabilities. So all the counts that uses do be 0, becomes 1, 1 will be 2, ... This method is not used in state-of-the-art solutions. Can be treated as a baseline. 
+- Add-k smoothing - Instead of adding 1, we add a fractional count eg. 0.5, 0.05, 0.01, ... Useful for some of the applications but still, does not perform perfectly.
+
+Backoff - we can use available knowledge, if you need to computer trigram, maybe bigram can help you with that, or even unigram. Sometimes, this might be sufficient.
+
+Interpolation - mix the probability estimates form all the n-gram estimators
+
+*Kneser-Ney Smoothing* - most commonly used method. It uses following observation: "words that have appeared in more contexts in the past are more likely to appear in some new context as well". The best performing method is a modified Kneser-Ney Smoothing. 
+
+*Huge Language Models and Stupid Backoff*
+
+Google open-sourced their The Web 1 Trillion 5-gram corpus, they released also Google Books Ngrams. There is also COCA. 
+
+Stupid backoff - algorithm for a language model, gives up idea of making the idea of trying to make the model a true probability distribution, no discounting. If a higher-order n-gram has zero count, we simply backoff to a lower order n-gram, this algorithm does not produce a probability distribution. 
+
+#### Chapter 4: Naive Bayes and Sentiment Classification
+
+Many problems can be viewed as classification problems: text categorisation, sentiment analysis, language identification, authorship attribution, period disambiguation, tokenisation, and many more. Goal is to take a sample, extract features and classify the observation. 

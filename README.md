@@ -12,10 +12,6 @@ I use **Typora** to write the notes. If you really need to read my notes, I stro
 
 Typora is truly superior :)
 
-
-
-Notes are created while reading the books to help me understand various concepts better and faster. I recommend this method :)
-
 --
 
 ### Books
