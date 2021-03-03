@@ -9,7 +9,7 @@ Book by Daniel Jurafsky and James H. Martin (December 2020 draft)
 
 #### Chapter 2: Regular Expressions, Text Normalization, Edit Distance
 
-##### Regular Expressions
+*Regular Expressions*
 
 Regular expression is an algebraic notation for characterising a set of strings. 
 
@@ -75,9 +75,7 @@ Look ahead - look ahead in the text to see if some pattern matches BUT not advan
 
 Negative lookahead - used for ruling out special cases, eg. rule out strings starting with word Volcano: `(?!Volcano)[A-Za-z]+`
 
-
-
-##### Words
+*Words*
 
 Fragment - broken-off word, "I do main- mainly", "main-" is a fragment here
 
@@ -93,23 +91,15 @@ $$
 $$
 (k and 0 < B < 1 are constants)
 
-
-
-##### Corpora
+*Corpora*
 
 Writers, speakers have specific styles of communicating, use specific dialects, text can vary by time, place, function, race, gender, age, socioeconomic class.
 
-
-
 Code switching - common practice for speakers and writers to use multiple languages in single communicative act
-
-
 
 When preparing a computational models for language processing it is useful to prepare datasheet, document answering questions like: Who produced the text? In what context? For what purpose? In what language? What was race, gender, ... of the authors? How data was annotated?
 
-
-
-##### Text Normalisation
+*Text Normalisation*
 
 1. Tokenisation (segmentation)
 2. Normalising word formats
@@ -258,3 +248,66 @@ Stupid backoff - algorithm for a language model, gives up idea of making the ide
 #### Chapter 4: Naive Bayes and Sentiment Classification
 
 Many problems can be viewed as classification problems: text categorisation, sentiment analysis, language identification, authorship attribution, period disambiguation, tokenisation, and many more. Goal is to take a sample, extract features and classify the observation. 
+
+*Naive Bayes Classifiers*
+
+Classifiers that make simplified (naive) assumption about how the features interact.
+
+Binary Multinomial Naive Bayes (binary NB) - used for sentiment analysis, clip the word counts in each document at 1 (extract unique words from the documents and count occurrence).
+
+How to deal with negations? I really like this movie (positive), I don't like this movie (negative). Very simple baseline, commonly used is: during text normalisation prepend the prefix *NOT_* to every word after a token of logical negation.
+
+````
+i didn't like this movie , but ... -> i didn't NOT_like NOT_this NOT_movie , but ...
+````
+
+Chapter 16 will tell more about parsing and relationship between negations.
+
+Sentiment lexicons - lists of words that are pre-annotated with positive or negative sentiment. Popular lexicon: General Inquirer or LIWC. For Naive Bayes you can add a feature "this word occurs in the positive lexicon" instead of counting each words separately. Chapter 20 will tell how lexicons can be learned automatically and other use cases besides sentiment analysis will be shown. 
+
+Spam detection - Naive Bayes + regex + HTML scan
+
+Language identification - Naive Byes but not on the words! Used Character n-grams.
+
+Naive Bayes can be viewed as a language model. 
+
+*Evaluation*
+
+Confusion matrix - table for visualising how an algorithm performs with respect to the human *gold label* (human labeled data - gold labels). Has 2 dimensions - system output and gold labels.
+
+Accuracy - what percentage of all observations our system labelled correctly, doesn't work well for unbalanced classes - eg. 80 negative classes, 20 *positive*, learn to always answer *negative* and you have 80% *accuracy*.
+
+Precision - percentage of the items that the system detected that are in fact positive.
+
+Recall - percentage of the items actually present in the input that were correctly identified by the system.
+
+F-measure - combines both metrics - weighted harmonic mean of precision and recall - conservative metric, closer to the minimum of the two values (comparing to the arithmetic mean).
+
+*Evaluating with more than two classes*
+
+Macro-averaging - compute the performance of each class and then average over classes. Can be dominated by the more frequent class.
+
+Micro-averaging - collect decisions for all classes into a single confusion matrix and then computer precision and recall from that table. Reflects better the statistics for the smaller classes, more appropriate when the performance on all the classes is equally important.
+
+*Test sets and Cross-validation*
+
+Cross validation - when your dataset is not large enough, you can use it all for training and validating by using cross-validation. Process of selecting random training and validation sets, training the classifier, computing the error and the repeating it once again. Usually 10 times.
+
+*Statistical Significance Testing*
+
+We often need to compare the performance of two systems. How can we know one system is better than the another?
+
+*Effect size* - difference between F1-scores.
+
+*Null hypothesis* - we suppose *delta > 0*, we would like to know if we can confidentially rule out this hypothesis. In order to do this, create random variable *X* ranging over all test sets, we ask: how likely is it if the null hypothesis is correct that among these test sets we would encounter the value of *delta* that we found. This likelihood is called *p-value*. We select the threshold - usually small, if we can reject the *null hypothesis* we can tell A is better than B - is *statistically significant*.
+
+*Avoiding harms in classification*
+
+Representational harms - system perpetuating negative stereotypes about social groups.
+
+Toxicity detection - hate speech, abuse, harassment detection. These systems make harm themselves, for example: mark sentences mentioning minorities.
+
+System based on stereotypes can lead to censorship. Also human labeled data can be biased.
+
+It is important to include *model card* when releasing a system. Model card includes: training algorithms and parameters, data sources, intended users and use, model performance across different groups.
+
