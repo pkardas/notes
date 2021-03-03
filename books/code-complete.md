@@ -64,5 +64,37 @@ There are many quality metrics: correctness, usability, efficiency, reliability,
 
 *Techniques for Improving Software Quality*: set up software quality objectives, perform quality assurance activities, prototyping.
 
+Defect-detection techniques: design reviews, code reviews, prototyping, unit tests, integration tests, regression tests, ... even all of them combined will not detect all the issues. 
 
+> Most studies have found that inspections are cheaper than testing. A study at the Software Engineering Laboratory found that code reading detected about 80% more faults per hour than testing.
+
+Cost of detection is only one part. There is also cost of fixing the issues. The longer defect remains in the system, the more expensive it becomes to remove. 
+
+Recommended combination: Formal inspections of all requirements, architecture, design -> Modeling / prototyping -> Code reading -> Testing.
+
+Remember: Improving quality reduces development cost.
+
+#### Chapter 21: Collaborative Construction
+
+> IBM found that each hour of inspection prevented about 100 hours or related work (testing and defect correction)
+
+> Reviews cut the errors by over 80%
+
+> Reviews create a venue for more experienced and less experienced programmers to communicate about technical issues. 
+
+Collective ownership - code is owned by the group rather than by the individuals and can be accessed and modified by various members. 
+
+Guide on pair programming:
+
+- it will not be effective if you argue on styling conventions
+- don't let it turn into watching - person without the keyboard should be an active participant
+- sometimes it is better to discuss something on the whiteboard and then go programming solo
+- rotate pairs
+- match other's pace, the fast learner needs to slow down
+- don't force people who don't like each other to pair
+- no pairing between newbies
+
+Nice idea: for discussing the design everyone should come with a prepared list of potential issues. It is good to assign perspectives - maintainer, coder, user, designer. Author in such discussion should play minor role, should only present the overview. Reviewer can be anyone outside author - tester, developer. Management should not be present at the meeting, however should be briefed with the results after the discussion. Design review can not be used for performance appraisals.  Group should be focused on identifying defects. Goal of this meeting is not to explore alternatives ar debate who is right and who is wrong. 
+
+> NASA's Software Engineering Laboratory found that code reading detected about 3.3 defects per hour of effort. Testing detected 1.8 errors per hour.
 
