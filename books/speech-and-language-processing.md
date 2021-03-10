@@ -311,3 +311,41 @@ System based on stereotypes can lead to censorship. Also human labeled data can 
 
 It is important to include *model card* when releasing a system. Model card includes: training algorithms and parameters, data sources, intended users and use, model performance across different groups.
 
+#### Chapter 5: Logistic Regression
+
+Logistic regression - one of the most important analytic tools in the social and natural sciences. Baseline supervised machine learning algorithm for classification. Neural network can be seen as a series of logistic regression classifiers stacked on top of each other. This is a discriminative classifier (unlike Naive Bayes - generative classifier - you can literally as such model how for example dog or cat looks like, discriminative model learns only how to distinguish the classes, eg. training set with dogs with collars and cats - when you ask a model what does it know about cats it would respond: it doesn't wear a collar).
+
+Classification: *The Sigmoid*
+
+Sigmoid function - takes a real value (even x -> infinity) and maps it to the range [0, 1].Nearly linear near 0. This is extremely useful for calculating eg. *P(y=1|x)* - belonging to the class.
+$$
+z = weights\ of \ feature\ vector\ *\ x + bias
+$$
+
+$$
+P(y=1) = \sigma(z)
+$$
+
+*z* - ranges from *-inf* to *+inf*.
+
+Logistic regression can be used for all sorts of NLP tasks, eg. period  disambiguation (deciding if a period is the end of a sentence or part of a word).
+
+*Designing features* - features are generally designed by examining the training set with an eye to linguistic intuitions. 
+
+*Representation learning* - ways to learn features automatically in an unsupervised way from the input.
+
+*Choosing a classifier* - Logistic Regression great at finding correlations.
+
+*Loss / cost function* -  The distance between the system output and the gold output. Gradient descent - optimisation algorithm for updating the weights. It is a method that finds a minimum of a function by figuring out in which direction the function's slope is rising the most steeply.
+$$
+\theta\ -\ weights,\ in\ the\ case\ of\ logistic\ regression\ \theta = weights,\ bias
+$$
+*Convex function* - function with one minimum. No local minima to get stuck. Local minima is a problem in training neural networks - non-convex functions.
+
+*Learning rate* - the magnitude of the amount to move in gradient descent (hyper-parameter).
+
+*Hyper-parameters* - special parameters chosen by the algorithm designer that affect how the algorithm works. 
+
+*Batch training* - we compute gradient over the entire dataset, quite expensive to compute. Possibility to use *mini-batch* training, we train on a group of *m* examples (512 or 1024).
+
+*Regularisation* - a good model should generalise well, there is a problem of overfitting it model fits the data too perfectly. There is a possibility to add a regularisation - L1 (lasso regression) and L2 (ridge regression) regularisation. 

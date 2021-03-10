@@ -25,3 +25,28 @@ Don't be funny 😔 People tend to forget jokes, so people will forget true mean
 
 Pick one word per concept, eg. `get` instead of `fetch`, `retrieve`, ...
 
+#### Chapter 3: Functions
+
+Functions are the first line of organisation in any program. Functions should be small. No more than 2-3 indents.
+
+> Functions should do one thing. They should do it well. The should do it only.
+
+The reason we write functions is to decompose a larger concept. A function should not mix the levels of abstractions. 
+
+> You know you are working on clean code when each routine turns out to be pretty much what you expected.
+
+Don't be afraid to make a name long. The more function arguments the worse - difficulties with testing.
+
+Passing a boolean flag to a function is extremely ugly. Grouping arguments into objects seems like cheating but it is not. 
+
+Functions should have no side effects
+
+*Command Query Separation* - functions should either do something or answer something, but not both.
+
+Exceptions are preferred than error codes. Suggestion to extract exception handling to separate function. 
+
+*Don't repeat yourself* - duplication may be the root of all evil in software. Database norms formed to eliminate duplication in data, OOP concentrates the code, etc.
+
+> Writing software is like any other kind of writing. When you write a paper or article, you get your thoughts down first, then you massage it until it **reads well**.
+
+> The art of programming is, and always has been, the art of language design.
