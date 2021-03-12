@@ -349,3 +349,30 @@ $$
 *Batch training* - we compute gradient over the entire dataset, quite expensive to compute. Possibility to use *mini-batch* training, we train on a group of *m* examples (512 or 1024).
 
 *Regularisation* - a good model should generalise well, there is a problem of overfitting it model fits the data too perfectly. There is a possibility to add a regularisation - L1 (lasso regression) and L2 (ridge regression) regularisation. 
+
+*Multinomial logistic regression* (*softmax* regression) - for classification problems with more than 2 classes.The multinomial logistic classifier uses a generalisation of the sigmoid function called softmax function. 
+
+*Model interpretation* - Often we want to know more than just the result of classification, we want to know why classifier made certain decision. Logistic regression is interpretable.
+
+#### Chapter 6: Vector Semantics and Embeddings
+
+*Distributional hypothesis* - the link between similarity in how words are distributed and similarity.
+
+*Lemma / citation* form - basic form of a word. *Wordform* - inflected lemma. Lemma can have multiple meanings, eg. mouse might refer to a rodent or to a pointer, each of these are called word senses. Lemmas can be polysemous (have multiple senses), this makes interpretation difficult. Word sense disambiguation - the task of determining which sense of a word is being used in particular context.
+
+*Synonyms* - two words are synonymous if they are substitutable - have the same propositional meaning.
+
+*Principle of contrast* - a difference in in linguistic form is always associated with some difference in meaning, eg.: water / H2O, H2O - rather used in scientific context.
+
+*Word similarity* - *cat* is not a synonym of a *dog*, but these are 2 similar words. There are many human-labelled datasets for this.
+
+*Word relatedness* - (or association) eg.: *coffee* is not similar to *cup*, they shave ro similar features, but they are very related - associated, they co-exist. Very common kind of relatedness is semantic field, eg.: *surgeon, scalpel, nurse, hospital*. Semantic fields are related to topic models like LDa - Latent Dirichlet Allocation - unsupervised learning on large sets of texts to induce sets of associated words from text. There are more relations between words: hypernymy, antonymy or meronymy.
+
+*Semantic Frames and Roles* - a set of words that denote perspectives or participants in a particular type of event, eg.: *Ling sold the book to Sam* - seller / buyer relation. Important problem in question answering.
+
+*Connotation* - affective meaning - emotions, sentiment, opinions or evaluations. 
+
+*Sentiment* - valence - the pleasantness of the stimulus, arousal - the intensity of emotion provoked by the stimulus, dominance - the degree of control exerted by the stimulus. In 1957 Osgood used these 2 values to represent a word - revolutionary idea! Word embedded in 3D space.
+
+*Vectors semantics*. Word's meaning can be defined by its distribution in language - use neighbouring words. Idea of vector semantics is to represent a word as a point in a multidimensional semantic space (word embedding) that is derived from the distributions of word neighbours. 
+

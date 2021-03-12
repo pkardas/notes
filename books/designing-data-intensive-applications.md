@@ -60,3 +60,37 @@ Complex software makes it easy to introduce bugs, system makes it harder to unde
 *Evolvability*
 
 Requirements change, you learn new facts, new use cases emerge, priorities change, etc. Agile provides a framework for adapting to change.  Modify system and adapt it to changing requirements - pay attention to simplicity and abstractions.
+
+#### Chapter 2: Data Models and Query Languages
+
+*Relational Model vs Document Model*. Relational Databases turned out to generalise very well. NoSQL (*Not Only SQL*) is the latest attempt to overthrow the relational model's dominance. 
+
+Driving forces behind NoSQL:
+
+- a need for greater scalability - very large datasets / very high write throughput 
+- many open source projects
+- specialised query operations
+- frustration with restrictiveness of relational model
+
+A rule of thumb: is you are duplicating values that could be stored in just one place the schema is not normalised.
+
+Many-to-many relationships are widely used in relational databases, NoSQL reopened the debate on how best to represent such relationship.
+
+If your data has document-like structure, then it's probably a good idea to use a document model. The relational database and its shredding (splitting document-like structure into multiple tables) can lead to unnecessary complicated application code.
+
+Problems with document model: you can not access nested object directly you need to use access path, also it is not performing well in many-to-many relationships. 
+
+Database schema can be compared to languages: relational - compiled language with static typing, document - dynamic (runtime) type checking - schema on read.
+
+Data locality - because document databases store document as a string continuous string - JSON, XML, ... - often access will be faster because of locality, if data is split across multiple tables -> multiple disks -> more disk seeks -> more time required. However the document database will need to load entire document even if you need a small portion of it.
+
+*Query Languages for Data*
+
+SQL is declarative - you define what you want and it is up to the computer do determine how to get this data. Most programming languages are imperative - you define how to process the data. CSS styling can be declarative :open_mouth: 
+
+*MapReduce Querying*
+
+MapReduce - programming model for processing large amounts of data in bulk across many machines. Limited form of MapReduce is supported by some noSQL data-stores. Something between declarative and imperative programming. 
+
+
+

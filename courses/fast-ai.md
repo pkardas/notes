@@ -51,7 +51,7 @@ Epoch - eg. looking at every image in the training set = 1 epoch, 1 loop
 
 Metric - function measuring quality of the model's predictions (error_rate, accuracy), we care about it.
 
-Loss != Metric, loss - computer uses this to update parameters, computer cares about it. For example tweaking parameters just a little might nit change accuracy or error rate.
+Loss != Metric, loss - computer uses this to update parameters, computer cares about it. For example tweaking parameters just a little might not change accuracy or error rate.
 
 
 

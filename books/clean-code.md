@@ -50,3 +50,9 @@ Exceptions are preferred than error codes. Suggestion to extract exception handl
 > Writing software is like any other kind of writing. When you write a paper or article, you get your thoughts down first, then you massage it until it **reads well**.
 
 > The art of programming is, and always has been, the art of language design.
+
+#### Chapter 4: Comments
+
+Comments are usually bad, they mean you failed to express yourself in code. IMO: Best comments are the ones that are explaining why things were done in a particular way. 
+
+Don't put historical discussions or irrelevant details into the comments.
