@@ -98,3 +98,20 @@ Nice idea: for discussing the design everyone should come with a prepared list o
 
 > NASA's Software Engineering Laboratory found that code reading detected about 3.3 defects per hour of effort. Testing detected 1.8 errors per hour.
 
+#### Chapter 22: Developer Testing
+
+> You must hope to find errors in your code. Such hope might seem like an unnatural act, but you should hope that it's you who who finds the errors and not someone else.
+
+Why TDD:
+
+- same effort to write test cases before and after
+- you detect defects earlier and you can correct them more easily
+- forces you to think a little bit about the requirements and design before writing code
+- exposes requirements problems sooner
+
+Developers tend to write *clean tests* rather than test for all the ways code breaks. Developer's testing isn't sufficient to provide adequate quality assurance. 
+
+General Principle of Software Quality: improving quality improves the development schedule and reduces development cost.
+
+
+

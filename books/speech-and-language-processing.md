@@ -376,3 +376,13 @@ $$
 
 *Vectors semantics*. Word's meaning can be defined by its distribution in language - use neighbouring words. Idea of vector semantics is to represent a word as a point in a multidimensional semantic space (word embedding) that is derived from the distributions of word neighbours. 
 
+*Information retrieval* - the task of finding the document *d* from the *D* documents in some collection that best matches a query *q*.
+
+*Cosine* - similarity metric between 2 words (angle between 2 vectors)
+
+*TF-IDF* - Raw frequencies - not the best way to measure association between words (a lot of noise from words like *the, it, they, ...*). Term Frequency - the frequency of a word *t* in document *d*. The second factor gives higher weights to words that occur only in a few documents.
+
+*PMI* - Point-wise Mutual Information - measure how often 2 events occur, compared with what we would expect if they were independent. A useful tool whenever we need to find words that are strongly associated. It is more common to use PPMI. Very rare words tend to have very high PMI.
+
+
+
