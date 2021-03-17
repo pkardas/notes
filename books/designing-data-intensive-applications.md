@@ -86,11 +86,37 @@ Data locality - because document databases store document as a string continuous
 
 *Query Languages for Data*
 
-SQL is declarative - you define what you want and it is up to the computer do determine how to get this data. Most programming languages are imperative - you define how to process the data. CSS styling can be declarative :open_mouth: 
+SQL is declarative - you define what you want and it is up to the computer do determine how to get this data. Most programming languages are imperative - you define how to process the data. 
 
 *MapReduce Querying*
 
 MapReduce - programming model for processing large amounts of data in bulk across many machines. Limited form of MapReduce is supported by some noSQL data-stores. Something between declarative and imperative programming. 
 
+*Graph-Like Data Models*
 
+Very good approach form data with many-to-many relationships. Each vertex has: ID, set of outgoing edges, set of outgoing edges, a collection of properties (key-value pairs). Each edge has: ID, the tail vertex, the head vertex, label describing the type of relationship, a collection of properties (key-value pairs).
 
+Graphs give great flexibility in modeling relationships. Eg. France has departments and regions, whereas the US has counties and states.
+
+Cypher is a declarative query language for property graphs, created for Neo4j DB, eg.: find the names of all people who emigrated from the US to Europe:
+
+```cypher
+MATCH
+  (person) -[:BORN_IN]->  () -[:WITHIN*0..]-> (us:Location {name: "United States"}),
+  (person) -[:LIVES_IN]-> () -[:WITHIN*0..]-> (eu:Location {name: "Europe"})
+RETURN person.name
+```
+
+This can be expressed in SQL (recursive common table expressions :grimacing:), but with one difficulty, `LIVES_IN` might point to any location (region, country, state, continent), here we are interested only in the US and Europe. 4 lines in Cypher vs 29 lines in SQL.
+
+*Tripple-Stores*
+
+Very similar to graph model, all information stored in the form of very simple three-part statements: `(subject, predicate, object)`, eg. `(Jim, likes, bananas)`.
+
+#### Chapter 3: Storage and Retrieval
+
+In order to tune a storage engine to perform well on your kind of workload, you need to have a rough idea of what the storage engine is doing under the hood.
+
+*Data Structures That Power Your Database*
+
+Hash Indexes. For example: Key and offset pairs.

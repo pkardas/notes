@@ -317,7 +317,7 @@ Logistic regression - one of the most important analytic tools in the social and
 
 Classification: *The Sigmoid*
 
-Sigmoid function - takes a real value (even x -> infinity) and maps it to the range [0, 1].Nearly linear near 0. This is extremely useful for calculating eg. *P(y=1|x)* - belonging to the class.
+Sigmoid function - takes a real value (even x -> infinity) and maps it to the range [0, 1]. Nearly linear near 0. This is extremely useful for calculating eg. *P(y=1|x)* - belonging to the class.
 $$
 z = weights\ of \ feature\ vector\ *\ x + bias
 $$
@@ -384,5 +384,27 @@ $$
 
 *PMI* - Point-wise Mutual Information - measure how often 2 events occur, compared with what we would expect if they were independent. A useful tool whenever we need to find words that are strongly associated. It is more common to use PPMI. Very rare words tend to have very high PMI.
 
+*Word2vec* - dense word embedding, the intuition of word2vec is that instead of counting how often each word *w* occurs near word *u*, we train a classifier on a binary classification task: "Is word *w* likely to show up near word *u*?". We can use running text as supervised training data. - this is called self-supervised training data. 
 
+Visualising embeddings - visualise the meaning of a word embedded in space by listing the most similar words, clustering algorithms and the most important method - dimensionality projection, eg. t-SNE.
+
+*First-order co-occurrence / Syntagmatic association* - if words are near each other, eg. *wrote* and *book*.
+
+*Second-order co-occurrence / Paradigmatic association* - if words have similar neighbours, eg. *wrote*, *said*
+
+*Representational harm*. Embeddings are capable of capturing bias and stereotypes. More, they are capable of amplifying bias. 
+
+#### Chapter 7: Neural Networks and Neural Language Models
+
+Neural network share much of the same mathematics as logistic regression, but NNs are more powerful classifier than logistic regression. Neural networks can automatically learn useful representations of the input.
+
+*Unit* - takes a set of real values numbers as input, performs some computations on them and produces an output. Is taking weighted sum of inputs + bias. Output of this function is called an activation. 
+$$
+y = a = f(z) = f(w \cdot x + b)
+$$
+*f* - eg. sigmoid, tanh, ReLU. Sigmoid most commonly used for teaching. Tanh is almost always better than sigmoid. ReLU (rectified linear unit) - most commonly used and the simplest.
+
+*The (famous) XOR problem* - Minsky proved it is not possible to build a perceptron (very simple neural unit that has a binary output and does not have a non-linear activation function) to compute logical XOR. However, it can be computed using a layered neural network.
+
+*Feed-Forward Neural Network*. Multi-layer network, units are connected without cycles. Sometimes called multi-layer perceptrons for historical reasons, modern networks aren't perceptrons (aren't linear). Simple FFNN have 3 types of nodes: input units, hidden units and output units. The core of the neural network is the hidden layer formed of hidden units. Standard architecture is that each layer is fully connected - each unit in each layer takes all the outputs from the previous layer.
 
