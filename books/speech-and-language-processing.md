@@ -1,13 +1,13 @@
 [go back](https://github.com/pkardas/learning)
 
-## Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics and Speech Recognition
+# Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics and Speech Recognition
 Book by Daniel Jurafsky and James H. Martin (December 2020 draft)
 
 
 
 [TOC]
 
-#### Chapter 2: Regular Expressions, Text Normalization, Edit Distance
+## Chapter 2: Regular Expressions, Text Normalization, Edit Distance
 
 *Regular Expressions*
 
@@ -178,7 +178,7 @@ How to find Minimal Edit Distance? This can be think of as a shortest path probl
 
 
 
-#### Chapter 3: N-gram Language Models
+## Chapter 3: N-gram Language Models
 
 Assigning probabilities of upcoming words in a sentence is a very important task in speech recognition, spelling correction, machine translation and AAC systems. Systems that assign probabilities to sequences of models are called **language models**. Simplest model is a n-gram.
 
@@ -245,7 +245,7 @@ Google open-sourced their The Web 1 Trillion 5-gram corpus, they released also G
 
 Stupid backoff - algorithm for a language model, gives up idea of making the idea of trying to make the model a true probability distribution, no discounting. If a higher-order n-gram has zero count, we simply backoff to a lower order n-gram, this algorithm does not produce a probability distribution. 
 
-#### Chapter 4: Naive Bayes and Sentiment Classification
+## Chapter 4: Naive Bayes and Sentiment Classification
 
 Many problems can be viewed as classification problems: text categorisation, sentiment analysis, language identification, authorship attribution, period disambiguation, tokenisation, and many more. Goal is to take a sample, extract features and classify the observation. 
 
@@ -311,7 +311,7 @@ System based on stereotypes can lead to censorship. Also human labeled data can 
 
 It is important to include *model card* when releasing a system. Model card includes: training algorithms and parameters, data sources, intended users and use, model performance across different groups.
 
-#### Chapter 5: Logistic Regression
+## Chapter 5: Logistic Regression
 
 Logistic regression - one of the most important analytic tools in the social and natural sciences. Baseline supervised machine learning algorithm for classification. Neural network can be seen as a series of logistic regression classifiers stacked on top of each other. This is a discriminative classifier (unlike Naive Bayes - generative classifier - you can literally as such model how for example dog or cat looks like, discriminative model learns only how to distinguish the classes, eg. training set with dogs with collars and cats - when you ask a model what does it know about cats it would respond: it doesn't wear a collar).
 
@@ -354,7 +354,7 @@ $$
 
 *Model interpretation* - Often we want to know more than just the result of classification, we want to know why classifier made certain decision. Logistic regression is interpretable.
 
-#### Chapter 6: Vector Semantics and Embeddings
+## Chapter 6: Vector Semantics and Embeddings
 
 *Distributional hypothesis* - the link between similarity in how words are distributed and similarity.
 
@@ -394,7 +394,7 @@ Visualising embeddings - visualise the meaning of a word embedded in space by li
 
 *Representational harm*. Embeddings are capable of capturing bias and stereotypes. More, they are capable of amplifying bias. 
 
-#### Chapter 7: Neural Networks and Neural Language Models
+## Chapter 7: Neural Networks and Neural Language Models
 
 Neural network share much of the same mathematics as logistic regression, but NNs are more powerful classifier than logistic regression. Neural networks can automatically learn useful representations of the input.
 

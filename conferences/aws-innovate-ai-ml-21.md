@@ -1,12 +1,12 @@
 [go back](https://github.com/pkardas/learning)
 
-## AWS Innovate: AI/ML Edition 2021
+# AWS Innovate: AI/ML Edition 2021
 
 [TOC]
 
 Online conference took part on 24.02.2021, I participated in couple of talks.
 
-#### Move and scale your ML experiments in the cloud
+## Move and scale your ML experiments in the cloud
 
 Machine learning experiments (labeling the data, storage, sharing, saving, tuning parameters) can be done in Amazon SageMaker IDE - secure, scalable, compliant solution - DevOps ready solution.
 
@@ -42,7 +42,7 @@ Example training:
 
 SageMaker is not just a notebook - it allows for data preparation, building models, training, tuning and deployment.
 
-#### Detect potential bias in your datasets and explain how your models predict 
+## Detect potential bias in your datasets and explain how your models predict 
 
 Bias - unfair representation of reality, as we use datasets, there is a risk, that data we use does not represent reality.
 
@@ -76,7 +76,7 @@ For explainability AWS outputs similar report:
 
 
 
-#### Deploy state of the art ML models and solutions in a single click 
+## Deploy state of the art ML models and solutions in a single click 
 
 SageMaker Studio. Problem: text analysis, there are 60 models prepared for text analysis. We can select one, eg. trained on Wikipedia. Then we can deploy the model, we can fine tune the model - we need to provide the dataset in a special format. Model has an endpoint, which can be tested in the Jupyter Notebook.
 

@@ -1,11 +1,11 @@
 [go back](https://github.com/pkardas/learning)
 
-## Practical Deep Learning for Coders
+# Practical Deep Learning for Coders
 Course -> https://course.fast.ai/
 
 [TOC]
 
-#### Lesson 1
+## Lesson 1
 
 Truth, to start with Deep Learning:
 
@@ -43,7 +43,7 @@ You need to be super careful what is the input data (initial bias, stereotypic d
 
 Segmentation - marking areas on images (trees, cars, ...)
 
-#### Lesson 2
+## Lesson 2
 
 Architecture - eg. resnet64 - name of the architecture (64 layers) - function that we are optimising.
 

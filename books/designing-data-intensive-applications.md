@@ -1,11 +1,11 @@
 [go back](https://github.com/pkardas/learning)
 
-## Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems
+# Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems
 Book by Martin Kleppmann
 
 [TOC]
 
-#### Chapter 1: Reliable, Scalable and Maintainable Applications
+## Chapter 1: Reliable, Scalable and Maintainable Applications
 
 May applications today are data-intensive, CPU is not a problem but amount of data, its complexity and speed of change. They are built from standard building blocks: database, cache, search index, stream processing, batch processing. These building blocks have many variants. 
 
@@ -61,7 +61,7 @@ Complex software makes it easy to introduce bugs, system makes it harder to unde
 
 Requirements change, you learn new facts, new use cases emerge, priorities change, etc. Agile provides a framework for adapting to change.  Modify system and adapt it to changing requirements - pay attention to simplicity and abstractions.
 
-#### Chapter 2: Data Models and Query Languages
+## Chapter 2: Data Models and Query Languages
 
 *Relational Model vs Document Model*. Relational Databases turned out to generalise very well. NoSQL (*Not Only SQL*) is the latest attempt to overthrow the relational model's dominance. 
 
@@ -113,7 +113,7 @@ This can be expressed in SQL (recursive common table expressions :grimacing:), b
 
 Very similar to graph model, all information stored in the form of very simple three-part statements: `(subject, predicate, object)`, eg. `(Jim, likes, bananas)`.
 
-#### Chapter 3: Storage and Retrieval
+## Chapter 3: Storage and Retrieval
 
 In order to tune a storage engine to perform well on your kind of workload, you need to have a rough idea of what the storage engine is doing under the hood.
 

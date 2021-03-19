@@ -31,3 +31,19 @@ Typora is truly superior :)
 ### Conferences
 
 [AWS Innovate: AI/ML Edition 2021](conferences/aws-innovate-ai-ml-21.md)
+
+### Patterns
+
+[Architecture](patterns/architecture.md)
+
+[Code](patterns/code.md)
+
+[Messaging](patterns/messaging.md)
+
+### Teaching
+
+> *The best way to learn is to teach* ~ Frank Oppenheimer 
+
+Hence this *subsection* is a part of `learning` repository :slightly_smiling_face:
+
+[Introduction to Programming: Python for beginners](teaching/python-intro/README.md)

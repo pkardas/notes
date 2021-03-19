@@ -1,19 +1,19 @@
 [go back](https://github.com/pkardas/learning)
 
-## Code Complete: A Practical Handbook of Software Construction
+# Code Complete: A Practical Handbook of Software Construction
 Book by Steve McConnell
 
 [TOC]
 
-#### Chapter 1: Software Construction
+## Chapter 1: Software Construction
 
 Construction - proces of building (planning, designing, checking the work). Construction is mostly coding and debugging but also involves designing, planning, unit testing, ... Centre of the software development process. The only activity that is guaranteed to be done (planning might be imperfect, etc.).
 
-#### Chapter 2: Metaphors for a Richer Understanding of Software Development
+## Chapter 2: Metaphors for a Richer Understanding of Software Development
 
 Metaphors contribute to a greater understanding of software-development issues - paper writing metaphor, farming metaphor, etc...
 
-#### Chapter 8: Defensive Programming
+## Chapter 8: Defensive Programming
 
 Protecting yourself from "cruel world of incorrect data". Use assertions to document assumptions made in the code.
 
@@ -58,7 +58,7 @@ Barricades:
 
 *Offensive programming* - exceptional cases should be handled in a way that makes them obvious during development and recoverable when production code is running. During development, you want errors to be as visible as possible but during production it should not be observable. 
 
-#### Chapter 20: The Software-Quality Landscape
+## Chapter 20: The Software-Quality Landscape
 
 There are many quality metrics: correctness, usability, efficiency, reliability, integrity, adaptivity, accuracy, robustness - these are metrics important to the user, for a programmer more important metrics are: maintainability, flexibility, portability, reusability, readability, testability, understandability. 
 
@@ -74,7 +74,7 @@ Recommended combination: Formal inspections of all requirements, architecture, d
 
 Remember: Improving quality reduces development cost.
 
-#### Chapter 21: Collaborative Construction
+## Chapter 21: Collaborative Construction
 
 > IBM found that each hour of inspection prevented about 100 hours or related work (testing and defect correction)
 
@@ -98,7 +98,7 @@ Nice idea: for discussing the design everyone should come with a prepared list o
 
 > NASA's Software Engineering Laboratory found that code reading detected about 3.3 defects per hour of effort. Testing detected 1.8 errors per hour.
 
-#### Chapter 22: Developer Testing
+## Chapter 22: Developer Testing
 
 > You must hope to find errors in your code. Such hope might seem like an unnatural act, but you should hope that it's you who who finds the errors and not someone else.
 

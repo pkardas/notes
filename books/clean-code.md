@@ -1,11 +1,11 @@
 [go back](https://github.com/pkardas/learning)
 
-## Clean Code: A Handbook of Agile Software Craftsmanship
+# Clean Code: A Handbook of Agile Software Craftsmanship
 Book by Robert Cecil Martin
 
 [TOC]
 
-#### Chapter 1: Clean Code
+## Chapter 1: Clean Code
 
 - ugly code is expensive
 - take your time to write a good code
@@ -15,7 +15,7 @@ Book by Robert Cecil Martin
 - make the language look like it was made of the problem
 - code rot quickly
 
-#### Chapter 2: Meaningful names
+## Chapter 2: Meaningful names
 
 Variable name should answer all the questions. It should tell why it exists. If a name requires a comment it does not reveal its content. Names should be pronounceable. One letter variables are hard to `grep` in the code - should be ONLY as local variables inside short methods. The length of a name should correspond to the size of its scope. Avoid encodings. 
 
@@ -25,7 +25,7 @@ Don't be funny 😔 People tend to forget jokes, so people will forget true mean
 
 Pick one word per concept, eg. `get` instead of `fetch`, `retrieve`, ...
 
-#### Chapter 3: Functions
+## Chapter 3: Functions
 
 Functions are the first line of organisation in any program. Functions should be small. No more than 2-3 indents.
 
@@ -51,7 +51,7 @@ Exceptions are preferred than error codes. Suggestion to extract exception handl
 
 > The art of programming is, and always has been, the art of language design.
 
-#### Chapter 4: Comments
+## Chapter 4: Comments
 
 Comments are usually bad, they mean you failed to express yourself in code. IMO: Best comments are the ones that are explaining why things were done in a particular way. 
 
