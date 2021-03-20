@@ -1,20 +1,16 @@
 ## My learning notes
 
-I use **Typora** to write the notes. If you really need to read my notes, I strongly encourage you to open them in Typora because of much better formatting:
+This repository has the following purposes:
 
-###### Typora:
-
-![readme-formatting-typora](./_images/readme-formatting-typora.png)
-
-###### GitHub in the browser...:
-
-![readme-formatting-github](./_images/readme-formatting-github.png)
-
-Typora is truly superior :)
-
---
+- a notebook - for a quicker understanding of what I read
+- a summary - to quickly go back to what I read
+- a log - for the record when and what I read
+- a contract - to be systematic in reading
 
 ### Books
+
+All books described in this repository were purchased in paperback. :books:
+
 [Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems](books/hands-on-ml.md)
 
 [Clean Code: A Handbook of Agile Software Craftsmanship](books/clean-code.md)
@@ -47,3 +43,20 @@ Typora is truly superior :)
 Hence this *subsection* is a part of `learning` repository :slightly_smiling_face:
 
 [Introduction to Programming: Python for beginners](teaching/python-intro/README.md)
+
+--
+
+### Typora
+
+I use **Typora** to write the notes. If you really need to read my notes, I strongly encourage you to open them in Typora because of much better formatting:
+
+###### Typora:
+
+![readme-formatting-typora](./_images/readme-formatting-typora.png)
+
+###### GitHub in the browser...:
+
+![readme-formatting-github](./_images/readme-formatting-github.png)
+
+Typora is truly superior :slightly_smiling_face:
+
