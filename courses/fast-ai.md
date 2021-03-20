@@ -59,8 +59,6 @@ Computer Vision can be used for variety of problems, eg. sound, virus analysis (
 
 ![fast-ai-1](../_images/fast-ai-1.png)
 
-
-
 Set of pretrained models: https://modelzoo.co/
 
 *How to decide if there is a relationship?*
