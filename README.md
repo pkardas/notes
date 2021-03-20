@@ -7,9 +7,9 @@ This repository has the following purposes:
 - a log - for the record when and what I read
 - a contract - to be systematic in reading
 
-### Books
+Notes in this repo are focused mostly on Python, Machine Learning and Architecture.
 
-All books described in this repository were purchased in paperback. :books:
+### Books
 
 [Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems](books/hands-on-ml.md)
 
@@ -20,6 +20,8 @@ All books described in this repository were purchased in paperback. :books:
 [Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems](books/designing-data-intensive-applications.md)
 
 [Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics and Speech Recognition](books/speech-and-language-processing.md)
+
+[Amazon Simple Queue Service: Developer Guide](books/amazon-sqs.md)
 
 ### Courses
 [Course @ FastAI](courses/fast-ai.md)
