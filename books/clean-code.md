@@ -56,3 +56,14 @@ Exceptions are preferred than error codes. Suggestion to extract exception handl
 Comments are usually bad, they mean you failed to express yourself in code. IMO: Best comments are the ones that are explaining why things were done in a particular way. 
 
 Don't put historical discussions or irrelevant details into the comments.
+
+## Chapter 5: Formatting
+
+Code formatting is important. Visual design of the code is important. Variable should be declared "in well-known for everybody place". Functions should show natural flow -> top-down. 
+
+Horizontal formatting? Python got you covered :D
+
+Another matter is alignment, eg. of test cases in parametrised tests. However variables declarations ins an overkill.
+
+However, a team should agree upon a single formatting style.
+

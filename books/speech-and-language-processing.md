@@ -408,3 +408,15 @@ $$
 
 *Feed-Forward Neural Network*. Multi-layer network, units are connected without cycles. Sometimes called multi-layer perceptrons for historical reasons, modern networks aren't perceptrons (aren't linear). Simple FFNN have 3 types of nodes: input units, hidden units and output units. The core of the neural network is the hidden layer formed of hidden units. Standard architecture is that each layer is fully connected - each unit in each layer takes all the outputs from the previous layer.
 
+Purpose of learning is to learn weights and bias on each layer. *Loss function* - the distance between the system output and the gold output, eg. cross-entropy loss. To find the parameters that minimise this loss function, we use for example *gradient descent*.  Gradient descent requires knowing the gradient of the loss function with respect to each of the parameters. Solution for computing this gradient is error back-propagation. 
+
+Language modeling - predicting upcoming words from prior word context - neural networks are really good at this task. Much better than *n-gram* models - better generalisation, higher accuracy, on the other hand - much slower to train.
+
+## Chapter 8: Sequence Labeling for Parts of Speech and Named Entities
+
+*Named entity* - eg. Marie Curie, New York City, Stanford University, ... important for for many natural language understanding tasks.
+
+*POS/Part of Speech* - knowing if a word is noun or verb tells us about likely neighbouring words. They fall into 2 categories: closed class and open class. POS-tagging is the process of assigning a part-of-speech to each word in a text. Tagging is a disambiguation task. Words are ambiguous, one can have more than one POS eg. book flight, hand me that book, ... The goal is to resolve these ambiguities. The accuracy of POS tagging algorithms is very high +97%. Most Frequent Class Baseline - effective, baseline method, assign token to the class that occurs most often in the training set.
+
+
+

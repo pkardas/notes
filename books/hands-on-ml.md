@@ -10,5 +10,3 @@ TODO: *Re-read Part I.*
 ## Chapter 10: Introduction to Artificial Neural Networks with Keras
 
 
-
-Amazon Simple Queue Service
