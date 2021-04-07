@@ -67,3 +67,14 @@ Another matter is alignment, eg. of test cases in parametrised tests. However va
 
 However, a team should agree upon a single formatting style.
 
+## Chapter 6: Objects and Data Structures
+
+Hiding implementation is about abstractions. 
+
+The Law of Demeter - a module should not know about the innards of the objects it manipulates. Class *C* has a method *f*, method *f* should call the methods of: *C*, object created by *f*, object passed as an argument to *f* or object held in an instance variable of *C*.
+
+Train wreck: `ctxt.getOptions().getScratchDir().getAbsolutePath()` - a bunch of couples train cars. Does it violate The Law of Demeter? `ctxt` contains options, which contain a scratch directory, which has absolute path - a lot of knowledge.However in this case this law does nto apply because these are data structures with no behaviour. It would be good to hide the structure of `ctxt`, eg.: `ctxt.getScratchDirectoryOption().getAbsolutePath()`.
+
+Data Transfer Objects - a class with public variables and no functions, eg. for communicating with the database.
+
+Objects - expose behaviour and hide data, data structures - expose data and have no significant behaviour.

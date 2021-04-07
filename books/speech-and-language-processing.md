@@ -414,9 +414,13 @@ Language modeling - predicting upcoming words from prior word context - neural n
 
 ## Chapter 8: Sequence Labeling for Parts of Speech and Named Entities
 
-*Named entity* - eg. Marie Curie, New York City, Stanford University, ... important for for many natural language understanding tasks.
+*Named entity* - eg. Marie Curie, New York City, Stanford University, ... important for for many natural language understanding tasks (eg. sentiment towards specific product, question answering). Generally speaking, anything that can be referred to with a proper name (person, location, organisation). Possible output tags: PER (person), LOC (location), ORG (organisation) and GPE (geo-political entity).
 
 *POS/Part of Speech* - knowing if a word is noun or verb tells us about likely neighbouring words. They fall into 2 categories: closed class and open class. POS-tagging is the process of assigning a part-of-speech to each word in a text. Tagging is a disambiguation task. Words are ambiguous, one can have more than one POS eg. book flight, hand me that book, ... The goal is to resolve these ambiguities. The accuracy of POS tagging algorithms is very high +97%. Most Frequent Class Baseline - effective, baseline method, assign token to the class that occurs most often in the training set.
+
+Markov chain - a model that tells about the probabilities of sequences of random variables. A Markov chain makes a very strong assumption - if you want to predict future sentence, all that matters is the current state. Formally a Markov chain is specified by: set of *N* states, a transition probability matrix and initial probability distribution.
+
+The Hidden Markov Model - allows to talk about both observed events (words seen in the input) and hidden events (part-of-speech tags). Formally HMM is specified by: set of *N* states, a transition probability, observations, observation likelihoods / emission probabilities (probability of an observation begin generated from a state *q*) and initial probability distribution.
 
 
 
