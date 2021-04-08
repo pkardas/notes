@@ -113,5 +113,42 @@ Developers tend to write *clean tests* rather than test for all the ways code br
 
 General Principle of Software Quality: improving quality improves the development schedule and reduces development cost.
 
+## Chapter 24: Refactoring
 
+The Cardinal Rule of Software Evolution: Evolution should improve the internal quality of the program.
+
+Signs / smells that indicate refactoring is needed:
+
+- code duplication - you need to do parallel changes
+- too long routine
+- too long loop or too deeply nested
+- poor class cohesion - if a class takes ownership for many unrelated responsibilities
+- too many parameters
+- changes require parallel modifications to multiple classes
+- related data not organised into classes
+- overloaded primitive data type
+- class doesn't do much - sometimes the result of refactoring is that an old class doesn't have much to do
+- trap data - one routine just passes data to another
+- one class hows too much about the other
+- poor names
+- public data members - in general bad idea
+- subclass uses only a small percentage of its' parent routines
+- comments should not be used to explain bad code - "don't comment bad code, rewrite it"
+- usage of setup code before routine call
+- code that "seems like it might be needed one day" - programmers are rather bad at guessing what functionality might be needed someday, *design ahead* introduces unnecessary complexity
+
+Data-Lever Refactoring:
+
+- replace magic number with a named constant
+- give a variable informative name
+- inline expressions
+- replace expression with a routine
+- convert data primitive to a class
+- encapsulate returned collection
+
+Statement-Level Refactoring:
+
+- decompose boolean expression - use variables that help document the meaning of the expression
+- move boolean expression into a well-named function
+- return as soon as you know the return value
 
