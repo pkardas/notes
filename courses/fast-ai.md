@@ -67,5 +67,23 @@ Set of pretrained models: https://modelzoo.co/
 
 *P-Value* - probability of an observed result assuming that the null hypothesis is true.
 
+## Lesson 3
 
+Square images are easier to process, you need to remember the length of only one dimension. `Squishing` is the most efficient method for resizing, because cropping removes information, adding black bars wastes computations. Another most common method is `Random Resize Crop` - few batches, different parts of the image are taken
+
+ImageClassifierCleaner - utility tool (GUI) for finding examples, classifier is least confident about. You can manually improve labelling. 
+
+`VBox` - you can group multiple widgets together and create prototype application in notebook.
+
+`viola` - plugin for hiding cells with code, only inputs and outputs are visible. Add `viola` to the URL and it will display an application-like website in the browser. Great for prototyping. 
+
+binder.com - you can turn notebook from GitHub into a publicly available web application.
+
+*Healthy skin* example - bing returns images of a young white woman - bias!
+
+Book recommendation: *Building Machine Learning Powered Applications*
+
+Feedback loop - eg. predictive policing - system that sends police - feedback loops can result in negative implications of that bias getting worse and worse - eg. you send police to the same place over and over.
+
+FastPages - dump notebook into a page.
 

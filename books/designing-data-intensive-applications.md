@@ -119,4 +119,6 @@ In order to tune a storage engine to perform well on your kind of workload, you 
 
 *Data Structures That Power Your Database*
 
-Hash Indexes. For example: Key and offset pairs.
+Hash Indexes. For example: Key and offset pairs. SSTable - Sorted String Table.
+
+B-Trees - most widely used indexing structure, standard index implementation for almost all relational databases and for many non-relational databases.
