@@ -422,5 +422,11 @@ Markov chain - a model that tells about the probabilities of sequences of random
 
 The Hidden Markov Model - allows to talk about both observed events (words seen in the input) and hidden events (part-of-speech tags). Formally HMM is specified by: set of *N* states, a transition probability, observations, observation likelihoods / emission probabilities (probability of an observation begin generated from a state *q*) and initial probability distribution.
 
+HMM is a useful and powerful model, but needs a number of augmentations to achieve high accuracy. CFR is a log-linear model that assigns a probability to an entire output sequence. We can think of a CRF as like a giant version of what multinomial logistic regression does for a single token. 
 
+Gazetteer - list of place names, milions of entries for locations with detailed geographical and political information, eg. https://www.geonames.org/ 
+
+POS tags are evaluated by accuracy. NERs are evaluated using recall, precision and F1.
+
+Named Entity Recognition is often based on rule based approaches.
 
