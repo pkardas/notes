@@ -87,3 +87,10 @@ Feedback loop - eg. predictive policing - system that sends police - feedback lo
 
 FastPages - dump notebook into a page.
 
+Recognising hand written digits (MNIST) was considered challenging problem ~20 years ago. Baseline idea: compare model / ideal number with input - for MNIST, calculate average of the training set, on validation set - calculate distance (~95% accuracy). Baseline should be something simple to implement - then you build something on top of it. 
+
+Broadcasting - if shapes of 2 elements don't match, eg. A (1010, 28, 28) - B (28, 28), B will be subtracted from every 1010 items from A.
+
+PyTorch has engine for calculating derivatives. In PyTorch `_`  at the end of the method means "method in place".
+
+Learning rate - size of a step in gradient descent
