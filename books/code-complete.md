@@ -152,3 +152,40 @@ Statement-Level Refactoring:
 - move boolean expression into a well-named function
 - return as soon as you know the return value
 
+Routine-Level Refactoring:
+
+- Inline simple routines
+- Convert long routine into a class
+- Separate query operations from modification operations
+- Combine similar routines by parametrising themIf routine depends on the parameter passed in - consider splitting the routine
+- Pass a whole object instead of specific fields, however if you are creating an object just to pass it to a routine, consider changing the routine to take only specific fields
+- Routine should return the most specific object (mostly applicable to iterators, collections, ...)
+
+Class Implementation Refactoring:
+
+- Extract specialised code into a subclass - if class has code that is used by only a subset of its instances
+- Combine similar code into a superclass - if at least 2 classes have similar code
+
+CLass Interface Refactoring:
+
+- Eliminate classes not doing too much
+- Hide a delegate - A calling B, A calling C, when really class A should call B and class B should call class C
+- Or remove middleman, remove B and make A call C directly
+- Hide routines that are not intended to be used outside the class
+- Encapsulate unused routines - if you use only small portion of class's interface
+
+Refactoring might cause a lot of harm if misused:
+
+- refactoring should be small
+- one refactoring at a time
+- make a list of needed steps
+- make a parking lot - in the middle of refactoring you might think about another refactoring, and another, and so on, for changes that aren't required immediately save a list of TODO changes
+-  check IDE / compiler / other tool's errors
+- refactored code should be retested, programmer should also add more test cases
+- be careful about small refactoring because they tend to introduce more bugs than big refactoring
+- adjust approach basing on the risk of the refactoring - some changes are more dangerous than the other
+
+Refactoring refers to making a changes in working code and do not affect the program's behaviour. Programmers who are tweaking broken code aren't refactoring - they are hacking.
+
+There are many strategies on where refactoring should be started. For example, whenever you are adding a routine you should refactor it's neighbour, or when you are adding a class, or you should refactor error-prone modules, the most complex modules, etc.
+
