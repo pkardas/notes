@@ -430,3 +430,18 @@ POS tags are evaluated by accuracy. NERs are evaluated using recall, precision a
 
 Named Entity Recognition is often based on rule based approaches.
 
+## Chapter 9: Deep Learning Architectures for Sequence Processing
+
+Language is inherently temporal phenomenon. This is hard to capture using standard machine learning models.
+
+*Perplexity* - a measure of model quality, perplexity of a model with respect to an unseen test set is the probability the model assigns to it, normalised by its length.
+
+*RNN - Recurrent Neural Network* - any network that contains a cycle within its network connections. Any network where the value of a unit is directly  or indirectly dependent on its own earlier outputs as an input. Within RNNs there are constrained architectures that have proven to be extremely effective. 
+
+*Elman Networks / Simple Recurrent Networks* - very useful architecture, also serves as the basis for more complex approaches like LSTM (Long Short-Term Memory). RNN can be illustrated as a feedforward network. New set of weights that connect the hidden layer from the previous time step to the current hidden layer determine how the network makes the use of past context in calculating the output for the current input.
+
+RNN-based language models process sequences a word at a time, attempting to predict the next word in a sequence by using the current word and the previous hidden state as inputs. 
+
+RNNs can be used for many other tasks:
+
+- 
