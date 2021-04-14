@@ -78,3 +78,15 @@ Train wreck: `ctxt.getOptions().getScratchDir().getAbsolutePath()` - a bunch of 
 Data Transfer Objects - a class with public variables and no functions, eg. for communicating with the database.
 
 Objects - expose behaviour and hide data, data structures - expose data and have no significant behaviour.
+
+## Chapter 7: Error Handling
+
+Error handling is important, but if it obscures logic, it is wrong. Exceptions are preferred over return codes - return codes can clutter the caller with unnecessary code.
+
+`try` blocks are like transactions, `catch` has to leave the program into a consistent state.
+
+Error messages need to be informative - mention the operation that failed and the type of failure.
+
+It might be a good idea to wrap library's error with your own exceptions - this makes library easily replaceable. 
+
+ 
