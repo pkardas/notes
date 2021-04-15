@@ -451,5 +451,17 @@ Stacked RNN - multiple networks where the output of one layer serves as the inpu
 
 Bidirectional RNN = forward and backward networks combined together. In these 2 independent networks input is processed form the start to the end and from the end to the start. Also very effective for sequence classification. 
 
+It is difficult to train RNNs for tasks that require a network to make use of information distant from the current point of processing. RNNs can not carry forward critical information because of hidden layers and because they are fairly local.
 
+LSTM - Long Short-Term Memory - divide the context management problem into two sub-problems: 
 
+- removing information no longer needed from the context
+- adding information likely to be needed for later decision making
+
+LSTM is capable of mitigating the loss of distant information. However there are still RNNs, so relevant information can be lost.
+
+Transformers - approach to sequence processing that eliminates recurrent connections and returns to architectures reminiscent of the fully connected networks. Transformers are made up of stacks of networks of the same length of simple linear layers, feedforward networks and custom connections.
+
+Transformers use *self-attention layers* - they allow network to directly extract and use information from arbitrarily large contexts without the need to pass it through intermediate recurrent connections as in RNNs.
+
+At the core of an attention-based approach is the ability to compare an intem of the interest to a collection of other items in way that reveals their relevance in the current context.
