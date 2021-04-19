@@ -189,3 +189,45 @@ Refactoring refers to making a changes in working code and do not affect the pro
 
 There are many strategies on where refactoring should be started. For example, whenever you are adding a routine you should refactor it's neighbour, or when you are adding a class, or you should refactor error-prone modules, the most complex modules, etc.
 
+## Chapter 25: Code-Tuning Strategies
+
+Code tuning is one way of improving a program's performance. You can find other ways to improve performance - faster and without harm to the code.
+
+> More computing sins are committed in the name of efficiency (without necessarily achieving it) than for any other single reason - including blind stupidity ~ Wulf
+
+Efficiency can be seen from many viewpoints:
+
+- requirements
+
+TRW required sub-second response time - this led to highly complex design and cost ~100M $, analysis determined, users would be satisfied with 4 seconds responses 90% of time, modifying the response time requirements reduced cost by ~70M $.
+
+Before you invest time solving a performance problem, make sure you are solving a problem that needs to be solved.
+
+- design
+
+Sometimes program design make it difficult to write high-performance system, others make it hard not to.
+
+- class and routine design
+
+On this level algorithms and data structures matter.
+
+- OS interactions
+
+You might not be aware thet your compiler generated code using heavy OS calls.
+
+- code compilation
+
+Good compilers, turn good high-level language code into optimised machine code.
+
+- hardware
+
+Sometimes cheapest and the beast way to improve a program's performance is to buy a new hardware.
+
+- code tuning
+
+Small-scale changes that affect a single class, routine or just few lines of code, that make it run mode efficiently.
+
+
+
+Some sources say, you can multiply improvements on each of the six levels, achieving performance improvement of a milion fold.
+
