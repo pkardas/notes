@@ -464,4 +464,25 @@ Transformers - approach to sequence processing that eliminates recurrent connect
 
 Transformers use *self-attention layers* - they allow network to directly extract and use information from arbitrarily large contexts without the need to pass it through intermediate recurrent connections as in RNNs.
 
-At the core of an attention-based approach is the ability to compare an intem of the interest to a collection of other items in way that reveals their relevance in the current context.
+At the core of an attention-based approach is the ability to compare an item of the interest to a collection of other items in way that reveals their relevance in the current context.
+
+It turns out, language models can generate toxic language. Many models are trained on data from Reddit (majority of young, males - not representative). Language model can also leak information about training data - meaning it can be attacked.
+
+## Chapter 10: Contextual Embeddings
+
+Missing chapter
+
+## Chapter 11: Machine Translation and Encode-Decoder Models
+
+Machine translation - the use of computers to translate from one language to another. The most common use of machine translation is information access - when you want to for example translate some instructions on the web. Also often used in CAT - Computer-Aided Translation, where computer produces draft translation and then human fixes it in post-editing. Last but not least, useful in human communication needs.
+
+Standard algorithm for MT is encoder-decoder network (can be implemented with RNNs or with Transformers). They are extremely successful in catching small differences between languages.
+
+Some aspects of human language seem to be universal - true for every or almost every language, for example every language have words for referring to people, eating or drinking. However, many languages differ what causes translation divergences.
+
+German, French, English and Mandarin are all SVO (Subject-Verb-Object) languages. Hindi and Japanese are SOV languages. Irish and Arabic are VSO languages. VO languages generally have prepositions, OV languages generally have postpositions.
+
+Machine Translation and Words Sense Disambiguation problems are closely linked.
+
+Encode-decoder (sequence-to-sequence) networks are models capable of generating contextually appropriate, arbitrary length, output sequences. Encoder (LSTM, GRU, convolutional networks, Transformers) takes an input sequence and creates a contextualised representation of it, then representation is passed to decoder (any kind of sequence architecture) which generates a task-specific output sequence. 
+
