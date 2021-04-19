@@ -89,4 +89,11 @@ Error messages need to be informative - mention the operation that failed and th
 
 It might be a good idea to wrap library's error with your own exceptions - this makes library easily replaceable. 
 
- 
+## Chapter 8: Boundaries
+
+How to keep boundaries of our system clean - eg. when using external libraries:
+
+- when working with collections, wrap them with object and provide only required functionalities.
+- write learning tests - write tests to explore and understand API
+- our code shouldn't know too many details about 3rd-party library
+- use ADAPTER interface - converted from our perfect interface to the provided interface
