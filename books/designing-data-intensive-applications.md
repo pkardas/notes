@@ -121,4 +121,31 @@ In order to tune a storage engine to perform well on your kind of workload, you 
 
 Hash Indexes. For example: Key and offset pairs. SSTable - Sorted String Table.
 
-B-Trees - most widely used indexing structure, standard index implementation for almost all relational databases and for many non-relational databases.
+B-Trees - most widely used indexing structure, standard index implementation for almost all relational databases and for many non-relational databases. B-trees keep key-value pairs sorted by key, which allows efficient key-value lookups. The number of references to child pages in one page of the B-tree is called the branching factor. A B-tree with *n* keys always has depth of *O(log n)*. Most databases can fit into a B-tree that is 3-4 levels deep. 4-level tree of 4KB pages with a branching factor of 500 can store up to 256TB of data.
+
+In order to make db resilient to crashes, it is common for B-tree implementations to include an additional data structure on disk - WAL - write-ahead log - append only file, every B-tree modification must be written before it can be applied on the pages of the tree. When db crashes, this log is used to restore the B-tree to consistent state.
+
+LSM-tree:
+
+- faster for writes 
+- can be compressed better, thus often produce smaller files on disk
+- lower storage overheads
+- compaction process can sometimes interfere with the performance of ongoing reads and writes
+- if throughput is high and compaction is not configured carefully, compaction might not keep up with with the rate of incoming writes
+
+B-trees are so old, and so well optimised so that they can deliver good, consistent performance for many workloads.
+
+Key-value indexes are for primary key index in the relational model. It is also common to have secondary index. They don't have to be unique - this can be solved for example by appending row ID.
+
+Clustered index - storing all row data within the index.
+
+Concatenated index - multi-column index, combines several fields into one key by appending one column to another.
+
+What if you search for misspelled data or similar data. Lucene is able to search text for words   within a certain edit distance.
+
+Data structures discussed so far are specific for disks. However, as RAM becomes cheaper and many datasets are feasible to keep in memory. This led to the development of in-memory databases. Some in-memory key-value stores (Memcached) are intended for caching, data can be lost on machine restart. Other in-memory databases aim for durability, which can be achieved with special battery-powered RAM, by writing a log changes to disk or replicating memory state to other machines. When restarted it needs to load the data from the disk of from a replica. Even though it is a in-memory database, a disk is still used. Other in-memory databases with relational model: VoltDB, MemSQL, Oracle TimesTen. RAMCloud is a key-value store, Redis and Couchbase provide weak durability by writing to disk asynchronously.
+
+In-memory databases achieve better performance.
+
+
+
