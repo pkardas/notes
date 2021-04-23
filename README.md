@@ -48,17 +48,6 @@ Hence this *subsection* is a part of `learning` repository :slightly_smiling_fac
 
 --
 
-### Typora
+### Tools
 
-I use **Typora** to write the notes. If you really need to read my notes, I strongly encourage you to open them in Typora because of much better formatting:
-
-###### Typora:
-
-![readme-formatting-typora](./_images/readme-formatting-typora.png)
-
-###### GitHub in the browser...:
-
-![readme-formatting-github](./_images/readme-formatting-github.png)
-
-Typora is truly superior :slightly_smiling_face:
-
+I use **Typora** to write the notes. If you really need to read my notes, I strongly encourage you to open them in Typora because of much better formatting. I use **Keynote** for making presentation.
