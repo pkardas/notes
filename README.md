@@ -42,9 +42,9 @@ Notes in this repo are focused mostly on Python, Machine Learning and Architectu
 
 Hence this *subsection* is a part of `learning` repository :slightly_smiling_face:
 
-[Introduction to Programming: Python for beginners](teaching/python-intro/README.md)
+[Introduction to Programming: Python for beginners](teaching/python-intro/)
 
-[Python Intermediate](teaching/python-intermediate/README.md)
+[Python Intermediate](teaching/python-intermediate/)
 
 --
 
