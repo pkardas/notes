@@ -50,4 +50,5 @@ Hence this *subsection* is a part of `learning` repository :slightly_smiling_fac
 
 ### Tools
 
-I use **Typora** to write the notes. If you really need to read my notes, I strongly encourage you to open them in Typora because of much better formatting. I use **Keynote** for making presentation.
+Typora - for notes. Keynote - for presentations.
+
