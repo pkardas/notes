@@ -2,7 +2,7 @@
 
 This repository has the following purposes:
 
-- a notebook - for a quicker understanding of what I read
+- a notebook - for quicker understanding of what I read
 - a summary - to quickly go back to what I read
 - a log - for the record when and what I read
 - a contract - to be systematic in reading
@@ -43,6 +43,8 @@ Notes in this repo are focused mostly on Python, Machine Learning and Architectu
 Hence this *subsection* is a part of `learning` repository :slightly_smiling_face:
 
 [Introduction to Programming: Python for beginners](teaching/python-intro/README.md)
+
+[Python Intermediate](teaching/python-intermediate/README.md)
 
 --
 

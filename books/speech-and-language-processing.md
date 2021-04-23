@@ -470,7 +470,7 @@ It turns out, language models can generate toxic language. Many models are train
 
 ## Chapter 10: Contextual Embeddings
 
-Missing chapter
+Missing chapter.
 
 ## Chapter 11: Machine Translation and Encode-Decoder Models
 

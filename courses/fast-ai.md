@@ -77,7 +77,7 @@ ImageClassifierCleaner - utility tool (GUI) for finding examples, classifier is 
 
 `viola` - plugin for hiding cells with code, only inputs and outputs are visible. Add `viola` to the URL and it will display an application-like website in the browser. Great for prototyping. 
 
-binder.com - you can turn notebook from GitHub into a publicly available web application.
+mybinder.org - you can turn notebook from GitHub into a publicly available web application.
 
 *Healthy skin* example - bing returns images of a young white woman - bias!
 
@@ -94,3 +94,60 @@ Broadcasting - if shapes of 2 elements don't match, eg. A (1010, 28, 28) - B (28
 PyTorch has engine for calculating derivatives. In PyTorch `_`  at the end of the method means "method in place".
 
 Learning rate - size of a step in gradient descent
+
+## Plant Pathology
+
+https://www.kaggle.com/c/plant-pathology-2021-fgvc8/overview
+
+```python
+import csv
+from fastai.vision.all import *
+from fastai.metrics import error_rate, accuracy
+
+path = Path("/kaggle/input/plant-pathology-2021-fgvc8")
+
+# Prepare data, labels are stored separately:
+with open(path / "train.csv", mode='r') as csv_file:
+    csv_reader = csv.DictReader(csv_file)
+    
+    train_labels = {
+        row["image"]: row["labels"]
+        for row in csv_reader
+    }
+
+# Function used for labeling images:
+def label_func(file_path: Path) -> str:
+    return train_labels[str(file_path).split('/')[-1]]
+  
+# Read data:
+data_block = DataBlock(
+    blocks=(ImageBlock, CategoryBlock),
+    get_items=get_image_files,
+    get_y=label_func,
+    item_tfms=Resize(224)
+)
+
+# DataBlock to DataLoader:
+data_loaders = data_block.dataloaders(path / "train_images")
+
+# Available classes:
+data_loaders.vocab
+
+# Few example images:
+data_loaders.show_batch()
+
+# ResNet34 architecture for image classification:
+learner = cnn_learner(data_loaders, models.resnet34, metrics=error_rate)
+
+# 4 epochs, unfortunately one epoch takes ~1h most propably because of incorrect use of 'item_tfms' in DataBlock, which disables GPU usage:
+learner.fine_tune(4)
+
+# Model validation, this model acheived 0.62 error_rate. 
+interpretation = ClassificationInterpretation.from_learner(learner)
+interpretation.plot_confusion_matrix()
+interpretation.plot_top_losses(5, nrows=1, figsize = (25,5))
+
+# Saving model:
+learner.export()
+```
+
