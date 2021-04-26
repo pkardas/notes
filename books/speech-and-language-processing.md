@@ -486,3 +486,11 @@ Machine Translation and Words Sense Disambiguation problems are closely linked.
 
 Encode-decoder (sequence-to-sequence) networks are models capable of generating contextually appropriate, arbitrary length, output sequences. Encoder (LSTM, GRU, convolutional networks, Transformers) takes an input sequence and creates a contextualised representation of it, then representation is passed to decoder (any kind of sequence architecture) which generates a task-specific output sequence. 
 
+Machine translation raises many ethical of the same issues that we have discussed previously. MT systems often assign gender according to culture stereotypes. Some reaserch found that MY systems perform worse when they are asked to translate sentences that describe people with non-stereotypical gender roles.
+
+## Chapter 12: Constituency Grammars
+
+Syntactic constituency is the idea that groups of words can behave as single units.
+
+The most widely used formal system for modeling constituent structure in English is Context-Free Grammar, also called Phrase-Structure Grammars, and the formalism is equivalent to Backus-Naur Form (BNF). A context-free grammar consist of a set of rules or productions, each of which expresses the ways that symbols of the language can be grouped and ordered together. 
+

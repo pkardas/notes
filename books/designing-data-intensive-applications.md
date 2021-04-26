@@ -147,5 +147,13 @@ Data structures discussed so far are specific for disks. However, as RAM becomes
 
 In-memory databases achieve better performance.
 
+OLTP - Online Transaction Processing - interactive applications - look up fa small number of records, insert or update records based on user's activity. 
 
+OLAP - Online Analytic Processing - second patterns - analytic queries.
+
+In 90s companies stopped using OLTP  systems for analytics purposes and shifted to OLAP for running analytics on a separate database. This separate database is called a data warehouse.
+
+Data warehouse - separate database that analyst can query without affecting OLTP operations. Read-only copy of the data. Data extracted fro OLTP databases, transformed into analysis-friendly  schema. Process fo getting data info the ware house is known as Extract-Transform-Load. Biggest advantage of OLAP for analysis is that this database can be optimised for large queries. 
+
+Many data warehouses use star schema (dimensional modeling). Variation of this schema is called the snowflake schema. Snowflakes are more normalised than stars.
 
