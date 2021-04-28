@@ -157,3 +157,9 @@ Data warehouse - separate database that analyst can query without affecting OLTP
 
 Many data warehouses use star schema (dimensional modeling). Variation of this schema is called the snowflake schema. Snowflakes are more normalised than stars.
 
+Fact tables are often 100 columns wide, however `SELECT * ` queries are rarely used. In most OLTP databases, storage is laid out in a row-oriented fashion. How to execute queries more efficiently? The idea behind column-oriented storage is simple: don't store all the values from one row together, but store all values from each columns together. Eg. one file = one column - much faster than parsing each row.
+
+Columns can be compressed using for example bitmap encoding - unique values encoded using bits. Efficient in situations where only few unique values and millions of records. Column compression allows mor rows from a column to fit in L1 cache.
+
+
+
