@@ -231,3 +231,37 @@ Small-scale changes that affect a single class, routine or just few lines of cod
 
 Some sources say, you can multiply improvements on each of the six levels, achieving performance improvement of a milion fold.
 
+Code tuning is not the most effective way to improve performance! Writing micro-efficient code does not prove you are cool. Efficient code isn't necessarily better.
+
+The Pareto Principle: Also known as 80/20 rule, you can get 80% of the result with 20% of effort. 
+
+Working toward perfection might prevent completion. Complete it first, and then perfect it. The part that needs to be perfect is usually small.
+
+False statement: Reducing the lines of code in a high level-language improves the speed or size of the resulting machine code.:
+
+```
+# This is slower:
+for i = 1 to 10
+	a[i] = i
+
+# This is faster:
+a[1] = 1
+a[2] = 2
+...
+a[10] = 10
+```
+
+It is also impossible to identify performance bottlenecks before program is working completely, hence "You should optimise as you go" is false. Also premature optimisation is the root of all evil, because you are missing perspective.
+
+Compilers are really powerful, however they are better in optimising straightforward code than they are at optimising tricky code. So, design application properly, write clear code and compiler will do the rest :)
+
+Sources of inefficiency:
+
+- I/O operations - if possible: store data in the memory
+- paging - an operation that causes the OS to swap pages of memory is much slower than operation that works on only one page of memory.
+- system calls - calls to system routines are expensive (context switch, saving app state, recovering kernel state), avoid using system calls, write your own routines using small part of the functionality offered by a system routine, work with system vendor to improve performance
+- interpreted languages - :(
+- errors - errors in code can be another source of performance problems
+
+Experience doesn't help with optimisation. A person's experience might have come from an old machine, language or compiler. You can never be sure about the effect of an optimisation until you measure the effect.
+
