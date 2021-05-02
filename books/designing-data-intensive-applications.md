@@ -161,5 +161,48 @@ Fact tables are often 100 columns wide, however `SELECT * ` queries are rarely u
 
 Columns can be compressed using for example bitmap encoding - unique values encoded using bits. Efficient in situations where only few unique values and millions of records. Column compression allows mor rows from a column to fit in L1 cache.
 
+## Chapter 4: Encoding and Evolution
 
+Rolling update / staged rollout - deploying the new version to a few nodes at a time, checking whether the new version is running smoothly. With client-side applications you are at mercy of the user, who may not install the update for some time. This means that old and new versions of the code might co exists for some time. 
+
+Backward compatibility - newer code can read data that was written by older code (normally not hard).
+
+Forward compatibility - older code can read data that was written by newer code (this is trickier).
+
+Programs usually work with data in 2 representations:
+
+- in memory - objects, lists, arrays, trees - data structures optimised for efficient access and manipulation by the CPU
+- byte sequence structures - for example JSON
+
+The translation from the in-memory to a byte sequence is called encoding. The reverse is called decoding (also: parsing, deserialisation, unmarshaling).
+
+Many programming languages have built-in support for encoding in-memory data structures. Python has pickle, Java has Serialisable, Ruby has Marshal, however:
+
+- encoding is tied to programming language
+- potential source of security issues
+- Java's built-in serialisation is said to have bad performance
+
+In general it is bad idea to use language's built-in encoding for anything other than very transient purposes.
+
+JSON:
+
+- built-in support in browsers
+- distinguishes strings and numbers
+- good support for unicode, no support for binary strings
+
+XML:
+
+- too verbose
+- no distinction between numbers and strings
+- good support for unicode, no support for binary strings
+
+CSV:
+
+- less powerful than XML and JSON
+- no distinction between numbers and strings
+- no data schema
+
+Despite flaws of JSON, XML and CSV they are good enough for many purposes and thy will remain popular.
+
+JSON is less verbose than XMAL, but still uses a lot of space - this might be an issue when you are dealing with terabytes of data. This led to the development of binary encodings for JSON - BSON, BJSON, UBJSON, BISON. XMAL has olso its binary encodings - WBXML and Fast Infoset. However, non of them are widely adopted.
 
