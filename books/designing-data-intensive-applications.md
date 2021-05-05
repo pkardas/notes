@@ -206,3 +206,9 @@ Despite flaws of JSON, XML and CSV they are good enough for many purposes and th
 
 JSON is less verbose than XMAL, but still uses a lot of space - this might be an issue when you are dealing with terabytes of data. This led to the development of binary encodings for JSON - BSON, BJSON, UBJSON, BISON. XMAL has olso its binary encodings - WBXML and Fast Infoset. However, non of them are widely adopted.
 
+Apache Thrift (Facebook), Protocol Buffers (Google) are binary encoding libraries that are based on the same principle. Schema defined in interface definition language, this schema can generate code for encoding and decoding data.
+
+Field numbers in Apache Thrift are used for more compact encoding (no need for passing field names through the wire - CompactProtocol). Required / optional makes no difference for encoding, this is used for the runtime.
+
+Every field you add after the initial deployment of schema must be optional of have default value. Removing is like adding, you can remove only optional fields. Also with ProtoBuf / Thrift you can never use use the same tag number again.
+
