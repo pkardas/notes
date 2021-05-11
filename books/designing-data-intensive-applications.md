@@ -212,3 +212,35 @@ Field numbers in Apache Thrift are used for more compact encoding (no need for p
 
 Every field you add after the initial deployment of schema must be optional of have default value. Removing is like adding, you can remove only optional fields. Also with ProtoBuf / Thrift you can never use use the same tag number again.
 
+Avro is another binary encoding format, it has optional code generation for dynamically typed programming languages.
+
+Data can flow through:
+
+- database
+- services - REST and RPC, services are similar to databases, they allow clients to submit and query data. A key design goal of a service-oriented / micro services architecture is to make the application easier to change and maintain by making services independently deployable and evolvable.
+
+REST is not a protocol, but rather a design philosophy that builds upon the principles of HTTP.
+
+SOAP - XML-based protocol for making network API requests.
+
+RPC - Remote Procedure Call - seems convenient at first, but the approach is fundamentally flawed, because a network request is very different from a local function call:
+
+- local function is predictable - it can either succeed or fail depending on the input, a network request is unpredictable - connection might be lost
+- a local function call either returns a result or throws an exception, a network request may return without a result - timeout
+- retry mechanism might cause duplication (fist request went went through), unless you build deduplication mechanism
+- duration of remote call depends on the network congestion
+- when you call a local function you can effectively pass references
+- if client and server use different languages, data translation might end up ugly
+
+Despite these problems RPC is not going away, modern frameworks are more explicit about the fact that a remote call i different from local function invocation.
+
+- message passing - something between database passing and services. Similar to RPC because client's request is delivered with low latency, similar to databases because message is not sent via a direct network connection but goes through message broker.
+
+Message brokers have couple of advantages comparing to RPC:
+
+- can acs as a buffer when recipient is unavailable
+- can automatically redeliver messages
+- avoids the sender to know the IP address and port 
+- one message can be sent to multiple recipients
+- logical decoupling between sender and receiver
+

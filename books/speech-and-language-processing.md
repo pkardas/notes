@@ -494,3 +494,29 @@ Syntactic constituency is the idea that groups of words can behave as single uni
 
 The most widely used formal system for modeling constituent structure in English is Context-Free Grammar, also called Phrase-Structure Grammars, and the formalism is equivalent to Backus-Naur Form (BNF). A context-free grammar consist of a set of rules or productions, each of which expresses the ways that symbols of the language can be grouped and ordered together. 
 
+Treebank - parse tree.
+
+## Chapter 17: Information Extraction
+
+Information extraction - turns the unstructured information embedded in texts into structured data - eg. relational database to enable further processing.
+
+Relation extraction - finding and classifying semantic relations among the text entities. These are often binary relations - child of, employment, part-whole. Task of NER is extremely useful here. Wikipedia also offers large supply of relations. 
+
+RDF - Resource Description Framework - tuple of entry-relation-entry. DBPedia was derived from Wikipedia and contains over 2 bilion RDF triples. Freebase - part of Wikidata, has relations between people and their nationality or locations. 
+
+There are 5 main classes of algorithms for relation extraction:
+
+- handwritten patterns - high-precision and can be tailored to specific domains, however low recall and a lot of work
+- supervised machine learning - for all entity pairs determine if are in relation
+- semi-supervised machine learning (bootstrapping and via distant supervision) - bootstrapping proceeds by taking the entities in the seed pair and then finding sentences that contain both entities.
+- unsupervised
+
+Knowledge graphs - dataset of structured relational knowledge.
+
+Event extraction - finding events in which these entities participate.
+
+Event coreference - is needed to figure out which event mentions in a text refer to the same event.
+
+Temporal expressions are used to determine when the events in a text happened. Dates in text need to be normalised. 
+
+Template filling - the task of describing stereotypical or recurring events. 
