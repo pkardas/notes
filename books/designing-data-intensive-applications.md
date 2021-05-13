@@ -244,3 +244,16 @@ Message brokers have couple of advantages comparing to RPC:
 - one message can be sent to multiple recipients
 - logical decoupling between sender and receiver
 
+## Chapter 5: Replication
+
+Shared-Nothing Architecture - each machine or virtual machine running the database is called a node. Each node uses its own CPU, RAM and disks independently. Any coordination between nodes is done at the software level using network.
+
+
+
+Replication - means keeping a copy of the same data on multiple machines that are connected via a network. Why?
+
+- to reduce latency - copy close to the users
+- to allow the system to continue working 
+- to scale out
+
+If data is not changing, replication is easy, for dealing with replication changes, following algorithms can be used: single-leader, multi-leader and leaderless replication.
