@@ -496,6 +496,10 @@ The most widely used formal system for modeling constituent structure in English
 
 Treebank - parse tree.
 
+## Chapter 13-16
+
+wAt this moment I don't find informations provided there useful for my current state of the knowledge.
+
 ## Chapter 17: Information Extraction
 
 Information extraction - turns the unstructured information embedded in texts into structured data - eg. relational database to enable further processing.
@@ -511,12 +515,27 @@ There are 5 main classes of algorithms for relation extraction:
 - semi-supervised machine learning (bootstrapping and via distant supervision) - bootstrapping proceeds by taking the entities in the seed pair and then finding sentences that contain both entities.
 - unsupervised
 
+For unsupervised and semi-supervised approaches it is possible to calculate estimated metrics (like estimated precision). 
+
 Knowledge graphs - dataset of structured relational knowledge.
 
-Event extraction - finding events in which these entities participate.
+Event extraction - task of identification mentions of events in texts. In English most events correspond to to verbs and most verbs introduce events (United Airlines SAID, prices INCREASED, ...). Some nouns phrases can also denote events (the increase, the move, ...).
+
+With extracted events and extracted temporal expressions, events from text can be put on a timeline. Determining ordering can be viewed as a binary relation detection and classification task.
 
 Event coreference - is needed to figure out which event mentions in a text refer to the same event.
 
-Temporal expressions are used to determine when the events in a text happened. Dates in text need to be normalised. 
+Extracting time - temporal expressions are used to determine when the events in a text happened. Dates in text need to be normalised. 
+
+- relative: yesterday, next semester
+- absolute: date
+- durations
+
+Temporal expressions task consists of finding the start end end of all the text spans that correspond to such temporal expressions. Such task can use rule-based approach. 
+
+Temporal Normalisation - process of mapping a temporal expressions to either a specific point in time or to a duration.
 
 Template filling - the task of describing stereotypical or recurring events. 
+
+
+
