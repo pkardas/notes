@@ -248,8 +248,6 @@ Message brokers have couple of advantages comparing to RPC:
 
 Shared-Nothing Architecture - each machine or virtual machine running the database is called a node. Each node uses its own CPU, RAM and disks independently. Any coordination between nodes is done at the software level using network.
 
-
-
 Replication - means keeping a copy of the same data on multiple machines that are connected via a network. Why?
 
 - to reduce latency - copy close to the users
@@ -257,3 +255,7 @@ Replication - means keeping a copy of the same data on multiple machines that ar
 - to scale out
 
 If data is not changing, replication is easy, for dealing with replication changes, following algorithms can be used: single-leader, multi-leader and leaderless replication.
+
+Leaders and Followers - each node (replica) stores a copy of the database . One of the replicas is designated to be a leader (master), when clients want to write to the database, they must send their requests to the leader. Other replicas - followers (slaves), take the log from the leader and updates local copy of the data, applying all writes in the same order as they were processed by the leader. Writes are accepted only to the leader, read can be performed using any follower. 
+
+On follower failure, if the connection between leader and follower is temporarily corrupted, follower can recover easily, because it knows the last processed transaction from the log. It can request missing data from the last successful transaction. Leader failure is more trickier. One of the followers can be promoted to be the new leader, for example replica with the most recent data (election) - data loss minimisation.

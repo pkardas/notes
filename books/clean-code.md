@@ -97,3 +97,32 @@ How to keep boundaries of our system clean - eg. when using external libraries:
 - write learning tests - write tests to explore and understand API
 - our code shouldn't know too many details about 3rd-party library
 - use ADAPTER interface - converted from our perfect interface to the provided interface
+
+## Chapter 9: Unit Tests
+
+The Three Laws of TDD:
+
+- You may not write production code until you have written a failing unit test
+- You may not write more of unit code than is sufficient to fail, and not compiling is failing
+- You may not write more production code than is sufficient to pass the currently failing test
+
+Test code is just as important as production code. It is not second-class citizen. It must be  kept as clean as production code.
+
+The Build-Operate-Check pattern - each test is split into three parts:
+
+1. build up the test data
+2. operate on test data
+3. check that the operation yielded the expected results
+
+Test code must be: simple, succinct, expressive, however it doesn't need to be as efficient as production code.
+
+One test should test a single concept.
+
+Clean tests follow 5 fules - FIRST:
+
+- F - Fast - tests should be fast, they should run quickly, if they don't you won't  want to run them frequently.
+- I - Independent - Tests should not depend on each other, one test should not set up conditions for the next test
+- R - Repeatable - Tests should be repeatable in any environment (office, home, train without network), if they are not you will have an excuse for why they fail
+- S - Self-Validating - Tests should not have a boolean output, they should either fail or pass
+- T - Timely - Tests need to be written in a timely fashion, should be written just before the production code
+

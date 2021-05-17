@@ -265,3 +265,13 @@ Sources of inefficiency:
 
 Experience doesn't help with optimisation. A person's experience might have come from an old machine, language or compiler. You can never be sure about the effect of an optimisation until you measure the effect.
 
+## Chapter 32: Self-Documenting Code
+
+Unit development folder - informal document that contains notes used by a developer during construction - main purpose is to provide a trail of design decisions that aren't documented elsewhere.
+
+Detailed-design document - low-level design document, describes the class-level or routine-level design decisions.
+
+Internal documentation (within the program) is the most detailed kind of documentation. The main contributor to code-level documentation isn't comments, but good programming style, good variable names, clear layout and minimisation of control-flow and data-structure complexity,
+
+> **Good comments don't repeat the code or explain it. They clarify its intent. Comments should explain, at a higher level of abstraction than the code, what you are trying to do.**
+
