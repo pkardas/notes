@@ -537,5 +537,26 @@ Temporal Normalisation - process of mapping a temporal expressions to either a s
 
 Template filling - the task of describing stereotypical or recurring events. 
 
+## Chapter 18: Word Senses and WordNet
 
+Ambiguity - the same word can be used to mean different things. Words can be polysemous - have many meanings.
 
+Word sense is a discrete representation of one aspect of the meaning of a word. Meaning can be expressed as an embedding, for example embedding that represents the meaning of a word in its textual context. Alternative for embeddings are glosses - written for people, a gloss is just a sentence, sentence can be embedded. Other way of defining a sense is through relationships ("right" is opposite to "left").
+
+Relations between senses:
+
+- synonymy - when two senses of two different words are (almost) identical - couch / sofa, vomit / throw up
+- antonymy - when two words have an opposite meaning - long / short, fast / slow
+- hyponym / subordinate - when one word is more specific than the other word - car (hyponym) -> vehicle
+- hypernym / superordinate- when one word is more general than the other word - vehicle (hypernym) -> car
+- meronymy - when one word describes part of the other word - wheel (meronym) -> car
+- holonym - opposite to meronym - car (holonym) -> wheel
+- metonymy - the use of one aspect of a concept to refer to other aspects of the entity - Jane Austen wrote Emma (author) <-> I really love Jane Austen (works of author), 
+
+WordNet - a large online thesaurus, a database that represents word senses. WordNet also represents relations between senses (is-a, part-whole). The relation between two senses is important in language understanding, for example - antonymy - words with opposite meaning. 
+
+English WordNet has 3 separate databases (nouns, verbs, adjectives and adverbs).
+
+Synset - (Synonym Set) - the set of near-synonyms for a WordNet sense. Glosses are properties fo a synset.
+
+Word sense disambiguation - the task of determining which sense of a word is being used in a particular context.  
