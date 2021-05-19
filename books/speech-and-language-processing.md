@@ -468,7 +468,7 @@ At the core of an attention-based approach is the ability to compare an item of 
 
 It turns out, language models can generate toxic language. Many models are trained on data from Reddit (majority of young, males - not representative). Language model can also leak information about training data - meaning it can be attacked.
 
-## Chapter 10: Contextual Embeddings
+## Chapter 10
 
 Missing chapter.
 
@@ -498,7 +498,7 @@ Treebank - parse tree.
 
 ## Chapter 13-16
 
-wAt this moment I don't find informations provided there useful for my current state of the knowledge.
+Skipped for now.
 
 ## Chapter 17: Information Extraction
 
@@ -559,4 +559,35 @@ English WordNet has 3 separate databases (nouns, verbs, adjectives and adverbs).
 
 Synset - (Synonym Set) - the set of near-synonyms for a WordNet sense. Glosses are properties fo a synset.
 
-Word sense disambiguation - the task of determining which sense of a word is being used in a particular context.  
+Word Sense Disambiguation - the task of determining which sense of a word is being used in a particular context.  WSD algorithms take as input some word and context and output the correct word sense.
+
+Lexical sample tasks - small pre-selected set of target words and an inventory of senses. All-words task (harder problem) - the system is given an entire texts and a lexicon with an inventory of senses for each entry and we have disambiguate every word in the text.
+
+The best WSD algorithm is simple 1-nearest-neighbour algorithm using contextual word embeddings.
+
+There are also feature-based algorithms for WSD - POS-tags, n-grams (3-gram most commonly used), weighted average of embeddings - passed to SVM classifier
+
+The Lesk algorithm - the oldest and the most powerful knowledge-based WSD metod and useful baseline. Lest is a family of algorithms that choose the sense whose dictionary gloss or definition shares the most words with the target word's neighbourhood. 
+
+BERT - uses contextual embeddings.
+
+Word Sense Induction - unsupervised approach, we don't use human-defined word senses, instead, the set of senses of each word is created automatically from the instances of each word in the training set.
+
+## Chapter 19
+
+Skipped for now.
+
+## Chapter 20: Lexicons for Sentiment, Affect and Connotation
+
+## Chapter 21-22
+
+Skipped for now.
+
+## Chapter 23: Question Answering
+
+## Chapter 24: Chatbots & Dialogue Systems
+
+## Chapter 25: Phonetics
+
+## Chapter 26: Automatic Speech Recognition and Text-to-speech
+

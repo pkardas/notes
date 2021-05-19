@@ -259,3 +259,29 @@ If data is not changing, replication is easy, for dealing with replication chang
 Leaders and Followers - each node (replica) stores a copy of the database . One of the replicas is designated to be a leader (master), when clients want to write to the database, they must send their requests to the leader. Other replicas - followers (slaves), take the log from the leader and updates local copy of the data, applying all writes in the same order as they were processed by the leader. Writes are accepted only to the leader, read can be performed using any follower. 
 
 On follower failure, if the connection between leader and follower is temporarily corrupted, follower can recover easily, because it knows the last processed transaction from the log. It can request missing data from the last successful transaction. Leader failure is more trickier. One of the followers can be promoted to be the new leader, for example replica with the most recent data (election) - data loss minimisation.
+
+Implementation of Replication Logs:
+
+- Statement-based replication - leader logs every request (statement) - for relational database this means thet every INSERT / UPDATE / DELETE statement is forwarded to followers, each follower executes received SQL statement (as if it had been received from a client)
+  - Problems - what about NOW, RAND - nondeterministic, what about auto-incrementing fields, what about triggers. There are some workarounds, like sending request and result or requiring deterministic transactions.
+- Write-ahead log (WAL) shipping - log is append-only sequence of bytes containing all writes, this log can be used to build replica. This method is used in PostgreSQL and Oracle. Disadvantage of this approach is that log contains low-level information - like which disk blocks were changed, so replication is closely coupled to the storage engine (or even storage engine version!).
+- Logical log replication - alternative approach that uses different log format for replication - decoupling. Usually a sequence of records describing writes to database tables at the granularity of a row. Easier backward compatibility - leaders and followers can run different engine versions 
+- Trigger-based replication - triggers have ability to log changes to a separate table, from which an external process can read. This allows for replicating for example subset of data.
+
+Problems with replication lag:
+
+- leader-based replication is cool when we need to scale reads, not necessarily writes - common on the web
+- synchronous replication - single node failure can make entire system unavailable 
+- asynchronous replication - follower might fall behind -> inconsistent data (this is temporary situation, if you stop writing for a while, the followers will catch up and become consistent with the leader - eventual consistency)
+
+Replica lag - anomalies:
+
+- if user writes and then views, the new data might not yet have reached the replica. Read-your-writes consistency - needed guarantee that if the user reloads the page, whey will always see updates they submitted themselves.
+  - Solution: owner of the profile views data from the leader, other users view from replica. There are modifications, for example: if last update older than 1m -> view from replica.
+- when reading from asynchronous followers is that user can see things moving back in time - happens when user makes several reads from different replicas
+  - Solution: monotonic reads - guarantee stronger than eventual consistency, if user makes several reads in sequence, they will not see time go backward (never data after older data)
+- consistent prefix reads - is a sequence of writes happens in certain order, then anyone reading those writes will see them appear in the same order
+  - Solution: make sure that any writes that are casually related to each other are written to the same partition OR use algorithm that keep track of casual dependencies
+
+When working with an eventual consistent system, it is worth thinking about how the application behaves if the replication lag increases to several minutes or hours.
+

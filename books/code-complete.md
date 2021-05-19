@@ -275,3 +275,27 @@ Internal documentation (within the program) is the most detailed kind of documen
 
 > **Good comments don't repeat the code or explain it. They clarify its intent. Comments should explain, at a higher level of abstraction than the code, what you are trying to do.**
 
+Kinds of comments:
+
+- repeat of the code - comment gives no additional information
+- explanation of the code - code is so complicated it needs to be explained, make code better instead of adding comments
+- **summary of the code** - very useful when someone other than the code's original author tries to modify the code
+- **description of the codes' intent** - IBM study says "understanding programmer's intent is the most difficult problem"
+- **information that cannot be expressed by code itself** - for example copyright notice, notes about design, references to requirements
+
+3 types of acceptable comments were highlighted above.
+
+Effective commenting shouldn't be time-consuming. Guidelines for effective commenting:
+
+- if commenting style is too fancy it very likely becomes annoying to maintain
+- write pseudocode in comments
+- performance is not a good reason for avoiding commenting (in some languages commenting slows down execution / compilation) - usually solution for this is to pass code through tool striping comments before release
+
+End-line comments pose several problems and should be avoided - hard to write meaningful comment in one line, not much space on the right side of the screen.
+
+The code itself is always the first documentation you should check. If the code is not good enough, look for comments. 
+
+Comments should avoid abbreviations. Comments should justify violations of good programming style. Don't comment tricky code, rewrite it. If something is tricky for you, for others it might be incomprehensible. 
+
+> Make your code so good that you don't need comments, and then comment it to make it even better.
+
