@@ -579,6 +579,34 @@ Skipped for now.
 
 ## Chapter 20: Lexicons for Sentiment, Affect and Connotation
 
+Connotation - the aspect of word's meaning that are related to a writer or reader's emotions, sentiment, opinions or evaluations.
+
+Emotion - (by Scherer) relatively brief episode of response to the evaluation of an external or internal event as being of major significance. Detecting emotions has the potential to improve a number of language processing tasks - detecting emotions in reviews, improve conversation systems, depression detection.
+
+Basic emotions proposed by Ekman - surprise, happiness, anger, fear, disgust, sadness
+
+Basic emotions proposed by Plutchik - joy-sadness, anger-fear, trust-disgust, anticipation-surprise.
+
+Most models include 2-3 dimensions:
+
+- valence - the pleasantness of the stimulus
+- arousal - the intensity of emotion provoked by stimulus
+- dominance - the degree of control exerted by the stimulus
+
+The General Inquirer - the oldest lexicon of 1915 positive words and 2291 negative words. The NRC Valence, Arousal and Dominance scores 20 000 words (this model assigns valence, arousal and dominance). The NC WordEmotion Association Lexicon uses Plutchik's basic emotions to describe 14 000 words. There are many more lexicons. 
+
+Best-worst scaling - method used in crowdsourcing, annotators are given N items and are asked which item is the best and which item is the worst. 
+
+Detecting peron's personality from their language can be useful for dialog systems. Many theories of human personality are based around a small number of dimensions:
+
+- extroversion vs introversion - sociable, assertive vs aloof, reserved, shy
+- emotional stability vs neurocriticism - calm, unemotional vs insecure, anxious
+- agreeableness vs disagreeableness - friendly, cooperative vs antagonistic, fault-finding
+- conscientiousness vs unconscientiousness   - self-disciplined, organised vs inefficient, careless
+- openness to experience - intellectual, insightful s shallow, unimaginative 
+
+Connotation frames - express richer relations ot affective meaning that a predicate encodes about its arguments - Country A violated the sovereignty of Country B.
+
 ## Chapter 21-22
 
 Skipped for now.

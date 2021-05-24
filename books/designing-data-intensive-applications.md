@@ -285,3 +285,22 @@ Replica lag - anomalies:
 
 When working with an eventual consistent system, it is worth thinking about how the application behaves if the replication lag increases to several minutes or hours.
 
+Multi-Leader Replication - more than one node accepting writes, each leader simultaneously acts as a follower to the other leaders. It rarely makes sense to use a multi-leader setup within a single datacenter, because benefits rarely outweigh the added complexity, however there are some situations in which this configuration makes sense:
+
+- multi-datacenter operation - one leader in each datacenter, multi-leader setup requires conflict resolution mechanism which can be problematic. Multi-leader replication is often considered dangerous territory that should be avoided if possible.
+- clients with offline operation - for example calendar app have to work even if it is disconnected from the internet, if you make changes while you are offline then they need to be synced with a server and all other devices. This basically mans every device has a local database that acts as a leader. For example CouchDB is designed for this mode of operation.
+
+- collaborative editing - multiple people editing the same document - eg. Google Docs, very similar case to the previous one. If you want to guarantee that there will be no editing conflicts, the application must obtain a lock on the document before user can edit - this collaboration model is equivalent to single-leader replication with transaction on the leader. 
+
+Handling Write Conflicts:
+
+- make the conflict detection synchronous - wait for the write to be replicated to all replicas before telling the user that write was successful 
+- avoid conflicts -  all writes can go through the same leader, requests from particular user are always routed to the same datacenter and use the leader in that datacenter for writing and reading.
+- each replica should converge toward consistent state
+- custom conflict resolution - this might depend on the application, code might be executed on write or on read
+
+Automatic Conflict Resolution - Amazon was frequently cited example of surprising effects due to conflict resolution handler - customers were seeing items removed from the cart. Some ideas for automatic conflict resolution:
+
+- conflict-free replicated datatypes - family of data structures that can be concurrently edited by multiple users
+- mergeable persistent data structures - similar to GIT
+- operational transformation - algorithm behind Google Docs - designed specifically for concurrent edits of an ordered list of items - eg. string.

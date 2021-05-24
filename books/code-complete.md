@@ -299,3 +299,16 @@ Comments should avoid abbreviations. Comments should justify violations of good 
 
 > Make your code so good that you don't need comments, and then comment it to make it even better.
 
+Commenting data declarations:
+
+- comment the units
+- comment the range of allowable numeric values
+- use enumerated types to express coded meanings
+- comment limitations of input data, use assertions
+- if variable is used as bit field, explain every bit
+- if you have comments that refer to a specific variable, make sure the comment stays updated after variable name change
+
+Keep comments close to the code they describe. Describe the design approaches, limitations, usage assumptions and so on. Do not document implementation details in the interface.
+
+
+
