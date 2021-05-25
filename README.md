@@ -34,7 +34,7 @@ Notes in this repo are focused mostly on Python, Machine Learning and Architectu
 
 [Architecture](patterns/architecture.md)
 
-[Code](patterns/code.md)
+[Abbreviations](patterns/abbreviations.md)
 
 [Messaging](patterns/messaging.md)
 
