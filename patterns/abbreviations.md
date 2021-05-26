@@ -46,21 +46,81 @@ Clients should not be forced to depend upon interfaces that they do not use. ISP
 
 ### DIP - Dependency Inversion Principle
 
-High-level modules, which provide complex logic, should be easily reusable and unaffected by changes in low-level modules, which provide  utility features. To achieve that, you need to introduce an abstraction that decouples the high-level and low-level modules from each other.
+High-level modules, which provide complex logic, should be easily reusable and unaffected by changes in low-level modules, which provide utility features. To achieve that, you need to introduce an abstraction that decouples the high-level and low-level modules from each other.
 
-## DRY
+## DRY - Don't Repeat Yourself 
 
-## KISS
+"Every piece of knowledge must have a single, unambiguous, authoritative representation within a system". When the DRY principle is applied successfully, a modification of any single element of a system does not require a change in other logically unrelated elements. 
+
+## KISS - Keep It Simple, Stupid
+
+The KISS principle states that most systems work best if they are kept simple rather than made complicated; therefore, simplicity should be a key goal in design, and unnecessary complexity should be avoided. 
 
 ## ACID
 
+### Atomicity
+
+Each transaction is either properly carried out or the process halts and the  database reverts back to the state before the transaction started. This  ensures that all data in the database is valid.
+
+### Consistency
+
+A processed transaction will never endanger the structural integrity of the database. Database is always in consistent state.
+
+### Isolation
+
+Transactions cannot compromise the integrity of other transactions by interacting with them while they are still in progress.
+
+### Durability
+
+The data related to the completed transaction will persist even in the cases of  network or power outages. If a transaction fails, it will not impact the manipulated data.
+
 ## BASE 
+
+### Basically Available
+
+Ensure availability of data by spreading and replicating it across the nodes of the database cluster - this is not done immediately.
+
+### Soft State
+
+Due to the lack of immediate consistency, data values may change over time. The state of the system could change over time, so even during times  without input there may be changes going on due to ‘eventual  consistency,’ thus the state of the system is always ‘soft.’
+
+### Eventually Consistent
+
+The system will *eventually* become consistent once it stops  receiving input. The data will propagate to everywhere it should sooner or later, but the system will continue to receive input and is not  checking the consistency of every transaction before it moves onto the  next one. 
+
+## CAP
+
+In theoretical computer science, the CAP theorem states that it is impossible for a distributed data store to simultaneously provide more than two out of the following three guarantees:
+
+### Consistency
+
+Every read receives the most recent write or an error. Refers to whether a system operates fully or not. Does the system reliably follow the established rules within its programming according to those defined rules? Do all nodes within a cluster see all the data  they are supposed to? This is the same idea presented in ACID.
+
+### Availability
+
+Every request receives a (non-error) response, without the guarantee that it contains the most recent write. Is the given service or system available when requested? Does each request get a response outside of failure or success?
+
+### Partition Tolerance
+
+Represents the fact that a given system continues to operate even under circumstances of data loss or system failure. A single node failure should not cause the entire system to collapse.
 
 ## NF 
 
+Database normalisation is the process of structuring a database, usually a relational database, in accordance with a series of so-called normal forms in order to reduce data redundancy and improve data integrity.
+
 ### 1NF
+
+To satisfy 1NF, the values in each column of a table must be atomic.
 
 ### 2NF
 
+Must be in 1NF + single column primary key (no composite keys).
+
 ### 3NF
+
+Must be in 2NF + no transitive functional dependencies.
+
+Transitive Functional Dependencies - when changing a non-key column, might cause any of the other non-key columns to change. For example:
+
+![3nf-violation](../_images/3nf-violation.png)
 
