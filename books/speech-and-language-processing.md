@@ -613,6 +613,35 @@ Skipped for now.
 
 ## Chapter 23: Question Answering
 
+Two major paradigms of question answering:
+
+- information retrieval 
+- knowledge-based 
+
+Factoid questions - questions that can be answered with simple facts expressed in short texts, like: Where is the Louvre Museum located? 
+
+Information retrieval. The resulting IR system is often called a search engine. Ad hoc retrieval, user poses a query to a retrieval system, which then returns an ordered set of documents from some collection. 
+
+Basic IR system architecture uses the vector space, queries and documents are mapped to vectors, then cosine similarity is being used to rank potential documents answering the query. This is an example of the bag-of-words model. However we don't use raw word counts in IR, instead we use TD-IDF.
+
+TD-IDF - The term frequency tells us how frequent the word is, words that occur more often are likely to be informative about  the document's contest. However terms that occur across all documents aren't useful. In such case inverse document frequency comes handy.
+
+Documents scoring - we score document d by the cosine of its vector d with the query vector q.
+$$
+score(q, d) = cos(q * d) = \frac{q*d}{|q|*|d|}
+$$
+More commonly used version of the score (because queries are usually short):
+$$
+score(q, d) =\sum \frac{tf-idf(t,d)}{|d|}
+$$
+Slightly more complex version of TF-IDF is called BM25.
+
+In the past it was common to remove high-frequency words from query and the document. The list of such high-frequency words to be removed is called a stop list (the, a, to, ...). Worth to know, however not commonly used recently because of much better mechanisms.
+
+Inverted index - given a query term, gives a list of documents that contain the term.
+
+TF-IDF / BM25 have conceptual flaw - they work only if there is exact overlap of words between the query and document - vocabulary mismatch problem. Solution to this is to use synonymy - instead of using word-count, use embeddings. Modern methods use encoders like BERT.
+
 ## Chapter 24: Chatbots & Dialogue Systems
 
 ## Chapter 25: Phonetics
