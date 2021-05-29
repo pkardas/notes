@@ -642,6 +642,34 @@ Inverted index - given a query term, gives a list of documents that contain the 
 
 TF-IDF / BM25 have conceptual flaw - they work only if there is exact overlap of words between the query and document - vocabulary mismatch problem. Solution to this is to use synonymy - instead of using word-count, use embeddings. Modern methods use encoders like BERT.
 
+The goal of IR-based QA (open domain QA) is to answer a user's question by finding short text segments from the web or some document collection.
+
+Datasets:
+
+- SQuAD - Stanford Question Answering Dataset - contains passages form Wikipedia and associated questions. 
+
+- HotpotQA - is the dataset that was created by showing crowd workers multiple context documents and asked to come up with questions that require reasoning about all the documents.
+
+- TriviaQA - questions written by trivia enthusiasts, question-answer-evidence triples
+- The Natural Questions - real anonymised queries to the Google search engine, annotators were presented a query along with Wikipedia page from the top 5 results
+- TyDi QA - questions from diverse languages
+
+Entity linking - the task of associating a mention in text with the representation of some real-word entity in an ontology (eg. Wikipedia).
+
+Knowledge-based question answering - idea of answering a question by mapping it to a query over a structured database.
+
+RDF triples - a tuple of 3 elements: subject, predicate and object, eg. (Ada Lovelace, birth-year, 1815). This can be used to perform queries: "When was Ada Lovelace born?" - birth-year(Ada Lovelace, ?).
+
+Second kind uses a semantic parser to map the question to a structured program to produce an answer.
+
+Another alternative is to query a pretrained model, forcing model to answer a question solely from information stored in its parameters.
+
+T5 is an encoder-decorer architecture, in pretraining it learns to fill in masked spans of task by generating missing spans in the decoder. It is then fine tuned on QA datasets, given the question without adding any additional context or passages.
+
+Watson DeepQA - system from IBM that won the Jeopardy - main stages - Question processing, Candidate Answer Generation, Candidate Answer Scoring, Answer Merging and Confidence Scoring.
+
+MRR - mean reciprocal rank - a common evaluation metric for factoid question answering
+
 ## Chapter 24: Chatbots & Dialogue Systems
 
 ## Chapter 25: Phonetics

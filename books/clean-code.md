@@ -126,3 +126,15 @@ Clean tests follow 5 fules - FIRST:
 - S - Self-Validating - Tests should not have a boolean output, they should either fail or pass
 - T - Timely - Tests need to be written in a timely fashion, should be written just before the production code
 
+## Chapter 10: Classes
+
+Classes should be small. The second rule is that they should be smaller than that. Naming is most probably the best way of determining class size. If we cannot derive a concise name for a class, then it is likely too large. 
+
+The Single Responsibility Principle - a class or module should have one, and only one reason to change.
+
+Cohesion - classes should have a small number of instance variables. Each of class' methods should manipulate one or more of those variables. 
+
+Open-Closed Principle - class should be open for extensions but closed for modifications.
+
+Dependency Inversion Principle - our classes should depend upon abstractions, not on concrete details.
+

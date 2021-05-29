@@ -310,5 +310,33 @@ Commenting data declarations:
 
 Keep comments close to the code they describe. Describe the design approaches, limitations, usage assumptions and so on. Do not document implementation details in the interface.
 
+## Chapter 33: Personal Character
+
+The best programmers are the people who realise how small their brains are. The purpose of many good programming practices is to reduce the load on your grey cells:
+
+- decomposing - make a system simpler to understand
+- reviews, inspections and tests - our intellectual capacity is limited, so we augment it with someone's else
+- short routines reduce the load on our brains
+- writing programs in terms of the problem domain rather than in terms of low level implementation details reduces mental workload
+- conventions frees brain from the relatively mundane aspects of programming
+
+How to exercise curiosity and make a learning a priority?
+
+- If your workload consists entirely on short-term assignments that don't develop your skills, be dissatisfied. Half of what you need to know will be outdated in three years. You are not learning, you are turning into a dinosaur. If you can't learn at your job, find a new one.
+- Experiment if you don't understand something. Learn making mistakes, learning from the each time. Making a mistake is no sin. Failing to learn from mistake is.
+- Read about problem solving, don't reinvent the wheel.
+- Study the work of the great programmers, it is not about reading 500-long source code but for example about high-level design.
+- Read books, one book is more than most programmers read each year.
+- Affiliate with other professionals
+- Set up a professional development plan
+
+Mature programmers are honest, which means: you refuse to pretend you are an expert when you are not, you admit your mistakes, you provide realistic estimates, you understand your program. 
+
+Writing readable code is part of being a team player. As a readability guideline, keep the person who has to modify your code in mind. Programming is communicating with another programmer first and communicating with the computer second. 
+
+To stay valuable, you have to stay current. For young hungry programmers, this is an advantage. Older programmers sometimes feel they have already earned their stripes and resent having to improve themselves year after year. 
+
+Good habits matter because most of what you do as a programmer you do without consciously thinking about it.  
+
 
 

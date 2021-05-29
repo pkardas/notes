@@ -304,3 +304,18 @@ Automatic Conflict Resolution - Amazon was frequently cited example of surprisin
 - conflict-free replicated datatypes - family of data structures that can be concurrently edited by multiple users
 - mergeable persistent data structures - similar to GIT
 - operational transformation - algorithm behind Google Docs - designed specifically for concurrent edits of an ordered list of items - eg. string.
+
+Replication topology describes the communication paths along which writes are propagated from one node to another (circular, star, all-to-all). 
+
+Leaderless replication - the client sends directly its writes to several replicas, or coordinator node does this on behalf of the client. When one node is down, some data might be down. For this reason when a client reads from the database, it sends its requests to multiple replicas and uses data with the most version number.  Eventually all the data will be copied to every replica. 2 approaches with dealing with inconsistent data: whenever client notices inconsistency or background process looking for differences in the data.
+
+For example in DynamoDB it is possible to set minimum number of replicas that saved the data to mark write as valid. 
+
+It is important to monitor replication lag, even if your application can tolerate stale reads.  
+
+Dynamo-style databases allow several clients to concurrently write to the same key - this means potential conflicts! Events may arrive in a different order at different nodes, due to network delays and partial failures (replicas might store different values). In order to become eventually consistent, the replicas should converge toward the same value. It is up to the developer to resolve conflict:
+
+- last write wins - discard older values
+- detecting happens-before operations (btw. two operations might be considered concurrent when they overlap in time, not necessarily at the same time)
+- merge concurrently written values 
+- use version vectors - version number per replica and per key, each replica incremets its own version number
