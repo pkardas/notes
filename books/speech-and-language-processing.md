@@ -672,6 +672,28 @@ MRR - mean reciprocal rank - a common evaluation metric for factoid question ans
 
 ## Chapter 24: Chatbots & Dialogue Systems
 
+Properties of Human Conversation:
+
+- turns - a dialogue is a sequence of turns, turn structure have important implications for spoken dialogue - a system needs to know when to stop talking and also needs to know when user is done speaking.
+- speech acts :
+  - constatives - committing the speaker to something's being the case (answering, claiming, denying, confirming, disagreeing)
+  - directives - attempts by the speaker to get the addressee to do something (advising, asking, forbidding, inviting, ordering, requesting)
+  - commissives - committing the speaker to some future course of action (promising, planning, vowing, betting, opposing)
+  - acknowledgments - express the speaker's attitude regarding the hearer with respect to some social action (apologising, greeting, thanking, accepting, thanking)
+- grounding - this means acknowledging that the hearer has understood the speaker (like ACK in TCP), humans do this all the time for example using OK
+- sub-dialogues and dialogue structure:
+  - questions set up an expectation for an answer, proposals are followed by acceptance / rejection, ...
+  - dialogue systems aren't always followed immediately by their second pair part, they can be separated by a side sequence (or sub-dialogue) - correction sub-dialogue, clarification question or presequence (Can you make a train reservations? Yes I can. Please, do ...)
+- initiative - sometimes a conversation is completely controlled by one participant, for humans it is more natural that initiative shifts from one person to another
+- inference - speaker uses provides some information and another information needs to be derived from that information (When in May do you want to travel? I have a meeting from 12th to 15th.)
+
+Because of characteristics of human conversations it is difficult to build dialogue systems that can carry on natural conversations.
+
+Chatbots - simplest form of dialogue systems. Chatbots have 2 categories:
+
+- rule based chatbots - for example ELIZA based on psychological research, cerated in 1966, the most important chatbot. Few years later PARRY was created - this chatbot had model of its own mental state (fear, anger, ...) - first known system to pass the Turing test (1972) - psychiatrists couldn't distinguish text transcripts of interviews with PARRY from transcripts of interviews with real paranoids (!!!) 
+- corpus-based chatbots - instead of using hand-built rules, mine conversations of human-human conversations. Requires enormous data for training. Most methods use retrieval methods (grab response from some document) or generation methods (language model or encoder-decoder to generate the response given the dialogue context).  
+
 ## Chapter 25: Phonetics
 
 ## Chapter 26: Automatic Speech Recognition and Text-to-speech
