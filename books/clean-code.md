@@ -138,3 +138,20 @@ Open-Closed Principle - class should be open for extensions but closed for modif
 
 Dependency Inversion Principle - our classes should depend upon abstractions, not on concrete details.
 
+## Chapter 11: Systems
+
+It is a myth we can get the systems "right the first time". Instead we should implement only today's stories, then refactor and expand the system to implement new stories tomorrow. This is the essence of iterative and incremental agility. 
+
+Use the simplest thing that can possibly work.
+
+## Chapter 12: Emergence
+
+According to Kent, a design is simple if it follows these rules:
+
+- runs all tests - system needs to be testable - if this can not be achieved, system should not be released, all tests need to pass
+- contains no duplication
+- expresses the intent of the programmer - the clearer the code, the less time others will have to spend understanding it (small functions and classes, good names)
+- minimises the number of classes and methods - least important rule, above rules are more important, however overall goal should be to keep system small
+
+Can set of practices replace experience? No. On the other hand, practices are a crystallised form of the many decades of experience of many authors.
+

@@ -319,3 +319,26 @@ Dynamo-style databases allow several clients to concurrently write to the same k
 - detecting happens-before operations (btw. two operations might be considered concurrent when they overlap in time, not necessarily at the same time)
 - merge concurrently written values 
 - use version vectors - version number per replica and per key, each replica incremets its own version number
+
+## Chapter 6: Partitioning
+
+Partitioning - breaking up the data into partitions (each piece of data belongs to exactly one partition). The main reason for partitioning is scalability - different partitions can be placed on different nodes.
+
+Partitioning is usually combined with replication. Copies of each partition are stored on multiple nodes. The goal with partitioning is to spread the data and the query load evenly across nodes. If every node takes fair share, eg. 10 nodes should be able to handle 10x much data. If partitioning is unfair ot is called skewed. Skew makes partitioning less effective. In order to reduce skew data needs to be distributed evenly.
+
+One way is to assign a continuous range of keys to each partition (PARTITION 1: A-B, PARTITION 2: C-D, ...). The ranges of keys are not necessarily evenly spaced, for example majority of entries with letter A. Partition boundaries need to be carefully selected by application developer with domain knowledge. Partitioning by data is problematic too - all writes going to single partition, whereas remaining partitions are idle. For example you could solve this issue by partitioning first by name (for example sensor name) and then by the time, this will balance the load.
+
+Skew can be reduced by using hash function that is evenly distributing data across partitions. The partition boundaries can be evenly spaced or chosen pseudorandomly (consistent hashing).
+
+Consistent Hashing - a way of evenly distributing load across an internet-wide system of caches such as CDN. Uses randomly chosen partition boundaries to avoid the need for central control or distributed consensus.
+
+Using hash of the key loses the ability to do efficient range queries (sort order lost). 
+
+Hashing a key can reduce hot spots, but can not reduce them entirely. For example celebrity on social media can cause storm of activity - this may lead to many writes to the same key. It is up to application developer to handle hot spots - eg. add random prefix. 
+
+Secondary indexes are slightly more problematic because they don't identify a record uniquely. There are 2 main approaches to partitioning a database with secondary indexes:
+
+- document-based (local index) - each partition have (local) partitioned secondary indexes, this means reading requires extra care. I am looking for a red car - needs to scatter query to two partitions - quite expensive. However, widely used. 
+
+- term-based (global index) - instead of each partition having its own secondary index, we can construct a global index. A global index also needs to be partitioned - for example secondary key `color:red`, cars with names a-d on partition 0, rest on partition 1. Reads are more efficient, writes are slower.
+
