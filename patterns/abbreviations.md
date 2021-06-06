@@ -44,9 +44,26 @@ B is not taking the same arguments, meaning A and B are cot compatible. A can no
 
 Clients should not be forced to depend upon interfaces that they do not use. ISP splits interfaces that are very large into smaller and more specific ones so that clients will only have to know about the methods that are of interest to them. 
 
+Example of violation:
+
+```python
+class Shape:
+  def area() -> float:
+    raise NotImplementedError
+  
+  def volume() -> float():
+    raise NotImplementedError
+```
+
+2D triangle does not have volume, hence it would need to implement interface that is not needed. In order to solve this, there should be multiple interfaces: Shape and 3DShape.
+
 ### DIP - Dependency Inversion Principle
 
 High-level modules, which provide complex logic, should be easily reusable and unaffected by changes in low-level modules, which provide utility features. To achieve that, you need to introduce an abstraction that decouples the high-level and low-level modules from each other.
+
+> Entities must depend on abstractions, not on concretions. It states that the high-level module must not depend on the low-level module, but they should depend on abstractions.
+
+For example password reminder should not have knowledge about database provider (low level information).
 
 ## DRY - Don't Repeat Yourself 
 
@@ -60,7 +77,7 @@ The KISS principle states that most systems work best if they are kept simple ra
 
 ### Atomicity
 
-Each transaction is either properly carried out or the process halts and the  database reverts back to the state before the transaction started. This  ensures that all data in the database is valid.
+Each transaction is either properly carried out or the process halts and the  database reverts back to the state before the transaction started. This ensures that all data in the database is valid.
 
 ### Consistency
 

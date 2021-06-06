@@ -32,9 +32,9 @@ Notes in this repo are focused mostly on Python, Machine Learning and Architectu
 
 ### Patterns
 
-[Architecture](patterns/architecture.md)
-
 [Abbreviations](patterns/abbreviations.md)
+
+[Architecture](patterns/architecture.md)
 
 [Messaging](patterns/messaging.md)
 
