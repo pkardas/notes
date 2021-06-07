@@ -342,3 +342,15 @@ Secondary indexes are slightly more problematic because they don't identify a re
 
 - term-based (global index) - instead of each partition having its own secondary index, we can construct a global index. A global index also needs to be partitioned - for example secondary key `color:red`, cars with names a-d on partition 0, rest on partition 1. Reads are more efficient, writes are slower.
 
+Data change in the database - throughput increases, dataset increases, machine can fail. Rebalancing - the process of moving data from one node to another. After rebalancing data should be shared fairly between nodes, when rebalancing database should remain available for writes and reads and only minimal amount of data should be moved between nodes.
+
+DO NOT USE hash mod N when rebalancing between partitions. Problem with this approach is that number of nodes changes. This requires moving more data than necessary when new node is added.
+
+Better solution is to create fixed number of partitions (more partitions than the nodes, eg. 10 nodes - 1000 partitions). If new node is added to the cluster, it can steal few partitions from the others. The only thing that changes is partitions assignment. This is followed by for example by ElasticSearch (number of partitions set up at the beginning). Choosing the right number of partitions is difficult.
+
+Dynamic partitioning is suitable for key range partitioning. 
+
+Automatic rebalancing can be unpredictable, because it is expensive operation - rerouting requests and moving a large amount of data, this can overload the network. For this reason it is a good approach to have human administrator performing rebalancing. 
+
+How to route request to particular partition? How can system know where is data? This problem is known as service discovery. System can keep track of the data in separate register. Another possibility is that client connect to any node, if node can not serve the request, client is forwarded to another node.
+
