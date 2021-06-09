@@ -155,3 +155,43 @@ According to Kent, a design is simple if it follows these rules:
 
 Can set of practices replace experience? No. On the other hand, practices are a crystallised form of the many decades of experience of many authors.
 
+## Chapter 13: Concurrency
+
+Concurrency is a decoupling strategy. It helps to decouple what gets done from when it gets done. In single-threaded apps wheat and when are strongly coupled. 
+
+Concurrency Defence Principles:
+
+- Single Responsibility Principle - concurrency-related code should be kept separately from other code
+- limit the access to any data that may be shared
+- a good way of avoiding shared data is to avoid sharing data in the first place
+- use copy of data , collect results from multiple threads and merge results
+- threads should be as independent as possible
+
+Java supports thread-safe collections, eg. ConcurrentHashMap, there are also other classes to support advanced concurrency: ReentrantLock - a lock that can be acquired and released, Semaphore - a classic lock with count, CountDownLatch - a lock that waits for a number of events before releasing all threads waiting on it.
+
+Couple of behaviours:
+
+- Bound Resources - resources of a fixed size or number used in a concurrent environment, eg. database connection
+- Mutual Exclusion - only one thread can access shared data or a shared resource at a time
+- Starvation - thread(s) prohibited from proceeding fro an excessively long time or forever
+- Deadlock - two or more threads waiting for each other to finish
+- Livelock - threads in lockstep, each trying to do work but finding another "in the way", threads continue trying to make progress but are unable
+
+Execution models:
+
+- producer - consumer - one or more threads create some work and place it in a queue, one or more consumer threads acquire that work from queue and complete it
+- readers - writers - writers wait until there is no readers before allowing the writer to perform an update, if there are continuous readers, writers will starve
+- dining philosophers - a hungry philosopher needs 2 forks before accessing the food, after consumption releases forks and waits until he is hungry again. There are number of solutions to this problem. 
+
+`synchronised` keyword introduces a lock in Java. Locks are expensive so use them carefully, also such sections should be small.
+
+Graceful shutdown is hard to get correct. Think about it early and get it working early.
+
+General tips:
+
+- get your non-threaded code working first
+- make threaded-based code pluggable (one thread, n threads, ...)
+- run with more threads than processors
+
+
+
