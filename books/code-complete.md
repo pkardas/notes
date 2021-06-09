@@ -338,5 +338,47 @@ To stay valuable, you have to stay current. For young hungry programmers, this i
 
 Good habits matter because most of what you do as a programmer you do without consciously thinking about it.  
 
+## Chapter 34: Themes in Software Craftsmanship
+
+There are many intellectual tools for handling computer science complexity:
+
+- dividing a system into subsystems at the architecture level so that brain can focus on smaller amount of the system at one time
+- carefully interface definition 
+- preserving the abstraction representing by the interface so that brain doesn't have to remember arbitrary details
+- avoid global data 
+- avoid deep inheritance hierarchy
+- carefully define error handling strategy
+- prevent monster classes creation 
+- keep functions short
+- use self explanatory names
+- minimise number of parameters passed to the routine
+- use conventions 
+
+Points above are used to decrease usage of mental resources you need to use in order to understand the code.
+
+Abstraction is a particularly powerful tool for managing complexity. Fred Brooks said that the biggest single gain ever made in computer science was in the jump from machine language to higher-level languages. It freed programmers from worrying about detailed quirks of individual pieces of the hardware and allowed them to focus on programming.
+
+Reducing complexity is arguably the most important key to being and effective programmer.
+
+Collective ability isn't simply the sum of the team members' individual skills. The way people work together determines if abilities sum up or subtract from each other. 
+
+In real word, requirements are never stable -in order to build software more flexibly - use incremental approach, plan to develop program in several iterations. 
+
+Write readable code because it helps other people to read the code. Computer doesn't care if code is readable. A professional programmer writes readable code. Even if you think you are the only one who will read your code, in reality, chances are good that someone else will need to modify your code. One study found that 10 generations of maintenance programmers work on an average program before it gets rewritten. 
+
+If your language doesn't support some mechanism do not hesitate and implement them (eg. missing `assert`) on your own.
+
+At the highest level, you shouldn't have any idea how the data is stored. Suggested levels of abstraction:
+
+4. High level problem domain terms
+
+3. low level problem domain terms
+
+2. low level implementation structures
+
+1. programming language structures and tools
+
+0. operating system operations and machine instructions
+
 
 
