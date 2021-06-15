@@ -35,7 +35,22 @@ The loss function function to use during training is typically the mean squared 
 
 MLP can be used also for classification.
 
-Tensorflow 2 adopted Keras' high API + introduced some additional functionalities.
+Tensorflow 2 adopted Keras' high-level API + introduced some additional functionalities.
 
-Sequental API - simplest kind of Keras model for neural networks that are just composed of a single stack of layers connected sequentially. Flatten - preprocessing layer whose role is to convert each input into 1D array. Once model is defined it needs to be compiled - you need to specify loss function and optimiser to use, optionally list of metrics can be passed. Then model can be trained.  
+**Sequential API** - simplest kind of Keras model for neural networks that are just composed of a single stack of layers connected sequentially. Flatten - preprocessing layer whose role is to convert each input into 1D array. Once model is defined it needs to be compiled - you need to specify loss function and optimiser to use, optionally list of metrics can be passed. Then model can be trained.  
 
+If the training set is very skewed, with some classes being overrepresented and others underrepresented, it would be useful to set the class_weight argument when calling the fit method. 
+
+If you are not satisfied with model's performance - adjust hyperparametrs if longer training is not bringing any additional benefits.
+
+Model estimates probabilities per class. 
+
+When layers are created they are called like functions -> `keras.layers.Dense(30)(prev_layer)` - This is why it is called the **Functional API**, this is the way of telling Keras how to join layers.
+
+A model can have multiple inputs and multiple outputs, depending on the task.
+
+Sequential API and Functional API are declarative, for more declarative programming style is **Subclassing API**. Simply subclass the `Model` class, create layers in the constructor and use them to perform computations in the `call` method. Subclassing API is very limited, it does not allow to view model's summary, also Keras na not inspect the model ahead of time. So Sequential and Functional APIs are preferred.
+
+It is possible to save and load Keras model to/from disk. Keras will use HDF5 format to save model's architecture and all the values of all the model parameters for every layer (weights and bias). When training enormous model, it is a good idea to save checkpoints at regular intervals during training to avoid loosing everything if computer crashes. In order to make checkpoints you have to use callbacks.
+
+ 

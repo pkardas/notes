@@ -354,3 +354,19 @@ Automatic rebalancing can be unpredictable, because it is expensive operation - 
 
 How to route request to particular partition? How can system know where is data? This problem is known as service discovery. System can keep track of the data in separate register. Another possibility is that client connect to any node, if node can not serve the request, client is forwarded to another node.
 
+## Chapter 7: Transactions
+
+Overhead of transactions > lack of transactions and coding around the lack of transactions.
+
+A transaction is a way for an application to group several reads and writes together into a logical unit. Either entire transaction succeeds (commit) or fails (abort, rollback). If transaction fails, application can retry. With this error handling is much simpler.
+
+However sometimes it might be beneficial to weaken transactions or abandon them entirely (for higher availability).
+
+The safety guarantees provided by transactions are often described by ACID acronym. Implementations of ACID might vary between DBMSs.
+
+- Atomicity - (atomic refers to something that can not be broken into smaller parts), if error happens in the middle of transaction, it has to be reverted. If a transaction was aborted, the application can be sure that it didn't change anything, so it can be safely retried. Perhaps "abortability" would have been a better term than atomicity.
+- Consistency - (terribly overloaded term) in ACID - certain statements about the data must be always true (for example correct account balance in banking system). If a transaction starts with a database that is valid, any writes during the transaction preserve the validity. 
+- Isolation - most databases are accessed by several clients at the same time, if they are accessing the same database records, you can run into concurrency problems. Isolation means that concurrently executing transactions are isolated from each other, they can not step on each other's toes. The classic database textbooks define isolation as serialisability (however this is rarely sued because it has performance penalty). 
+- Durability - the promise that once a transaction has committed successfully, any data it has written will not be forgotten, even if there is a hardware fault or the database crash. Anyhow perfect durability does not exist (for example all backup destroyed at the same time).
+
+ACID databases are based on this philosophy: "if the database is in danger of violating its guarantee of atomicity, isolation or durability, it would rather abandon the transaction entirely than allow it to remain half-finished".0000

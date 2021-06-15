@@ -2,5 +2,5 @@
 
 # Python Intermediate
 
-This presentation will be released soon.
+Repository with the code and tasks: https://github.com/pkardas/shapes
 

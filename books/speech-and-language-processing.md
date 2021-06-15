@@ -3,8 +3,6 @@
 # Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics and Speech Recognition
 Book by Daniel Jurafsky and James H. Martin (December 2020 draft)
 
-
-
 [TOC]
 
 ## Chapter 2: Regular Expressions, Text Normalization, Edit Distance
@@ -689,10 +687,15 @@ Properties of Human Conversation:
 
 Because of characteristics of human conversations it is difficult to build dialogue systems that can carry on natural conversations.
 
-Chatbots - simplest form of dialogue systems. Chatbots have 2 categories:
+Chatbots - simplest form of dialogue systems. Chatbots have 3 categories:
 
 - rule based chatbots - for example ELIZA based on psychological research, cerated in 1966, the most important chatbot. Few years later PARRY was created - this chatbot had model of its own mental state (fear, anger, ...) - first known system to pass the Turing test (1972) - psychiatrists couldn't distinguish text transcripts of interviews with PARRY from transcripts of interviews with real paranoids (!!!) 
 - corpus-based chatbots - instead of using hand-built rules, mine conversations of human-human conversations. Requires enormous data for training. Most methods use retrieval methods (grab response from some document) or generation methods (language model or encoder-decoder to generate the response given the dialogue context).  
+- hybrid of 2 above
+
+Task-based dialogue - a dialogue system has the goal of helping a user solve some task like making an airplane reservation or buying a product. GUS - influential architecture form 1977 for travel planning. 
+
+The control architecture for frame-based (frame - kind of knowledge structure representing the kinds of intentions the system can extract from user sentences) dialogues systems is used in various modern systems like Siri, Google Assistant or Alexa. The system's goal is to fill the slots in the frame with the fillers the user intends and the preform relevant action for the user. To do this system asks questions associated with frames. This is heavily rule-based approach.
 
 ## Chapter 25: Phonetics
 
