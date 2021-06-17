@@ -369,4 +369,16 @@ The safety guarantees provided by transactions are often described by ACID acron
 - Isolation - most databases are accessed by several clients at the same time, if they are accessing the same database records, you can run into concurrency problems. Isolation means that concurrently executing transactions are isolated from each other, they can not step on each other's toes. The classic database textbooks define isolation as serialisability (however this is rarely sued because it has performance penalty). 
 - Durability - the promise that once a transaction has committed successfully, any data it has written will not be forgotten, even if there is a hardware fault or the database crash. Anyhow perfect durability does not exist (for example all backup destroyed at the same time).
 
-ACID databases are based on this philosophy: "if the database is in danger of violating its guarantee of atomicity, isolation or durability, it would rather abandon the transaction entirely than allow it to remain half-finished".0000
+ACID databases are based on this philosophy: "if the database is in danger of violating its guarantee of atomicity, isolation or durability, it would rather abandon the transaction entirely than allow it to remain half-finished".
+
+Isolation make life easier by hiding concurrency issues. In reality serialisation is not that simple, it has performance cost , therefore it so common for systems to use weaker levels of isolation, which protect against some concurrency issues. Common wisdom: "Use ACID databases if you are handling financial data", however many popular relational databases use weak isolation even though are considered ACID.
+
+Read committed - most basic level of transaction isolation, makes 2 guarantees:
+
+-  no dirty reads - you will only see data that has been committed
+- no dirty writes - you will only override data that has been committed
+
+Snapshot isolation - read committed is not solving all the issues (for example non-repeatable reads - when you select data in the middle of transaction). Data unavailable fro few seconds is not a problem, more problematic are long-lasting data inconsistencies. Read committed is a boon for long-running , read-only queries such as backups and analytics. Transaction should see a consistent snapshot of the database, frozen at a particular point in time (so data is not changing when it is being processed). Key principle of snapshot isolation is: readers never block writers and writers never block readers.
+
+FOR UPDATE tells the database to lock all rows returned by this query.
+

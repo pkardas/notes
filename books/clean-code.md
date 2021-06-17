@@ -193,5 +193,47 @@ General tips:
 - make threaded-based code pluggable (one thread, n threads, ...)
 - run with more threads than processors
 
+## Chapter 17: Smells and Heuristics
 
+Comments:
+
+- Metadata should not appear in the comment (author, modification date). Comments should be reserved for technical notes only.
+- Do not write comments that will become obsolete.
+- Do not paraphrase code.
+- Be brief and correct.
+- Instead of commenting-out code - delete it.
+
+Environment:
+
+- You should be able to check out system with one simple command.
+- You should be able to run all unit tests with just one command.
+
+Functions:
+
+- Functions should have a small number of arguments, no argument is best. More than 3 arguments is very questionable and should be avoided.
+- Output arguments are counterintuitive readers expect arguments to be inputs, not outputs. If function must change state of something, have it change the state of the object it is called on.
+- Flag arguments should be avoided (boolean flags) - they loudly declare function is doing multiple things.
+- Methods that are never called should be removed. Dead code is wasteful.
+
+General:
+
+- The ideal source files should contain one, and only one language (for example Java + JavaScript snippets + English comments).
+- Function / Class should implement the behaviours that another programmer could reasonably expect.
+- Check every boundary condition.
+- No duplication, perhaps the most important rule. Duplicated code means a missed opportunity for abstraction. Codd Normals Forms are a strategy for eliminating duplication.
+- It is important to create abstractions that separate higher level general concepts from lower level detailed concepts.
+- High level concepts should be independent from low level derivatives.
+- A well-defined interface does not offer very many functions to depend upon, so coupling is low. Good software engineers learn to limit what they expose at the interfaces of their classes and modules.  
+- Get rid of dead code - code that is never executed.
+- Variables and functions should be defined close to where they are used.
+- Use consistent naming.
+- Keep source code organised and free of clutter.
+- Things that don't depend upon each other should not be artificially coupled.
+- Feature envy - the methods of a class should be interested in the variables and functions of the class they belong to, and not the variables and functions of other classes.
+- Code should be expressive as possible.
+- Code should be placed where a reader would naturally expect it to be (the principle of least surprise).
+- Think if function should be static or not.
+- Variables should have meaningful names, also use intermediate variables when performing difficult calculations. 
+- Function names should say what they do, if you can't understand what function does by reading the call - change the name.
+- 
 
