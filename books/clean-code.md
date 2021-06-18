@@ -235,5 +235,32 @@ General:
 - Think if function should be static or not.
 - Variables should have meaningful names, also use intermediate variables when performing difficult calculations. 
 - Function names should say what they do, if you can't understand what function does by reading the call - change the name.
-- 
+- Polymorphism is preferred over if / else or switch / case statements.
+- Follow code standards.
+- Replace magic numbers with named constants.
+- Be precise, use appropriate data structures.
+- Encapsulate conditions - boolean logic is hard to understand without having to see it in the context, extract the functions that explain the intent of the conditional.
+- Avoid negative conditions - harder to understand.
+- Functions should do one thing.
+- Encapsulate boundary conditions.
+- The statements within a function should all be written at the same level of abstraction.
+- Keep configurable data at high levels.
+- Law of Demeter - we don't want a single module to know much about its collaborators.
+
+Names:
+
+- Choose descriptive names. Names in software are 90% of what makes software readable.
+- Choose names at the appropriate level of abstraction. Don't pick names that communicate implementation details.
+- Use standard nomenclature where possible.
+- Use unambiguous names.
+- Names should describe side effects.
+
+Tests:
+
+- Use coverage tool.
+- Don't skip trivial tests.
+- Test boundary conditions.
+- Tests should be fast.
+
+
 
