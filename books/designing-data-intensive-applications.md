@@ -382,3 +382,30 @@ Snapshot isolation - read committed is not solving all the issues (for example n
 
 FOR UPDATE tells the database to lock all rows returned by this query.
 
+Serialisable isolation is usually regarded as the strongest isolation level. It guarantees that even though transactions may execute in parallel, the end result is the same as if they had executed one at a time, serially, without any currency. Database prevents all possible race conditions.
+
+The simplest way of avoiding concurrency problems is to remove the concurrency entirely - one transaction at a time, in serial order or a single thread.
+
+Stored procedures gained bad reputation for various reasons: each db vendor has its own language for stored procedures, code running in a database is difficult to manage (hard to debug, awkward to version and deploy, trickier to test), badly written procedure may harm overall DB performance. Modern implementations of stored procedures have abandoned PL/SQL and use existing general-purpose programming languages instead.
+
+Serial execution of transactions makes concurrency control much simpler, but limits the transaction throughput of the database to the speed of a single CPU core on a single machine. Simple solution is to partition the database, each CPU core have its own partition. However if partition needs to access multiple partitions, the database must coordinate across all the partitions that it touches.
+
+Serial execution is a viable way of achieving serialisable isolation within certain constraints:
+
+- every transaction must be small and fast
+- write throughput must be low enough to be handled on a single CPU core
+- cross-partition transactions are possible, but there is a hard limit to the extent to which they can be used
+
+2PL - Two-Phase Locking - widely used algorithm for serialisability in databases. Similar to "no dirty writes" - if two transactions concurrently try to write the same object, the lock ensure that the second writer must wait until the first one has finished its transactions before it may continue. More specifically: 
+
+- If transaction A reads and B wants to write - B must wait until A commits or aborts
+- If A writes and B wants to read, B must wait until A commits or aborts
+
+2PL - writers don't just block other writes, they also block readers and vice-versa. The big downside of 2PL is performance - worse throughput and response times comparing to weak isolation (because of overhead of acquiring and releasing locks). Also called a "pessimistic concurrency control mechanism" - better to wait until situation is safe before doing anything.
+
+SI - Serialisable Snapshot Isolation - full serialisability with small performance penalty compared to snapshot isolation. Very young technology - 2008. Called "optimistic concurrency control technique". Instead of blocking potentially dangerous transactions, it allows them to work, hoping everything will turn out all right. When transaction wants to commit, database checks if everything is fine. It performs badly in high contention (many transactions accessing the same object) - many of transactions need to be aborted.
+
+Reads from the database are made based on snapshot isolation.
+
+
+
