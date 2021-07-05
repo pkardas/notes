@@ -697,6 +697,18 @@ Task-based dialogue - a dialogue system has the goal of helping a user solve som
 
 The control architecture for frame-based (frame - kind of knowledge structure representing the kinds of intentions the system can extract from user sentences) dialogues systems is used in various modern systems like Siri, Google Assistant or Alexa. The system's goal is to fill the slots in the frame with the fillers the user intends and the preform relevant action for the user. To do this system asks questions associated with frames. This is heavily rule-based approach.
 
+Slot-filling - task of domain and intent classification.
+
+If dialogue system misrecognizes or misunderstands an utterance, the user will generally correct the error by repeating or reformulating the utterance.
+
+Modern systems often ask for confirmation or rejection if input data is correct. The explicit confirmation eliminates risk of mistakes, but awkward and increases the length of conversation.
+
+System might as clarification questions.
+
+Dialogue systems might be evaluated using different metrics, eg. engagingness, avoiding repetition, making sense. Commonly used high-level metric is called acute-eval - annotator looks at two conversations and choose the one in which the dialogue system participant performed better. Automatic metrics are generally not used for chatbots. However there are some attempts to train a Turing-like evaluator classifier to distinguish a human-generated responses and machine-generated responses.
+
+The study of dialogue systems is closely liked with the field of Human-Computer Interaction. Ethical issues also need to be taken into consideration when designing system - famous example Microsoft's Tay chatbot (adversarial attacks). ML models amplify stereotypes and also raise privacy concerns.
+
 ## Chapter 25: Phonetics
 
 ## Chapter 26: Automatic Speech Recognition and Text-to-speech
