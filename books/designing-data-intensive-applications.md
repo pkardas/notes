@@ -407,5 +407,28 @@ SI - Serialisable Snapshot Isolation - full serialisability with small performan
 
 Reads from the database are made based on snapshot isolation.
 
+## Chapter 8: The Trouble with Distributed Systems
 
+Anything that can go wrong, will go wrong. Working with distributed systems is fundamentally different different from writing software on a single computer. When writing software that runs on several computers, connected by a network, the situation is fundamentally different. 
+
+Partial failure - some parts of the system are broken in an unpredictable way. Partial failures are nondeterministic. Nondeterminism and partial failures is what makes distributed systems hard to work with.
+
+High-performance computing - supercomputers with thousands of CPUs are used for computationally intensive scientific computing tasks, such as whether forecasting or molecular dynamics. 
+
+Cloud computing - often associated with multi-tenant datacentres, commodity computers connected with an IP network, on-demand resource allocation and metered billing. 
+
+Traditional enterprise datacentres are somewhere between these two extremes.
+
+If we want to make distributed systems work, we must accept the possibility of partial failure and build fault-tolerance mechanisms into the software. We need to build a reliable system from unreliable mechanisms (like communication over the internet, network may fail, bits might be lost, however it somehow works, engineers managed to build something reliable basing on unreliable foundations). 
+
+What can go wrong when sending a request:
+
+- request may be lost
+- request might be waiting in a queue and will be delivered later
+- remote node may have failed or temporarily stopped responding 
+- request might have been processed but was lost on a way back or was delayed or will be delivered later
+
+Network problems can be surprisingly common, even in controlled environments like a datacenter operated by one company (even 12 network faults per month in a medium-sized datacenter, half of them disconnected a single machine and a half an entire rack). EC2 is notorious for having frequent transient network glitches. 
+
+Many systems need to automatically detect fault nodes, for example: load balancer needs to stop sending requests to a node that is dead. Unfortunately  it is hard to tell whether a node is working or not. 
 
