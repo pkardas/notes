@@ -21,6 +21,8 @@ Notes in this repo are focused mostly on Python, Machine Learning and Architectu
 
 [Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics and Speech Recognition](books/speech-and-language-processing.md)
 
+[Release It! Design and Deploy Production-Ready Software](books/release-it.md)
+
 ### Courses
 [Course @ FastAI](courses/fast-ai.md)
 
