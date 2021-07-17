@@ -26,5 +26,40 @@ Log analysis helped to identify the root cause.
 
 Bugs are inevitable, how to prevent bugs in one system from affecting everything else?  We are going to look at design patterns that can prevent this type of problem from spreading. 
 
+## Chapter 3: Stabilise Your System
+
+Enterprise software must be cynical - expects bad things to happen and is never surprised when they do. It doesn't even trust itself, it refuses to get too intimate with other systems, because it could get hurt.
+
+Poor stability means real costs - millions lost for example in lost transaction in trading system, reputation loss. On the other hand, good stability does not necessarily cost a lot. Highly stable design usually costs the same to implement as the unstable one.
+
+Transaction - abstract unit of work processed by the system.
+
+Impulse - rapid shock to the system. For example rumor about a new console, causes impulse on the manufacturer's website or celebrity tweet. Things that can fracture (break) the system in a blink of an eye.
+
+Stress - a force applied to the system over an extended period. 
+
+The major dangers to system's longevity are memory leaks and data growth, difficult to catch during tests. Applications never run long enough in development environment to reveal longevity bugs. 
+
+Failures will happen, you have ability to prepare system for specific failures (like car engineers areas designated to protect passengers by failing first). It is possible to create failure modes that protect the rest of the system. 
+
+Lees-couples architectures act as shock absorbers, diminishing the effect of the error instead of amplifying them.
+
+Terminology:
+
+- Fault - a condition that creates an incorrect internal state in the software.
+- Error - visibly incorrect behaviour, eg. trading system buying 10M Pokemon futures
+- Failure - an unresponsive system
+
+Chain of failure: Triggering a fault opens the crack, faults become errors and errors provoke failures. On each step, a fault may accelerate. Tight coupling accelerate cracks. 
+
+One way to prepare for every possible failure is to look at every external call, every I/O, every use of resources, and ask WHAT IF IT:  can't make connection, takes 10 minutes to make the connection, makes connection and then disconnects, takes 10 minutes to respond my query, 10k requests arrive at the same time, ...?
+
+IT community is divided into 2 camps: 
+
+1. Make system fault-tolerant, catch exceptions, check error codes, keep faults from becoming errors
+2. "let it crash", so you can restart from a good known state
+
+
+
 
 
