@@ -23,6 +23,8 @@ Notes in this repo are focused mostly on Python, Machine Learning and Architectu
 
 [Release It! Design and Deploy Production-Ready Software](books/release-it.md)
 
+[Domain-Driven Design: Tackling Complexity in the Heart of Software](books/ddd.md)
+
 ### Courses
 [Course @ FastAI](courses/fast-ai.md)
 
