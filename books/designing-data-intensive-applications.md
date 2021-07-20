@@ -432,3 +432,12 @@ Network problems can be surprisingly common, even in controlled environments lik
 
 Many systems need to automatically detect fault nodes, for example: load balancer needs to stop sending requests to a node that is dead. Unfortunately  it is hard to tell whether a node is working or not. 
 
+Timeout is the only sure way od detecting a fault. Appropriate duration of timeout is difficult to estimate. The telephone network uses circuit - a fixed, guaranteed amount of bandwidth between 2 callers. On the other hand TCP dynamically adapts the rate of data transfer to the available network capacity. TCP is optimised for busy networks, circuit would not work for internet's use case. 
+
+Clocks and time is important, in distributed systems we never know the delay between send and received. 
+
+Time-of-day clocks - returns current date and time according to some calendar. Usually synchronised with NTP (Network Time Protocol). Time-of-day clocks are unsuitable for measuring time (clock might be reset during measurement, because it was desynchronised).
+
+Monotonic clocks - suitable for measuring elapsed time, they are guaranteed to always move forward (time-of-day clock my jump back in time). NTS may adjust monotonic clock frequency if it discoveries it is too slow of too fast. 
+
+Software must be designed on the assumption that the network will occasionally be faulty, and the software must handle such faults gracefully. 

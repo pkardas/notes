@@ -59,6 +59,12 @@ IT community is divided into 2 camps:
 1. Make system fault-tolerant, catch exceptions, check error codes, keep faults from becoming errors
 2. "let it crash", so you can restart from a good known state
 
+## Chapter 4: Stability Antipatterns
+
+Antipatterns that can wreck the system, they create, accelerate or multiply cracks in the system. These bad behaviours should be avoided. 
+
+You have to set the socket timeout if you want to break out of blocking call, for example request may be stuck in the listening queue for minutes or forever. Network failure can hit you in 2 ways: fast (immediate exception, eg. connection refused) or slow (dropped ACK). The blocked thread can't process other transactions, so overall capacity is reduced. If all threads are blocked, from practical point of view, the server is down. 
+
 
 
 
