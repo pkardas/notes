@@ -25,7 +25,10 @@ Notes in this repo are focused mostly on Python, Machine Learning and Architectu
 
 [Domain-Driven Design: Tackling Complexity in the Heart of Software](books/ddd.md)
 
+[Refactofing: Improving the Design of Existing Code](books/refactoring.md)
+
 ### Courses
+
 [Course @ FastAI](courses/fast-ai.md)
 
 ### Conferences
