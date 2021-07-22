@@ -65,7 +65,41 @@ Antipatterns that can wreck the system, they create, accelerate or multiply crac
 
 You have to set the socket timeout if you want to break out of blocking call, for example request may be stuck in the listening queue for minutes or forever. Network failure can hit you in 2 ways: fast (immediate exception, eg. connection refused) or slow (dropped ACK). The blocked thread can't process other transactions, so overall capacity is reduced. If all threads are blocked, from practical point of view, the server is down. 
 
+Sometimes not every problem can be solved at the level of abstraction where it manifests. Sometimes the causes reverberate up and down the layers. You need to know how to drill through at least two layers of abstraction to find the reality at that level in order to understand problems.
 
+REST with JSON over HTTP is the lingua franca for services today. HTTP-based protocols have their own issues:
 
+- TCP connection can be accepted but never respond to HTTP request
+- provider may accept the connection but not read the request
+- provider may send back a response the caller doesn't know how to handle
+- provider may send back a response with a content type the caller doesn't expect or know how to handle
+- provider may claim to be sending JSON but in actually sending plain text
 
+Treat response as data until you have confirmed it meets your expectations.
+
+Libraries can have bugs too, they all have the variability in quality, style, and safety that you see from any other random sampling of code.
+
+The most effective stability patterns to combat integration points failures are *Circuit Breaker* and *Decoupling Middleware*.
+
+BEWARE NECESSARY EVIL - every integration point will fail in some way, you need to be prepared.
+
+PREPARE FOR MANY FORMS OF FAILURE - failure may take several forms: network errors, semantic errors, slow response, ...
+
+KNOW WHEN TO OPEN UP ABSTRACTIONS - debugging integration point failures usually requires peeling back a layer of abstraction
+
+FAILURES PROPAGATE QUICKLY - failure in remote systems quickly becomes your problem, when your code isn't defensive enough
+
+APPLY PATTERNS TO AVERT INTEGRATION POINT PROBLEMS - use patterns like Circuit Breaker, Timeouts, Decoupling Middleware and Handshaking - discussed later
+
+Horizontal scaling - adding capacity through adding more servers, fault tolerance through redundancy. Vertical scaling - scaling by building bigger and bigger servers (more cores, memory and storage).
+
+RECOGNISE THAT ONE SERVER DOWN JEOPARDISED THE REST - a chain reaction can happen because the death of one server makes the others pick up the slack
+
+HUNT FOR RESOURCE LEAK - mos of time, chain reactions happens when application has a memory leak
+
+HUNT FOR OBSCURE TIMING BUGS - race conditions can be triggered by traffic, if one server dies because of deadlock, the increased load on the others makes them more likely to hit the deadlock too
+
+USE AUTOSCALING - create health-checks for every autoscaling group, the scaler could shut down instances that fail their health checks and start new ones
+
+DEFEND WITH BULKHEADS - partitioning servers with Bulkheads - more details later
 
