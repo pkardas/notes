@@ -36,3 +36,52 @@ Mutable data quickly becomes something rotten.
 
 When doing refactoring, take small steps, each step should leave code in a working state that compiles and passes its tests.
 
+## Chapter 2: Principles in Refactoring
+
+Refactoring (noun) - a change made to the internal structure of software to make it easier to understand and cheaper to modify without changing its observable behaviour.
+
+Refactoring (verb) - to restructure software by applying a series of refactorings without changing its observable behaviour.
+
+When doing refactoring, code should not spend much time in a broken state, meaning it allows to stop at any moment even if you haven't finished. If someone says their code was broken for couple of days while they are refactoring, you can be pretty sure they were not refactoring. 
+
+Two Hats - when developing new functionalities - do not change existing code, when refactoring - do not add new functionalities. Swap hats: refactor, add functionality, refactor, ...
+
+Why should we refactor?
+
+- software design improvement - changes are made to achieve short-term goals, because of that, code looses its structure, regular refactoring help keep the code in shape. Important aspect of refactoring is eliminating duplicated code.
+- makes software easier to understand - think about future developers, decrease time needed to make a change. You don't have to remember every aspect of code, make it easy to understand and decrease load on your brain.
+- helps in finding bugs - clarify the structure, certain assumptions.
+- helps programming faster - adding new features might be difficult in a system full of patches and patches for patches, clear structure allows to add new capabilities faster. Good design allows to quickly find place where a change needs to be made. Also if code is clear, it is less likely to introduce a bug. Code base should be a platform for building new features for its domain.
+
+> The Rule of Three - The first time you do something, you just do it. The second time you do something similar, you wince at the duplication, but you do the duplicate anyway. The third time you do something similar, you refactor.
+
+When should we refactoring?
+
+- preparatory refactoring - building a foundation for a new feature. 
+
+  - > It is like you want to go 100 km east but instead of traipsing through the woods, you drive 20 kms north to the highway and the you are going 3x the speed you could have if you just went straight there.
+
+- comprehension refactoring - making code easier to understand. Move understanding of a subject from head to code itself.
+
+- litter-pickup refactoring - make small changes around place you are currently viewing - Boy Scout Rule.
+
+- planned and opportunistic refactoring - refactoring should happen when doing other things, planned refactorings are usually required in teams that neglected refactoring.
+
+- long-term refactoring - refactoring may take weeks because of new library or pull some section of code out into a component that can be shared between teams - even in such cases refactoring should be performed in small steps.
+
+- refactoring in a code review - code reviews help spread knowledge, through a development team. Code may look clear to me but not for my team. Code reviews give the opportunity for more people to suggest useful ideas. 
+
+Sometimes it easier to rewrite than refactor. The decision to refactor or rewrite requires good judgement and experience. 
+
+However, there are couple of problems associated to refactoring:
+
+- some people see refactoring as something that is slowing down development (which is not really true), this should be explained - the economic benefits of refactoring should always be the driving factor, we refactor because it makes us faster to add features and fix bugs.
+- merge conflicts may be painful, especially in a team of multiple full-time developers, suggested approach is to use CI - Continuous Integration - each team member integrates with mainline at least once per day.
+- to perform refactoring correctly you need to have good tests, code needs to be self-testing, without self-testing code refactoring carries high risk of introducing bugs 
+- refactoring legacy code is hard, but is a fantastic tool to help understand a legacy system. Legacy code is often missing tests, adding tests for legacy code is difficult because it wasn't designed with testing in mind.
+- some time ago database refactoring was considered a problem era, currently we have migrations which are making database refactoring possible
+
+Refactoring changed how people think about architecture (previously: completed before any development, now: changed iteratively). YAGNI does not mean you need to neglect all architectural thinking. 
+
+
+
