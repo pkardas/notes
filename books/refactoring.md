@@ -28,3 +28,11 @@ Think of the best name at the moment and rename it later. Breaking large functio
 
 ANYHOW, if refactoring introduces performance slow-downs, finish refactoring first and then do performance tuning.
 
+Mutable data quickly becomes something rotten.
+
+> Always leave the code base healthier than when you found it. It will never be perfect, but it should be better.
+
+> A true test of good code is how easy it is to change it. Code should be obvious.
+
+When doing refactoring, take small steps, each step should leave code in a working state that compiles and passes its tests.
+
