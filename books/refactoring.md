@@ -83,5 +83,9 @@ However, there are couple of problems associated to refactoring:
 
 Refactoring changed how people think about architecture (previously: completed before any development, now: changed iteratively). YAGNI does not mean you need to neglect all architectural thinking. 
 
+In order to be fully agile, team has to be capable and enthusiastic refactorers. The first foundation for refactoring is self-testing code, the second is CI.
 
+Good programmers know that they rarely write clean code the first time around. 
+
+IDEs use the syntax tree to analyse and refactor code (eg. changing variable name is on syntax tree level, not on text level), this makes IDEs more powerful than text editors.
 
