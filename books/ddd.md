@@ -46,5 +46,15 @@ Extreme Programming advocates using no extra design documents at all (usually be
 
 However if document exists, it should not try to do what code already does well - document should illuminate meaning, give insight into large-scale structures, clarify design intent, complement the code and the talking.
 
+## Chapter 3: Binding Model and Implementation
 
+Tightly relating the code to an underlying model gives the code meaning and makes the model relevant. Design must map to the domain model, if not, the correctness of the software is suspect. 
+
+Model-Driven Design - discards the dichotomy of analysis model and design to search out a single model that serves both purposes (ubiquitous language). Each object in the design plays a conceptual role described in the model. Model needs to be revised to reflect the model in a very literal way, so mapping is obvious. The code becomes expression of the model.
+
+Model-Drivenn Design is hard to accomplish in procedural languages like C or Fortran. This approach is reserved for object-oriented programming languages. 
+
+Implementation model should not be exposed to the user.
+
+People responsible for the implementation should participate in modeling. Strict separation of responsibilities is harmful. Modeling and implementation are couples in model-driven design. Any technical person contributing to the model must spend some time touching the code. Every developer must be involved in some level of discussion about the model.
 
