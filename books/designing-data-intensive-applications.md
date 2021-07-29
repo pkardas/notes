@@ -441,3 +441,18 @@ Time-of-day clocks - returns current date and time according to some calendar. U
 Monotonic clocks - suitable for measuring elapsed time, they are guaranteed to always move forward (time-of-day clock my jump back in time). NTS may adjust monotonic clock frequency if it discoveries it is too slow of too fast. 
 
 Software must be designed on the assumption that the network will occasionally be faulty, and the software must handle such faults gracefully. 
+
+> Distributed systems are different from programs running on a single computer - there is no shared memory, only massage passing through unreliable network with variable delays and the systems may suffer from partial failures, unreliable clocks and processing pauses.
+
+There are algorithms designed to solve distributed systems problems:
+
+- synchronous model - assumes bounded network delay, process pauses and clock error, this means you know the delay, and it will not exceed some fixed value. This model is not realistic
+- partially synchronous system - system behaves like a synchronous most of the time, but sometimes exceeds the bounds for network delay, process pauses and clock drift
+- asynchronous model - any timing assumptions are not allowed 
+- crash-stop faults - algorithm may assume that a node can fail in only one way - by crashing, once crashed never comes back
+- crash-recovery faults - node can fail at any moment, but has some nonvolatile disk storage that is preserved across crashes
+- byzantine faults - nodes may do absolutely anything, including trying to trick and deceive other nodes
+
+Partially synchronous and crash-recovery faults are the most common models.
+
+Safety of a system - nothing bad happens, liveness of a system - something good eventually happens. These two are often used for reasoning about the correctness of a distributed algorithm.
