@@ -477,3 +477,20 @@ Use cases for linearisability:
 - cross-channel timing dependencies - multiple components in a system can communicate which opens a possibility for race conditions
 
 CAP theorem has been historically influential but nowadays has little practical value for designing systems. Better way of paraphrasing CAP would be "either consistent or available when partitioned". 
+
+ORDERING GUARANTEES. 
+
+Causality imposes an ordering on the events (what happened before what) - question comes before answer, a message is sent before it is received, ... These chains of casually dependent operations define the casual order in the system. If system obeys the ordering imposed by causality, we say it is causally consistent. 
+
+Linearisability ensures causality. However it is not the only way of preserving causality - system can be causally consistent without incurring the performance (the strongest possible consistency model that does not slow down due to network errors). 
+
+Sequence Number Ordering - sequence numbers or timestamps (not really time-of-day clock, but some logical clock) used to order events. If there is not a single leader it is less clear how to generate sequence numbers for operations:
+
+- each node can generate its own independent sequence number + node ID
+- attach timestamp to each operation
+- preallocate blocks of sequence numbers (1-1000 for node A, 1001-2000 for node B, ...)
+
+Methods above allow to generate unique sequence numbers efficiently, but do not capture correctly the ordering of operations across different nodes. 
+
+Lamport timestamp - method for generating sequence numbers that is consistent with causality. Every node keeps track of the maximum counter value it has seen so far, and includes that maximum on every request. Each node appends its node ID to the final counter, if 2 counter values are the same, higher node ID wins. 
+
