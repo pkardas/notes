@@ -456,3 +456,24 @@ There are algorithms designed to solve distributed systems problems:
 Partially synchronous and crash-recovery faults are the most common models.
 
 Safety of a system - nothing bad happens, liveness of a system - something good eventually happens. These two are often used for reasoning about the correctness of a distributed algorithm.
+
+## Chapter 9: Consistency and Consensus
+
+Tolerating faults - keeping the service functioning correctly, even if some internal component is faulty. The best way of building fault-tolerant systems is to find some general-purpose abstractions with useful guarantees (eg. transactions).
+
+When working with a database that provides only weak guarantees (eg. eventual consistency), you need to be constantly aware of its limitations (eg. when you write and immediately read there is no guarantee that you will see the value you just wrote). 
+
+LINEARIZABILITY (atomic consistency, strong consistency, immediate consistency) - is to make a system appear as if there were only one copy of the data and all operations are atomic. 
+
+Easily confused with serialisability (both mean something like "can be arranged in a sequential order"):
+
+- Serialisability - an isolation property of transactions, it guarantees that transactions behave the same as if they had executed in some serial order.
+- Linearisability - a recency guarantee on reads and writes of a register, it doesn't group operations together into transactions, so does not prevent problems like write skew.
+
+Use cases for linearisability:
+
+- locking and leader election - a single-leader system needs to ensure there is indeed only one leader, not several (split brain) - it must be linearlisable, all nodes must agree which node owns the lock.
+- constraints and uniqueness guarantees - for example unique usernames - you need linearisability. Hard uniqueness constraint requires linearisability. 
+- cross-channel timing dependencies - multiple components in a system can communicate which opens a possibility for race conditions
+
+CAP theorem has been historically influential but nowadays has little practical value for designing systems. Better way of paraphrasing CAP would be "either consistent or available when partitioned". 
