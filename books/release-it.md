@@ -101,5 +101,21 @@ HUNT FOR OBSCURE TIMING BUGS - race conditions can be triggered by traffic, if o
 
 USE AUTOSCALING - create health-checks for every autoscaling group, the scaler could shut down instances that fail their health checks and start new ones
 
-DEFEND WITH BULKHEADS - partitioning servers with Bulkheads - more details later
+DEFEND WITH BULKHEADS - partitioning servers with Bulkheads - more details later.
+
+Cascading failures - occurs when a crack in one layer triggers a crack in a calling layer. If caller handles errors badly it will start to fail, resulting in cascading failure (for example database failure is going to impact any system that is calling the database). Every dependency is a chance for a failure to cascade.
+
+- a cascading failure often results from a resource pool (eg. connection pool) that gets exhausted, safe resource pools always limit the time a thread can wait to check out a resource
+- defend with timeouts and circuit breaker 
+
+Capacity is the maximum throughput your system can sustain under a given workload while maintaining acceptable performance. Breaking limits creates cracks in the system. Limits:
+
+- heap memory - for example in memory-based sessions, memory can get short- many things can go wrong: out-of-memory exceptions, not working logging. It is possible to use Weak References - Garbage Collection may reclaim memory if it is too low (before out-of-memory error occurs). Callers have to behave nicely when payload is gone. Weak references are useful  but they do add complexity. 
+- off-heap memory, off-host memory - for example Redis, but this is slower than local memory and there is a problem with replication
+- number of sockets on the server is limited, every request corresponds to an open socket, the OS assigns inbound connections to an ephemeral port that represents the receiving side of the connection. Because of TCP packet format, one server can have up to 64 511 connections open. How can we serve millions of concurrent connections? The virtual IP addresses. 
+- closed sockets can be problematic too - before socket can be reused it goes through couple of states, for example bongos defence algorithm. Bogon is a wandering packet that got routed inefficiently and arrives late (out of sequence), if socket were reused too quickly, late packet could trigger response.
+
+
+
+
 
