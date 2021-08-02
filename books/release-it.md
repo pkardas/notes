@@ -115,7 +115,17 @@ Capacity is the maximum throughput your system can sustain under a given workloa
 - number of sockets on the server is limited, every request corresponds to an open socket, the OS assigns inbound connections to an ephemeral port that represents the receiving side of the connection. Because of TCP packet format, one server can have up to 64 511 connections open. How can we serve millions of concurrent connections? The virtual IP addresses. 
 - closed sockets can be problematic too - before socket can be reused it goes through couple of states, for example bongos defence algorithm. Bogon is a wandering packet that got routed inefficiently and arrives late (out of sequence), if socket were reused too quickly, late packet could trigger response.
 
+Cookies are a clever way to pass state back and forth from client to server and vice versa. They allow all kinds of new applications, such as personalised portals and shopping sites. Cookies carry small amount of data because they need to be encrypted and this is CPU heavy task.
 
+A session is an abstraction that makes building applications easier. All the user really sends are series of HTTP requests, the server receives them, compute and returns response. Sessions are about caching data tin memory. 
+
+Truly dangerous users are the ones that target your website, once you are targeted, you will almost certainly be breached. 
+
+Adding complexity to solve one problem creates the risk of entirely new failure modes, eg. multithreading - enables scalability but also introduces concurrency errors. 
+
+Caching can be a powerful response to performance problem, however caching can cause troubles - it can eat away at the memory available for the system, when that happens the garbage collector will spend more and more time attempting to recover enough memory to process requests. You need to monitor git rates for the cached items to see whether most items are being used from cache. **Caches should be built using weak references to hold the cached item itself.** It will help the GC reclaim the memory. 
+
+Libraries are notorious sources of blocking threads.
 
 
 
