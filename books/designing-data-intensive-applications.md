@@ -494,3 +494,17 @@ Methods above allow to generate unique sequence numbers efficiently, but do not 
 
 Lamport timestamp - method for generating sequence numbers that is consistent with causality. Every node keeps track of the maximum counter value it has seen so far, and includes that maximum on every request. Each node appends its node ID to the final counter, if 2 counter values are the same, higher node ID wins. 
 
+The goal to get several nodes to agree on something is not easy, examples:
+
+- leader election - lack of communication may lead to split brain (multiple nodes believe themselves to be the leader)
+- atomic commit - in a system that supports transactions spanning several nodes, transaction may fail on some nodes but succeed on others (all nodes have to agree on the outcome - abort or accept)
+
+The Impossibility of Consensus - there is no algorithm that is always able to reach consensus if there is a risk that a node may crash, in a distributed system we must assume that node may crash, so reliable consensus is impossible.
+
+Two-phase locking is an algorithm for achieving atomic transaction commit across multiple nodes (all commit or all abort). 2 phases:
+
+- the coordinator begins phase 1 - it send prepare to to each of the nodes, asking whether they are able to commit
+- the coordinator tracks the responses from the participants, if all say yes - the coordinator sends out a commit request, if any of the participant say no - the coordinator sends an abort request to all nodes
+
+This is very similar to wedding ceremony in Western cultures. If the decision was to commit there is no going back, no matter how many retries it takes. The protocol has 2 crucial points of no return. If the coordinator dies, the nodes should communicate and come to some agreement. 2PC has bad reputation because of operational problems, low performance and primising more than it can deliver.
+
