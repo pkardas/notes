@@ -17,9 +17,9 @@ Notes in this repo are focused mostly on Python, Machine Learning and Architectu
 
 [Code Complete: A Practical Handbook of Software Construction](books/code-complete.md)
 
-[Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems](books/designing-data-intensive-applications.md)
+[Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems](books/ddia.md)
 
-[Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics and Speech Recognition](books/speech-and-language-processing.md)
+[Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics and Speech Recognition](books/nlp-book.md)
 
 [Release It! Design and Deploy Production-Ready Software](books/release-it.md)
 
