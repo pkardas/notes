@@ -89,3 +89,55 @@ Good programmers know that they rarely write clean code the first time around.
 
 IDEs use the syntax tree to analyse and refactor code (eg. changing variable name is on syntax tree level, not on text level), this makes IDEs more powerful than text editors.
 
+## Chapter 3: Bad Smells in Code
+
+When you should start refactoring? It is a matter of intuition. However there are some indicators.
+
+MYSTERIOUS NAME - code needs to be mundane and clear, good name can save hours of puzzled incomprehension in the future.
+
+DUPLICATED CODE - if you see the same code structure in more than one place, your program will be better if you find a way to unify them., duplication means every time you read these copies you need to read them carefully and look for differences. 
+
+LONG FUNCTION - the programs that live best and longest are those with short functions. Whenever you feel you need to comment something - decompose. Even a single line is worth extracting if it needs a explanation. Conditionals and loops are also signs for extractions.
+
+LONG PARAMETER LIST - long lists of parameters are confusing - pass an object, use query on existing object or combine function on object.
+
+GLOBAL DATA - problem with global data is that it can be modified from any place in the code base, this leads to bugs.  Global data: global variables, class variables, singletons. Global data is especially nasty when it is mutable. 
+
+MUTABLE DATA - (from functional programming) data should never change, updating data structure should return a new copy of the structure, leaving the old data pristine.
+
+DIVERGENT CHANGE - making changes should be easy, if you need to, for example, edit 4 functions every time you add a new financial instrument, something is off.
+
+SHOTGUN SURGERY - every time you make a change, you have to make a lot of little edits to a lot of different classes, when changes are all over the place, they are hard to find and it is easy to miss an important change. In such case all fields should be put in a single module. 
+
+FEATURE ENVY - for example: a function in one module spends more time communicating with functions or data inside another module than it does within its own module - the function clearly wants to be with the data, so move function to get it there. Put things together that change together. 
+
+DATA CLUMPS - some items enjoy hanging around together, same three or four data items appare together in lots of places - you can group them together. 
+
+PRIMITIVE OBSESSION - many programmers are reluctant to create their own fundamental types which are useful for their domain.
+
+REPEATED SWITCHES - basically the same problem as in DUPLICATED CODE.
+
+LOOPS - loops are less relevant in programming today because of presence of map and filter mechanisms.
+
+LAZY ELEMENT - sometimes you may want to replace function with inline code or collapse objects hierarchy.
+
+SPECULATIVE GENERALITY - all the special cases to handle situations that are not going to happen soon (YAGNI).
+
+TEMPORARY FIELD - a class with a field which is set only in certain circumstances - difficult to understand.
+
+MESSAGE CHAINS - client asks object for another object, which the client asks for yer another object - this might cause a train wreck, navigating such code is difficult. 
+
+MIDDLE MAN - internal details of the object should be hidden from the rest of the world
+
+INSIDER TRADING - modules should be separated to keep them whispering, if 2 modules have common interests, create a third module for this communication.
+
+LARGE CLASS - when class has too many fields it is a sign that it is doing too much, this means duplicated code, chaos and death.
+
+ALTERNATIVE CLASSES WITH DIFFERENT INTERFACES - if you are allowing substitution, classes have to have the same interface.
+
+DATA CLASS - classes with fields, setters and getters - nothing else. Such classes are often being manipulated in far too much detail by other classes. You can try to move that behaviour into the data class. 
+
+REFUSED BEQUEST - wrong hierarchy, subclasses don't want or need what they are given.
+
+COMMENTS - when you feel the need to write a comment, first try to refactor the code so that any comment becomes superfluous. 
+
