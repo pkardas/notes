@@ -141,3 +141,20 @@ REFUSED BEQUEST - wrong hierarchy, subclasses don't want or need what they are g
 
 COMMENTS - when you feel the need to write a comment, first try to refactor the code so that any comment becomes superfluous. 
 
+## Chapter 4: Building Tests
+
+Proper refactoring can not be done without proper tests. A suite of tests is a powerful bug detector that decapitates the time it takes to find bugs. 
+
+TDD allows to concentrate on the interface rather than the implementation, which is a good thing. 
+
+Always make sure a test will fail when it should (try to break your code, to see if test fails as well).
+
+Testing should be risk-driven, you don't need to test every getter. 
+
+When you get a bug report, start by writing a unit test that exposes the bug. 
+
+The best measure for a good enough test suite is subjective: How confident are you that is someone introduces a defect into your code, some test will fail? 
+
+## Chapter 5: Introducing the Catalog
+
+The rest of the book is a catalog of refactorings. Each *Refactoring* has: name, sketch, motivation, mechanics and examples.
