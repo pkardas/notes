@@ -117,7 +117,7 @@ Capacity is the maximum throughput your system can sustain under a given workloa
 
 Cookies are a clever way to pass state back and forth from client to server and vice versa. They allow all kinds of new applications, such as personalised portals and shopping sites. Cookies carry small amount of data because they need to be encrypted and this is CPU heavy task.
 
-A session is an abstraction that makes building applications easier. All the user really sends are series of HTTP requests, the server receives them, compute and returns response. Sessions are about caching data tin memory. 
+A session is an abstraction that makes building applications easier. All the user really sends are series of HTTP requests, the server receives them, compute and returns response. Sessions are about caching data in memory. 
 
 Truly dangerous users are the ones that target your website, once you are targeted, you will almost certainly be breached. 
 
@@ -127,4 +127,5 @@ Caching can be a powerful response to performance problem, however caching can c
 
 Libraries are notorious sources of blocking threads.
 
+Self-Denial Attack - any situation in which the system conspires against itself. For example a cupon code sent to 10k users to be used at certain date is going to attract milions of users (like XBOX preorder). Self-Denial can be avoided by building a shared-nothing architecture (no databases nor other resources)  - ideal horizontal scaling. Talk to marketing department when they are goin to send out mass emails - you will be able to pre-scale (prepare some additional instances for increased load). Also be careful for open links to the resources, also watch out for Fight Club bugs - increased front-end load causes exponentially increasing backend proecessing. 
 
