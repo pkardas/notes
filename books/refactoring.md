@@ -158,3 +158,15 @@ The best measure for a good enough test suite is subjective: How confident are y
 ## Chapter 5: Introducing the Catalog
 
 The rest of the book is a catalog of refactorings. Each *Refactoring* has: name, sketch, motivation, mechanics and examples.
+
+## Chapter 6: A First Set of Refactorings
+
+EXTRACT FUNCTION - write small functions.
+
+INLINE FUNCTIONS - inverse of *extract function*, sometimes function body is as clear as the name. Helpful when you need to group functions - first you join them and then extract functions. 
+
+EXTRACT VARIABLE - inverse of *inline variable*, expressions can become very complex and hard to readm in such situations, local variables may help break the expression down into something more manageable. 
+
+INLINE VARIABLE - inverse of *extract variable*, sometimes name doesn't communicate more than the expression itself.
+
+CHANGE FUNCTION DECLARATION - if you see a function with the wrong name, change it as soon you understand what a better name would be, so next time you are looking at the code you don't have to figure out wht is going on. Often a good way of improving name is to write a comment to describe the function's purpose - then turn that comment into a name (applies to names as well). Adding / removing parameters can be done through introducing intremediate wrapping function. 
