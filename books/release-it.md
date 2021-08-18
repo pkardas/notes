@@ -123,9 +123,28 @@ Truly dangerous users are the ones that target your website, once you are target
 
 Adding complexity to solve one problem creates the risk of entirely new failure modes, eg. multithreading - enables scalability but also introduces concurrency errors. 
 
-Caching can be a powerful response to performance problem, however caching can cause troubles - it can eat away at the memory available for the system, when that happens the garbage collector will spend more and more time attempting to recover enough memory to process requests. You need to monitor git rates for the cached items to see whether most items are being used from cache. **Caches should be built using weak references to hold the cached item itself.** It will help the GC reclaim the memory. 
+Caching can be a powerful response to performance problem, however caching can cause troubles - it can eat away at the memory available for the system, when that happens the garbage collector will spend more and more time attempting to recover enough memory to process requests. You need to monitor hit rates for the cached items to see whether most items are being used from cache. **Caches should be built using weak references to hold the cached item itself.** It will help the GC reclaim the memory. 
 
 Libraries are notorious sources of blocking threads.
 
 Self-Denial Attack - any situation in which the system conspires against itself. For example a cupon code sent to 10k users to be used at certain date is going to attract milions of users (like XBOX preorder). Self-Denial can be avoided by building a shared-nothing architecture (no databases nor other resources)  - ideal horizontal scaling. Talk to marketing department when they are goin to send out mass emails - you will be able to pre-scale (prepare some additional instances for increased load). Also be careful for open links to the resources, also watch out for Fight Club bugs - increased front-end load causes exponentially increasing backend proecessing. 
 
+WIth point-to-point connections, each instance has to talk directly to every other instance - this means O(n^2) scaling - be careful. Point-to-point communication can be replaced by: UDP broadcasts, TCP/UDP multicast, pub/sub messaging, message queues.
+
+XP principle: Do the simplest thing that will work. 
+
+Watch out for shared resources - they can be a bottleneck, stress-test it heavily, be sure clients will keep working despite malfunctioning resource. 
+
+Frontend always has the ability to overwhelm the backend, because their capacities are not balanced. However you can not build every service to be large enough to serve enromous load from the frontend - instead you myst build services to be resilient in the face of tsunami od requests (eg. Circuit Breake, Handshaking, Backpressure, Bulkheads). 
+
+Dogpile - when a bunch of servers impose transient load all at once (term from American football). Can occur: when booting all servers at once, on cron job, when the config management pushes out a change. Use random clock slew to diffuse the demand from cron job (every instance does something at different time). Use a backoff algorithm so every client retries at different time. 
+
+Infrastructure management tools can cause a lot of trouble (eg. Reddit outage) - build limiters and safeguards into them so they won't destroy entire system at once. 
+
+Slow response is worse than refusing a connection or returning an error - because ties up resources in the calling system and in the called system. Slow responses usually result from excessive demand. System should have the ability to monitor its own performance, so it can also tell when it isn't meeting its SLAs (service-level agreement).
+
+Why slow responses are dangerous: because they trigger cascading failures, users hitting *reload* button cause even more traffic to already overloaded system. If system tracks its own responsiveness, then it can tell when it is getting slow. In such situation developer should consider sending an immediate error response. 
+
+>  Design with skepcitism, and you will achieve resilience. Ask "What can system X do to hurt me" and then design a way to dodge whatever wrench your supposed ally throws.
+
+Use realistic data volumes - typidal development and test data sets are too small to exhibit problems, you need production size-data to see what happens when your query returns a million rows that you turn into objects. Calls should be paginated. Do not rely on data providers, once thye will go *berserk* and fill up a table for no reason.
