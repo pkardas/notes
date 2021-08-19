@@ -170,3 +170,26 @@ EXTRACT VARIABLE - inverse of *inline variable*, expressions can become very com
 INLINE VARIABLE - inverse of *extract variable*, sometimes name doesn't communicate more than the expression itself.
 
 CHANGE FUNCTION DECLARATION - if you see a function with the wrong name, change it as soon you understand what a better name would be, so next time you are looking at the code you don't have to figure out wht is going on. Often a good way of improving name is to write a comment to describe the function's purpose - then turn that comment into a name (applies to names as well). Adding / removing parameters can be done through introducing intremediate wrapping function. 
+
+ENCAPSULATE VARIABLE - encapsulate acces to the variable using functions, instead of accessing data directly, do this through single access point - function. Keeping data encapsulated is less important for immutabe data. 
+
+RENAME VARIABLE - variables can do a lot to explain what programmer is up to (if he names it well). 
+
+INTRODUCE PARAMETER OBJECT - often a group of data items travel together, appear in function after function. Such group is a data clump - this can be easily replaced with data structure.
+
+Example: 
+
+```
+def amountInvoiced(start: date, end: date)
+def amountInvoiced(date_range: Range)
+```
+
+Grouping data into a structure is valueable because it makes explicit the relationship between the data items and reduces the size of parameter lists. Grouping helps to identify new structures. 
+
+COMBINE FUNCTIONS INTO CLASS - when group of functions operate closely together on a common body of data, there is an opportunity to form a class. 
+
+> Uniform access principle - All services offered by a module should be available through a uniform notation, which does not betray whether they are implemented through storage or through computation. With this, the client of the class can't tell whether the *value* is a field or derived value.
+
+COMBINE FUNCTIONS INTO TRANSFORM - instead of aggregating function into classes you can build functions that are enriching existing objects. Transformation is about producing essentialy the same thing with some additional information. 
+
+SPLIT PHASE - whenever you encounter code that does two things, look for a way to split it into separate modules. If some processing has 2 stages, make the difference explicit by turning then into 2 separate modules. 
