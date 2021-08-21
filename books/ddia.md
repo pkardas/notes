@@ -1,6 +1,7 @@
 [go back](https://github.com/pkardas/learning)
 
 # Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems
+
 Book by Martin Kleppmann
 
 [TOC]
@@ -376,7 +377,7 @@ Isolation make life easier by hiding concurrency issues. In reality serialisatio
 Read committed - most basic level of transaction isolation, makes 2 guarantees:
 
 -  no dirty reads - you will only see data that has been committed
-- no dirty writes - you will only override data that has been committed
+-  no dirty writes - you will only override data that has been committed
 
 Snapshot isolation - read committed is not solving all the issues (for example non-repeatable reads - when you select data in the middle of transaction). Data unavailable fro few seconds is not a problem, more problematic are long-lasting data inconsistencies. Read committed is a boon for long-running , read-only queries such as backups and analytics. Transaction should see a consistent snapshot of the database, frozen at a particular point in time (so data is not changing when it is being processed). Key principle of snapshot isolation is: readers never block writers and writers never block readers.
 
@@ -508,3 +509,18 @@ Two-phase locking is an algorithm for achieving atomic transaction commit across
 
 This is very similar to wedding ceremony in Western cultures. If the decision was to commit there is no going back, no matter how many retries it takes. The protocol has 2 crucial points of no return. If the coordinator dies, the nodes should communicate and come to some agreement. 2PC has bad reputation because of operational problems, low performance and primising more than it can deliver.
 
+## Chapter 10: Batch Processing
+
+> A system cannot be successful if it is too strongly influenced by a single person. Once tge initial design is complete and fairly robust, the real test begins as people with many different viewpoints undertake their own experiments.
+
+3 types of systems:
+
+- services (online systems) - a service waits for a request or instruction from a client to arrive, when received, the service tries to serve it as quickly as possible. 
+- batch processing (offline systems) - system takes a large amount of input data, runs a job to process it and produces some output data. Batch jobs are often schewduled to run periodically. The primary performance measure is throughput. 
+- stream processing systems (near-real-time systems) - something between online and offline systems. A stream processor consumes inputs and produces outputs (rather than responding to requests).
+
+Simple Batch Processing can be performed in UNIX via awk, grep and other command line tools (using a chain of commands).
+
+The Unix Philosophy - the idea of connecting programs with pipes. This is possible because of common interface (programs operating on file descriptors) of programs, which are small and are doing one thing. 
+
+The biggest limitation of UNIX tools is that they run only on a single machine and that is where tools like Hadoop come in. 
