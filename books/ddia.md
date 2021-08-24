@@ -524,3 +524,26 @@ Simple Batch Processing can be performed in UNIX via awk, grep and other command
 The Unix Philosophy - the idea of connecting programs with pipes. This is possible because of common interface (programs operating on file descriptors) of programs, which are small and are doing one thing. 
 
 The biggest limitation of UNIX tools is that they run only on a single machine and that is where tools like Hadoop come in. 
+
+MapReduce is a bit like Unix tools, but distributed across potentially thousands of machines. MapReduce jobs read and write files on a distributed filesystem, in Hadoop's implementation of MapReduce the filesystem is called HDFS (Hadoop Distributed File System - reimplementation of the Google File System).
+
+HDFS is based on the shared-nothing principle. HDFS consists of a deamon process running on each machine, exposing a network service that allows other nodes to access files stored on that machine. In order to tolerate machine and disk failures, file blocks are replicated on multiple machines. 
+
+To create a MapReduce job, you need to implement 2 callback functions:
+
+- mapper - called once for every inout record, its job is to extract the key and value from the input record. 
+- reducer - the framework tahes the key-value pairs produced by the mapper, collects all the values belonging to the same key and calls the reducer with an iterator over collection of values.
+
+Principle:
+
+> Put the computation near the data
+
+it saves copying the input file over the network, reducing network load and increasing locality.
+
+In order to achieve good throughput in a batch processing, the computation must be as much as possible local in one machine. 
+
+HDFS is somewhat like a distributed version of UNIX, where HDFS is  the filesystem and MapReduce is a quirky implementation of a UNIX process. When MapReduce was published is was not all new. Some concepts were already known - eg. massively parallel processing databases. Hadoop vs Distributed Databases:
+
+- databases require you to struicture data according to particular model, whereas files in a distributed filesystem are just byte sequences. Hadoop opened up the possibility of indiscriminately dumping data into HDFS and later figuring out how to process it further. MPP databases require careful, up-front modeling of the data. The Hadoop has often been used for implementing ETL processes, MapReduce jobs are written to clean up the data, transform it into a relational form and import it into an MPP data warehouse for analytic purposes.
+- MPP dfatabases are great because they take care of storage, query planning and execution, moreover they use SQL - powerful query language. On the other hand not all kinds of processing can be sensibly expressed as SQL queries (recommendation systems, full-text search or image analysis). MapReduce gave the engineers the ability to easily run their own code over large datasets.
+- MPP databases and MapReduce took different approach to handling faults and the use of memory and disk. Natch processes are less sensitive to faults than online systems, because they do not immediately affect users if they fail and they always can be run again. If a node fails, most MPP databases abort the entire quer, MapReduce can tolerate the failure of a map or reduce task. MapReduce dumps partial results to the disk so they can be restored after faulure. MPP databases are more willing to store data in the memory for faster access. MapReduce is designed to tolerate frequent unexpected task termination, not because hardware is unreliable, it is because the freedom to arbitrarilyterminate processes enables better resource utilisation in a computing cluster (Google came up wit this idea, this design was designed by their resource usage).
