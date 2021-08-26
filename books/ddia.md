@@ -547,3 +547,21 @@ HDFS is somewhat like a distributed version of UNIX, where HDFS is  the filesyst
 - databases require you to struicture data according to particular model, whereas files in a distributed filesystem are just byte sequences. Hadoop opened up the possibility of indiscriminately dumping data into HDFS and later figuring out how to process it further. MPP databases require careful, up-front modeling of the data. The Hadoop has often been used for implementing ETL processes, MapReduce jobs are written to clean up the data, transform it into a relational form and import it into an MPP data warehouse for analytic purposes.
 - MPP dfatabases are great because they take care of storage, query planning and execution, moreover they use SQL - powerful query language. On the other hand not all kinds of processing can be sensibly expressed as SQL queries (recommendation systems, full-text search or image analysis). MapReduce gave the engineers the ability to easily run their own code over large datasets.
 - MPP databases and MapReduce took different approach to handling faults and the use of memory and disk. Natch processes are less sensitive to faults than online systems, because they do not immediately affect users if they fail and they always can be run again. If a node fails, most MPP databases abort the entire quer, MapReduce can tolerate the failure of a map or reduce task. MapReduce dumps partial results to the disk so they can be restored after faulure. MPP databases are more willing to store data in the memory for faster access. MapReduce is designed to tolerate frequent unexpected task termination, not because hardware is unreliable, it is because the freedom to arbitrarilyterminate processes enables better resource utilisation in a computing cluster (Google came up wit this idea, this design was designed by their resource usage).
+
+MapReduce is just one of many possible programming models for distributed systems. MapReduce has problems with *materialisation* of the data - the process of writing out intermediate state files. Several new execution engines for distributed batch processing were developed in order to fix this problem with MapReduce (dataflow engines) - Spark, Tez, Flink. Dataflow engines provide several different options for connecting one operator's output to another's input - sort by by key, tak several inputs and to partition them, but skip the sorting, for broadcast hash joins, the same output from one operator can be sent to all partitions of the join operator. 
+
+Systems like Dryrad and Nephele offer several advantages compared to MapReduce model:
+
+- expensive work (eg. sorting) only performed in places where it is actually required
+- no unneccessary map tasks
+- intermediate state between operators kept in memory or written to local disk
+- operators can start executing as soosn as their input is ready
+- existing JVMs can be reused to run new operators
+
+Fully materialised intermediate state to a distributed filesystem makes fault tolerance fairly easy in MapReduce. Spark, FLink and Tes avoid writing intermediate state to HDFS. 
+
+MapReduce - is like writing the output of each command to a temporary file.
+
+Dataflow engines look like much more like UNIX pipes (final result still might be saved to HDFS).
+
+High level APIs like Hive, Pig, Cascading and Crunch became popular because programming MapReduce jobs is quite laborous. 
