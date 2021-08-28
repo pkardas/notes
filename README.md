@@ -35,7 +35,7 @@ Notes in this repo are focused mostly on Python, Machine Learning and Architectu
 
 [AWS Innovate: AI/ML Edition 2021](conferences/aws-innovate-ai-ml-21.md)
 
-[Brown Bag](conferences/brown-bag.md)
+[Brown Bag](conferences/brown-bags.md)
 
 ### Patterns
 
