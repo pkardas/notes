@@ -25,7 +25,7 @@ Notes in this repo are focused mostly on Python, Machine Learning and Architectu
 
 [Domain-Driven Design: Tackling Complexity in the Heart of Software](books/ddd.md)
 
-[Refactofing: Improving the Design of Existing Code](books/refactoring.md)
+[Refactoring: Improving the Design of Existing Code](books/refactoring.md)
 
 ### Courses
 
@@ -35,7 +35,7 @@ Notes in this repo are focused mostly on Python, Machine Learning and Architectu
 
 [AWS Innovate: AI/ML Edition 2021](conferences/aws-innovate-ai-ml-21.md)
 
-[Brown Bag](conferences/brown-bags.md)
+[Brown Bags](conferences/brown-bags.md)
 
 ### Patterns
 
