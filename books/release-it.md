@@ -148,3 +148,31 @@ Why slow responses are dangerous: because they trigger cascading failures, users
 >  Design with skepcitism, and you will achieve resilience. Ask "What can system X do to hurt me" and then design a way to dodge whatever wrench your supposed ally throws.
 
 Use realistic data volumes - typidal development and test data sets are too small to exhibit problems, you need production size-data to see what happens when your query returns a million rows that you turn into objects. Calls should be paginated. Do not rely on data providers, once thye will go *berserk* and fill up a table for no reason.
+
+## Chapter 5: Stability Patterns
+
+Healthy patterns to reduce, eliminate or mitigate the effects of cracks in the system. Apply patterns wisely to reduce the damage done by an individual failure.
+
+TIMEOUTS - Today every application is a distributed system, every system must grapple with the fundamental nature of networks - they are fallable. When any element breaks, code can't wait forever for a response that may never come - sooner or later. *Hope is not a design method*. 
+
+Timeout is a simple mechanism allowing you to stop waiting for an answer once you think it will not come. Well placed timeouts provide fault isolation - **a problem in some other service does not have to become your problem**.  
+
+Timeouts can also be relevant within a single service. Any resource pool can be exhausted. Any resource that block threads must have a timeout to ensure that calling threads eventually unblock. 
+
+Timeouts are often found in the company of retries, fast retries are very likely to fail again (wait between retries). 
+
+CIRCUIT BREAKER - in the past houses were cathing fire because of heated wires, when too many appliances were connected to the power source. Energy industry came up with a decive that fails first in order to prevent fire. 
+
+The circuit breaker exists to fail withour breaking the entire system, furthermore once the danger has passed , the circuit breaker can be reset to restore full function to the system.
+
+The same technique can be applied to software, dangerous operations can be wrapped with a component that can circumvent call when the system is not healthy.
+
+In closed state, the circuit breaker executes operations as usual (calls to another system or other internal operations that are subject to timeout or other failure), if it fails, the circuit breaker makes a note of the failure. Once the number of failures exceeds a threshold, the cicrcuit breaker opens the circuit. When the circuit is open, calls are suspended - they fail immediately. After some time the circuit decides the operation has a chance of succeeding so it goes to teh half-open state, if call succeeds - goes to the open state, if not - returns to the open state. 
+
+The circuit breaker can have different thresholds for different types of failures. Involve stakeholders to decide how system should behave when circuit is open. 
+
+How to measure number of failures - interesting idea is Leaky Bucket - separathe thread counting failures and periodically removing them. If buckets becomes empty quickly it means, the system is flooded with errors. 
+
+It should be possible to automatically open/close circuit. 
+
+Circuit Breaker - don't do it if it hurts. Use it with timeouts. Ensure proper reporting of opened circuit.
