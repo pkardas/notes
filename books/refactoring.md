@@ -192,4 +192,35 @@ COMBINE FUNCTIONS INTO CLASS - when group of functions operate closely together 
 
 COMBINE FUNCTIONS INTO TRANSFORM - instead of aggregating function into classes you can build functions that are enriching existing objects. Transformation is about producing essentialy the same thing with some additional information. 
 
-SPLIT PHASE - whenever you encounter code that does two things, look for a way to split it into separate modules. If some processing has 2 stages, make the difference explicit by turning then into 2 separate modules. 
+SPLIT PHASE - whenever you encounter code that does two things, look for a way to split it into separate modules. If some processing has 2 stages, make the difference explicit by turning them into 2 separate modules. 
+
+## Chapter 7: Encapsulation
+
+ENCAPSULATE RECORD - instead of using plain dictionaries, encapsulate them into object. With object you can hide what is stored and provide methods for all the values. The user does not have to care which value is calculated and which is stored. **Dictionaries are useful** in many programming situations **but they are not explicit about their fields**. Refactor implicit structures into explicit ones. 
+
+ENCAPSULATE COLLECTION - good idea is to ensure that the getter for the collection can not accidentialy change it. One way to proevent modification of a collection is to use some form of read-only proxy to the collection. Such proxy can allow all reads but block any write to the collection. The most popular approach is to provide a getting method for the collection, but make it return a copy of underlying collection. 
+
+Replacing `customer.orders.size` with `customer.num_of_orders` is not recommended, because adds a lot of extra code and cripples the easy composability of collection operations.
+
+If the team has the habit of not modyfying collections outside the original module, it might be enough.
+
+It is wose to be moderately paranoid about collections, rather copy them unnecessarily than debug errors due to unexpected modifications. For example instead of sorting in place return a new copy. 
+
+REPLACE PRIMITIVE WITH OBJECT - simple facts can be represented by simple data items such as numbers or strings, as developmenst proceeds, those simple items aren't so simple anymore. This is one of the most important refactorings. Starting with simple wrapping value with the object, you can extend the class with additional behaviours. 
+
+REPLACE TEMP WITH QUERY - using temporary variables allows to refer to the value while explaining its meaning and avoiding repeating the code that calculates it. But while using a variable is handy, it can often be worthwhile to go a step further and use a function instead, mostly when the variable needs to be calculated multiple times across the class. 
+
+EXTRACT CLASS - splic classes containing too much logic into separate classes. Good signs for doing so:
+
+- subset of the data and a subset of methods seem to go together
+- data that usually change together or are particularly dependent on each other
+
+Useful test: Ask question: what would happen if you remove a piece of data or a method, what other fields and methods would become nonsense?
+
+INILINE CLASS - inverse of *Extract Class*. Generally usefula as intermediate step when performing refactoring, eg. you put all attributes in one class, just to split them later. 
+
+HIDE DELEGATE - Example: `person.department.manager` should be replaced with `person.manager` (additional getter hiding delegate). Why? If delegate changes its interface, change has to propagated across all partos of the system.
+
+REMOVE MIDDLE MAN - inverse of *Hide Delegate*. Sometimes forwarding introduced by Hide Delegate, becomes irritating. Sometimes it is easier to call the delegate directly (wiolation of Law of Demeter, but author suggests better name: Occassionally Useful Suggestion of Demeter). 
+
+SUBSTITUTE ALGORITHM - There are usually several ways to do the same thing, same is with algorithms. When you learn more about the problem, you can realise there is an easier way way to do it. 
