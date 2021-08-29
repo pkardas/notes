@@ -176,3 +176,31 @@ How to measure number of failures - interesting idea is Leaky Bucket - separathe
 It should be possible to automatically open/close circuit. 
 
 Circuit Breaker - don't do it if it hurts. Use it with timeouts. Ensure proper reporting of opened circuit.
+
+BULKHEADS - in a ship, bulkheads prevents water from moving from one compartment to another. You can aploy the same technique, by partitioning the system, you can keep  a failure in one part of the system from destroying everything. This can be achieved by for example running application on multiple servers - if one fails we still have redundancy (eg. instances across zones and regions in AWS). 
+
+Bulkheads partitions capacity to preserve partial functionality when bad things happen. Granularity should be picked carefully - thread pools in the application, CPUs, servers in a cluster. Bulkheads are expecially useful in service-ordiented or microservice architectures in order to prevent chain reactions and entire company go down. 
+
+STEADY STATE - every time human touches a severer it is an opportunity for unforced errors. It is best to keep people off production systems to the greatest extent possible. People should treat setvers as "cattle", not "pets", they should not be logged to the server all the time to watch if everything is fine. 
+
+The Steady State pattern says that for every mechanism that accumulated a resource (log files, rows in the database, caches in memory), some other mechanism must recycle that resource. Several types of sludge that can accumulated and how to avoid the need for fiddling:
+
+- data purging - easy to do, however can be nasty, especially in relational databases there is a risk of leaving orphaned rows, also you need to make sure application will work when the data is gone. 
+- log files - logs are valuable source of information, however if left unchecked are risk. When logs fill up the filesystem, they jeopardize stability. Configure log file retention based on size. Probably best you can do is to store logs on some centralised server (especially if you are required to store lofs for years because of compliance regime). Logstash - centralised server for logs, where they can be indexed, searched and monitored. 
+- in-memory caching - inproper usage of caching is the major cause of memory leaks, which in turn lead to horrors like daily server restarts. Limit the amount of memory a cache can consume. 
+
+Steady State encourages better operational discipline by limiting the need for system administartors to log on to the production servers. 
+
+FAIL FAST - if the system can determine in advance that it will fail; at an operation, it is always better to fail fast - the caller does not have waste its capacity for waiting. No, you don't need Deep Learning team to tell whether it will fail. Example: if call requires database connection, application can quickly check if database is available. Other approach is to configure load balancer appropriately (no servers - reject request). Use request validation to know if data is correct.
+
+The Fail Fast pattern improves overall system stability by avoiding slow responses.
+
+LET IT CRASH - there is no way to test everything or predict all the ways a system can break. We must assume that errors will happen. 
+
+There must be a boundary for trashiness. We want to crash a component in isolation, therest of the system must protect itself from a cascading failure. In a microservice architecture, a whole instance of the service might be the right granularity.
+
+We must be able to get back to clean state and resume normal operation as quickly as possibile - otherwise we will see performance degradation. 
+
+Supervisors need to keep close track of how often they restart child processes. It might be necessary to restart supervisor. Numver of restarts can indicate that either the state is not sufficiently cleaned up of the system is in jeopardy and the supervisor is just masking the underlying problem. 
+
+The final element of a "let it crash" is reintegration - the instance must be able somehow to join the pool to accept the work. This can be done through healthchecks on instance level.
