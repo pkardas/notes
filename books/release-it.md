@@ -204,3 +204,47 @@ We must be able to get back to clean state and resume normal operation as quickl
 Supervisors need to keep close track of how often they restart child processes. It might be necessary to restart supervisor. Numver of restarts can indicate that either the state is not sufficiently cleaned up of the system is in jeopardy and the supervisor is just masking the underlying problem. 
 
 The final element of a "let it crash" is reintegration - the instance must be able somehow to join the pool to accept the work. This can be done through healthchecks on instance level.
+
+HANDSHAKING - can be most valuable when unbalanced capacities are leading to slow responses. If the sever can detect that it will not be able to meet its SLAs, then it should have some means to ask the caller to back off. It is an effective way to stop cracks from jumoping layers, as in the case of a cascading failure.
+
+The application can notify the load balancer through a health check that is is not able to take more requests (503 - Not Available), then the load balancer knows not to send any additional work to that particular server. 
+
+TEST HARNESSES - you can create test harnesses to emulate the remote system on the other end of each integration point. A good test harness should be as nasty and vicious as real-world systems will be. 
+
+A test harness runs as a separate server, so it is not obliged to conforms to the defined interface. It can provoke network errors, protocol errors or application level errors. 
+
+Consider building a test harness that substitutes for the remote end for every web services call. 
+
+Integration testing environments are good at examining failures only in the seventh layer of the OSI model (application layer) - and not even all of those. 
+
+The test harness can be designed like an ap;lication server - it can have pluggable behaviour for the tests that are related to the real application. Broadly speaking, a test harness leads toward "chaos engineering".
+
+The Test Harness pattern auguments other testing methods. It does not replace unit tests, acceptance test, penetration tests and so on. 
+
+DECOUPLING MIDDLEWARE - middleware is a graceless name fo tools that inhabit a singularly messy space - integrating systems that were never meant to work together. The connective tissue that bridges gaps between different islands of automation. 
+
+Middleware, integrates systems by passing data and events back and forth between systems, decouples them by letting the participating systems remove specific knowledge of and calls to the other systems. 
+
+Tightly copupled middleware amplifies shocks to the systems, synchronous calls are particularly vicious apmplifiers that facilitate cascading failures (this includes JSON over HTTP).
+
+Message oriented middleware decouples the endpoints in bots space and time, because the requesting system doesn;t just sit around and wait for a reply. This form of middleware cannot produce a cascading failure. 
+
+SHED LOAD - applications have zero control over their demand, at any moment, more that a bilion devices could make a request.
+
+Services should model TCPs approach: When load gets too high, start to refuse new requests for work. This is related to Fail Fast.
+
+The ideal way to define "load is too high" is for a service toi monitor its own performance relative to its SLA. When requests take longer than SLA, it is time to shed some load. 
+
+CREATE BACK PRESSURE - every performance problem starts with a queue backing up somewhere, if a queue is unbounded, it can consume all wvailable memory. As queue's length reaches toward infinity, response time also heads toward infinity. 
+
+Blocking the producer is akind of flow control. It allows the queue to apply "back pressure" upstream. Back pressure propagates all the way to the ultimate client, who will be throttled down in speed until the queue releases.
+
+TCP uses back pressure - once the window is full, senders are not allowed to send anything until released. 
+
+GOVERNOR - machines are great ant performing repetetive tasks, humans are great at perciving high level situation. 
+
+In 18th century steam engineers discovered it is possible to run machines so fast that the metal breaks. The solution was the governor - a person which limits the speed of an engine.
+
+We can create governors to slow down the rate of actions. A governor is stateful and time-aware, it knows what actions have been taken over a period of time. (Reddit uses a governor to slow down the autoscaler, by adding logic that says it can only shut down a certain percentage of instances at a time).
+
+The whole point of a governor is to slow things down enough for humans to get involved. 
