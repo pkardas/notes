@@ -58,3 +58,21 @@ Implementation model should not be exposed to the user.
 
 People responsible for the implementation should participate in modeling. Strict separation of responsibilities is harmful. Modeling and implementation are couples in model-driven design. Any technical person contributing to the model must spend some time touching the code. Every developer must be involved in some level of discussion about the model.
 
+## Chapter 4: Isolating the Domain
+
+Layered Architecture - the essential principle is that any element of a layer depends only on other elements in the same layer or on elements of the layers beneath it. Each layer specializes in a particular aspect of a computer program. Most commonly used layers:
+
+- UI (Presentation) Layer - showing information to the user and interpreting the user's commands.
+- Application Layer - this layer does not contain business logic, but only coordinates tasks and delegates work to collaborations of domain objects in the next layer down.
+- Domain (Model) Layer - responsible for representing concepts of business, information about business situation and busness rules. This layer is the heart of business software.
+- Infrastructure Layer - generic technical capabilities that support the higher layers (message sending, drawing widgets on the UI, ...), may also support the pattern of interactions between the 4 layers through an architectural framework.
+
+Partition a complex program into layers, develop a design within each layer that is cohesive and that depends only on the layers below. Concentrate all the code related the domain model in one layer and isolate it from the rest of the user interface, application and infrastructure code.
+
+The domain models, free of the responsibility of displaying themselves, storing themselves, managing application tasks and so forth, can be focused on expressing the domain model. This allows to evolve model to be rich enough and clear enough to capture essential business knowledge and put it to work.
+
+Such separation allows a much cleaner design for each layer, especially because they tend to evolve at different pace. 
+
+Upper layers can user or manipulate elements of lower ones straightforwardly by calling their public interfaces.
+
+Domain-driven design requires only one particular layer to exist. 
