@@ -545,7 +545,7 @@ In order to achieve good throughput in a batch processing, the computation must 
 HDFS is somewhat like a distributed version of UNIX, where HDFS is  the filesystem and MapReduce is a quirky implementation of a UNIX process. When MapReduce was published is was not all new. Some concepts were already known - eg. massively parallel processing databases. Hadoop vs Distributed Databases:
 
 - databases require you to struicture data according to particular model, whereas files in a distributed filesystem are just byte sequences. Hadoop opened up the possibility of indiscriminately dumping data into HDFS and later figuring out how to process it further. MPP databases require careful, up-front modeling of the data. The Hadoop has often been used for implementing ETL processes, MapReduce jobs are written to clean up the data, transform it into a relational form and import it into an MPP data warehouse for analytic purposes.
-- MPP dfatabases are great because they take care of storage, query planning and execution, moreover they use SQL - powerful query language. On the other hand not all kinds of processing can be sensibly expressed as SQL queries (recommendation systems, full-text search or image analysis). MapReduce gave the engineers the ability to easily run their own code over large datasets.
+- MPP databases are great because they take care of storage, query planning and execution, moreover they use SQL - powerful query language. On the other hand not all kinds of processing can be sensibly expressed as SQL queries (recommendation systems, full-text search or image analysis). MapReduce gave the engineers the ability to easily run their own code over large datasets.
 - MPP databases and MapReduce took different approach to handling faults and the use of memory and disk. Natch processes are less sensitive to faults than online systems, because they do not immediately affect users if they fail and they always can be run again. If a node fails, most MPP databases abort the entire quer, MapReduce can tolerate the failure of a map or reduce task. MapReduce dumps partial results to the disk so they can be restored after faulure. MPP databases are more willing to store data in the memory for faster access. MapReduce is designed to tolerate frequent unexpected task termination, not because hardware is unreliable, it is because the freedom to arbitrarilyterminate processes enables better resource utilisation in a computing cluster (Google came up wit this idea, this design was designed by their resource usage).
 
 MapReduce is just one of many possible programming models for distributed systems. MapReduce has problems with *materialisation* of the data - the process of writing out intermediate state files. Several new execution engines for distributed batch processing were developed in order to fix this problem with MapReduce (dataflow engines) - Spark, Tez, Flink. Dataflow engines provide several different options for connecting one operator's output to another's input - sort by by key, tak several inputs and to partition them, but skip the sorting, for broadcast hash joins, the same output from one operator can be sent to all partitions of the join operator. 
@@ -565,3 +565,40 @@ MapReduce - is like writing the output of each command to a temporary file.
 Dataflow engines look like much more like UNIX pipes (final result still might be saved to HDFS).
 
 High level APIs like Hive, Pig, Cascading and Crunch became popular because programming MapReduce jobs is quite laborous. 
+
+## Chapter 11: Stream Processing
+
+> Complex systems always evolve from simple system that works. A complex system designed from scratch never works and cannot be made to work.
+
+Batch processing must artificially divide data into chunks of fixed duration (for example: processing a day's worth of data at the end of every day). The problem with daily batch processes is that changes in the input are only reflected in the output a day later, which is too slow for many impatient users. Delay can be reduced by running the processing more frequently.
+
+Stream processing - processing every event as it happens. "Stream" refers to data that is incrementally made available over time.
+
+Event - a small, self-contained, immutable object containing the details of something that happened at some point in time. An event usually contains a timestamp indicating when it happened (according time-of-day clock). Related events are usually grouped together into a topic or stream.
+
+Polling the datastore to check for events that have appeared since it last ran becomes expensive if the datastore is not designed for this kind of usage. It is better for consumers to be notified when new events appear.
+
+Common approach for notifying consumers about new events is to use a messaging system - producer sends a message containing the event, which is then pushed to consumers.
+
+Direct messaging - direct communication between producers and consumers without going via intermediary nodes. Brokerless libraries: ZeroMQ, nanomsg - pub-sub messaging over TCP or IP multicast. StatsD and Brubeck use inreliable UDP messaging for collecting metrics from all machines on the network and monitoring them. Webhooks - a pattern in which a callback URL of one service is registered with another service, and it makes a request to that URL whenever an event occurs. 
+
+Message brokers - kind of database, that is optimised for handling message streams. It runs as a server, with producers and consumers connecting to it as clients. Producers write messages, consumers receive them by reading them from the broker. By centralising the data in the broker, these systems can more easily tolerate clients that come and go. A consequence of queueing is also that consumers are generally asynchronous: when a producer send a message it normally only waits for the broker to confirm that it has buffered the message and it does not wait for the message to be consumed. 
+
+Multiple consumers - when mulstiple consumers read messages in the same topic, two maing patterns of messaging are used:
+
+- load balancing - each message is delivered to one of the consumers, so the consumers can share the work of processing the messages in the topic.This pattern is useful then the messages are expensive to process and you want to bale to add consumers to parallelize the processing.
+- fan-out - each message is delivered to all of the consumers, equivalent of having several different batch jobs that read the same input file.
+
+Message brokers use acknowledgements: a client must explicitly tell the broker when it has finished processing a message so that the broker can remove it from the queue. 
+
+Messages can go out of order because for example network problem and lack of acknowledgement. 
+
+Log-based message brokers - durable storage approach of databases combined with the low-latency notification facilities of messaging. A log is simply an append-only sequence of records on disk. A producer can send a message by appending it to the end of the log and a consumer can receive message by reading the log sequentially. 
+
+In order to scale to higher throughput that a single disk can offer, the log can be partitioned. Different partitions can be hosted on different machines. A topic can then be defined as a group of partitions that carry messages of the same type.
+
+Apache Kafka, Amazon Kinsesis Streams and Twitter's DistributedLog are log-based message brokers. Google Pub/Sub is architecturally similar but exposes a JMS-style API rather than log abstraction.
+
+Even though these message brokers write all messages to disk, they are able to achieve throughput of millios of messages per second by partitioning across multiple machines.
+
+Log-based approach trivially supports fan-out messaging.  
