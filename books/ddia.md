@@ -602,3 +602,17 @@ Apache Kafka, Amazon Kinsesis Streams and Twitter's DistributedLog are log-based
 Even though these message brokers write all messages to disk, they are able to achieve throughput of millios of messages per second by partitioning across multiple machines.
 
 Log-based approach trivially supports fan-out messaging.  
+
+Change Data Capture - the process of observing all data changes written to a database and extracting them in a form in which they can be replicated to other systems. You can capture the changes in a database and continually apply the same changes to search index. 
+
+Event Sourcing - involves storing all changes to the application state as log of change events. Events are designed to reflect things that happened at the application level, rather than low-level state changes. Powerful technique for data modeling: from an application point of view it is more meaningful to record the user's actions as immutable events, rather than recording the effect of those actions on a mutable database: "student cancelled their course enrollment" vs "one entry was deleted from the entollments table. Event Store is a specialised database to support applications using event sourcing. 
+
+Applications that use event sourcing typically have some mechanism for storing snapshots of the current state that is derrived from the log of events, so they don't need to repeatedly reprocess the full log. 
+
+CQRS - Command Query Responsibility Segregation - separating the form in which data is written from the form it is read, by allowing several different read views. 
+
+Streams can be used to produce other, derived streams. Stream processing has long been used for monitoring purposes: fraud detection, trading system examining price changes, machines monitoring, monitoring in military. 
+
+Complex Event Processing (CEP) - an approach developed in 1990s for analysing event streams, expecially geared toward the kind of application that requires searching for certain event patterns. CEP allows you to specify rules to search for certain patterns of events in a stream. CEP systems use a high-level declarative query language like SQL or GUI.
+
+Stream processing is used also for analytics on streams, boundary between CEP and stream analytics is blurry. Frameworks: Apache Storm, Spark Streaming, Flink, Concord, Samza, Kafka Streams, GOogle Cloud Dataflow, Azure Stream Analytics.
