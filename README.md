@@ -27,9 +27,7 @@ Notes in this repo are focused mostly on Python, Machine Learning and Architectu
 
 [Refactoring: Improving the Design of Existing Code](books/refactoring.md)
 
-### Courses
-
-[Course @ FastAI](courses/fast-ai.md)
+### Case Studies
 
 ### Conferences
 
@@ -43,8 +41,6 @@ Notes in this repo are focused mostly on Python, Machine Learning and Architectu
 
 [Architecture](patterns/architecture.md)
 
-[Messaging](patterns/messaging.md)
-
 ### Teaching
 
 > *The best way to learn is to teach* ~ Frank Oppenheimer 
@@ -55,9 +51,12 @@ Hence this *subsection* is a part of `learning` repository :slightly_smiling_fac
 
 [Python Intermediate](teaching/python-intermediate/)
 
+### Courses
+
+[Course @ FastAI](courses/fast-ai.md)
+
 --
 
 ### Tools
 
 Typora - for notes. Keynote - for presentations.
-
