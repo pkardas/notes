@@ -615,4 +615,25 @@ Streams can be used to produce other, derived streams. Stream processing has lon
 
 Complex Event Processing (CEP) - an approach developed in 1990s for analysing event streams, expecially geared toward the kind of application that requires searching for certain event patterns. CEP allows you to specify rules to search for certain patterns of events in a stream. CEP systems use a high-level declarative query language like SQL or GUI.
 
-Stream processing is used also for analytics on streams, boundary between CEP and stream analytics is blurry. Frameworks: Apache Storm, Spark Streaming, Flink, Concord, Samza, Kafka Streams, GOogle Cloud Dataflow, Azure Stream Analytics.
+Stream processing is used also for analytics on streams, boundary between CEP and stream analytics is blurry. Frameworks: Apache Storm, Spark Streaming, Flink, Concord, Samza, Kafka Streams, Google Cloud Dataflow, Azure Stream Analytics.
+
+Types of time windows:
+
+- tumbling windows - has a fixed length, and every event belongs to exactly one window. Fo example 1-minute tumbling window, events with timestamp between 10:03:00 and 10:03:59 are grouped into one window.
+- hopping window - has a fixed length, but allows windows to overlap in order to provide some smoothing.
+- sliding window - constains all the events that occur within some interval of each other. FOr example. a 5-minute sliding window would cover events at 10":03:39 and 10:08:12 because they are less than 5 minutes apart.
+- session window - has no fixed duration, instead it is defined by grouping together all events for the same user that occur closely together in time, and the window ends when the user has been inactive for some time.
+
+Types of stream joins:
+
+- stream-stream join (window join) - you need to choose a suitable window for the join (seconds, days weeks between events), also be careful about ordering of received events.
+- stream-table join (stream enrichment) - to perform this join, the stream process needs to look at one activity event at a time, look up someting in the database (local or remote)
+- table-table join (materialised view maintenance) - twitter example: when user wants to see their feed, it is too expensive to load all profiles' most recent tweets, instead we want a timeline cache, so reading is a simple lookup. To implement cache maintenance (append to cache new tweets, remove deleted, ...) you need streams of events for tweets.
+
+If events on different streams happen around a similar time, in which order they are processed? If the ordering of events across streams is undetermined, the join becomes nondeterministic, which means you cannot rerun the same job on the same input and get the same result. In data warehouses, this issue is known as a slowly changing dimension (SCD). It is often addressed by using a unique identifier for a particular version of the joined record.
+
+Batch processing frameworks can tolerate faults fairly easily. In stream processing, fault tolerance is less straightforward to handle. Possible approaches:
+
+-  microbatching and checkpointing - break the stream into small blocks, and treat each block like a miniature batch process (used in Spark Streaming, batch approx. 1 second long). Apache Flink perioducally generate rolling checkpoints of state and write them to durable storage.
+- atomic commit revisited - in order to give the appearance of exactly-once processing in the presence of faults, we need to ensure that all outputs and side effects of processing tahe effect if and only if the processing is successful. Exactly-once message processing in the context of distributed transactions and two-phase commit.
+- idempotence - our goal is to discard the partial output of any failed tasks so that they can be safely retried without taking effect twice. Distributed transactions are the one way of achieving this, but anouther way is to rely on idempotence. An idempotent operation is one that you can perform multiple times, and it has the same effect as if you performed it only once (eg. setting key in a key-value store, incrementing counter value is not idempotent). Even if an operation is not naturally idempotent, it can often be made idempotent with a bit of extra metadata.
