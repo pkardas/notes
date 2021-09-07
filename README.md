@@ -11,21 +11,21 @@ Notes in this repo are focused mostly on Python, Machine Learning and Architectu
 
 ### Books
 
-[Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems](books/hands-on-ml.md)
+🚫 [Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems](books/hands-on-ml.md)
 
-[Clean Code: A Handbook of Agile Software Craftsmanship](books/clean-code.md)
+✅ [Clean Code: A Handbook of Agile Software Craftsmanship](books/clean-code.md)
 
-[Code Complete: A Practical Handbook of Software Construction](books/code-complete.md)
+🚫 [Code Complete: A Practical Handbook of Software Construction](books/code-complete.md)
 
-[Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems](books/ddia.md)
+👀 [Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems](books/ddia.md)
 
-[Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics and Speech Recognition](books/nlp-book.md)
+✅ [Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics and Speech Recognition](books/nlp-book.md)
 
-[Release It! Design and Deploy Production-Ready Software](books/release-it.md)
+👀 [Release It! Design and Deploy Production-Ready Software](books/release-it.md)
 
-[Domain-Driven Design: Tackling Complexity in the Heart of Software](books/ddd.md)
+👀 [Domain-Driven Design: Tackling Complexity in the Heart of Software](books/ddd.md)
 
-[Refactoring: Improving the Design of Existing Code](books/refactoring.md)
+👀 [Refactoring: Improving the Design of Existing Code](books/refactoring.md)
 
 ### Case Studies
 
