@@ -1,31 +1,22 @@
 ## My learning notes
 
-This repository has the following purposes:
-
-- a notebook - for quicker understanding of what I read
-- a summary - to quickly go back to what I read
-- a log - for the record when and what I read
-- a contract - to be systematic in reading
-
-Notes in this repo are focused mostly on Python, Machine Learning and Architecture.
-
 ### Books
-
-🚫 [Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems](books/hands-on-ml.md)
-
-✅ [Clean Code: A Handbook of Agile Software Craftsmanship](books/clean-code.md)
-
-🚫 [Code Complete: A Practical Handbook of Software Construction](books/code-complete.md)
-
-👀 [Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems](books/ddia.md)
-
-✅ [Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics and Speech Recognition](books/nlp-book.md)
-
-👀 [Release It! Design and Deploy Production-Ready Software](books/release-it.md)
 
 👀 [Domain-Driven Design: Tackling Complexity in the Heart of Software](books/ddd.md)
 
 👀 [Refactoring: Improving the Design of Existing Code](books/refactoring.md)
+
+👀 [Release It! Design and Deploy Production-Ready Software](books/release-it.md)
+
+✅ [Clean Code: A Handbook of Agile Software Craftsmanship](books/clean-code.md)
+
+✅ [Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems](books/ddia.md)
+
+✅ [Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics and Speech Recognition](books/nlp-book.md)
+
+🚫 [Code Complete: A Practical Handbook of Software Construction](books/code-complete.md)
+
+🚫 [Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems](books/hands-on-ml.md)
 
 ### Case Studies
 
