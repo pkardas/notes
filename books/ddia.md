@@ -635,5 +635,35 @@ If events on different streams happen around a similar time, in which order they
 Batch processing frameworks can tolerate faults fairly easily. In stream processing, fault tolerance is less straightforward to handle. Possible approaches:
 
 -  microbatching and checkpointing - break the stream into small blocks, and treat each block like a miniature batch process (used in Spark Streaming, batch approx. 1 second long). Apache Flink perioducally generate rolling checkpoints of state and write them to durable storage.
-- atomic commit revisited - in order to give the appearance of exactly-once processing in the presence of faults, we need to ensure that all outputs and side effects of processing tahe effect if and only if the processing is successful. Exactly-once message processing in the context of distributed transactions and two-phase commit.
-- idempotence - our goal is to discard the partial output of any failed tasks so that they can be safely retried without taking effect twice. Distributed transactions are the one way of achieving this, but anouther way is to rely on idempotence. An idempotent operation is one that you can perform multiple times, and it has the same effect as if you performed it only once (eg. setting key in a key-value store, incrementing counter value is not idempotent). Even if an operation is not naturally idempotent, it can often be made idempotent with a bit of extra metadata.
+-  atomic commit revisited - in order to give the appearance of exactly-once processing in the presence of faults, we need to ensure that all outputs and side effects of processing tahe effect if and only if the processing is successful. Exactly-once message processing in the context of distributed transactions and two-phase commit.
+-  idempotence - our goal is to discard the partial output of any failed tasks so that they can be safely retried without taking effect twice. Distributed transactions are the one way of achieving this, but anouther way is to rely on idempotence. An idempotent operation is one that you can perform multiple times, and it has the same effect as if you performed it only once (eg. setting key in a key-value store, incrementing counter value is not idempotent). Even if an operation is not naturally idempotent, it can often be made idempotent with a bit of extra metadata.
+
+## Chapter 12: The Future of Data Systems
+
+The lambda architecture - incoming data should be recorded by appending immutable events to an always-growing dataset, similarly to event sourcing. From these events, read-optimised views are derived. The lambda architecture proposes running two different systems in parallel. In the lambda approach, the stream processor consumes the events and quickly produces an approximate update to the view, the batch processor later consumes the same set of events and produces a corrected version of derived view.
+
+Federated databases - unifying reads - it is possible to provide a unified query interface to a wide variety of underlying storage engines and processing methods - an approach known as a federated database or polystore.
+
+Unbundled databases - unifying writes - making it easier to reliably plug together storage systems is like unbundling a database's index-maintenance features in a way that can synchronize writes across disparare technologies. 
+
+Hardware is not quite the perfect abstraction that it may seem. Random bit-flips are very rare on modern hardware but can happen. Even software lik MySQL or PostgreSQL can have bugs.
+
+Large scale storage systems like HDFS or Amazon S3 do not fully trust disks: they run background processes that continually read back files, compare them to other replicas and move files from one disk to another, in order to mitigate the risk of silent corruption. 
+
+ACID databases has led us toward developing applications on the basis of blindly trusting technology. Since the technology we trusted worked well enough most of time, auditing mechanisms were deemed woth the investment. 
+
+Having continuous end-to-endintegrity checks gives you increased confidence about the correctness of your systems, which in turn allows you to move faster (loke automated testing software).
+
+It is not sufficientfor software engineers to focus exclusively on the technology and ignore its ethical consequences. Users are humans and human dignity is paramount. 
+
+Algorithmic prison - systematically being excluded from jobs, air travel, insurance coverage, property rentals, financial services, ... because algorithm said NO. In countries that respect human rights, the criminal system presumes innocence until proven guilty, on the other hand automated systems can systematically exclude a person from participating in society without any proof of guilt and with little chance of appeal.
+
+Decisions made by an alggorithm are not necessarily any better or worse than those made by a human. Every person is likely to have biases. In many countries, anti-discrimination laws prohibit treating people differently depending on protected traits (ethnicity, age, gender, sexuality, disability, beliefs).
+
+Automated decision making opens the question of responsibility and accountability. Who is responsible if self-driving car causes an accident? 
+
+Besides the problems of predictive analysis, there are ethical problems with data collection itself. Though experiment, whenever you see "data" (eg. data driven company), replaceit with the word survelience (eg. survelience driven company). Even the most totalitarian and presessivq regimes could only dream of putting a microphone in every room and forcing every person to constantly carry a device capable of tracking their location and movements. 
+
+Declining to use a service due to its tracking of users is only an option for the small number of people who are priviliged enough to have the time and knowledge to understand its privacy policy and who are can afford to potentially miss out on social participation opportunities.
+
+When collecting data, we need to consider not just today's political environments, but all possible future governments.  
