@@ -16,9 +16,9 @@ Effective modeling:
 - Distilling the model - drop unneeded concepts
 - Brainstorming and experimenting
 
-Effective domain modelers are knowledge crunchers (take a torrent of information and prove it for relevant trickle). Knowledge crunching is a collaborative work, typically led by developers in cooperation with domain experts. Early versions or prototypes feed experience back into the team and change interpretations.
+Effective domain modellers are knowledge crunchers (take a torrent of information and prove it for relevant trickle). Knowledge crunching is a collaborative work, typically led by developers in cooperation with domain experts. Early versions or prototypes feed experience back into the team and change interpretations.
 
-All projects lack knowledge - people leave, team reorganisations happen - in general, knowledge is lost. Highly productive teams grow their knowledge continuously - improve technical knowledge along with general domain-modeling skills, but also seriously learn about specific domain they are working on. The accumulated knowledge makes them effective knowledge crunchers.
+All projects lack knowledge - people leave, team reorganisations happen - in general, knowledge is lost. Highly productive teams grow their knowledge continuously - improve technical knowledge along with general domain-modelling skills, but also seriously learn about specific domain they are working on. The accumulated knowledge makes them effective knowledge crunchers.
 
 Software is unable to fill in gaps with common sense - that is why knowledge crunching is important.
 
@@ -52,7 +52,7 @@ Tightly relating the code to an underlying model gives the code meaning and make
 
 Model-Driven Design - discards the dichotomy of analysis model and design to search out a single model that serves both purposes (ubiquitous language). Each object in the design plays a conceptual role described in the model. Model needs to be revised to reflect the model in a very literal way, so mapping is obvious. The code becomes expression of the model.
 
-Model-Drivenn Design is hard to accomplish in procedural languages like C or Fortran. This approach is reserved for object-oriented programming languages. 
+Model-Driven Design is hard to accomplish in procedural languages like C or Fortran. This approach is reserved for object-oriented programming languages. 
 
 Implementation model should not be exposed to the user.
 
@@ -60,11 +60,11 @@ People responsible for the implementation should participate in modeling. Strict
 
 ## Chapter 4: Isolating the Domain
 
-Layered Architecture - the essential principle is that any element of a layer depends only on other elements in the same layer or on elements of the layers beneath it. Each layer specializes in a particular aspect of a computer program. Most commonly used layers:
+Layered Architecture - the essential principle is that any element of a layer depends only on other elements in the same layer or on elements of the layers beneath it. Each layer specialises in a particular aspect of a computer program. Most commonly used layers:
 
 - UI (Presentation) Layer - showing information to the user and interpreting the user's commands.
 - Application Layer - this layer does not contain business logic, but only coordinates tasks and delegates work to collaborations of domain objects in the next layer down.
-- Domain (Model) Layer - responsible for representing concepts of business, information about business situation and busness rules. This layer is the heart of business software.
+- Domain (Model) Layer - responsible for representing concepts of business, information about business situation and business rules. This layer is the heart of business software.
 - Infrastructure Layer - generic technical capabilities that support the higher layers (message sending, drawing widgets on the UI, ...), may also support the pattern of interactions between the 4 layers through an architectural framework.
 
 Partition a complex program into layers, develop a design within each layer that is cohesive and that depends only on the layers below. Concentrate all the code related the domain model in one layer and isolate it from the rest of the user interface, application and infrastructure code.
