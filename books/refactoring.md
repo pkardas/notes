@@ -1,6 +1,6 @@
 [go back](https://github.com/pkardas/learning)
 
-# Refactofing: Improving the Design of Existing Code
+# Refactoring: Improving the Design of Existing Code
 
 Book by Martin Fowler (Second Edition)
 
@@ -97,7 +97,7 @@ MYSTERIOUS NAME - code needs to be mundane and clear, good name can save hours o
 
 DUPLICATED CODE - if you see the same code structure in more than one place, your program will be better if you find a way to unify them., duplication means every time you read these copies you need to read them carefully and look for differences. 
 
-LONG FUNCTION - the programs that live best and longest are those with short functions. Whenever you feel you need to comment something - decompose. Even a single line is worth extracting if it needs a explanation. Conditionals and loops are also signs for extractions.
+LONG FUNCTION - the programs that live best and longest are those with short functions. Whenever you feel you need to comment something - decompose. Even a single line is worth extracting if it needs an explanation. Conditionals and loops are also signs for extractions.
 
 LONG PARAMETER LIST - long lists of parameters are confusing - pass an object, use query on existing object or combine function on object.
 
@@ -111,7 +111,7 @@ SHOTGUN SURGERY - every time you make a change, you have to make a lot of little
 
 FEATURE ENVY - for example: a function in one module spends more time communicating with functions or data inside another module than it does within its own module - the function clearly wants to be with the data, so move function to get it there. Put things together that change together. 
 
-DATA CLUMPS - some items enjoy hanging around together, same three or four data items appare together in lots of places - you can group them together. 
+DATA CLUMPS - some items enjoy hanging around together, same three or four data items appear together in lots of places - you can group them together. 
 
 PRIMITIVE OBSESSION - many programmers are reluctant to create their own fundamental types which are useful for their domain.
 
@@ -165,13 +165,13 @@ EXTRACT FUNCTION - write small functions.
 
 INLINE FUNCTIONS - inverse of *extract function*, sometimes function body is as clear as the name. Helpful when you need to group functions - first you join them and then extract functions. 
 
-EXTRACT VARIABLE - inverse of *inline variable*, expressions can become very complex and hard to readm in such situations, local variables may help break the expression down into something more manageable. 
+EXTRACT VARIABLE - inverse of *inline variable*, expressions can become very complex and hard to read in such situations, local variables may help break the expression down into something more manageable. 
 
 INLINE VARIABLE - inverse of *extract variable*, sometimes name doesn't communicate more than the expression itself.
 
-CHANGE FUNCTION DECLARATION - if you see a function with the wrong name, change it as soon you understand what a better name would be, so next time you are looking at the code you don't have to figure out wht is going on. Often a good way of improving name is to write a comment to describe the function's purpose - then turn that comment into a name (applies to names as well). Adding / removing parameters can be done through introducing intremediate wrapping function. 
+CHANGE FUNCTION DECLARATION - if you see a function with the wrong name, change it as soon you understand what a better name would be, so next time you are looking at the code you don't have to figure out what is going on. Often a good way of improving name is to write a comment to describe the function's purpose - then turn that comment into a name (applies to names as well). Adding / removing parameters can be done through introducing intermediate wrapping function. 
 
-ENCAPSULATE VARIABLE - encapsulate acces to the variable using functions, instead of accessing data directly, do this through single access point - function. Keeping data encapsulated is less important for immutabe data. 
+ENCAPSULATE VARIABLE - encapsulate access to the variable using functions, instead of accessing data directly, do this through single access point - function. Keeping data encapsulated is less important for immutable data. 
 
 RENAME VARIABLE - variables can do a lot to explain what programmer is up to (if he names it well). 
 
@@ -184,13 +184,13 @@ def amountInvoiced(start: date, end: date)
 def amountInvoiced(date_range: Range)
 ```
 
-Grouping data into a structure is valueable because it makes explicit the relationship between the data items and reduces the size of parameter lists. Grouping helps to identify new structures. 
+Grouping data into a structure is valuable because it makes explicit the relationship between the data items and reduces the size of parameter lists. Grouping helps to identify new structures. 
 
 COMBINE FUNCTIONS INTO CLASS - when group of functions operate closely together on a common body of data, there is an opportunity to form a class. 
 
 > Uniform access principle - All services offered by a module should be available through a uniform notation, which does not betray whether they are implemented through storage or through computation. With this, the client of the class can't tell whether the *value* is a field or derived value.
 
-COMBINE FUNCTIONS INTO TRANSFORM - instead of aggregating function into classes you can build functions that are enriching existing objects. Transformation is about producing essentialy the same thing with some additional information. 
+COMBINE FUNCTIONS INTO TRANSFORM - instead of aggregating function into classes you can build functions that are enriching existing objects. Transformation is about producing essentially the same thing with some additional information. 
 
 SPLIT PHASE - whenever you encounter code that does two things, look for a way to split it into separate modules. If some processing has 2 stages, make the difference explicit by turning them into 2 separate modules. 
 
@@ -198,29 +198,51 @@ SPLIT PHASE - whenever you encounter code that does two things, look for a way t
 
 ENCAPSULATE RECORD - instead of using plain dictionaries, encapsulate them into object. With object you can hide what is stored and provide methods for all the values. The user does not have to care which value is calculated and which is stored. **Dictionaries are useful** in many programming situations **but they are not explicit about their fields**. Refactor implicit structures into explicit ones. 
 
-ENCAPSULATE COLLECTION - good idea is to ensure that the getter for the collection can not accidentialy change it. One way to proevent modification of a collection is to use some form of read-only proxy to the collection. Such proxy can allow all reads but block any write to the collection. The most popular approach is to provide a getting method for the collection, but make it return a copy of underlying collection. 
+ENCAPSULATE COLLECTION - good idea is to ensure that the getter for the collection can not accidentally change it. One way to proevent modification of a collection is to use some form of read-only proxy to the collection. Such proxy can allow all reads but block any write to the collection. The most popular approach is to provide a getting method for the collection, but make it return a copy of underlying collection. 
 
 Replacing `customer.orders.size` with `customer.num_of_orders` is not recommended, because adds a lot of extra code and cripples the easy composability of collection operations.
 
-If the team has the habit of not modyfying collections outside the original module, it might be enough.
+If the team has the habit of not modifying collections outside the original module, it might be enough.
 
-It is wose to be moderately paranoid about collections, rather copy them unnecessarily than debug errors due to unexpected modifications. For example instead of sorting in place return a new copy. 
+It is worse to be moderately paranoid about collections, rather copy them unnecessarily than debug errors due to unexpected modifications. For example instead of sorting in place return a new copy. 
 
-REPLACE PRIMITIVE WITH OBJECT - simple facts can be represented by simple data items such as numbers or strings, as developmenst proceeds, those simple items aren't so simple anymore. This is one of the most important refactorings. Starting with simple wrapping value with the object, you can extend the class with additional behaviours. 
+REPLACE PRIMITIVE WITH OBJECT - simple facts can be represented by simple data items such as numbers or strings, as development proceeds, those simple items aren't so simple anymore. This is one of the most important refactorings. Starting with simple wrapping value with the object, you can extend the class with additional behaviours. 
 
 REPLACE TEMP WITH QUERY - using temporary variables allows to refer to the value while explaining its meaning and avoiding repeating the code that calculates it. But while using a variable is handy, it can often be worthwhile to go a step further and use a function instead, mostly when the variable needs to be calculated multiple times across the class. 
 
-EXTRACT CLASS - splic classes containing too much logic into separate classes. Good signs for doing so:
+EXTRACT CLASS - split classes containing too much logic into separate classes. Good signs for doing so:
 
 - subset of the data and a subset of methods seem to go together
 - data that usually change together or are particularly dependent on each other
 
 Useful test: Ask question: what would happen if you remove a piece of data or a method, what other fields and methods would become nonsense?
 
-INILINE CLASS - inverse of *Extract Class*. Generally usefula as intermediate step when performing refactoring, eg. you put all attributes in one class, just to split them later. 
+INLINE CLASS - inverse of *Extract Class*. Generally useful as intermediate step when performing refactoring, eg. you put all attributes in one class, just to split them later. 
 
-HIDE DELEGATE - Example: `person.department.manager` should be replaced with `person.manager` (additional getter hiding delegate). Why? If delegate changes its interface, change has to propagated across all partos of the system.
+HIDE DELEGATE - Example: `person.department.manager` should be replaced with `person.manager` (additional getter hiding delegate). Why? If delegate changes its interface, change has to propagated across all parts of the system.
 
-REMOVE MIDDLE MAN - inverse of *Hide Delegate*. Sometimes forwarding introduced by Hide Delegate, becomes irritating. Sometimes it is easier to call the delegate directly (wiolation of Law of Demeter, but author suggests better name: Occassionally Useful Suggestion of Demeter). 
+REMOVE MIDDLE MAN - inverse of *Hide Delegate*. Sometimes forwarding introduced by Hide Delegate, becomes irritating. Sometimes it is easier to call the delegate directly (violation of Law of Demeter, but author suggests better name: Occasionally Useful Suggestion of Demeter). 
 
 SUBSTITUTE ALGORITHM - There are usually several ways to do the same thing, same is with algorithms. When you learn more about the problem, you can realise there is an easier way way to do it. 
+
+## Chapter 8: Moving Features
+
+Another important part of refactoring is moving elements between contexts.
+
+MOVE FUNCTION - one fo the most straightforward reasons to move a function is when it references elements in other contexts more than the one it currently resides in. Deciding to move a function rarely an easy decision. Examine the current and candidate contexts for that function.
+
+MOVE FIELD - programming involves writing a lot of code that implements behaviour - but the strength of a program is really founded on its data structures. If I have a good set of data structures that match the problem, then my behaviour code is simple and straightforward. Moving fields usually happen in the context of a broader set of changes. 
+
+MOVE STATEMENTS INTO FUNCTION - removing duplication is one of the best rules of thumb of healthy code. Look to combine repeating code into the function. That way any future modifications to the repeating code can be done in one place and used by all the callers. 
+
+MOVE STATEMENTS TO CALLERS - this is inverse of *Move Statements into Function*. Motivation for this refactoring is that we rarely get the boundaries right. Sometimes common behaviour used in several places needs to vary in some of its calls, that is why you can move the varying behaviour function to its callers.
+
+REPLACE INLINE CODE WITH FUNCTION CALL - functions allow to package bits of behaviour, this is useful for understanding - a named function can explain the purpose of the code rather than its mechanics. Also useful for deduplication. 
+
+SLIDE STATEMENTS -  code is easier to understand when things that are related to each other appear together. If several lines of code accesses the same data structure, it is best for them to be together rather than intermingled with code accessing other data structures. You can also declare the variable just before you first use it.
+
+SPLIT LOOP - you often seen loops that are doing two different things at once just because they can do that with one pass trough a loop. But if you are doing two different things in the same loop, then whenever you need to modify the loop you have to understand both things. By splitting loop, you ensure you only need to understand the behaviour you need to modify. Many programmers are uncomfortable with this refactoring as it forces you to execute the loop twice. REMINDER: Once you have your code clear, you can optimise it, and if the loop traversal is a bottleneck, it is easy to slam the loops back together. But the actual iteration through even a large list I rarely a bottleneck, and splitting the loops often enables other, more powerful optimisations. 
+
+REPLACE LOOP WITH PIPELINE - language environments provide better constructs than loops - the collection pipeline (`input.filter(...).map(...)`). Logic much easier to follow if it is expressed as a pipeline. It can be read from top to bottom to see how objects flow through the pipeline. 
+
+REMOVE DEAD CODE - decent compilers will remove unused code. But unused code is still a significant burden when trying to understand how the software works. Once code is not used it should be deleted. If you need it sometime in future - you have a version control system so you can always dig it out again. Commenting out dead code was once a bad habit, it wa useful before version control systeuswere widely used or when they were inconvenient. 
