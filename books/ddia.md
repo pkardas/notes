@@ -205,7 +205,7 @@ CSV:
 
 Despite flaws of JSON, XML and CSV they are good enough for many purposes and thy will remain popular.
 
-JSON is less verbose than XMAL, but still uses a lot of space - this might be an issue when you are dealing with terabytes of data. This led to the development of binary encodings for JSON - BSON, BJSON, UBJSON, BISON. XMAL has olso its binary encodings - WBXML and Fast Infoset. However, non of them are widely adopted.
+JSON is less verbose than XMAL, but still uses a lot of space - this might be an issue when you are dealing with terabytes of data. This led to the development of binary encodings for JSON - BSON, BJSON, UBJSON, BISON. XMAL has also its binary encodings - WBXML and Fast Infoset. However, non of them are widely adopted.
 
 Apache Thrift (Facebook), Protocol Buffers (Google) are binary encoding libraries that are based on the same principle. Schema defined in interface definition language, this schema can generate code for encoding and decoding data.
 
@@ -319,7 +319,7 @@ Dynamo-style databases allow several clients to concurrently write to the same k
 - last write wins - discard older values
 - detecting happens-before operations (btw. two operations might be considered concurrent when they overlap in time, not necessarily at the same time)
 - merge concurrently written values 
-- use version vectors - version number per replica and per key, each replica incremets its own version number
+- use version vectors - version number per replica and per key, each replica increments its own version number
 
 ## Chapter 6: Partitioning
 
@@ -416,9 +416,9 @@ Partial failure - some parts of the system are broken in an unpredictable way. P
 
 High-performance computing - supercomputers with thousands of CPUs are used for computationally intensive scientific computing tasks, such as whether forecasting or molecular dynamics. 
 
-Cloud computing - often associated with multi-tenant datacentres, commodity computers connected with an IP network, on-demand resource allocation and metered billing. 
+Cloud computing - often associated with multi-tenant data centres, commodity computers connected with an IP network, on-demand resource allocation and metered billing. 
 
-Traditional enterprise datacentres are somewhere between these two extremes.
+Traditional enterprise data centres are somewhere between these two extremes.
 
 If we want to make distributed systems work, we must accept the possibility of partial failure and build fault-tolerance mechanisms into the software. We need to build a reliable system from unreliable mechanisms (like communication over the internet, network may fail, bits might be lost, however it somehow works, engineers managed to build something reliable basing on unreliable foundations). 
 
@@ -507,16 +507,16 @@ Two-phase locking is an algorithm for achieving atomic transaction commit across
 - the coordinator begins phase 1 - it send prepare to to each of the nodes, asking whether they are able to commit
 - the coordinator tracks the responses from the participants, if all say yes - the coordinator sends out a commit request, if any of the participant say no - the coordinator sends an abort request to all nodes
 
-This is very similar to wedding ceremony in Western cultures. If the decision was to commit there is no going back, no matter how many retries it takes. The protocol has 2 crucial points of no return. If the coordinator dies, the nodes should communicate and come to some agreement. 2PC has bad reputation because of operational problems, low performance and primising more than it can deliver.
+This is very similar to wedding ceremony in Western cultures. If the decision was to commit there is no going back, no matter how many retries it takes. The protocol has 2 crucial points of no return. If the coordinator dies, the nodes should communicate and come to some agreement. 2PC has bad reputation because of operational problems, low performance and promising more than it can deliver.
 
 ## Chapter 10: Batch Processing
 
-> A system cannot be successful if it is too strongly influenced by a single person. Once tge initial design is complete and fairly robust, the real test begins as people with many different viewpoints undertake their own experiments.
+> A system cannot be successful if it is too strongly influenced by a single person. Once the initial design is complete and fairly robust, the real test begins as people with many different viewpoints undertake their own experiments.
 
 3 types of systems:
 
 - services (online systems) - a service waits for a request or instruction from a client to arrive, when received, the service tries to serve it as quickly as possible. 
-- batch processing (offline systems) - system takes a large amount of input data, runs a job to process it and produces some output data. Batch jobs are often schewduled to run periodically. The primary performance measure is throughput. 
+- batch processing (offline systems) - system takes a large amount of input data, runs a job to process it and produces some output data. Batch jobs are often scheduled to run periodically. The primary performance measure is throughput. 
 - stream processing systems (near-real-time systems) - something between online and offline systems. A stream processor consumes inputs and produces outputs (rather than responding to requests).
 
 Simple Batch Processing can be performed in UNIX via awk, grep and other command line tools (using a chain of commands).
@@ -527,12 +527,12 @@ The biggest limitation of UNIX tools is that they run only on a single machine a
 
 MapReduce is a bit like Unix tools, but distributed across potentially thousands of machines. MapReduce jobs read and write files on a distributed filesystem, in Hadoop's implementation of MapReduce the filesystem is called HDFS (Hadoop Distributed File System - reimplementation of the Google File System).
 
-HDFS is based on the shared-nothing principle. HDFS consists of a deamon process running on each machine, exposing a network service that allows other nodes to access files stored on that machine. In order to tolerate machine and disk failures, file blocks are replicated on multiple machines. 
+HDFS is based on the shared-nothing principle. HDFS consists of a daemon process running on each machine, exposing a network service that allows other nodes to access files stored on that machine. In order to tolerate machine and disk failures, file blocks are replicated on multiple machines. 
 
 To create a MapReduce job, you need to implement 2 callback functions:
 
 - mapper - called once for every inout record, its job is to extract the key and value from the input record. 
-- reducer - the framework tahes the key-value pairs produced by the mapper, collects all the values belonging to the same key and calls the reducer with an iterator over collection of values.
+- reducer - the framework takes the key-value pairs produced by the mapper, collects all the values belonging to the same key and calls the reducer with an iterator over collection of values.
 
 Principle:
 
@@ -544,18 +544,18 @@ In order to achieve good throughput in a batch processing, the computation must 
 
 HDFS is somewhat like a distributed version of UNIX, where HDFS is  the filesystem and MapReduce is a quirky implementation of a UNIX process. When MapReduce was published is was not all new. Some concepts were already known - eg. massively parallel processing databases. Hadoop vs Distributed Databases:
 
-- databases require you to struicture data according to particular model, whereas files in a distributed filesystem are just byte sequences. Hadoop opened up the possibility of indiscriminately dumping data into HDFS and later figuring out how to process it further. MPP databases require careful, up-front modeling of the data. The Hadoop has often been used for implementing ETL processes, MapReduce jobs are written to clean up the data, transform it into a relational form and import it into an MPP data warehouse for analytic purposes.
+- databases require you to structure data according to particular model, whereas files in a distributed filesystem are just byte sequences. Hadoop opened up the possibility of indiscriminately dumping data into HDFS and later figuring out how to process it further. MPP databases require careful, up-front modeling of the data. The Hadoop has often been used for implementing ETL processes, MapReduce jobs are written to clean up the data, transform it into a relational form and import it into an MPP data warehouse for analytic purposes.
 - MPP databases are great because they take care of storage, query planning and execution, moreover they use SQL - powerful query language. On the other hand not all kinds of processing can be sensibly expressed as SQL queries (recommendation systems, full-text search or image analysis). MapReduce gave the engineers the ability to easily run their own code over large datasets.
-- MPP databases and MapReduce took different approach to handling faults and the use of memory and disk. Natch processes are less sensitive to faults than online systems, because they do not immediately affect users if they fail and they always can be run again. If a node fails, most MPP databases abort the entire quer, MapReduce can tolerate the failure of a map or reduce task. MapReduce dumps partial results to the disk so they can be restored after faulure. MPP databases are more willing to store data in the memory for faster access. MapReduce is designed to tolerate frequent unexpected task termination, not because hardware is unreliable, it is because the freedom to arbitrarilyterminate processes enables better resource utilisation in a computing cluster (Google came up wit this idea, this design was designed by their resource usage).
+- MPP databases and MapReduce took different approach to handling faults and the use of memory and disk. Natch processes are less sensitive to faults than online systems, because they do not immediately affect users if they fail and they always can be run again. If a node fails, most MPP databases abort the entire query, MapReduce can tolerate the failure of a map or reduce task. MapReduce dumps partial results to the disk so they can be restored after failure. MPP databases are more willing to store data in the memory for faster access. MapReduce is designed to tolerate frequent unexpected task termination, not because hardware is unreliable, it is because the freedom to arbitrarily terminate processes enables better resource utilisation in a computing cluster (Google came up wit this idea, this design was designed by their resource usage).
 
-MapReduce is just one of many possible programming models for distributed systems. MapReduce has problems with *materialisation* of the data - the process of writing out intermediate state files. Several new execution engines for distributed batch processing were developed in order to fix this problem with MapReduce (dataflow engines) - Spark, Tez, Flink. Dataflow engines provide several different options for connecting one operator's output to another's input - sort by by key, tak several inputs and to partition them, but skip the sorting, for broadcast hash joins, the same output from one operator can be sent to all partitions of the join operator. 
+MapReduce is just one of many possible programming models for distributed systems. MapReduce has problems with *materialisation* of the data - the process of writing out intermediate state files. Several new execution engines for distributed batch processing were developed in order to fix this problem with MapReduce (data-flow engines) - Spark, Tez, Flink. Dataflow engines provide several different options for connecting one operator's output to another's input - sort by by key, tak several inputs and to partition them, but skip the sorting, for broadcast hash joins, the same output from one operator can be sent to all partitions of the join operator. 
 
 Systems like Dryrad and Nephele offer several advantages compared to MapReduce model:
 
 - expensive work (eg. sorting) only performed in places where it is actually required
-- no unneccessary map tasks
+- no unnecessary map tasks
 - intermediate state between operators kept in memory or written to local disk
-- operators can start executing as soosn as their input is ready
+- operators can start executing as soon as their input is ready
 - existing JVMs can be reused to run new operators
 
 Fully materialised intermediate state to a distributed filesystem makes fault tolerance fairly easy in MapReduce. Spark, FLink and Tes avoid writing intermediate state to HDFS. 
@@ -564,7 +564,7 @@ MapReduce - is like writing the output of each command to a temporary file.
 
 Dataflow engines look like much more like UNIX pipes (final result still might be saved to HDFS).
 
-High level APIs like Hive, Pig, Cascading and Crunch became popular because programming MapReduce jobs is quite laborous. 
+High level APIs like Hive, Pig, Cascading and Crunch became popular because programming MapReduce jobs is quite laborious. 
 
 ## Chapter 11: Stream Processing
 
@@ -580,13 +580,13 @@ Polling the datastore to check for events that have appeared since it last ran b
 
 Common approach for notifying consumers about new events is to use a messaging system - producer sends a message containing the event, which is then pushed to consumers.
 
-Direct messaging - direct communication between producers and consumers without going via intermediary nodes. Brokerless libraries: ZeroMQ, nanomsg - pub-sub messaging over TCP or IP multicast. StatsD and Brubeck use inreliable UDP messaging for collecting metrics from all machines on the network and monitoring them. Webhooks - a pattern in which a callback URL of one service is registered with another service, and it makes a request to that URL whenever an event occurs. 
+Direct messaging - direct communication between producers and consumers without going via intermediary nodes. Brokerless libraries: ZeroMQ, nanomsg - pub-sub messaging over TCP or IP multicast. StatsD and Brubeck use unreliable UDP messaging for collecting metrics from all machines on the network and monitoring them. Webhooks - a pattern in which a callback URL of one service is registered with another service, and it makes a request to that URL whenever an event occurs. 
 
 Message brokers - kind of database, that is optimised for handling message streams. It runs as a server, with producers and consumers connecting to it as clients. Producers write messages, consumers receive them by reading them from the broker. By centralising the data in the broker, these systems can more easily tolerate clients that come and go. A consequence of queueing is also that consumers are generally asynchronous: when a producer send a message it normally only waits for the broker to confirm that it has buffered the message and it does not wait for the message to be consumed. 
 
-Multiple consumers - when mulstiple consumers read messages in the same topic, two maing patterns of messaging are used:
+Multiple consumers - when multiple consumers read messages in the same topic, two main patterns of messaging are used:
 
-- load balancing - each message is delivered to one of the consumers, so the consumers can share the work of processing the messages in the topic.This pattern is useful then the messages are expensive to process and you want to bale to add consumers to parallelize the processing.
+- load balancing - each message is delivered to one of the consumers, so the consumers can share the work of processing the messages in the topic.This pattern is useful then the messages are expensive to process and you want to bale to add consumers to parallelise the processing.
 - fan-out - each message is delivered to all of the consumers, equivalent of having several different batch jobs that read the same input file.
 
 Message brokers use acknowledgements: a client must explicitly tell the broker when it has finished processing a message so that the broker can remove it from the queue. 
@@ -599,21 +599,21 @@ In order to scale to higher throughput that a single disk can offer, the log can
 
 Apache Kafka, Amazon Kinsesis Streams and Twitter's DistributedLog are log-based message brokers. Google Pub/Sub is architecturally similar but exposes a JMS-style API rather than log abstraction.
 
-Even though these message brokers write all messages to disk, they are able to achieve throughput of millios of messages per second by partitioning across multiple machines.
+Even though these message brokers write all messages to disk, they are able to achieve throughput of millions of messages per second by partitioning across multiple machines.
 
 Log-based approach trivially supports fan-out messaging.  
 
 Change Data Capture - the process of observing all data changes written to a database and extracting them in a form in which they can be replicated to other systems. You can capture the changes in a database and continually apply the same changes to search index. 
 
-Event Sourcing - involves storing all changes to the application state as log of change events. Events are designed to reflect things that happened at the application level, rather than low-level state changes. Powerful technique for data modeling: from an application point of view it is more meaningful to record the user's actions as immutable events, rather than recording the effect of those actions on a mutable database: "student cancelled their course enrollment" vs "one entry was deleted from the entollments table. Event Store is a specialised database to support applications using event sourcing. 
+Event Sourcing - involves storing all changes to the application state as log of change events. Events are designed to reflect things that happened at the application level, rather than low-level state changes. Powerful technique for data modeling: from an application point of view it is more meaningful to record the user's actions as immutable events, rather than recording the effect of those actions on a mutable database: "student cancelled their course enrolment" vs "one entry was deleted from the enrolments table. Event Store is a specialised database to support applications using event sourcing. 
 
-Applications that use event sourcing typically have some mechanism for storing snapshots of the current state that is derrived from the log of events, so they don't need to repeatedly reprocess the full log. 
+Applications that use event sourcing typically have some mechanism for storing snapshots of the current state that is derived from the log of events, so they don't need to repeatedly reprocess the full log. 
 
 CQRS - Command Query Responsibility Segregation - separating the form in which data is written from the form it is read, by allowing several different read views. 
 
 Streams can be used to produce other, derived streams. Stream processing has long been used for monitoring purposes: fraud detection, trading system examining price changes, machines monitoring, monitoring in military. 
 
-Complex Event Processing (CEP) - an approach developed in 1990s for analysing event streams, expecially geared toward the kind of application that requires searching for certain event patterns. CEP allows you to specify rules to search for certain patterns of events in a stream. CEP systems use a high-level declarative query language like SQL or GUI.
+Complex Event Processing (CEP) - an approach developed in 1990s for analysing event streams, especially geared toward the kind of application that requires searching for certain event patterns. CEP allows you to specify rules to search for certain patterns of events in a stream. CEP systems use a high-level declarative query language like SQL or GUI.
 
 Stream processing is used also for analytics on streams, boundary between CEP and stream analytics is blurry. Frameworks: Apache Storm, Spark Streaming, Flink, Concord, Samza, Kafka Streams, Google Cloud Dataflow, Azure Stream Analytics.
 
@@ -621,22 +621,22 @@ Types of time windows:
 
 - tumbling windows - has a fixed length, and every event belongs to exactly one window. Fo example 1-minute tumbling window, events with timestamp between 10:03:00 and 10:03:59 are grouped into one window.
 - hopping window - has a fixed length, but allows windows to overlap in order to provide some smoothing.
-- sliding window - constains all the events that occur within some interval of each other. FOr example. a 5-minute sliding window would cover events at 10":03:39 and 10:08:12 because they are less than 5 minutes apart.
+- sliding window - contains all the events that occur within some interval of each other. FOr example. a 5-minute sliding window would cover events at 10":03:39 and 10:08:12 because they are less than 5 minutes apart.
 - session window - has no fixed duration, instead it is defined by grouping together all events for the same user that occur closely together in time, and the window ends when the user has been inactive for some time.
 
 Types of stream joins:
 
 - stream-stream join (window join) - you need to choose a suitable window for the join (seconds, days weeks between events), also be careful about ordering of received events.
-- stream-table join (stream enrichment) - to perform this join, the stream process needs to look at one activity event at a time, look up someting in the database (local or remote)
+- stream-table join (stream enrichment) - to perform this join, the stream process needs to look at one activity event at a time, look up something in the database (local or remote)
 - table-table join (materialised view maintenance) - twitter example: when user wants to see their feed, it is too expensive to load all profiles' most recent tweets, instead we want a timeline cache, so reading is a simple lookup. To implement cache maintenance (append to cache new tweets, remove deleted, ...) you need streams of events for tweets.
 
 If events on different streams happen around a similar time, in which order they are processed? If the ordering of events across streams is undetermined, the join becomes nondeterministic, which means you cannot rerun the same job on the same input and get the same result. In data warehouses, this issue is known as a slowly changing dimension (SCD). It is often addressed by using a unique identifier for a particular version of the joined record.
 
 Batch processing frameworks can tolerate faults fairly easily. In stream processing, fault tolerance is less straightforward to handle. Possible approaches:
 
--  microbatching and checkpointing - break the stream into small blocks, and treat each block like a miniature batch process (used in Spark Streaming, batch approx. 1 second long). Apache Flink perioducally generate rolling checkpoints of state and write them to durable storage.
--  atomic commit revisited - in order to give the appearance of exactly-once processing in the presence of faults, we need to ensure that all outputs and side effects of processing tahe effect if and only if the processing is successful. Exactly-once message processing in the context of distributed transactions and two-phase commit.
--  idempotence - our goal is to discard the partial output of any failed tasks so that they can be safely retried without taking effect twice. Distributed transactions are the one way of achieving this, but anouther way is to rely on idempotence. An idempotent operation is one that you can perform multiple times, and it has the same effect as if you performed it only once (eg. setting key in a key-value store, incrementing counter value is not idempotent). Even if an operation is not naturally idempotent, it can often be made idempotent with a bit of extra metadata.
+-  microbatching and checkpointing - break the stream into small blocks, and treat each block like a miniature batch process (used in Spark Streaming, batch approx. 1 second long). Apache Flink periodically generate rolling checkpoints of state and write them to durable storage.
+-  atomic commit revisited - in order to give the appearance of exactly-once processing in the presence of faults, we need to ensure that all outputs and side effects of processing take effect if and only if the processing is successful. Exactly-once message processing in the context of distributed transactions and two-phase commit.
+-  idempotence - our goal is to discard the partial output of any failed tasks so that they can be safely retried without taking effect twice. Distributed transactions are the one way of achieving this, but another way is to rely on idempotence. An idempotent operation is one that you can perform multiple times, and it has the same effect as if you performed it only once (eg. setting key in a key-value store, incrementing counter value is not idempotent). Even if an operation is not naturally idempotent, it can often be made idempotent with a bit of extra metadata.
 
 ## Chapter 12: The Future of Data Systems
 
@@ -644,26 +644,26 @@ The lambda architecture - incoming data should be recorded by appending immutabl
 
 Federated databases - unifying reads - it is possible to provide a unified query interface to a wide variety of underlying storage engines and processing methods - an approach known as a federated database or polystore.
 
-Unbundled databases - unifying writes - making it easier to reliably plug together storage systems is like unbundling a database's index-maintenance features in a way that can synchronize writes across disparare technologies. 
+Unbundled databases - unifying writes - making it easier to reliably plug together storage systems is like unbundling a database's index-maintenance features in a way that can synchronise writes across disparate technologies. 
 
 Hardware is not quite the perfect abstraction that it may seem. Random bit-flips are very rare on modern hardware but can happen. Even software lik MySQL or PostgreSQL can have bugs.
 
 Large scale storage systems like HDFS or Amazon S3 do not fully trust disks: they run background processes that continually read back files, compare them to other replicas and move files from one disk to another, in order to mitigate the risk of silent corruption. 
 
-ACID databases has led us toward developing applications on the basis of blindly trusting technology. Since the technology we trusted worked well enough most of time, auditing mechanisms were deemed woth the investment. 
+ACID databases has led us toward developing applications on the basis of blindly trusting technology. Since the technology we trusted worked well enough most of time, auditing mechanisms were deemed worth the investment. 
 
-Having continuous end-to-endintegrity checks gives you increased confidence about the correctness of your systems, which in turn allows you to move faster (loke automated testing software).
+Having continuous end-to-end integrity checks gives you increased confidence about the correctness of your systems, which in turn allows you to move faster (like automated testing software).
 
-It is not sufficientfor software engineers to focus exclusively on the technology and ignore its ethical consequences. Users are humans and human dignity is paramount. 
+It is not sufficient for software engineers to focus exclusively on the technology and ignore its ethical consequences. Users are humans and human dignity is paramount. 
 
 Algorithmic prison - systematically being excluded from jobs, air travel, insurance coverage, property rentals, financial services, ... because algorithm said NO. In countries that respect human rights, the criminal system presumes innocence until proven guilty, on the other hand automated systems can systematically exclude a person from participating in society without any proof of guilt and with little chance of appeal.
 
-Decisions made by an alggorithm are not necessarily any better or worse than those made by a human. Every person is likely to have biases. In many countries, anti-discrimination laws prohibit treating people differently depending on protected traits (ethnicity, age, gender, sexuality, disability, beliefs).
+Decisions made by an algorithm are not necessarily any better or worse than those made by a human. Every person is likely to have biases. In many countries, anti-discrimination laws prohibit treating people differently depending on protected traits (ethnicity, age, gender, sexuality, disability, beliefs).
 
 Automated decision making opens the question of responsibility and accountability. Who is responsible if self-driving car causes an accident? 
 
-Besides the problems of predictive analysis, there are ethical problems with data collection itself. Though experiment, whenever you see "data" (eg. data driven company), replaceit with the word survelience (eg. survelience driven company). Even the most totalitarian and presessivq regimes could only dream of putting a microphone in every room and forcing every person to constantly carry a device capable of tracking their location and movements. 
+Besides the problems of predictive analysis, there are ethical problems with data collection itself. Though experiment, whenever you see "data" (eg. data driven company), replace it with the word surveillance (eg. surveillance driven company). Even the most totalitarian and presessivq regimes could only dream of putting a microphone in every room and forcing every person to constantly carry a device capable of tracking their location and movements. 
 
-Declining to use a service due to its tracking of users is only an option for the small number of people who are priviliged enough to have the time and knowledge to understand its privacy policy and who are can afford to potentially miss out on social participation opportunities.
+Declining to use a service due to its tracking of users is only an option for the small number of people who are privileged enough to have the time and knowledge to understand its privacy policy and who are can afford to potentially miss out on social participation opportunities.
 
 When collecting data, we need to consider not just today's political environments, but all possible future governments.  
