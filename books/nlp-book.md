@@ -1,6 +1,7 @@
 [go back](https://github.com/pkardas/learning)
 
 # Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics and Speech Recognition
+
 Book by Daniel Jurafsky and James H. Martin (December 2020 draft)
 
 [TOC]
@@ -61,7 +62,7 @@ the (.*)er they were, the \1er they will be
 the bigger they were, the bigger they will be
 ```
 
-Number operator, eg.: `\1` allows to repeat matched group. So parenthesis operator not only allows to group but also store in a numbered registe. It is possible to disable register and use non-capturing group, eg.: `(:?some: a few) (people|cats) like some \1`. Famous chatbot ELIZA used a series of regular expressions substitutions.
+Number operator, eg.: `\1` allows to repeat matched group. So parenthesis operator not only allows to group but also store in a numbered register. It is possible to disable register and use non-capturing group, eg.: `(:?some: a few) (people|cats) like some \1`. Famous chatbot ELIZA used a series of regular expressions substitutions.
 
 ```
 I'M (depressed|sad) -> I AM SORRY TO HEAR YOU ARE \1
@@ -95,7 +96,7 @@ Writers, speakers have specific styles of communicating, use specific dialects, 
 
 Code switching - common practice for speakers and writers to use multiple languages in single communicative act
 
-When preparing a computational models for language processing it is useful to prepare datasheet, document answering questions like: Who produced the text? In what context? For what purpose? In what language? What was race, gender, ... of the authors? How data was annotated?
+When preparing a computational models for language processing it is useful to prepare data-sheet, document answering questions like: Who produced the text? In what context? For what purpose? In what language? What was race, gender, ... of the authors? How data was annotated?
 
 *Text Normalisation*
 
@@ -121,7 +122,7 @@ Tokeniser can be used to expand clitic contractions: `we're -> we are`. Tokenisa
 
 Penn Treebank Tokeniser
 
-- separates clitics (`deosn't -> does n't`)
+- separates clitics (`doesn't -> does n't`)
 - keeps hyphenated words together (`close-up`, `Bielsko-Biała`)
 - separates out all punctuation
 
@@ -422,7 +423,7 @@ The Hidden Markov Model - allows to talk about both observed events (words seen 
 
 HMM is a useful and powerful model, but needs a number of augmentations to achieve high accuracy. CFR is a log-linear model that assigns a probability to an entire output sequence. We can think of a CRF as like a giant version of what multinomial logistic regression does for a single token. 
 
-Gazetteer - list of place names, milions of entries for locations with detailed geographical and political information, eg. https://www.geonames.org/ 
+Gazetteer - list of place names, millions of entries for locations with detailed geographical and political information, eg. https://www.geonames.org/ 
 
 POS tags are evaluated by accuracy. NERs are evaluated using recall, precision and F1.
 
@@ -662,7 +663,7 @@ Second kind uses a semantic parser to map the question to a structured program t
 
 Another alternative is to query a pretrained model, forcing model to answer a question solely from information stored in its parameters.
 
-T5 is an encoder-decorer architecture, in pretraining it learns to fill in masked spans of task by generating missing spans in the decoder. It is then fine tuned on QA datasets, given the question without adding any additional context or passages.
+T5 is an encoder-decoder architecture, in pretraining it learns to fill in masked spans of task by generating missing spans in the decoder. It is then fine tuned on QA datasets, given the question without adding any additional context or passages.
 
 Watson DeepQA - system from IBM that won the Jeopardy - main stages - Question processing, Candidate Answer Generation, Candidate Answer Scoring, Answer Merging and Confidence Scoring.
 
@@ -712,4 +713,3 @@ The study of dialogue systems is closely liked with the field of Human-Computer 
 ## Chapter 25: Phonetics
 
 ## Chapter 26: Automatic Speech Recognition and Text-to-speech
-
