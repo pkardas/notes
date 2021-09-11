@@ -127,7 +127,7 @@ Caching can be a powerful response to performance problem, however caching can c
 
 Libraries are notorious sources of blocking threads.
 
-Self-Denial Attack - any situation in which the system conspires against itself. For example a cupon code sent to 10k users to be used at certain date is going to attract milions of users (like XBOX preorder). Self-Denial can be avoided by building a shared-nothing architecture (no databases nor other resources)  - ideal horizontal scaling. Talk to marketing department when they are goin to send out mass emails - you will be able to pre-scale (prepare some additional instances for increased load). Also be careful for open links to the resources, also watch out for Fight Club bugs - increased front-end load causes exponentially increasing backend proecessing. 
+Self-Denial Attack - any situation in which the system conspires against itself. For example a coupon code sent to 10k users to be used at certain date is going to attract millions of users (like XBOX preorder). Self-Denial can be avoided by building a shared-nothing architecture (no databases nor other resources)  - ideal horizontal scaling. Talk to marketing department when they are going to send out mass emails - you will be able to pre-scale (prepare some additional instances for increased load). Also be careful for open links to the resources, also watch out for Fight Club bugs - increased front-end load causes exponentially increasing backend processing. 
 
 WIth point-to-point connections, each instance has to talk directly to every other instance - this means O(n^2) scaling - be careful. Point-to-point communication can be replaced by: UDP broadcasts, TCP/UDP multicast, pub/sub messaging, message queues.
 
@@ -135,9 +135,9 @@ XP principle: Do the simplest thing that will work.
 
 Watch out for shared resources - they can be a bottleneck, stress-test it heavily, be sure clients will keep working despite malfunctioning resource. 
 
-Frontend always has the ability to overwhelm the backend, because their capacities are not balanced. However you can not build every service to be large enough to serve enromous load from the frontend - instead you myst build services to be resilient in the face of tsunami od requests (eg. Circuit Breake, Handshaking, Backpressure, Bulkheads). 
+Frontend always has the ability to overwhelm the backend, because their capacities are not balanced. However you can not build every service to be large enough to serve enormous load from the frontend - instead you myst build services to be resilient in the face of tsunami od requests (eg. Circuit Breaker, Handshaking, Back-pressure, Bulkheads). 
 
-Dogpile - when a bunch of servers impose transient load all at once (term from American football). Can occur: when booting all servers at once, on cron job, when the config management pushes out a change. Use random clock slew to diffuse the demand from cron job (every instance does something at different time). Use a backoff algorithm so every client retries at different time. 
+Dog-pile - when a bunch of servers impose transient load all at once (term from American football). Can occur: when booting all servers at once, on cron job, when the config management pushes out a change. Use random clock slew to diffuse the demand from cron job (every instance does something at different time). Use a backoff algorithm so every client retries at different time. 
 
 Infrastructure management tools can cause a lot of trouble (eg. Reddit outage) - build limiters and safeguards into them so they won't destroy entire system at once. 
 
@@ -145,15 +145,15 @@ Slow response is worse than refusing a connection or returning an error - becaus
 
 Why slow responses are dangerous: because they trigger cascading failures, users hitting *reload* button cause even more traffic to already overloaded system. If system tracks its own responsiveness, then it can tell when it is getting slow. In such situation developer should consider sending an immediate error response. 
 
->  Design with skepcitism, and you will achieve resilience. Ask "What can system X do to hurt me" and then design a way to dodge whatever wrench your supposed ally throws.
+>  Design with scepticism, and you will achieve resilience. Ask "What can system X do to hurt me" and then design a way to dodge whatever wrench your supposed ally throws.
 
-Use realistic data volumes - typidal development and test data sets are too small to exhibit problems, you need production size-data to see what happens when your query returns a million rows that you turn into objects. Calls should be paginated. Do not rely on data providers, once thye will go *berserk* and fill up a table for no reason.
+Use realistic data volumes - typical development and test data sets are too small to exhibit problems, you need production size-data to see what happens when your query returns a million rows that you turn into objects. Calls should be paginated. Do not rely on data providers, once they will go *berserk* and fill up a table for no reason.
 
 ## Chapter 5: Stability Patterns
 
 Healthy patterns to reduce, eliminate or mitigate the effects of cracks in the system. Apply patterns wisely to reduce the damage done by an individual failure.
 
-TIMEOUTS - Today every application is a distributed system, every system must grapple with the fundamental nature of networks - they are fallable. When any element breaks, code can't wait forever for a response that may never come - sooner or later. *Hope is not a design method*. 
+TIMEOUTS - Today every application is a distributed system, every system must grapple with the fundamental nature of networks - they are fallible. When any element breaks, code can't wait forever for a response that may never come - sooner or later. *Hope is not a design method*. 
 
 Timeout is a simple mechanism allowing you to stop waiting for an answer once you think it will not come. Well placed timeouts provide fault isolation - **a problem in some other service does not have to become your problem**.  
 
@@ -161,35 +161,35 @@ Timeouts can also be relevant within a single service. Any resource pool can be 
 
 Timeouts are often found in the company of retries, fast retries are very likely to fail again (wait between retries). 
 
-CIRCUIT BREAKER - in the past houses were cathing fire because of heated wires, when too many appliances were connected to the power source. Energy industry came up with a decive that fails first in order to prevent fire. 
+CIRCUIT BREAKER - in the past houses were catching fire because of heated wires, when too many appliances were connected to the power source. Energy industry came up with a device that fails first in order to prevent fire. 
 
-The circuit breaker exists to fail withour breaking the entire system, furthermore once the danger has passed , the circuit breaker can be reset to restore full function to the system.
+The circuit breaker exists to fail without breaking the entire system, furthermore once the danger has passed , the circuit breaker can be reset to restore full function to the system.
 
 The same technique can be applied to software, dangerous operations can be wrapped with a component that can circumvent call when the system is not healthy.
 
-In closed state, the circuit breaker executes operations as usual (calls to another system or other internal operations that are subject to timeout or other failure), if it fails, the circuit breaker makes a note of the failure. Once the number of failures exceeds a threshold, the cicrcuit breaker opens the circuit. When the circuit is open, calls are suspended - they fail immediately. After some time the circuit decides the operation has a chance of succeeding so it goes to teh half-open state, if call succeeds - goes to the open state, if not - returns to the open state. 
+In closed state, the circuit breaker executes operations as usual (calls to another system or other internal operations that are subject to timeout or other failure), if it fails, the circuit breaker makes a note of the failure. Once the number of failures exceeds a threshold, the circuit breaker opens the circuit. When the circuit is open, calls are suspended - they fail immediately. After some time the circuit decides the operation has a chance of succeeding so it goes to the half-open state, if call succeeds - goes to the open state, if not - returns to the open state. 
 
 The circuit breaker can have different thresholds for different types of failures. Involve stakeholders to decide how system should behave when circuit is open. 
 
-How to measure number of failures - interesting idea is Leaky Bucket - separathe thread counting failures and periodically removing them. If buckets becomes empty quickly it means, the system is flooded with errors. 
+How to measure number of failures - interesting idea is Leaky Bucket - separate thread counting failures and periodically removing them. If buckets becomes empty quickly it means, the system is flooded with errors. 
 
 It should be possible to automatically open/close circuit. 
 
 Circuit Breaker - don't do it if it hurts. Use it with timeouts. Ensure proper reporting of opened circuit.
 
-BULKHEADS - in a ship, bulkheads prevents water from moving from one compartment to another. You can aploy the same technique, by partitioning the system, you can keep  a failure in one part of the system from destroying everything. This can be achieved by for example running application on multiple servers - if one fails we still have redundancy (eg. instances across zones and regions in AWS). 
+BULKHEADS - in a ship, bulkheads prevents water from moving from one compartment to another. You can apply the same technique, by partitioning the system, you can keep  a failure in one part of the system from destroying everything. This can be achieved by for example running application on multiple servers - if one fails we still have redundancy (eg. instances across zones and regions in AWS). 
 
-Bulkheads partitions capacity to preserve partial functionality when bad things happen. Granularity should be picked carefully - thread pools in the application, CPUs, servers in a cluster. Bulkheads are expecially useful in service-ordiented or microservice architectures in order to prevent chain reactions and entire company go down. 
+Bulkheads partitions capacity to preserve partial functionality when bad things happen. Granularity should be picked carefully - thread pools in the application, CPUs, servers in a cluster. Bulkheads are especially useful in service-oriented or micro-service architectures in order to prevent chain reactions and entire company go down. 
 
-STEADY STATE - every time human touches a severer it is an opportunity for unforced errors. It is best to keep people off production systems to the greatest extent possible. People should treat setvers as "cattle", not "pets", they should not be logged to the server all the time to watch if everything is fine. 
+STEADY STATE - every time human touches a severer it is an opportunity for unforced errors. It is best to keep people off production systems to the greatest extent possible. People should treat servers as "cattle", not "pets", they should not be logged to the server all the time to watch if everything is fine. 
 
 The Steady State pattern says that for every mechanism that accumulated a resource (log files, rows in the database, caches in memory), some other mechanism must recycle that resource. Several types of sludge that can accumulated and how to avoid the need for fiddling:
 
 - data purging - easy to do, however can be nasty, especially in relational databases there is a risk of leaving orphaned rows, also you need to make sure application will work when the data is gone. 
-- log files - logs are valuable source of information, however if left unchecked are risk. When logs fill up the filesystem, they jeopardize stability. Configure log file retention based on size. Probably best you can do is to store logs on some centralised server (especially if you are required to store lofs for years because of compliance regime). Logstash - centralised server for logs, where they can be indexed, searched and monitored. 
-- in-memory caching - inproper usage of caching is the major cause of memory leaks, which in turn lead to horrors like daily server restarts. Limit the amount of memory a cache can consume. 
+- log files - logs are valuable source of information, however if left unchecked are risk. When logs fill up the filesystem, they jeopardise stability. Configure log file retention based on size. Probably best you can do is to store logs on some centralised server (especially if you are required to store logs for years because of compliance regime). Logstash - centralised server for logs, where they can be indexed, searched and monitored. 
+- in-memory caching - improper usage of caching is the major cause of memory leaks, which in turn lead to horrors like daily server restarts. Limit the amount of memory a cache can consume. 
 
-Steady State encourages better operational discipline by limiting the need for system administartors to log on to the production servers. 
+Steady State encourages better operational discipline by limiting the need for system administrators to log on to the production servers. 
 
 FAIL FAST - if the system can determine in advance that it will fail; at an operation, it is always better to fail fast - the caller does not have waste its capacity for waiting. No, you don't need Deep Learning team to tell whether it will fail. Example: if call requires database connection, application can quickly check if database is available. Other approach is to configure load balancer appropriately (no servers - reject request). Use request validation to know if data is correct.
 
@@ -197,15 +197,15 @@ The Fail Fast pattern improves overall system stability by avoiding slow respons
 
 LET IT CRASH - there is no way to test everything or predict all the ways a system can break. We must assume that errors will happen. 
 
-There must be a boundary for trashiness. We want to crash a component in isolation, therest of the system must protect itself from a cascading failure. In a microservice architecture, a whole instance of the service might be the right granularity.
+There must be a boundary for trashiness. We want to crash a component in isolation, the rest of the system must protect itself from a cascading failure. In a micro-service architecture, a whole instance of the service might be the right granularity.
 
 We must be able to get back to clean state and resume normal operation as quickly as possibile - otherwise we will see performance degradation. 
 
-Supervisors need to keep close track of how often they restart child processes. It might be necessary to restart supervisor. Numver of restarts can indicate that either the state is not sufficiently cleaned up of the system is in jeopardy and the supervisor is just masking the underlying problem. 
+Supervisors need to keep close track of how often they restart child processes. It might be necessary to restart supervisor. Number of restarts can indicate that either the state is not sufficiently cleaned up of the system is in jeopardy and the supervisor is just masking the underlying problem. 
 
-The final element of a "let it crash" is reintegration - the instance must be able somehow to join the pool to accept the work. This can be done through healthchecks on instance level.
+The final element of a "let it crash" is reintegration - the instance must be able somehow to join the pool to accept the work. This can be done through health checks on instance level.
 
-HANDSHAKING - can be most valuable when unbalanced capacities are leading to slow responses. If the sever can detect that it will not be able to meet its SLAs, then it should have some means to ask the caller to back off. It is an effective way to stop cracks from jumoping layers, as in the case of a cascading failure.
+HANDSHAKING - can be most valuable when unbalanced capacities are leading to slow responses. If the sever can detect that it will not be able to meet its SLAs, then it should have some means to ask the caller to back off. It is an effective way to stop cracks from jumping layers, as in the case of a cascading failure.
 
 The application can notify the load balancer through a health check that is is not able to take more requests (503 - Not Available), then the load balancer knows not to send any additional work to that particular server. 
 
@@ -217,17 +217,17 @@ Consider building a test harness that substitutes for the remote end for every w
 
 Integration testing environments are good at examining failures only in the seventh layer of the OSI model (application layer) - and not even all of those. 
 
-The test harness can be designed like an ap;lication server - it can have pluggable behaviour for the tests that are related to the real application. Broadly speaking, a test harness leads toward "chaos engineering".
+The test harness can be designed like an application server - it can have pluggable behaviour for the tests that are related to the real application. Broadly speaking, a test harness leads toward "chaos engineering".
 
-The Test Harness pattern auguments other testing methods. It does not replace unit tests, acceptance test, penetration tests and so on. 
+The Test Harness pattern augments other testing methods. It does not replace unit tests, acceptance test, penetration tests and so on. 
 
 DECOUPLING MIDDLEWARE - middleware is a graceless name fo tools that inhabit a singularly messy space - integrating systems that were never meant to work together. The connective tissue that bridges gaps between different islands of automation. 
 
 Middleware, integrates systems by passing data and events back and forth between systems, decouples them by letting the participating systems remove specific knowledge of and calls to the other systems. 
 
-Tightly copupled middleware amplifies shocks to the systems, synchronous calls are particularly vicious apmplifiers that facilitate cascading failures (this includes JSON over HTTP).
+Tightly coupled middleware amplifies shocks to the systems, synchronous calls are particularly vicious amplifiers that facilitate cascading failures (this includes JSON over HTTP).
 
-Message oriented middleware decouples the endpoints in bots space and time, because the requesting system doesn;t just sit around and wait for a reply. This form of middleware cannot produce a cascading failure. 
+Message oriented middleware decouples the endpoints in bots space and time, because the requesting system doesn't just sit around and wait for a reply. This form of middleware cannot produce a cascading failure. 
 
 SHED LOAD - applications have zero control over their demand, at any moment, more that a bilion devices could make a request.
 
@@ -235,13 +235,13 @@ Services should model TCPs approach: When load gets too high, start to refuse ne
 
 The ideal way to define "load is too high" is for a service toi monitor its own performance relative to its SLA. When requests take longer than SLA, it is time to shed some load. 
 
-CREATE BACK PRESSURE - every performance problem starts with a queue backing up somewhere, if a queue is unbounded, it can consume all wvailable memory. As queue's length reaches toward infinity, response time also heads toward infinity. 
+CREATE BACK PRESSURE - every performance problem starts with a queue backing up somewhere, if a queue is unbounded, it can consume all available memory. As queue's length reaches toward infinity, response time also heads toward infinity. 
 
-Blocking the producer is akind of flow control. It allows the queue to apply "back pressure" upstream. Back pressure propagates all the way to the ultimate client, who will be throttled down in speed until the queue releases.
+Blocking the producer is a kind of flow control. It allows the queue to apply "back pressure" upstream. Back pressure propagates all the way to the ultimate client, who will be throttled down in speed until the queue releases.
 
 TCP uses back pressure - once the window is full, senders are not allowed to send anything until released. 
 
-GOVERNOR - machines are great ant performing repetetive tasks, humans are great at perciving high level situation. 
+GOVERNOR - machines are great ant performing repetitive tasks, humans are great at perceiving high level situation. 
 
 In 18th century steam engineers discovered it is possible to run machines so fast that the metal breaks. The solution was the governor - a person which limits the speed of an engine.
 
