@@ -2,17 +2,23 @@
 
 ### Books
 
+In progress:
+
 👀 [Domain-Driven Design: Tackling Complexity in the Heart of Software](books/ddd.md)
 
 👀 [Refactoring: Improving the Design of Existing Code](books/refactoring.md)
 
 👀 [Release It! Design and Deploy Production-Ready Software](books/release-it.md)
 
+Finished:
+
 ✅ [Clean Code: A Handbook of Agile Software Craftsmanship](books/clean-code.md)
 
 ✅ [Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems](books/ddia.md)
 
 ✅ [Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics and Speech Recognition](books/nlp-book.md)
+
+On hold:
 
 🚫 [Code Complete: A Practical Handbook of Software Construction](books/code-complete.md)
 
