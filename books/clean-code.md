@@ -1,6 +1,7 @@
 [go back](https://github.com/pkardas/learning)
 
 # Clean Code: A Handbook of Agile Software Craftsmanship
+
 Book by Robert Cecil Martin
 
 [TOC]
@@ -118,7 +119,7 @@ Test code must be: simple, succinct, expressive, however it doesn't need to be a
 
 One test should test a single concept.
 
-Clean tests follow 5 fules - FIRST:
+Clean tests follow 5 rules - FIRST:
 
 - F - Fast - tests should be fast, they should run quickly, if they don't you won't  want to run them frequently.
 - I - Independent - Tests should not depend on each other, one test should not set up conditions for the next test
@@ -261,6 +262,3 @@ Tests:
 - Don't skip trivial tests.
 - Test boundary conditions.
 - Tests should be fast.
-
-
-
