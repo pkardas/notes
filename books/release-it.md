@@ -248,3 +248,17 @@ In 18th century steam engineers discovered it is possible to run machines so fas
 We can create governors to slow down the rate of actions. A governor is stateful and time-aware, it knows what actions have been taken over a period of time. (Reddit uses a governor to slow down the autoscaler, by adding logic that says it can only shut down a certain percentage of instances at a time).
 
 The whole point of a governor is to slow things down enough for humans to get involved. 
+
+## Chapter 6: Case Study: Phenomenal Cosmic Powers, Itty-Bitty Living Space
+
+Launching a new site is like having a baby. You must expect certain thing, such as being awakened in the middle of the night. Monitoring technology provides a great safety net, pinpointing problems when they occur, but nothing beats the patter-matching power of the human brain.
+
+Response time is always a lagging indicator. You can only measure the response time on requests that are done. So whatever your worst response time may be, you can't measure it until the slowest requests finish. Requests that didn't complete never got averaged in. 
+
+Recovery-Oriented Computing - principles:
+
+- Failures are inevitable, in both hardware and software.
+- Modeling and analysis can be never sufficiently complete. A priori prediction of all failure modes is not possible.
+- Human action is a major source of system failures.
+
+Investigations aim to improve survivability in the face of failures. The ability to restart single components, instead of entire servers, is a key concept of recovery-oriented computing.
