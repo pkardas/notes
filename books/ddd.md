@@ -76,3 +76,24 @@ Such separation allows a much cleaner design for each layer, especially because 
 Upper layers can user or manipulate elements of lower ones straightforwardly by calling their public interfaces.
 
 Domain-driven design requires only one particular layer to exist. 
+
+## Chapter 5: A Model Expressed in Software
+
+ASSOCIATIONS. For every traversable association in the model, there is a mechanism in the software with the same properties. Constraints on associations should be included in the model and implementation (eg. president of ... for a period of time), they make the model more precise and the implementation easier to maintain. 
+
+ENTITIES. Object modeling tends to lead us to focus on the attributes of an object, but the fundamental concept of an entity is an abstract continuity threading through a life cycle and even passing through multiple forms. Sometimes such an object must be matched with another object even though attributes differ. 
+
+Transactions in a banking application, two deposits of the same amount to the same account on the same day are still distinct transactions. They have identity and are entities.
+
+> When an object is distinguished by its identity, rather than its attributes, make this primary to its definition in the model. Keep the class definition simple and focused on life cycle continuity and identity. Define a means of distinguishing each object regardless of its form or history. 
+
+Identity - this may simply mean unique identifier. 
+
+Each entity must have an operational way of establishing its identity with another object - distinguishable even from another object with the same descriptive attributes.
+
+Defining identity demands understanding of the domain.
+
+VALUE OBJECTS. An object that represents a descriptive aspect of the domain with no conceptual identity. These are objects that describe things. When you care only about the attributes of an element of the model, classify it as a value object.
+
+SERVICES. Some concepts from the domain aren't natural to model as objects. Forcing the required domain functionality to be the responsibility of an entity or value either distorts the definition of a model-based object or adds meaningless artificial objects. A service is an operation offered as an interface that stands alone in the model, without encapsulating state. The name *service* emphasises the relationship with other objects. Service have to be stateless. 
+
