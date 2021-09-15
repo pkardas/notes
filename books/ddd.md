@@ -97,3 +97,10 @@ VALUE OBJECTS. An object that represents a descriptive aspect of the domain with
 
 SERVICES. Some concepts from the domain aren't natural to model as objects. Forcing the required domain functionality to be the responsibility of an entity or value either distorts the definition of a model-based object or adds meaningless artificial objects. A service is an operation offered as an interface that stands alone in the model, without encapsulating state. The name *service* emphasises the relationship with other objects. Service have to be stateless. 
 
+MODULES. Many don't consider modules as part of the model. Yet it isn't just code being divided into modules, but concepts. Low coupling between modules minimises the cost of understanding their place in the design. It is possible to analyse the contents of one module with a minimum of reference to others that interact. 
+
+Choose modules that tell the story of the system and contain a cohesive set of concepts. Give the modules names that become part of the ubiquitous language. Modules and their names should reflect insight into the domain.
+
+Modules need to coevolve with the rest of the model. This means refactoring modules right along with the model and code. But this refactoring often doesn't happen.
+
+Use packaging to separate the domain layer from other code. Otherwise, leave as much freedom as possible to the domain developers to package the domain objects in ways that support their model and design choices. 
