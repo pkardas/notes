@@ -26,6 +26,8 @@ On hold:
 
 ### Case Studies
 
+[Reddit](case-studies/reddit.md)
+
 ### Conferences
 
 [AWS Innovate: AI/ML Edition 2021](conferences/aws-innovate-ai-ml-21.md)
