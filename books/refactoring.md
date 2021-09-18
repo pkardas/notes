@@ -229,7 +229,7 @@ SUBSTITUTE ALGORITHM - There are usually several ways to do the same thing, same
 
 Another important part of refactoring is moving elements between contexts.
 
-MOVE FUNCTION - one fo the most straightforward reasons to move a function is when it references elements in other contexts more than the one it currently resides in. Deciding to move a function rarely an easy decision. Examine the current and candidate contexts for that function.
+MOVE FUNCTION - one of the most straightforward reasons to move a function is when it references elements in other contexts more than the one it currently resides in. Deciding to move a function rarely an easy decision. Examine the current and candidate contexts for that function.
 
 MOVE FIELD - programming involves writing a lot of code that implements behaviour - but the strength of a program is really founded on its data structures. If I have a good set of data structures that match the problem, then my behaviour code is simple and straightforward. Moving fields usually happen in the context of a broader set of changes. 
 
@@ -246,3 +246,19 @@ SPLIT LOOP - you often seen loops that are doing two different things at once ju
 REPLACE LOOP WITH PIPELINE - language environments provide better constructs than loops - the collection pipeline (`input.filter(...).map(...)`). Logic much easier to follow if it is expressed as a pipeline. It can be read from top to bottom to see how objects flow through the pipeline. 
 
 REMOVE DEAD CODE - decent compilers will remove unused code. But unused code is still a significant burden when trying to understand how the software works. Once code is not used it should be deleted. If you need it sometime in future - you have a version control system so you can always dig it out again. Commenting out dead code was once a bad habit, it wa useful before version control systeuswere widely used or when they were inconvenient. 
+
+## Chapter 9: Organising Data
+
+Data structures play an important role in our programs, so no surprise there are a clutch of refactorings that focus on them. 
+
+SPLIT VARIABLE - Using a variable for two different things is very confusing for the reader. Any variable with more than one responsibility should be replaced with multiple variables, one for each responsibility.
+
+Exception: Collecting variables (eg. `i = i + 1`) - often used for calculating sums, string concatenation, writing to stream or adding to a collection - don't split it.
+
+RENAME FIELD - Data structures are the key to understand what is going in inside the system. It is essential to keep them clear. Rename fields in classes / records so they are easy to understand. 
+
+REPLACE DERIVED VARIABLE WITH QUERY - One of biggest sources of problems in software is mutable data. Data changes can often couple together parts of code in awkward ways, with changes in one part leading to knock-on effects that are hard to spot. Remove variables that can be easily calculated. A calculation  often makes it clearer what the meaning of the data is, and it is being protected by from being corrupted when you fail to update the variable as the source data changes.
+
+CHANGE REFERENCE TO VALUE - Instead of updating values of the nested objects, create new object with updated params. Value objects are generally easier to reason about, particularly because they are immutable. Immutable data structures are easier to work with.
+
+CHANGE VALUE TO REFERENCE - (inverse of *Change Reference to Value*). A data structure may have several records linked to the same logical data structure. The biggest difficulty in having physical copies of the same logical data occurs when you need to update the shared data. Then you have to find all the copies and update them all. If you miss one, you will get a troubling inconsistency in the data. In this case, it is often worthwhile to change the copied data into a single reference.
