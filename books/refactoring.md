@@ -262,3 +262,23 @@ REPLACE DERIVED VARIABLE WITH QUERY - One of biggest sources of problems in soft
 CHANGE REFERENCE TO VALUE - Instead of updating values of the nested objects, create new object with updated params. Value objects are generally easier to reason about, particularly because they are immutable. Immutable data structures are easier to work with.
 
 CHANGE VALUE TO REFERENCE - (inverse of *Change Reference to Value*). A data structure may have several records linked to the same logical data structure. The biggest difficulty in having physical copies of the same logical data occurs when you need to update the shared data. Then you have to find all the copies and update them all. If you miss one, you will get a troubling inconsistency in the data. In this case, it is often worthwhile to change the copied data into a single reference.
+
+## Chapter 10: Simplifying Conditional Logic 
+
+Much of the power of programs comes from their ability to implement conditional logic - but, sadly, much of the complexity of programs lies in these conditionals. 
+
+DECOMPOSE CONDITIONAL - Length of a function is in itself a factor that makes it hared to read, but conditions increase the difficulty. As with any large block of code, you can make your intention clearer by decomposing it and replacing each chunk of code with a function call named after the intention of that chunk.
+
+CONSOLIDATE CONDITIONAL EXPRESSION - Sometimes you can run into a series of conditional checks where each check is different yet the resulting action is the same. When you see this, you can use `and` and `or` operators to consolidate them into a single conditional check with a single result.
+
+Consolidating is important because it makes it clearer by showing that you are making a single check that combines other checks, and because it often sets you up for *Extract Function*. Extracting a condition is one of the most useful things you can do to clarify code. 
+
+REPLACE NESTED CONDITIONAL WITH GUARD CLAUSES - Guard Clause says: "This isn't the core to this function, and if it happens, do something and get out". In other words, if you know the result, return it immediately instead of assigning to `result` variable, just to have one single return statement at the end of the function.
+
+*// A guard clause is simply a check that immediately exits the function, either with a return statement or an exception.*
+
+REPLACE CONDITIONAL WITH POLYMORPHISM - It is possible to put logic in superclasses which allows to reason about it without having to worry about the variants. Each variant case can be put in in a subclass. Complex conditional logic can be improved using polymorphism. This feature can be overused, basic conditional logic should use basic conditional statements. 
+
+INTRODUCE SPECIAL CASE - also known as: *Introduce Null Object*. Many parts of the system have the same reaction to a particular value, you may want to bring that reaction into a single place. Special Case pattern is a mechanism that captures all the common behaviour, this allows to replace most of special-case checks with simple calls. A common value that needs special-case processing is null, which is why this pattern is often called the Null Object pattern. 
+
+INTRODUCE ASSERTION - Often, sections of code work only if certain conditions are true. Such assumptions are not often stated explicitly, but can only be deducted by looking trough an algorithm. Sometimes, these assumptions are stated with a comment. A better technique is to make the assumption explicit by writing assertion. Failure of an assertion indicates a programmer error. Assertions should never be checked by other parts of the system. Assertions should be written that the program functions equally correctly if they all removed. Use assertions to check things that need to be true, use them when you think they should never fail.
