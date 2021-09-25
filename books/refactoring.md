@@ -297,7 +297,7 @@ PRESERVE WHOLE OBJECT - If you see code that derives couple of values from a rec
 
 REPLACE PARAMETER WITH QUERY - (inverse of *Replace Query with Parameter*). The parameter list to a function should summarise the points of variability of that function, indicating the primary ways in which that function may behave differently. If a call passes in value that the function can easily determine for itself, that is a form of duplication. When the parameter is present, determining its value is the caller's responsibility - otherwise, that responsibility shifts to the function body. Usually habit should be to simplify life for callers, which implies moving responsibility to the function body.
 
-REPLACE QUERY WITH PARAMETER - (inverse of *Replace Parameter with Query*).You can move query to the parameter, you force caller to figure out how to provide this value. This complicates life for callers of the functions (preferably make life easier for customers).
+REPLACE QUERY WITH PARAMETER - (inverse of *Replace Parameter with Query*). You can move query to the parameter, you force caller to figure out how to provide this value. This complicates life for callers of the functions (preferably make life easier for customers).
 
 REMOVE SETTING METHOD - Providing a setting method indicates that a field may be changed. If you don't want that field to change once the object is created, do not provide a setting method (and make field immutable). Remove setter to to make it clear that updates make no sense after construction. 
 
@@ -306,3 +306,27 @@ REPLACE CONSTRUCTOR WITH FACTORY FUNCTION - Constructors often come with awkward
 REPLACE FUNCTION WITH COMMAND - There are times when it is useful to encapsulate a function into its now object (command object / command). Such an object is mostly built around a single method, whose request and execution is the purpose of the object. A command offers a greater flexibility for the control and expression of a function than the plain function mechanism. Commands can have operations such as `undo`. There are good reasons to use commands, but do not forget that this flexibility comes at a price paid in complexity. 
 
 REPLACE COMMAND WITH FUNCTION - (inverse of *Replace Function with Command*) - Command object provide a powerful mechanism for handling complex computations. Most fo the time, you just want to invoke a function and have it to do its thing. If the function isn't too complex, then a command object is more trouble than its worth and should be turned into a regular function. 
+
+## Chapter 12: Dealing with Inheritance
+
+Inheritance is a very useful and easy to misuse mechanism.
+
+PULL UP METHOD - form of removing duplication (duplication is bad because there is risk that an alteration to one copy will not be made to the other). Pulling method up means putting method in a parent class.
+
+PULL UP CONSTRUCTOR BODY - Common constructor behaviour should reside in the superclass.
+
+PUSH DOWN METHOD - (inverse of *Pull Up Method*). If a method is only relevant to some one subclass (or a small proportion of subclasses), removing it from the superclass and putting it only on the subclass makes that clearer. You can only do this refactoring if the caller knows it is working with a particular subclass - otherwise, use *Replace Conditional with Polymorphism* with some placebo behaviour on the superclass.
+
+PUSH DOWN FIELD - If a field is only used by one subclass (or a small proportion of subclasses), move it to those subclasses.
+
+REPLACE TYPE CODE WITH SUBCLASS - Instead of using *flag* in the object indicating type of the class (eg. `Employe(engineer)`) create specialised superclass.
+
+REMOVE SUBCLASS - (inverse of *Replace Type Code with Subclasses*). Subclasses are useful, but as software system evolves, subclasses can lose their value. A subclass that does too little incurs a cost in understanding that is no longer worthwhile. When that time, it is best to remove to remove the subclass, replacing it with a field on its superclass.
+
+EXTRACT SUPERCLASS - If you see 2 classes doing similar things, you can take advantage of the basic mechanism of inheritance to pull their similarities together into a superclass.
+
+COLLAPSE HIERARCHY - When refactoring a class hierarchy, you can often pull and push features around. As the hierarchy evolves, you can find that a class and its parent are no longer different enough to be worth keeping separate. At this point you can merge them together.
+
+REPLACE SUBCLASS WITH DELEGATE - Instead of subclassing objects you can create separate, independent entity. There is a popular principle: "*Favour object composition over class inheritance*", however it doesn't mean "*inheritance is considered harmful*". Inheritance is a valuable mechanism that does the job most of the time without problems. So reach for inheritance first, and move for delegation when it starts to rub badly. 
+
+REPLACE SUPERCLASS WITH DELEGATE - Subclassing can be done in a way that leads to confusion and complication. One of classing example is mis-inheritance from the early days of objects was making a stack be a subclass of a list. The idea was to reuse list's data storage and operations, however many additional, not applicable methods were available to the stack. A better approach is to make the list a field of the stack and delegate the necessary operations to it. 
