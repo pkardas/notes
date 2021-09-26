@@ -297,3 +297,39 @@ The 12-Factor App [12factor.net] - created by engineers at Heroku, is a succinct
 10. Dev-prod parity - keep environment, staging and production as similar as possible.
 11. Logs - treat logs as event streams.
 12. Admin processes - run admin / management tasks as one-off processes.
+
+## Chapter 8: Processes on Machines
+
+Service - a collection of processes across machines that work together to deliver a unit of functionality.
+
+Instance - an installation on a single machine out of a load-balanced array of the same executable. 
+
+Executable - an artefact that a machine can launch as process and created by build process.
+
+Process - an operating system process running on a machine.
+
+Installation - the executable and any attendant directories, configuration files and other resources.
+
+Deployment - the act of creating an installation on a machine.
+
+
+
+Developers should not do production builds from their now machines. Developer boxes are hopelessly polluted. We install all kinds of junk on these systems, play games and visit sketchy websites. Only make production builds on a CI server, and have it put the binary into a safe repository that nobody else can write into.
+
+Configuration management tools like Chef, Puppet and Ansible are all about applying changes to running machines. They use scripts, playbooks or recipes to transition the machine from one state to a new state.
+
+We don't want our instance binaries to change per environment, but we do eat their properties to change. That means the code should look outside the deployment directory to find per-environment configurations.
+
+ZooKeeper and etc are popular choices for a configuration service - but any outage to these system can cause a lot of trouble. 
+
+Shipboard engineers can tell when something is about to go wrong by the sound of the giant Diesel engines. We must facilitate that awareness by building transparency into our systems. Transparency refers to the qualities that allow operators, developers and business sponsors to gain understanding of the system's historical trends, present conditions, instantaneous state and future projections. Debugging a transparent system I s vastly easier, so transparent systems will mature faster that opaque ones. System without transparency cannot survive long in production. 
+
+Transparency arises from deliberate design and architecture. Instances should log their health and events to a plain old text file. Any log-scraper can collect these without disturbing the server process. Logging is certainly a white-box technology, it must be integrated pervasively into the source code.
+
+Not every exception needs to be logged as an error. Just because a user entered a bad card number and the validation compound threw an exception doesn't mean anything has to be done about it. Log errors in business logic or user input as WARNINGs. Reserve ERROR for a serious system problem.
+
+Logs have to present clear, accurate and actionable information to the humans who read them.
+
+Message should include an identifier that can be used to trace the steps of a transaction.
+
+Health Checks should be more that just "yup, it is running", it should report at least: IP, interpreter version, application version, if instance is accepting work, the status of connection pools, caches and circuit breakers. Load balancer can use the health check for the "go live" transition too. When the health check on a new instance goes from failing to passing, it means the app is done with its startup.
