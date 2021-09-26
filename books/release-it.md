@@ -262,3 +262,38 @@ Recovery-Oriented Computing - principles:
 - Human action is a major source of system failures.
 
 Investigations aim to improve survivability in the face of failures. The ability to restart single components, instead of entire servers, is a key concept of recovery-oriented computing.
+
+## Chapter 7: Foundations
+
+Designing for production means thinking about production issues as first-class concerns (network, logging, monitoring, runtime control, security, people who do operations). There are several layers of concerns:
+
+1. Operations - security, availability, capacity, status, communication
+2. Control Plane - system monitoring, deployment, anomaly detection, features
+3. Interconnect - routing, load balancing, failover, traffic management
+4. Instances - services, processes, components, instance monitoring
+5. Foundation - hardware, VMs, IPs
+
+Virtualisation promised developers a common hardware appearance across the bewildering array of physical configurations in the data centre. On the down side, performance is much less predictable. Many virtual machines can reside on the same physical hosts.It is rare to move VMs from one host to another. 
+
+When designing applications to run in virtual machines you must make sure that they are not sensitive to the loss or slowdown of any of the host.
+
+A clock on the VM is not monotonic and sequential, because VM can be suspended for an indefinite span of real time. The bottom line is: don't trust the OS clock. If external time is important, use an external source like a local NTP server. 
+
+Containers have short-lived identity. As a result, it should not be configured on a per-instance basis. Container won't have much, if any, local storage, so the application must rely on external storage for files, data, and maybe even cache.
+
+When you design an application for containers, keep a few things in mind: the whole container image moves from environment to environment, so the image can't hold things like production database credentials. Containers should not contain hostnames or port numbers - because the setting needs to change dynamically while the container image stays the same. Containerised applications need to send their telemetry out to a data collector.
+
+The 12-Factor App [12factor.net] - created by engineers at Heroku, is a succinct description of a cloud-native, scalable, deployable application:
+
+1. Codebase - track one codebase in revision control. Deploy the same build to every environment.
+2. Dependencies - explicitly declare and isolate dependencies.
+3. Config - store config in the environment.
+4. Backing services - treat backing services as attached resources.
+5. Build, release, run - strictly separate build and run stages.
+6. Process - execute the app as one or more stateless processes.
+7. Port binding - export services via port binding.
+8. Concurrency - scale out via process model
+9. Disposability - maximise robustness with fast startup and graceful shutdown.
+10. Dev-prod parity - keep environment, staging and production as similar as possible.
+11. Logs - treat logs as event streams.
+12. Admin processes - run admin / management tasks as one-off processes.
