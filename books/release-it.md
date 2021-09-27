@@ -333,3 +333,9 @@ Logs have to present clear, accurate and actionable information to the humans wh
 Message should include an identifier that can be used to trace the steps of a transaction.
 
 Health Checks should be more that just "yup, it is running", it should report at least: IP, interpreter version, application version, if instance is accepting work, the status of connection pools, caches and circuit breakers. Load balancer can use the health check for the "go live" transition too. When the health check on a new instance goes from failing to passing, it means the app is done with its startup.
+
+## Chapter 9: Interconnect
+
+The interconnect layer covers all the mechanisms that knit a bunch of instances together into a cohesive system. That includes a traffic management. Load balancing and discovery. This is the layer where we can really create high availability. 
+
+Consul - dynamic discovery service, suited for large teams with hundreds of small services. On the other hand small business with just a few developers would probably stick with direct DNS entries. 
