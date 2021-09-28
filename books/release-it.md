@@ -339,3 +339,29 @@ Health Checks should be more that just "yup, it is running", it should report at
 The interconnect layer covers all the mechanisms that knit a bunch of instances together into a cohesive system. That includes a traffic management. Load balancing and discovery. This is the layer where we can really create high availability. 
 
 Consul - dynamic discovery service, suited for large teams with hundreds of small services. On the other hand small business with just a few developers would probably stick with direct DNS entries. 
+
+DNS might be the best choice for small teams, particularly in a slowly changing infrastructure. When using DNS, it is important to have a logical service name to call, rather than physical hostname. Even if that logical name is just an alias to the underlying host, it is still preferable. DNS round robin an easy approach to load balancing but suffers from putting too much control in the client's hands. DNS outage can be serious, do it should not be hosted on the same infrastructure as production system. There should be more than one DNS provider with servers on different locations. 
+
+Almost everything we build today uses horizontally scalable farms of instances that implement request/reply semantics. Horizontal scaling helps with overall capacity and resilience, but it introduces the need for load balancing. Load balancing is all about distributing requests across a pool of instances to serve all requests correctly in the shortest feasible time. 
+
+Software Load Balancing - low cost approach, uses an application to listen for requests and dole them out across the pool of instances. This is basically a reverse proxy (proxy - multiplexes any outgoing calls into a single source IP address, reverse proxy - demultiplexes calls coming into a single IP address and fans them out to multiple addresses). Examples: squid, HAProxy, Apache httpd, nginx.
+
+Hardware Load Balancing - specialised network devices that serve a similar role to the reverse proxy server. They provide better capacity and throughput because they operate closed to the network.
+
+One of the most important services a load balancer can provide is service health checks. The load balancer will not send to an instance that fails a certain number of health checks. 
+
+Load balancers can also attempt to direct repeated requests to the same instance. This helps when you have stateful services, like user session state in an application server. Directing the same requests to the same instances will provide better response time for the caller because necessary resources will already be in that instance's memory. A downside of sticky sessions is that they can prevent load from being distributed evenly. 
+
+Another useful way to employ load balancer is "content based routing". For example, search requests may go to one set of instances, while user-signup requests go somewhere else.
+
+Demand Control - when, where and how to refuse to work under big demand.
+
+> Every failing system starts with a queue backing up somewhere.
+
+Going nonlinear - service slowing down under heavy load, this means fewer and fewer sockets available to receive requests exactly when the most requests are coming in. 
+
+Load shedding - under high load, turning away work system can't complete in time, the most important way to control incoming demand. We want to shed load as early as possible, so we can avoid tying up resources at several tiers before rejecting the request. Service should measure its response time and present it in the health check. 
+
+Service discovery. Services can announce themselves to begin receiving a load. A caller needs to know at least one IP address to contact a particular service. Service discovery is itself another service, it can fail or get overloaded. Service discover can be built on top of a distributed data store such as ZooKeeper or etc. 
+
+In CAP theorem, ZooKeeper is a CP system - when there is a network partition, some nodes will not answer queries or accept writes. HashiCorp's Consul resamples ZooKeeper, however Consul's architecture places it in the AP area - it prefers to remain available and risk stale information when a partition occurrs.
