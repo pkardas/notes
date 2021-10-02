@@ -365,3 +365,34 @@ Load shedding - under high load, turning away work system can't complete in time
 Service discovery. Services can announce themselves to begin receiving a load. A caller needs to know at least one IP address to contact a particular service. Service discovery is itself another service, it can fail or get overloaded. Service discover can be built on top of a distributed data store such as ZooKeeper or etc. 
 
 In CAP theorem, ZooKeeper is a CP system - when there is a network partition, some nodes will not answer queries or accept writes. HashiCorp's Consul resamples ZooKeeper, however Consul's architecture places it in the AP area - it prefers to remain available and risk stale information when a partition occurrs.
+
+## Chapter 10: Control Plane
+
+The control plane encompasses all the software and services that run in the background to make production load successful. One way to think about it is this: if production user data passes through it, it is production software. If its main job is to manage other software, it is control plane.
+
+Every part of control plane is optional if you are willing to make trade-offs. - for example: logging and monitoring helps with postmortem analysis, without it all those will take longer or simply not be done. 
+
+Mechanical advantage is the multi9plier on human effort that simple machines provide. With mechanical advantage, a person can move something much heavier than themselves. It works for good of for ill. High leverage allows a person to make large changes with less effort. 
+
+Every postmortem review has 3 important jobs to do: Explain what happened. Apologise. Commit to improvement.
+
+Automation has no judgement. When it goes wrong, it tends to do so really, really quickly. By the time a human perceives the problem, it is a question of recovery rather than intervention. We should use automation for the things humans are bad at: repetitive tasks and fast response. We should use humans for the things automation is bad at: perceiving the whole situation at a higher level.
+
+Monitoring team should be responsible for providing monitoring tools - offer a monitoring service to customers.
+
+Log collectors can work in push (the instance is pushing logs over the network, helpful with containers) or pull mode (the collector runs on a ventral machine and reaches out to all known hosts to remote-copy the logs). Getting all the logs on one host is a minor achievement, the real beauty comes from indexing the logs - then you can search for patterns, make trend line graphs and raise alerts when bad things happen. This can be done using Elasticsearch, Logstash and Kibana.
+
+Categories of metrics that can be useful:
+
+- Traffic indicators - page requests, transaction count
+- Business transaction for each type - number processed, aborted, conversion rate
+- Users - demographics, number of users, usage patterns, errors encountered
+- Resource pool health - enabled state, total resources, number of resources created, number of blocked threads
+- Database connection health - number of SQLExceptions thrown, number of queries, average response time
+- Data consumption - number of rows present, footprint in memory and on disk
+- Integration point health - state of circuit breaker, number of timeouts, number of requests, average response time, number of good responses, number of network, protocol errors, actual IP address
+- Cache health - items in cache, memory used by cache, cache hit rate, items flushed by garbage collector
+
+Canary deployment - a small set of instances that get the new build first. For a period of time, the instances running the new build coexist with instances running the old build. The purpose of the canary deployment is to reject a bad build before it reaches the users.
+
+The net result is that GUIs make terrible administrative interfaces for long-term production operation. The best interface for long-term operation is the command line. Given a command line, operators can easily build a scaffolding of scripts, logging and automated actions to keep your software happy.
