@@ -396,3 +396,62 @@ Categories of metrics that can be useful:
 Canary deployment - a small set of instances that get the new build first. For a period of time, the instances running the new build coexist with instances running the old build. The purpose of the canary deployment is to reject a bad build before it reaches the users.
 
 The net result is that GUIs make terrible administrative interfaces for long-term production operation. The best interface for long-term operation is the command line. Given a command line, operators can easily build a scaffolding of scripts, logging and automated actions to keep your software happy.
+
+## Chapter 11: Security
+
+Security must be baked in. It is not a seasoning to sprinkle onto your system at the end. You are responsible to protect your consumers and your company. 
+
+OWASP Top 10 - catalogued application security incidents and vulnerabilities. Top 10 list represents a consensus about the most critical web ap[plication security flaws:
+
+1. Injection - an attack on a parser or interpreter that relies on user-supported input. Classic example - SQL injection, it happens when code bashes strings together to make queries, but every SQL library allows the use of placeholders in query strings. Keep in mind that "*comes from a user*, doesn't only mean the input arrived just now in an HTTP request, data from a database may have originated fro a user as well. XML parsers are vulnerable as well (XXE injection).
+
+2. Broken Authentication and Session Management - at one time, it was common to use query parameters on URLS and hyperlinks to carry session IDs, not only are thoseIDs are visible to every switch, router and proxy server, they are also visible to humans. Anyone who copies and pastes their link from their browser shares their session. Session hijacking can be dangerous when it is stolen from administrator. OWASP suggest the following guidelines for handling session IDs:
+
+   1. Use long session ID with lots of entropy
+   2. Generate session ID using a pseudorandom number generator with good cryptographic properties (`rand` is not a good choice)
+   3. Protect against XSS to avoid script execution that would reveal session ID
+   4. When user authenticates, generate a fresh session ID
+   5. Keep up to date with security patches and versions, too many systems run outdated versions with known vulnerabilities
+   6. Use cookies to exchange session IDs, do not accept session IDS via other mechanisms
+
+   *Authentication* means we verify the identity of the caller. Is the caller who he or she claims to be? Some do's and and don'ts:
+
+   1. Don't keep passwords in your database
+   2. Never email a password to a user as a part of "*forgotten password*" process
+   3. Do apply strong hash algorithm to password. Use "*salt*, which is some random data added to the password to make dictionary attacks harder
+   4. Do allow users to enter overly long passwords
+   5. Do allow users to paste passwords into GUIs
+   6. Do allow users to paste passwords into GUIs
+   7. Do plan on rehashing passwords at some point in future. We have to keep increasing the strength of our hash algorithms. Make sure you can change the salt too
+   8. Don't allow attackers to make unlimited authentication attempts
+
+3. Cross-site Scripting - happens when a service renders a user's input directly into HTML without applying input escaping, it is related to injection attacks. Bottom line is: never trust input, scrub it on the way and escape it on the way out. Don't build structured data by smashing strings together.
+
+4. Broken Access Control - refers to application problems that allow attackers to access data they shouldn't. One of common forms of broken access control is "*direct object access*", this happens when a URL contains something like a database ID as a query parameter. Solution for this is to reduce the value of URL probing and checking authorisation to objects in the first place. Generate unique but non-sequential identifiers or use a generic ULR that is session-sensitive (`/users/123` -> `/users/me`). Rule of thumb: *If a caller is not authorised to see the contents of a resource, it should be as if the resource doesn't even exist* (`404` instead of `403`). When a request involves a file upload, the caller can overwrite any file the service is allowed to modify. The only safe way to handle file uploads is to tread the client's filename as an arbitrary string to store in a database field. Don't build a path from the filename in the request.
+
+5. Security Misconfiguration - default passwords are a serious problem. Security misconfiguration usually takes the form of omission. Servers enable unneeded features by default. Admin consoles are a common source of problems. Another common security misconfiguration relates to servers listening too broadly. You can improve information security right away by splitting internal traffic onto its own NIC separate from public-facing traffic. Make sure every administrator uses a personal account, not a group account. Go ahead and add some logging to those administrative and internal calls.
+
+6. Sensitive Data Exposure - credit cards, medical records, insurance files, purchasing data, emails - all these valuable things people can steal from you or use against you. Hackers don't attack your strong points, they look for cracks in your shell. It can be as simple as employee's stolen laptop with a database extract in a spreadsheet. Some guidelines:
+
+   1. Don't store sensitive information that you don't need
+   2. Use HTTP Strict Transport Security - it prevents clients from negotiating their way to insecure protocols
+   3. Stop using SHA-1 
+   4. Never store passwords in plain text
+   5. Make sure sensitive data is encrypted in the database
+   6. Decrypt data based on the user's authorisation, not the server's
+
+   Consider using AWS Key Management Service. Ap[plication can request data encryption keys, which they use to encrypt or decrypt data. HashiCorp Vault - alternative to AWS KMS.
+
+7. Insufficient Attack Protection - always assume that attackers have unlimited access to other machines behind firewall. Services do not typically track illegitimate requests by their origin. They do not block callers that issue too many bad requests. That allows an attacking program to keep making calls. API Gateways are a useful defence here. An API Gateway can block callers by their API key. It can also throttle their request rate. Normally this helps preserve capacity. In the case of an attack, it slows the rate of data compromise, thereby limiting the damage.
+
+8. Cross-Site Request Forgery - used to be a bigger issue than it is now. A VCSRF attack starts on another website, an attacker uses a web page with JS, CSS or HTML that includes a Lin to your system. When the hapless user's browser accesses your system, your system thinks it is a valid request from that user. Make sure that requests with side effects (password change, mailing address update, purchases) use anti-CSRF tokens. These are extra fields containing random data that your system emits when rendering a form. Most frameworks today do this for you.You can also tighten up your cookie policy with the "*SameSite*" property. The SameSite attribute causes browser to send the cookie only if the documents origin is the same as the target's origin. SamsSite cookie may require change session management approach.
+
+9. Using Components with Known Vulnerabilities - most successful attacks are not the exciting "*zero day, rush to patch before they get it*". Most attacks are mundane. It is important to keep applications up-to-date.
+
+10. Underprotected APIs - it is essential to make are sure that APIs are not misused. APIs must ensure that malicious request cannot access data the original user would not be able to see. API should use the most secure means available to communicate. Make sure the parser is hardened against malicious input.Fuzz-testing APIs is especially important.
+
+The principle of Least Privilege - a process should have the lowest level of privilege needed to accomplish the task. Anything application services need to do, they should do as nonadministrative users. Containers provide a nice degree of isolation from each other. Instead of creating multiple application-specific users on the host operating system, you can package each application into its own container. 
+
+Configured Passwords - at the absolute minimum, passwords to production databases should be kept separate from any other configuration files. Password vaulting keeps passwords in encrypted files, which reduces the security problem. AWS Key Management Service is useful here. With KMS applications use API calls to acquire decryption keys. That way the encrypted data don't sit in the same storage as the decryption keys.
+
+Frameworks can't protect you from the Top 10, neither can a one-time review by your company's applications security team.Security is an ongoing activity. It must be part of system's architecture. You must have a process to discover attacks.
