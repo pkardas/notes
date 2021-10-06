@@ -455,3 +455,7 @@ The principle of Least Privilege - a process should have the lowest level of pri
 Configured Passwords - at the absolute minimum, passwords to production databases should be kept separate from any other configuration files. Password vaulting keeps passwords in encrypted files, which reduces the security problem. AWS Key Management Service is useful here. With KMS applications use API calls to acquire decryption keys. That way the encrypted data don't sit in the same storage as the decryption keys.
 
 Frameworks can't protect you from the Top 10, neither can a one-time review by your company's applications security team.Security is an ongoing activity. It must be part of system's architecture. You must have a process to discover attacks.
+
+## Chapter 12: Case Study: Waiting for Godot
+
+## Chapter 13: Design for Deployment
