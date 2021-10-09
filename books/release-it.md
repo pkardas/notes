@@ -516,3 +516,19 @@ Postel's Robustness Principle can be seen as Liskov Substitution Principle: We c
 Handling breaking changes - best approach is to add a version discriminator to the URL. This is the most common approach. You have to support both the old and the new versions for the some period of time. Both versions should operate side by side. This allows consumers to upgrade as they are able. Internally you want to avoid duplication. Handle this in the controller, methods that handle the new API go directly to the most current version of the business logic, methods that handle the old API get updated so they convert old objects to the current ones on requests and convert new objects to old ones on responses.
 
 When receiving requests or messages, your application has no control over the format. The same goes for calling out to other services. The other endpoint can start rejecting your requests at any time. After all, they may not observe the same safety rules we just described. Always be defensive. 
+
+## Chapter 15: Case Study: Trampled by Your Own Customers
+
+Conway's Law:
+
+> If you have four teams working on a compiler, you will get a form-pass compiler. 
+
+Conway argues, two people must - in some fashion - communicate about the specification for that interface. If the communication does not occur, interface cannot be built.
+
+Sometimes when you ask questions but you don't get answers, it means nobody knows the answers. At other times, it means nobody wants to be seen answering the questions. 
+
+Load testing is about: defining a test plan, creating some scripts, configuring the load generators and test dispatchers. 
+
+Tests often are prepared wrongly, real word is crude and rude, there are scrapers not respecting your cookie policy, search browsers indexing your website, users doing weird stuff. 
+
+Most websites have terms and conditions stating "*By viewing this page you agree to ...*, with this you can sue or at least block sources of bots hitting your website millions of times. 
