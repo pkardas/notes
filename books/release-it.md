@@ -454,8 +454,47 @@ The principle of Least Privilege - a process should have the lowest level of pri
 
 Configured Passwords - at the absolute minimum, passwords to production databases should be kept separate from any other configuration files. Password vaulting keeps passwords in encrypted files, which reduces the security problem. AWS Key Management Service is useful here. With KMS applications use API calls to acquire decryption keys. That way the encrypted data don't sit in the same storage as the decryption keys.
 
-Frameworks can't protect you from the Top 10, neither can a one-time review by your company's applications security team.Security is an ongoing activity. It must be part of system's architecture. You must have a process to discover attacks.
+Frameworks can't protect you from the Top 10, neither can a one-time review by your company's applications security team. Security is an ongoing activity. It must be part of system's architecture. You must have a process to discover attacks.
 
 ## Chapter 12: Case Study: Waiting for Godot
 
 ## Chapter 13: Design for Deployment
+
+How to design applications for easy rollout - packaging, integration point versioning and database schema.
+
+Once upon a time, we wrote our software, zipped it up and threw it over the wall to the operations so they could deploy it. Operations would schedule some *planned* downtime to execute the release. HOWEVER, users should not care about downtime, application should be updated without them knowing about the release.
+
+Most of the time, we design for the state of the system after a release. It assumes the whole system can be changed in some instantenous quantum jump. We have to treat deployment as a feature. Three key concerns: automation, orchestration and zero-downtime deployment. 
+
+AUTOMATED DEPLOYMENTS. Build pipeline is the first tool of interest. It picks up after someone commits a change to VCS. Build pipelines are often implemented with CI servers. CI would stop after publishing a test report and an archive, the build pipeline goes beyond - run a series of steps that culminate in a production deployment (deploy code to trial env, run migrations, perform integration tests). Each stage of build pipeline is looking for reasons to reject the build - failed tests, lint complaints, integration fails.
+
+Tools: Jenkins, GoCD, Netflix Spinnaker, AWS Code Pipeline. Do not look for the best tools, pick one that suffices and get good with it. Avoid analysis trap.
+
+At the end of the build pipeline, build served interacts with one of the configuration management tools.
+
+Between the time a developer commits code to the repository and the time it runs in production, code is a pure liability. It may have unknown bugs, may break scaling or cause production downtime. It might be a great implementation of a feature nobody wants. The idea of continuous deployment is to reduce that delay as much as possible to reduce the liability of undeployed code. 
+
+A bigger deployment with more change is definitely riskier. "*If it hurts, do it more often* - do everything continuously, for the build pipeline it means - run the full build on every commit.
+
+Shim - a thin piece of wood that fills a gap where two structures meet. In deployments, shim is a bit of code that helps join old and new versions of the application. For example when migrating database, old instances will fead for the old table, new instances will be reading from the new table. Shims can be achieved using SQL triggers - insert to one table is propagated to the other. 
+
+[MUTABLE INFRASTRUCTURE] We typically update machines in batches. You match choose to divide your machines into equal-sized groups. Suppose we have five groups: Alpha, Bravo, Charlie, Delta, Foxtrot. Rollout would go like this:
+
+1. Instruct Alpha to stop accepting new requests
+2. Wait for load to drain from Alpha
+3. Run the configuration management tool to update code and config
+4. Wait for green health checks on all machines in Alpha
+5. Instruct Alpha to start accepting requests
+6. Repeat the process for Bravo, Charlie, Delta, Foxtrot
+
+First group should be the canary group. Pause there to evaluate the build before moving on to the next group. Use traffic shaping at your load balancer to gradually ramp up the traffic to the canary group while watching monitoring for anomalies and metrics. 
+
+Every application should include an end-to-end health check. 
+
+[IMMUTABLE INFRASTRUCTURE] To roll code out here, we don't change the old machines. Instead we spin up new machines on the new version of the code. Machines can be started in the existing cluster or in a new cluster. With frequent deployments, you are better of starting new machines in the existing cluster, that avoids interrupting open connections when switching between clusters. Be careful about cache and session. 
+
+Remember about the post-rollout cleanup - drop old tables, views, columns, aliases, ...
+
+DEPLOY LIKE THE PROS - Currently deployments are frequent and should be seamless. The boundary between operations and development has become fractal. Designing for deployment gives the ability to make large changes in small steps. This all rests on a foundation of automated action and quality checking. The build pipeline should be able to apply all the accumulated wisdom of your architects, developers, designers, testers and DBAs.
+
+Software should be designed to be deployed easily. Zero downtime is the objective. Smaller, easier deployments me3an you can make big changes over a series of small steps. That reduces disruption to your users.
