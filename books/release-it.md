@@ -497,4 +497,22 @@ Remember about the post-rollout cleanup - drop old tables, views, columns, alias
 
 DEPLOY LIKE THE PROS - Currently deployments are frequent and should be seamless. The boundary between operations and development has become fractal. Designing for deployment gives the ability to make large changes in small steps. This all rests on a foundation of automated action and quality checking. The build pipeline should be able to apply all the accumulated wisdom of your architects, developers, designers, testers and DBAs.
 
-Software should be designed to be deployed easily. Zero downtime is the objective. Smaller, easier deployments me3an you can make big changes over a series of small steps. That reduces disruption to your users.
+Software should be designed to be deployed easily. Zero downtime is the objective. Smaller, easier deployments mean you can make big changes over a series of small steps. That reduces disruption to your users.
+
+## Chapter 14: Handling Versions
+
+It is better for everyone if we do some extra work on our end to maintain compatibility rather than pushing migration costs out onto other teams. How your software can be a good citizen?
+
+Each consuming application has its own development team that operates on its own schedule. If you want others to respect your autonomy, then you must respect theirs. That means you can't force consumers to match your release schedule. Trying to coordinate consumer and provider deployments doesn't scale. 
+
+TCP specification (Postel's Robustness Principle):
+
+> Be conservative in what you do, be liberal in what you accept from others. 
+
+Consumer and provider must share a number of agreements in order to communicate: connection handshaking and duration, request framing, content encoding, message syntax, message semantics, authorisation and authentication.
+
+Postel's Robustness Principle can be seen as Liskov Substitution Principle: We can always accept more than we accepted before, but we cannot less or require more. We can return more than we returned before, but we cannot return less. 
+
+Handling breaking changes - best approach is to add a version discriminator to the URL. This is the most common approach. You have to support both the old and the new versions for the some period of time. Both versions should operate side by side. This allows consumers to upgrade as they are able. Internally you want to avoid duplication. Handle this in the controller, methods that handle the new API go directly to the most current version of the business logic, methods that handle the old API get updated so they convert old objects to the current ones on requests and convert new objects to old ones on responses.
+
+When receiving requests or messages, your application has no control over the format. The same goes for calling out to other services. The other endpoint can start rejecting your requests at any time. After all, they may not observe the same safety rules we just described. Always be defensive. 
