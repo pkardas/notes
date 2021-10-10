@@ -532,3 +532,49 @@ Load testing is about: defining a test plan, creating some scripts, configuring 
 Tests often are prepared wrongly, real word is crude and rude, there are scrapers not respecting your cookie policy, search browsers indexing your website, users doing weird stuff. 
 
 Most websites have terms and conditions stating "*By viewing this page you agree to ...*, with this you can sue or at least block sources of bots hitting your website millions of times. 
+
+## Chapter 16: Adaptation
+
+To make a change, your company has to go through a decision cycle - plan -> do -> check -> act. In small companies this communication may involve just one or two people, in larger companies an entire committee. Getting around the cycle faster makes you more competitive. This drives the "*fail fast*" motto for startups.
+
+Agile and lean development methods helped remove delay from "act", DevOps helps remove even more in "act" and offers tons of new tools to help with "observe".
+
+Thrashing - happens when organisation changes direction without taking the time to receive, process and incorporate feedback. You may recognise it as constantly shifting development priorities or an unending series of crises. It creates team confusion, unfinished work and lost productivity. To avoid trashing, try to create a steady cadence of delivery and feedback.
+
+The platform team should not implement all your specific monitoring rules, instead this team should provide an API that lets you install your monitoring rules into the monitoring service provided by the platform. 
+
+> If your developers only use the platform because it is mandatory, then the platform is not good enough
+
+The Fallacy of the DevOps Team - in larger companies, it is common to find a group called DevOps team. This team sits between development and operations with the goal of moving faster and automating releases into production. *This is an anti pattern*. DevOps should soften the interface between different teams. DevOps goes deeper than deployment automation. It is a shift from ticket and blame-driven operations with throw-it-over-the-wall releases TO one based on open sharing of information and skills, data-driven decision making about architecture and design, production availability and responsiveness. Isolating these ideas to a single team undermines the whole point.
+
+Frequent releases with incremental functionality allow your company to outpace its competitors.
+
+Blue/green deployment - machines are divided into pools. One pool is active in production. The other pool gets the new deployment. That leaves time to test it before exposing it to customers. Once the new pool looks good, you shift production traffic over to it. 
+
+More code, means it is harder to change. Large codebases are more likely to become overgeneralised. A shared database means every change has a higher potential to disrupt. The big service will accumulate complexity faster than the sum of two smaller services. It is easier to maintain and prune a bonsai juniper than a hundred-foot oak.
+
+The key to making evolutionary architecture work is failure. You have to try different approaches to similar problems and kill the ones that are less successful. 
+
+Jeff Bezos said that every team should be sized no bugger than you can feed with 2 large pizzas. Important but misleading. It is not just about having fever people on a team. A self-sufficient two-pizza team also means each team member has to cover more than one discipline. You can't have a two-pizza team if you need a dedicated DBA, frontend developer, an infra guru a backend developer, a ML expert, a product manager, a GUI designed, and so on. The two-pizza team is about reducing external dependencies. Thousand of dependencies will keep you from breaking free. It is really about having a small group that can be self-sufficient and push things all the way through to production.
+
+No coordinated deployments - If you ever find that you need to update both the provider and the caller of a service interface at the same time, it is a warning sign that those services are strongly coupled. 
+
+Evolutionary architecture is the one that supports incremental, guided c change as a first principle across multiple dimensions. Architecture styles:
+
+- Microservice - very small, disposable units of code. Emphasise scalability, team-scale autonomy. Voulnerable to coupling with platform for monitoring, tracing and continuous delivery
+- Microkernel and plugins - in-process, in-memory message passing core with formal interfaces to extensions. Good for incremental change in requirements, combining work from different teams. Vulnerable to language and runtime environment.
+- Event-based - prefers asynchronous messages for communication, avoiding direct calls. Good for temporal decoupling, Allows new subscribers without change to publishers. Allows logic change and reconstruction from history. Vulnerable to semantic change in message formats over time.
+
+Microservice size: ideally it should be no bigger than what fits in one developer's head.
+
+Don't pursue microservices just because the Silicon Valley unicorns are doing it. Make sure they address a real problem you are likely to suffer. Otherwise, the operational overhead and debugging difficulty of micro services will outweigh your benefits.
+
+Systems should exhibit loose clustering. In a loose cluster, the loss of an individual instance is no more significant than the fall of a single tree in a forest. The members of a cluster should not be configured to know the identities of other members of the cluster.
+
+Modular systems inherently have more options than monolithic ones. 5 modular operators - borrowed from a hardware:
+
+1. Splitting - breaking things into modules, or a module into submodules. The key with splitting is that the interface to the original modules is unchanged. Before splitting, it handles the whole thing itself. Afterward, it delegates work to the new modules but supports the same interface.
+2. Substituting - is just replacing one module with another (like swapping nVidia card with AMD). The original module and the substitute need to share a common interface.
+3. Augmenting and Excluding - augmenting is adding a module to a system. Excluding is removing one. If you design your parent system to make augmenting and excluding into first-class citizens, then you will reach a different design. 
+4. Inversion - works by taking functionality that is distributed in several modules and raising it up higher in the system. 
+5. Porting - is about repurposing a module from a different system. Any time we use a service created by a different project or system, we are porting that service to our system. Porting risks adding a coupling.
