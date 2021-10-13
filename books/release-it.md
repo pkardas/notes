@@ -597,3 +597,29 @@ Use URL dualism to support many databases by using URLs as both the item identif
 One of the basic enterprise architecture patterns is the "Single System of Record". The idea is that any particular concept should originate in exactly one system, and that system will be enterprise-wide authority on entities within that concept.
 
 We need to be careful about exposing internal concepts to other systems. It creates semantics and operational coupling that hinders future change.
+
+## Chapter 17: Chaos Engineering
+
+Chaos engineering - the discipline of experimenting on a distributed system in order to build confidence in the system's capability to withstand turbulent conditions in production. Staging or Qa environments aren't much of a guide to the large-scale behaviour of systems in production.
+
+Congested networks behave in a qualitatively different way than uncontested ones. Systems that work in a lo-latency, low-loss network mat break badly in a congested network. Related paradox - *Volkswagen microbus* - you learn how to fix the things that often break. You don't learn how to fix the things that rarely break. But that means when when they do break, the situation is likely to be more dire. We want a continuous low level of breakage to make sure our system can handle the big things. 
+
+We use chaos engineering the way a weightlifter uses iron: to create tolerable levels of stress and breakage to increase the strength of the system over time. 
+
+At Netflix, chaos is an opt-out process. That means every service in production will be subject to Chaos Monkey. Other companies adopting chaos engineering have chosen an opt-in approach. When you are adding chaos engineering to an organisation, consider starting with opting-in.
+
+You must be able to break the system without breaking the bank. It that is not the case, chaos engineering is not for you.
+
+> If you have a wall full of green dashboards, that means your monitoring tools aren't good enough. There is always something weird going on.
+
+Make sure you have a recovery plan. The system may not automatically return to a healthy state when you turn off the chaos.You need to know what to restart, disconnect or clean up.
+
+Chaos Monkey does one kind of injection - it kills instances (randomly). There are different types of monkeys: Latency Monkey, Janitor Monkey, Chaos King, ...
+
+Killing instances is the most basic and crude kind of injection. It will absolutely find weaknessess in your system.
+
+Netflix uses failure injection testing (FIT). FIT can tag a request at the inbound edge with a cookie that says, eg. "Does the line, this request is going to fail when service G calls service H". Netflix uses a common framework for all its outbound service calls, so it has a way to propagate this cookie and treat it uniformly. 
+
+High-reliability organisations use drills and simulations to find the same kind of systematic weaknesses in their human side as in the software side. You can make this more fun by calling it a "*zombie apocalypse simulation*". Randomly select 50% of your people and tell them they are zombies for the rest of the day.
+
+After the simulation review the issues. 
