@@ -578,3 +578,22 @@ Modular systems inherently have more options than monolithic ones. 5 modular ope
 3. Augmenting and Excluding - augmenting is adding a module to a system. Excluding is removing one. If you design your parent system to make augmenting and excluding into first-class citizens, then you will reach a different design. 
 4. Inversion - works by taking functionality that is distributed in several modules and raising it up higher in the system. 
 5. Porting - is about repurposing a module from a different system. Any time we use a service created by a different project or system, we are porting that service to our system. Porting risks adding a coupling.
+
+Information architecture is how we structure data. It is the data and the metadata we use to describe the things that matter to our systems. It is a set of related models that capture some facets of reality. Your job in building systems is to decide what facets of reality matter to your system, how are you going to represent those and how that representation can survive over time. 
+
+Events can be used for:
+
+- Notifications - fire and forget, one-way announcement, no response is expected
+- Even-carried state transfer - an event that replicates entities or parts of entities so other systems can fo their work
+- Event sourcing - when all changes are recorded as events that describe the change
+- Command-query responsibility segregation - reading and writing with different structures. Not the same as events, but events are often found on the "command" side.
+
+Versioning can be a real challenge with events, especially once you have yers' worth of them. Stay away from closed formats like serialised objects. Look toward open formats like JSON or self-describing messages. Avoid frameworks that require code generation based on schema. Treat messages like data instead of objects and you are going to have a better time supporting very old formats. 
+
+Extract "*policy proxy*", questions of ownership and access control can be factored out of the service itself into a more centrally controlled location.
+
+Use URL dualism to support many databases by using URLs as both the item identifier and a resolvable resource. Be careful you should be able to verify that whatever you receive back is something you generated.
+
+One of the basic enterprise architecture patterns is the "Single System of Record". The idea is that any particular concept should originate in exactly one system, and that system will be enterprise-wide authority on entities within that concept.
+
+We need to be careful about exposing internal concepts to other systems. It creates semantics and operational coupling that hinders future change.
