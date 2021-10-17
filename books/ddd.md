@@ -104,3 +104,25 @@ Choose modules that tell the story of the system and contain a cohesive set of c
 Modules need to coevolve with the rest of the model. This means refactoring modules right along with the model and code. But this refactoring often doesn't happen.
 
 Use packaging to separate the domain layer from other code. Otherwise, leave as much freedom as possible to the domain developers to package the domain objects in ways that support their model and design choices. 
+
+## Chapter 6: The Life Cycle of a Domain Object
+
+The challenges:
+
+- Maintaining object integrity throughout the life cycle
+- Preventing the model from getting swamped by the complexity of managing the life cycle
+
+These issues can be addressed using 3 patterns.
+
+AGGREGATES. It is difficult to guarantee the consistency of changes to objects in a model with complex associations. Invariants need to be maintained that apply to closely related groups of objects, not just discrete objects. Yet cautious locking schemes cause multiple users to interfere pointlessly with each other and make a system unusable. An aggregate is a cluster or associated objects that we treat as a unit for the purpose of data changes. Each aggregate has a root and a boundary. Chose one entity to be the root of each aggregate, and control all access to the objects inside the boundary through the root. Allow external objects to hold references to the root only.
+
+FACTORIES. When creation of an object, or an entire aggregation, becomes complicated or reveals too much of the internal structure, factories provide encapsulation (assembly of a car: cars are never assembled and driven at the same time, there is no value in combining both of these functions into the same mechanism). Creation of an object can be a major operation by itself, but complex assembly operations do not fit the responsibility of the created objects. Combining such responsibilities can produce ungainly designs that are hard to understand. Making the client direct construction muddies the design of the client, breaches encapsulation of the assembled object or aggregate, and overly couples the client to the implementation of the created object.
+
+Two basic requirements for any good factory:
+
+1.  Each creation method is atomic and enforces all invariants of the created object or aggregate.
+2. The factory should be abstracted to the type desired, rather than the concrete class created
+
+REPOSITORIES. Associations allow us to find an object based on its relationship to another. But we must have a starting point for a traversal to an entity of value in the middle of its life cycle. For each type of object that needs global access, create an object that can provide the illusion of an in-memory collection of all objects of that type. Set up access through a well-known global interface. Provide methods to add and remove objects, which will encapsulate the actual insertion or removal of data in the data store. Provide methods that select objects based on some criteria and return objects. Provide repositories only for aggregate roots that actually need direct access. Keep the client focused on the model, delegating all object storage and access to the repositories. 
+
+Repository provide methods that allow a client to request objects matching some criteria.
