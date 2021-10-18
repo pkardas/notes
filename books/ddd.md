@@ -121,8 +121,24 @@ FACTORIES. When creation of an object, or an entire aggregation, becomes complic
 Two basic requirements for any good factory:
 
 1.  Each creation method is atomic and enforces all invariants of the created object or aggregate.
-2. The factory should be abstracted to the type desired, rather than the concrete class created
+2.  The factory should be abstracted to the type desired, rather than the concrete class created
 
 REPOSITORIES. Associations allow us to find an object based on its relationship to another. But we must have a starting point for a traversal to an entity of value in the middle of its life cycle. For each type of object that needs global access, create an object that can provide the illusion of an in-memory collection of all objects of that type. Set up access through a well-known global interface. Provide methods to add and remove objects, which will encapsulate the actual insertion or removal of data in the data store. Provide methods that select objects based on some criteria and return objects. Provide repositories only for aggregate roots that actually need direct access. Keep the client focused on the model, delegating all object storage and access to the repositories. 
 
 Repository provide methods that allow a client to request objects matching some criteria.
+
+## Chapter 7: Using the Language: An Extended Example
+
+The model organises domain knowledge and provides a language for the team. Each object in the model has a clear meaning.
+
+To prevent domain responsibilities from being mixed with those of other parts of the system apply layered architecture. 
+
+Modeling and design is not a constant forward process. It will grind to a halt unless there is a frequent refactoring to take advantage of new insights to improve the model and the design.
+
+The real challenge is to actually find an incisive model, one that captures subtle concerns of the domain experts and can drive a practical design. Ultimately, we hope to develop a model that captures a deep understanding of the domain. 
+
+Refactoring is the redesign of software in ways that do not change its functionality. Rather than doing elaborate up-front design decisions, developers take code through a continuous series of small, discrete design changes, each leaving existing functionality unchanged while making the design more flexible or easier to understand. 
+
+Initial models usually are naive and superficial, based on shallow knowledge. Versatility, simplicity and explanatory power come from a model that is truly in tune with the domain.
+
+You will usually depend on creativity and trail and error to find good ways to model the concepts you discover. 
