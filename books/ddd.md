@@ -142,3 +142,13 @@ Refactoring is the redesign of software in ways that do not change its functiona
 Initial models usually are naive and superficial, based on shallow knowledge. Versatility, simplicity and explanatory power come from a model that is truly in tune with the domain.
 
 You will usually depend on creativity and trail and error to find good ways to model the concepts you discover. 
+
+## Chapter 8: Breakthrough
+
+The returns from refactoring are not linear. Usually there is marginal return for a small effort, and the small improvements add up.
+
+Slowly but surely, the team assimilates knowledge and crunches it into a model. Each refinement of code and model gives developers a clearer view. This clarity creates the potential for a breakthrough. 
+
+Don't become paralysed trying to bring about a breakthrough. The possibility usually comes after many modest refactorings. Most of the time is spent making piecemeal improvements, with model insights emerging gradually during each successive refinement. 
+
+Don't hold back from modest improvements, which gradually deepen the model, even if confined with the same general conceptual framework.
