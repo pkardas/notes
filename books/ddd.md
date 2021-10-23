@@ -152,3 +152,17 @@ Slowly but surely, the team assimilates knowledge and crunches it into a model. 
 Don't become paralysed trying to bring about a breakthrough. The possibility usually comes after many modest refactorings. Most of the time is spent making piecemeal improvements, with model insights emerging gradually during each successive refinement. 
 
 Don't hold back from modest improvements, which gradually deepen the model, even if confined with the same general conceptual framework.
+
+## Chapter 9: Making Implicit Concepts Explicit
+
+A deep model has power because it contains the central concepts and abstractions that can succinctly and flexibly express essential knowledge of the user's activities, their problems and their solutions.
+
+The first step is to somehow represent the essential concepts of the domain in the model. Refinement comes later, after successive iterations of knowledge crunching and refactoring. But this process really gets into gear when an important concept is recognised and made explicit in the model and design.
+
+Transformation of a formerly implicit concept into an explicit one is a breakthrough that leads to a deep model. More often, though, the breakthrough comes later, after a number of important concepts are explicit in the model.
+
+Listen to the language the domain experts use. Are there terms that succinctly state state something complicated? Are they correcting your word choice? Do the puzzled looks on their faces go away when you use a particular phrase? These are hints of a concept that might benefit the model.
+
+Constraints make up a particularly important category of model concepts. They often emerge implicitly, and expressing them explicitly can greatly improve a design. Sometimes constraints find a natural home in an object or separate method.
+
+Specification - a predicate that determines if an object does satisfy some criteria.
