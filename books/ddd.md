@@ -166,3 +166,21 @@ Listen to the language the domain experts use. Are there terms that succinctly s
 Constraints make up a particularly important category of model concepts. They often emerge implicitly, and expressing them explicitly can greatly improve a design. Sometimes constraints find a natural home in an object or separate method.
 
 Specification - a predicate that determines if an object does satisfy some criteria.
+
+## Chapter 10: Supple Design
+
+The ultimate purpose of software is to serve users. But first, that same software has to serve developers. This is especially true in a process that emphasises refactoring. 
+
+When software with complex behaviour lacks good a design, it becomes hard to refactor or combine elements. Duplication starts to appear as soon as a developer isn't confident of predicting the full implications of computation. Duplication is forced when design elements are monolithic, so that the parts cannot be recombined. 
+
+Supple design is the complement to deep modelling. Once you have dug out implicit concepts and made them explicit, you have the raw material. Thorough the iterative cycle, you hammer that material into a useful shape.
+
+If developer must consider the implementation of a component in order to use it, the value of encapsulation is lost. Tames should conform to the ubiquitous language so that team members can quickly infer their meaning. Write a test fo a behaviour before creating it, to force your thinking into client developer mode.
+
+Place as much of the logic of the program as possible into functions, operations that return results with no observable side effects.
+
+Decompose design elements (operations, interfaces, classes and aggregates) into cohesive units, taking into consideration your intuition of the important divisions in the domain. Align the model with the consistent aspects of the domain that make it a viable area of knowledge in the first place.
+
+Low coupling is fundamental to object design. When you can go all the way. Eliminate all other concepts from the picture. Then the class will be completely self-contained and can be studied and understood alone. Every such self-contained class significantly eases the burden of understanding a module.
+
+Where it fits, define an operation whose return type is the same as the type of its arguments. 
