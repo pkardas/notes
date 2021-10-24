@@ -184,3 +184,29 @@ Decompose design elements (operations, interfaces, classes and aggregates) into 
 Low coupling is fundamental to object design. When you can go all the way. Eliminate all other concepts from the picture. Then the class will be completely self-contained and can be studied and understood alone. Every such self-contained class significantly eases the burden of understanding a module.
 
 Where it fits, define an operation whose return type is the same as the type of its arguments. 
+
+## Chapter 11: Applying Analysis Patterns
+
+> Analysis patterns are groups of concepts that represent a common construction in business modelling. It may be relevant to only one domain or it may span many domains.
+
+An analysis pattern is a template for solving an organizational, social or economic problem in a professional domain.
+
+## Chapter 12: Relating Design Patterns to the Model
+
+Not all design patterns can be used as domain patterns.
+
+STRATEGY - Domain models contain processes that are not technically motivated but actually meaningful in the problem domain. When alternative processes must be provided, the complexity of choosing the appropriate process combines with the complexity of the multiple processes themselves, and things get out of hand. Factor the varying parts of process into a separate "strategy" object in the model. Factor apart a rule and the behaviour it governs. Implement the rule or substitutable process following the strategy design pattern. Multiple versions of the strategy object represents different ways the process can be done.
+
+COMPOSITE - When the relatedness of nested containers is not reflected in the model, common behaviour has to be duplicated at each level of the hierarchy, and nesting is rigid. Clients must deal with different levels of the hierarchy through different interfaces, even though there may be no conceptual difference they care about. Recursion through the hierarchy to produce aggregated information is very complicated. Define an abstract type that encompasses all members of the composite. Methods that return information are implemented on containers to return aggregated information about their contents. Leaf nodes implement those methods based on their own values. Clients deal with the abstract type and have no need to distinguish leaves from containers. 
+
+## Chapter 13: Refactoring Toward Deeper Insight
+
+Multifaceted process. There are 3 things you have to focus on:
+
+1. Live in the domain
+2. Keep looking at things a different way
+3. Maintain an unbroken dialog with domain experts
+
+Seeking insight into the domain creates a broader context for the process of refactoring. 
+
+Refactoring toward deeper insight is a continuing process. Implicit concepts are recognised and made explicit. Parts of the design are made suppled, perhaps taking on a declarative style. Development suddenly comes to the brink of a breakthrough and plunges through to a deep model.
