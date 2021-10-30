@@ -234,3 +234,19 @@ SEPARATE WAYS. Integration is always expensive. Sometimes the benefit is small. 
 OPEN HOST SERVICE. When a subsystem has to be integrated with many others, there is more and more to maintain and more and more to worry about when changes are made. Therefore, define a protocol that gives access to your subsystem as a set of services.
 
 PUBLISHED LANGUAGE. Direct translation to and from the existing domain models may not be a good solution. Those models may be overly complex or poorly factored. Therefore, use a well-documented shared language that can express the necessary domain information as a common medium of communication, translating as necessary into and out of that language.
+
+## Chapter 15: Distillation
+
+CORE DOMAIN. In designing a large system, there are so many contributing components, all complicated and all absolutely necessary to success, that the essence of the domain model, can be obscured and neglected. Therefore, boil the model down. Make the core small.
+
+GENERIC SUBDOMAINS. Anything extraneous makes the core domain harder to discern and understand. Therefore, identify cohesive subdomains that are not the motivation for your project. Factor out generic models of these subdomains and place them in separate models. 
+
+DOMAIN VISION STATEMENT. In later stages of development, there is a need for explanation the value of the system that does not require an in-depth study of the model. Therefore, write a short description of the core domain. Keep it narrow. Write this statement early and revise it as you gain new insight. 
+
+HIGHLIGHTED CORE.  The mental labor of constantly filtering the model to identify key parts absorbs concentration better spent on design thinking and it requires comprehensive knowledge of the model. Therefore, write a brief document that describes the core domain and the primary interactions among core elements.
+
+COHESIVE MECHANISMS. Computations sometimes reach a level of complexity that begins to bloat the design. The conceptual *what* is swamped by the mechanistic *how*. Therefore, partition a conceptually cohesive mechanism into a separate lightweight framework. 
+
+SEGREGATED CODE. Elements in the model may partially serve the core domain and partially play supporting role. Core elements may be tightly coupled to generic ones. Therefore, refactor the model to separate the core concepts from supporting players and strengthen the cohesion of the core while reducing its coupling to other code. 
+
+ABSTRACT CORE. When there is a lot of interaction between subdomains in separate modules, either many references will have to be created between modules, which defeats much of the value of the partitioning or the interaction will have to be made indirect, which makes the model obscure. Therefore, identify the most fundamental concepts in the model and factor them into distinct classes, abstract classes or interfaces. 
