@@ -250,3 +250,15 @@ COHESIVE MECHANISMS. Computations sometimes reach a level of complexity that beg
 SEGREGATED CODE. Elements in the model may partially serve the core domain and partially play supporting role. Core elements may be tightly coupled to generic ones. Therefore, refactor the model to separate the core concepts from supporting players and strengthen the cohesion of the core while reducing its coupling to other code. 
 
 ABSTRACT CORE. When there is a lot of interaction between subdomains in separate modules, either many references will have to be created between modules, which defeats much of the value of the partitioning or the interaction will have to be made indirect, which makes the model obscure. Therefore, identify the most fundamental concepts in the model and factor them into distinct classes, abstract classes or interfaces. 
+
+## Chapter 16: Large-Scale Structure
+
+EVOLVING ORDER. Design free-for-alls produce systems no one can make sense of as whole.Therefore, let this conceptual large-scale  structure evolve with the application, possibly changing to a completely different type of structure along the way. Don't over constrain the detailed design and model decisions that must be made with detailed knowledge.
+
+SYSTEM METAPHOR. Software decisions tend to be very abstract and hard to grasp. Developers and users alike need tangible ways to understand the system and share a view of the system as a whole. Therefore, organise the design around metaphor and absorb it into the ubiquitous language.
+
+RESPONSIBILITY LAYERS. When each individual object has handcrafted responsibilities, there are no guidelines, no infirmity and no ability to handle large swaths of the domain together. Therefore, look at the conceptual dependencies in your model and the varying rates and sources of change of different parts of your domain. Refactor the model so that the responsibilities of each domain object fit nearly within the responsibility of one layer. 
+
+KNOWLEDGE LEVEL. In application in which the roles and relationships between entities vary in different situations, complexity can explode. Objects end up with references to other types to cover a variety of cases, or with attributes that are used in different ways in different situations. Therefore, create a distinct set of objects that can be used to describe and constrain the structure and behaviour of the basic model. 
+
+PLUGGABLE COMPONENT BEHAVIOUR. When a variety of applications have to interoperate, all based on the same abstractions but designed independently, translations between multiple bounded contexts limit integration. Duplication and fragmentation raise costs of development and installation. Therefore, distill an abstract core of interfaces and interactions and create a framework that allow diverse implementations of those interfaces to be freely substituted. 
