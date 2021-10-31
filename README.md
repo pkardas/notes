@@ -4,14 +4,14 @@
 
 In progress:
 
-👀 [Domain-Driven Design: Tackling Complexity in the Heart of Software](books/ddd.md)
-
 
 Finished:
 
 ✅ [Clean Code: A Handbook of Agile Software Craftsmanship](books/clean-code.md)
 
 ✅ [Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems](books/ddia.md)
+
+✅ [Domain-Driven Design: Tackling Complexity in the Heart of Software](books/ddd.md)
 
 ✅ [Release It! Design and Deploy Production-Ready Software](books/release-it.md)
 
