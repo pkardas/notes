@@ -38,7 +38,7 @@ class B(A):
     return f"foo {bar}"
 ```
 
-B is not taking the same arguments, meaning A and B are cot compatible. A can not be used instead of B, and B can not be used instead of A.
+B is not taking the same arguments, meaning A and B are not compatible. A can not be used instead of B, and B can not be used instead of A.
 
 ### ISP - Interface Segregation Principle
 
