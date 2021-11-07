@@ -4,6 +4,7 @@
 
 In progress:
 
+👀 [Head First Design Patterns: Building Extensible and Maintainable Object-Oriented Software](books/head-first-design-patterns.md)
 
 Finished:
 
