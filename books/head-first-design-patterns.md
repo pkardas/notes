@@ -42,13 +42,71 @@ We know that `fly` and `quack` are the parts of the Duck class that vary across 
 Programming to an implementation:
 
 ```java
-Dog d = new Dog();  // a concrete implementation of Anumal 
-d.back()
+Dog d = new Dog();  // a concrete implementation of Animal 
+d.bark()
 ```
 
 Programming to an interface/supertype:
 
 ```java
 Animal anumal = new Dog();  // we knwo it is a Dog, but we can now use the animal reference polymorphically
-animal. makeSound;
+animal.makeSound();
 ```
+
+*Using our new design, what would you do if you needed to add rocker-powered flying to the SimUDuck app?*
+
+- My answer: Add a new implementation of the `FlyBehaviour`
+
+*Can you think of a class that might want to use the Quack behaviour that isn't a duck?*
+
+- My answer: Russian quacking machine
+
+A Duck will now delegate its flying and quacking behaviours, instead of using quacking and flying methods defined in the Duck class. To change a duck's behaviour at runtime, just call the duck's setter method for that behaviour. 
+
+Design principle:
+
+> Factor composition over inheritance.
+
+Creating systems using composition gives you a lot more flexibility. Not only does it let you encapsulate a family of algorithms into their own set of classes, but it also lets you change behaviour at runtime. Composition Is used in many design patterns and you will see a lot more about its advantages and disadvantages throughout the book.
+
+*A duck call is a device that hunters use to mimic the calls (quacks) of ducks. How would you implement your own duck call that does not inherit from the Duck class?*
+
+-  My answer: Compose a duck call of `QuackBehaviour`.
+
+I have just applied the **STRATEGY** pattern. **The Strategy Pattern** - defines a family of algorithms, encapsulates each one, and makes them interchangeable. Strategy lets the algorithm vary independently from clients that use it.
+
+Design puzzle:
+
+- *KnifeBehaviour, BowAndArrowBehaviour, AxeBehaviour, SwordBehaviour* IMPLEMENT *WeaponBehaviour* 
+- *Troll, Queen, King, Knight* EXTENDS *Character*
+- *Character* HAS-A *WeaponBehaviour*
+- `setWeapon` should be in *Character* class
+
+Design Patterns give you a shared vocabulary with other developers. Once you have got the vocabulary, you can more easily communicate with other developers and inspire those who don't know patterns to start learning them. It also elevates your thinking about architectures by letting you think at the pattern level, not the nitty-gritty object level.
+
+The power of a shared pattern vocabulary:
+
+- Shared pattern vocabularies are POWERFUL. When you communicate with another developer using patterns, you are communicating not just a pattern name but a whole set of qualities, characteristics and constraints that the pattern represents.
+- Patterns allow you to say more with less. Other developers can quickly know precisely the design you have in mind.
+- Talking at the pattern level allows you to stay *in the design* loner, without having to dive deep down to the nitty-gritty details of implementing objects and classes.
+- Shared vocabularies can turbo-charge your team. A team well versed in design patterns can move quickly with less room for misunderstanding.
+- Shared vocabularies encourage more junior developers to get up to speed.
+
+Design patterns don't go directly into your code, they first go into your **brain**. Once you have loaded your brain with a good working knowledge of patterns, you can then start to apply them to new designs, and rework your old code when you find it is degrading into inflexible mess.
+
+OO Basics: Abstraction, Encapsulation, Polymorphism, Inheritance
+
+OO Principles: Encapsulate what varies. Favour composition over inheritance. Program to interfaces, not implementations.
+
+Bullet points:
+
+- Knowing the OO basics does not make you a good OO designer.
+- Good OO designs are reusable, extensible and maintainable.
+- Patterns show you how to build systems with good OO design qualities.
+- Patterns are proven OO experience.
+- Patterns don't give you code, they give you general solutions to design problems. You apply them to your specific application.
+- Patterns aren't invented, they are discovered.
+- Most patterns and principles address issues of change n software.
+- Most patterns allow some part of a system to vary independently of all other parts.
+- We often try to take what varies in a system and encapsulate it.
+- Patterns provide language that can maximise the value of your communication with other developers.
