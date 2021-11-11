@@ -110,3 +110,47 @@ Bullet points:
 - Most patterns allow some part of a system to vary independently of all other parts.
 - We often try to take what varies in a system and encapsulate it.
 - Patterns provide language that can maximise the value of your communication with other developers.
+
+## Chapter 2: Keeping your Objects in the Know
+
+Observer Pattern: Pattern that keeps your objects in the know when something they care about happens.
+
+Weather-O-Rama, our task is to create an app that uses the WeatherData object top update 3 displays for current conditions weather stats and a forecast.
+
+*Based on our first implementation, which of the following apply?*
+
+- My answers: [A] We are coding to concrete implementations, not interfaces. [B] For every new display we will need to alter this code. [C] We have no way to add or remove display elements at runtime. [E] We haven't encapsulated the part that changes.
+
+You know how newspaper or magazine subscriptions work:
+
+1. A newspaper publisher goes into business and begins publishing newspapers
+2. You subscribe to a particular publisher, and every time there is a new edition it gets delivered to you. As long as you remain a subscriber, you get new newspapers.
+3. You unsubscribe when you don't want papers anymore, and they stop being delivered.
+4. While the publisher remains in business, people, hotels, airlines and other businesses constantly subscribe and unsubscribe to the newspaper.
+
+> Publishers + Subscribers = Observer Pattern
+
+The Observer Pattern:
+
+> Defines a one-to-many dependency between objects so that when one object changes state, all of its dependencies are notified and updated automatically.
+
+There are few different ways to implement the Observer Pattern, but most revolve around a class design that includes Subject and Observer interfaces.
+
+Because the subject is the sole owner of the data, the observers are dependent on the subject to update them when the data changes. This leads to a cleaner OO design than allowing many objects to control the same data.
+
+**We say an object is tightly coupled to another object when it is too dependant on that object.** Loosely coupled object doesn't know or care too much about the details of another object. By not knowing too much about other objects, we can create designs that can handle change better.  The Observer Pattern is a great example of loose coupling.
+
+The ways the pattern achieves loose coupling:
+
+1. The only thing the subject knows about an observer is that is implements a certain interface.
+2. We can add new observers at any time.
+3. We never need to modify the subject to add new types of observers.
+4. We can reuse subjects or observers independently of each other.
+5. Changes to either the subject or an observer will not affect the other.
+
+Design principle:
+
+> Strive for loosely coupled designs between objects that interact.
+
+ Loosely coupled designs allow us to build flexible systems that can handle change because the minimise the interdependency between objects.
+ 
