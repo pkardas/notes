@@ -49,7 +49,7 @@ d.bark()
 Programming to an interface/supertype:
 
 ```java
-Animal anumal = new Dog();  // we knwo it is a Dog, but we can now use the animal reference polymorphically
+Animal animal = new Dog();  // we knwo it is a Dog, but we can now use the animal reference polymorphically
 animal.makeSound();
 ```
 
