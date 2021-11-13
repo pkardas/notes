@@ -8,6 +8,8 @@ Book by Eric Freeman and Elisabeth Robson
 
 ## Chapter 1: Welcome to Design Patterns
 
+[Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns.py#L1)
+
 Someone has already solved your problems. You can exploit the wisdom and lessons learned by other developers who have been down the same design problems road and survived the trip. Instead of code reuse, with patterns you get experience reuse. 
 
 Example with ducks, adding `fly` method to the `Duck` superclass turned out to introduce a bug to the `RubberDuck` subclass. A localised update to the code caused a non-local side-effect (flying rubber-duck).
@@ -112,6 +114,8 @@ Bullet points:
 - Patterns provide language that can maximise the value of your communication with other developers.
 
 ## Chapter 2: Keeping your Objects in the Know
+
+[Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns.py#L67)
 
 Observer Pattern: Pattern that keeps your objects in the know when something they care about happens.
 
