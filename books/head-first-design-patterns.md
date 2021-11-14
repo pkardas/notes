@@ -67,7 +67,7 @@ A Duck will now delegate its flying and quacking behaviours, instead of using qu
 
 Design principle:
 
-> Factor composition over inheritance.
+> Favour composition over inheritance.
 
 Creating systems using composition gives you a lot more flexibility. Not only does it let you encapsulate a family of algorithms into their own set of classes, but it also lets you change behaviour at runtime. Composition Is used in many design patterns and you will see a lot more about its advantages and disadvantages throughout the book.
 
@@ -179,3 +179,29 @@ Bullet points:
 - Identify the aspects fo your application that vary and separate them from what stays the same: Observers and data vary.
 - Program to an interface, not an implementation: Subject and Observers are loosely coupled because whet they know about each other are the interfaces they implement.
 - Favour composition over inheritance: Subject holds a list of observers, observers hold a reference to the subject.
+
+## Chapter 3: Decorating Objects
+
+We will re-examine the typical overuse of inheritance and we will learn how to decorate classes at runtime using a form of object composition. 
+
+Starbuzz system has created a maintenance nightmare for themselves. They are violating "*Identify the aspects of your application that vary and separate them from what stays the same" and "*Favour composition over inheritance*".
+
+Problems with the suggested design:
+
+- My answer: What if customer has promo coupon e.g -20%. What if condiment is not available.
+
+If I can extend an objects behaviour through composition, then I can do this dynamically at runtime. When I inherit by subclassing that behaviour is set statically at compile time. By dynamically composing objects, I can add new functionality by writing new code, rather than altering existing code. Because I am not changing existing code, the changes of introducing bugs or causing unintended side effects in pre-existing code are much reduced. Code should be closed to change, yet open to extension.
+
+Design principle - one of the mist important design principles:
+
+> Classes should be open for extension, but closed for modification.
+
+OPEN - if needs or requirements change, just go and make your own extensions. CLOSED - we spent a lot of time getting this code correct and bug free, so we can't let you alter the existing code. It must remain closed to modification.
+
+Our goal is to allow classes to be easily extended to incorporate new behaviour without modifying existing code. Designs that are resilient to change and flexible enough to take on new functionality to meet changing requirements. Eg. The Observer Pattern - we can add new Observers and extend the Subject at any time.
+
+Many of the patterns give us time-tested designs that protect your code from being modified by supplying a means of extension. 
+
+How can I make every part of my design follow the Open-Closed Principle? Usually you can't. Making OO design flexible and open to extension without modifying existing code takes time and effort. 
+
+Applying the Open-Closed principle EVERYWHERE is wasteful and unnecessary, and can lead to complex, hard-to-understand code. 
