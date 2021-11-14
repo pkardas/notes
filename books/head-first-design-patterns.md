@@ -31,7 +31,7 @@ There is one constant in software development. What is the one thing you can alw
 - Requirement to use worker instead of lambda.
 - New library for the JSON serialisation.
 
-We know using inheritance hasn't;t worked out very well. The `Flyable` and `Quackable` interfaces sounded good at first. There is a design principle:
+We know using inheritance hasn't worked out very well. The `Flyable` and `Quackable` interfaces sounded good at first. There is a design principle:
 
 > Identify the aspects of your application that vary and separate them from what stays the same.
 
@@ -205,3 +205,13 @@ Many of the patterns give us time-tested designs that protect your code from bei
 How can I make every part of my design follow the Open-Closed Principle? Usually you can't. Making OO design flexible and open to extension without modifying existing code takes time and effort. 
 
 Applying the Open-Closed principle EVERYWHERE is wasteful and unnecessary, and can lead to complex, hard-to-understand code. 
+
+The Decorator Pattern:
+
+> Attaches additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.
+
+The decorator adds its own behaviour before and / or after delegating to the object it decorates to do the rest fo the job.
+
+Just because we are subclassing, it doesn't mean we use inheritance. Sometimes we are subclassing in order to have the correct type, not to inherit the behaviour. We can acquire new behaviour not by inheriting it from a superclass, but by composing objects together.
+
+Decorators are typically created using other patterns like Factory and Builder.
