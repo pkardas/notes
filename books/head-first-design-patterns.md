@@ -8,7 +8,7 @@ Book by Eric Freeman and Elisabeth Robson
 
 ## Chapter 1: Welcome to Design Patterns
 
-[Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns.py#L1)
+[The Strategy Pattern - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns.py#L1)
 
 Someone has already solved your problems. You can exploit the wisdom and lessons learned by other developers who have been down the same design problems road and survived the trip. Instead of code reuse, with patterns you get experience reuse. 
 
@@ -115,7 +115,7 @@ Bullet points:
 
 ## Chapter 2: Keeping your Objects in the Know
 
-[Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns.py#L67)
+[The Observer Pattern - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns.py#L67)
 
 Observer Pattern: Pattern that keeps your objects in the know when something they care about happens.
 
@@ -181,6 +181,8 @@ Bullet points:
 - Favour composition over inheritance: Subject holds a list of observers, observers hold a reference to the subject.
 
 ## Chapter 3: Decorating Objects
+
+[The Decorator Pattern - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns.py#L153[)
 
 We will re-examine the typical overuse of inheritance and we will learn how to decorate classes at runtime using a form of object composition. 
 
