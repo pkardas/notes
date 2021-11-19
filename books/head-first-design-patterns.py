@@ -148,3 +148,59 @@ forecast_display = AvgTempDisplay(weather_data)
 weather_data.set_measurements(23.0, 68.1, 1018.0)
 weather_data.set_measurements(24.2, 70.4, 1019.2)
 weather_data.set_measurements(25.8, 71.2, 1018.4)
+
+
+# Chapter 3 - The Decorator Pattern
+
+class Beverage:
+    @property
+    def description(self) -> str:
+        return self.__class__.__name__
+
+    @property
+    def cost(self) -> float:
+        raise NotImplementedError
+
+
+class CondimentDecorator(Beverage):
+    def __init__(self, beverage: Beverage):
+        self._beverage = beverage
+
+    @property
+    def description(self) -> str:
+        return f"{self._beverage.description}, {super(CondimentDecorator, self).description}"
+
+    @property
+    def cost(self) -> float:
+        raise NotImplementedError
+
+
+class Espresso(Beverage):
+    @property
+    def cost(self) -> float:
+        return 1.99
+
+
+class HouseBlend(Beverage):
+    @property
+    def cost(self) -> float:
+        return 0.89
+
+
+class Mocha(CondimentDecorator):
+    @property
+    def cost(self) -> float:
+        return self._beverage.cost + 0.20
+
+
+class Soy(CondimentDecorator):
+    @property
+    def cost(self) -> float:
+        return self._beverage.cost + 0.15
+
+
+beverage = Espresso()
+beverage = Mocha(beverage)
+beverage = Mocha(beverage)
+beverage = Soy(beverage)
+print(f"${beverage.cost} for '{beverage.description}'")
