@@ -215,3 +215,18 @@ The decorator adds its own behaviour before and / or after delegating to the obj
 Just because we are subclassing, it doesn't mean we use inheritance. Sometimes we are subclassing in order to have the correct type, not to inherit the behaviour. We can acquire new behaviour not by inheriting it from a superclass, but by composing objects together.
 
 Decorators are typically created using other patterns like Factory and Builder.
+
+`java.io` is largely based on Decorator. Java I/O also points out one of the downsides of the Decorator Pattern: designs using this pattern often result in a large number of small classes, that can be overwhelming to the developer trying to use the Decorator-based API. 
+
+Bullet points:
+
+- Inheritance is one form of extension, but not necessarily the best way to achieve flexibility in our designs.
+- In our designs we should allow behaviour to be extended without the need to modify existing code.
+- Composition and delegation is often used to add new behaviours at runtime.
+- The Decorator Pattern an alternative to subclassing for extending behaviour. 
+- The Decorator Pattern involves a set fo decorator patterns that are used to wrap concrete components.
+- Decorator classes mirror the type of the components they decorate (in fact they are the same type as the components they decorate, either through inheritance or interface implementation).
+- Decorators change the behaviour of their components by adding new functionality before and / or after method calls to the component.
+- You can wrap a component with any number of decorators.
+- Decorators are typically transparent to the client of the component - that is, unless the client is relying on the component's concrete type.
+- Decorators can result in many small objects in our design, and overuse can be complex.
