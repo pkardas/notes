@@ -262,7 +262,7 @@ public abstract class PizzaStore {
     
     pizza.prepare();
     pizza.bake();
-    pizza.cut():
+    pizza.cut();
     pizza.box();
     
     return pizza;
@@ -279,3 +279,21 @@ The Factory Method Pattern:
 > Defines an interface for creating an object, but lets subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to subclasses.
 
 Creator is written to operate on products produced by the factory method. The Creator class is written without knowledge of the ac dual products that will be created. Only subclasses actually implement the factory method and create products.
+
+When you directly instantiate an object, you are depending on its concrete class. Reducing dependencies to concrete classes in our code is a "good thing". General Principle - Dependency Inversion Principle:
+
+> Depend upon abstractions. Do not depend upon concrete class.
+
+It suggests that our high-level components should not depend on out low-level components, rather, they should both depend on abstractions. 
+
+The "inversion" in the name Dependency Inversion Principle is there because it inverts they way you typically might think about your OO design. Low-level components now depend on higher-level abstraction.
+
+Guidelines that can help to avoid OO designs that violate the Dependency Inversion Principle:
+
+- No variable should hold a reference to a concrete class (if you use new, you will be holding a reference, use factory instead)
+- No class should derive from a concrete class (If you derive, you depend, derive from an abstraction)
+- No method should override an implemented method of any of its base classes (if you override an implemented method, your base wasn't really an abstraction to start with)
+
+This is a guideline you should strive for, rather than a rule you should follow all the time. Clearly, every single Java program ever written violates these guidelines. But if you internalise these guidelines and have them in the back of your mind when you design, you will know when you are violating the principle and you will have a good reason for doing so.
+
+An Abstract Factory gives un an interface for creating a family of products. By writing code that uses this interface, we decouple our code from actual factory that creates the products. That allows us to implement a variety of factories that produce products meant for different contexts - such as different regions, operating systems of different look and feels. Because code is decouples from the actual products, we can substitute different factories to get different behaviours. 
