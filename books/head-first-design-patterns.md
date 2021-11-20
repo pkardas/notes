@@ -232,3 +232,50 @@ Bullet points:
 - You can wrap a component with any number of decorators.
 - Decorators are typically transparent to the client of the component - that is, unless the client is relying on the component's concrete type.
 - Decorators can result in many small objects in our design, and overuse can be complex.
+
+## Chapter 4: Baking with OO Goodness
+
+The Factory Pattern - Pattern implementation in Python
+
+There is more to making objects than just using the *new* operator. We will learn that instantiation is an activity that shouldn't always be done in public and can often lead to coupling problems. The Factory Pattern can save us from embarrassing dependencies.
+
+We should not program to an implementation, but every time we use *new* that is exactly what we do. The *new* operator instantiating a concrete class, so that is definitely an implementation not an interface.
+
+CHANGE impacts our use fo *new*. Code will have to be changed new concrete classes are added. 
+
+*How might you take all the parts of your application that instantiate concrete classes and separate or encapsulate them from the rest of your application?*
+
+- My answer: I would add a function returning instantiated classes.
+
+Indeed we can encapsulate object creation, we can take the creation code and move it into another object that is only going to be concerned with creating pizzas. Anytime it needs pizza, it asks the pizza factory to make one. By encapsulating object creation in one class, we have only one place to make modifications when the implementation changes. Simple object factory can be a static function, however it has the disadvantage that we can not subclass and change behaviour of the create method.
+
+The Simple Factory isn't actually a Design Pattern, it is more of a programming idiom. Some developers do mistake this idiom for the Factory Pattern. 
+
+A *factory method* handles object creation and encapsulates it in a subclass. This decouples the client code (eg. `orderPizza`) in the superclass from the object creation code in the subclass.
+
+```java
+public abstract class PizzaStore {
+  public Pizza orderPizza(String type) {
+    Pizza pizza;
+    
+    pizza = createPizza(type);
+    
+    pizza.prepare();
+    pizza.bake();
+    pizza.cut():
+    pizza.box();
+    
+    return pizza;
+  } 
+  
+  protected abstract Pizza createPizza(String type);
+}
+```
+
+All factory patterns encapsulate object creation. The Factory Method Pattern encapsulates object creation by letting subclasses decide what objects to create. For every concrete Creator, there is typically a whole set of products that it creates. Chicago pizza creators create different types of Chicago-style pizza, New York pizza creators create different types of New York-style pizza, and so on.
+
+The Factory Method Pattern:
+
+> Defines an interface for creating an object, but lets subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to subclasses.
+
+Creator is written to operate on products produced by the factory method. The Creator class is written without knowledge of the ac dual products that will be created. Only subclasses actually implement the factory method and create products.
