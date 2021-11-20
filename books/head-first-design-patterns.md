@@ -176,7 +176,7 @@ Bullet points:
 
 *For each design principle, describe how the Observer Pattern makes use of the principle:*
 
-- Identify the aspects fo your application that vary and separate them from what stays the same: Observers and data vary.
+- Identify the aspects of your application that vary and separate them from what stays the same: Observers and data vary.
 - Program to an interface, not an implementation: Subject and Observers are loosely coupled because whet they know about each other are the interfaces they implement.
 - Favour composition over inheritance: Subject holds a list of observers, observers hold a reference to the subject.
 
@@ -212,7 +212,7 @@ The Decorator Pattern:
 
 > Attaches additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.
 
-The decorator adds its own behaviour before and / or after delegating to the object it decorates to do the rest fo the job.
+The decorator adds its own behaviour before and / or after delegating to the object it decorates to do the rest of the job.
 
 Just because we are subclassing, it doesn't mean we use inheritance. Sometimes we are subclassing in order to have the correct type, not to inherit the behaviour. We can acquire new behaviour not by inheriting it from a superclass, but by composing objects together.
 
@@ -226,7 +226,7 @@ Bullet points:
 - In our designs we should allow behaviour to be extended without the need to modify existing code.
 - Composition and delegation is often used to add new behaviours at runtime.
 - The Decorator Pattern an alternative to subclassing for extending behaviour. 
-- The Decorator Pattern involves a set fo decorator patterns that are used to wrap concrete components.
+- The Decorator Pattern involves a set of decorator patterns that are used to wrap concrete components.
 - Decorator classes mirror the type of the components they decorate (in fact they are the same type as the components they decorate, either through inheritance or interface implementation).
 - Decorators change the behaviour of their components by adding new functionality before and / or after method calls to the component.
 - You can wrap a component with any number of decorators.
@@ -241,7 +241,7 @@ There is more to making objects than just using the *new* operator. We will lear
 
 We should not program to an implementation, but every time we use *new* that is exactly what we do. The *new* operator instantiating a concrete class, so that is definitely an implementation not an interface.
 
-CHANGE impacts our use fo *new*. Code will have to be changed new concrete classes are added. 
+CHANGE impacts our use of *new*. Code will have to be changed new concrete classes are added. 
 
 *How might you take all the parts of your application that instantiate concrete classes and separate or encapsulate them from the rest of your application?*
 
