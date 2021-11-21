@@ -261,7 +261,7 @@ class FrozenClams(Ingredient):
     pass
 
 
-# Abstract Factory
+# Abstract Factory:
 class PizzaIngredientFactory:
     def create_dough(self):
         raise NotImplementedError
