@@ -297,3 +297,26 @@ Guidelines that can help to avoid OO designs that violate the Dependency Inversi
 This is a guideline you should strive for, rather than a rule you should follow all the time. Clearly, every single Java program ever written violates these guidelines. But if you internalise these guidelines and have them in the back of your mind when you design, you will know when you are violating the principle and you will have a good reason for doing so.
 
 An Abstract Factory gives un an interface for creating a family of products. By writing code that uses this interface, we decouple our code from actual factory that creates the products. That allows us to implement a variety of factories that produce products meant for different contexts - such as different regions, operating systems of different look and feels. Because code is decouples from the actual products, we can substitute different factories to get different behaviours. 
+
+The Abstract Factory Pattern:
+
+> Provides an interface for creating families of related or dependent objects without specifying their concrete classes.
+
+Often the methods of an Abstract Factory are implemented as factory methods.
+
+The Factory Method and The Abstract Factory are both good at decoupling applications from specific implementations. 
+
+- Use Abstract Factory whenever you have families of products you need to create and you need to make sure your clients create products that belong together. Abstract Factory creates objects through object composition.
+- Use Factory Methods to decouple client code from the concrete classes you need to instantiate, or if you don't know ahead of time all the concrete classes you are going to need. Factory Method creates objects through inheritance.
+
+Bullet points:
+
+- All factories encapsulate object creation.
+- Simple Factory, while not a bona fide design pattern, is a simple way to decouple your clients from concrete classes.
+- Factory Method relies on inheritance: object creation is delegated to subclasses, which implement the factory method to create objects.
+- Abstract Factory relies on object composition: object creation is implemented in methods exposed in the factory interface.
+- All factory patterns promote loose coupling by reducing the dependency of your application on concrete classes.
+- The intent of Factory Method is to allow a class to defer instantiation to its subclasses.
+- The intent of Abstract Factory is to create families of related objects without having to depend on their concrete classes.
+- The Dependency Inversion Principle guides us to avoid dependencies on concrete types and to strive for abstractions.
+- Factories are powerful technique for coding to abstractions, not concrete classes.
