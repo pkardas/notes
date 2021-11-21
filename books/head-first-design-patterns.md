@@ -235,7 +235,7 @@ Bullet points:
 
 ## Chapter 4: Baking with OO Goodness
 
-The Factory Pattern - Pattern implementation in Python
+[The Factory Pattern - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns.py#L209)
 
 There is more to making objects than just using the *new* operator. We will learn that instantiation is an activity that shouldn't always be done in public and can often lead to coupling problems. The Factory Pattern can save us from embarrassing dependencies.
 
