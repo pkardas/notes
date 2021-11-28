@@ -413,7 +413,7 @@ Bullet points:
 
 ## Chapter 5: One-of-a-kind Objects
 
-The Singleton Pattern - Pattern implementation in Python
+[The Singleton Pattern - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns.py#L418)
 
 The ticket to creating one-of-a-kind objects for which there is only one instance, ever. By using singleton you can
 ensure that every object in your application is making use of the same global resource. Often used to manage pools of
