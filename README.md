@@ -44,9 +44,9 @@ On hold:
 
 ### Teaching
 
-> *The best way to learn is to teach* ~ Frank Oppenheimer 
+> *The best way to learn is to teach* ~ Frank Oppenheimer
 
-Hence this *subsection* is a part of `learning` repository :slightly_smiling_face:
+Hence, this *subsection* is a part of `learning` repository :slightly_smiling_face:
 
 [Introduction to Programming: Python for beginners](teaching/python-intro/)
 
@@ -55,9 +55,3 @@ Hence this *subsection* is a part of `learning` repository :slightly_smiling_fac
 ### Courses
 
 [Course @ FastAI](courses/fast-ai.md)
-
---
-
-### Tools
-
-Typora - for notes. Keynote - for presentations.
