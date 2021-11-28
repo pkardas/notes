@@ -1,12 +1,16 @@
 [go back](https://github.com/pkardas/learning)
 
+- [NLP - State fo the Art](#nlp---state-fo-the-art)
+- [Kanban Training](#kanban-training)
+
 ## NLP - State fo the Art
 
 *By Michał Jakóbczyk*
 
-Turing Test - are you able to distinguish if you are talking to a computer or a person? It determined the direction of development of NLP.
+Turing Test - are you able to distinguish if you are talking to a computer or a person? It determined the direction of
+development of NLP.
 
->  The Man Who Mistook His Wife For a Hat - Olivier Sacks - book recommendation.
+> The Man Who Mistook His Wife For a Hat - Olivier Sacks - book recommendation.
 
 Analyse sentence:
 
@@ -16,7 +20,7 @@ from spacy import displacy
 displacy.render(nlp("Some sentence"))
 ```
 
-"They ate the pizza with anchovies" - context matters (with fishes or using fishes?). 
+"They ate the pizza with anchovies" - context matters (with fishes or using fishes?).
 
 "They ate the pizza with hands"
 
@@ -26,25 +30,19 @@ displacy.render(nlp("Some sentence"))
 
 We know about these differences! Models have difficulties.
 
-
-
 40-50 years ago, NLP was mostly about POS tags analysis, recently is more about machine learning.
 
 Python code -> Assembler <- Machine learning model. In the end everything is Assembly.
 
-
-
 *playground.tensorflow.org* - 1 square = 1 neuron that is basically checking one if / one line.
-
-
 
 Text to number:
 
 - document vectorisation - if document contains word - 1, 0 otherwise
 - one-hot encoding - you can use it for encoding word position (2D matrix) - a lot of memory
 - word embeddings - place word in a multidimensional space
-  - adding vectors - drawing a multidimensional sphere containing multiple words
-  - *projector.tensorflow.org*
+    - adding vectors - drawing a multidimensional sphere containing multiple words
+    - *projector.tensorflow.org*
 
 We can compare sentences using embeddings.
 
@@ -52,9 +50,8 @@ We can compare sentences using embeddings.
 nlp("Gave a research talk in Boston").similarity(nlp("Had a science lecture in Seattle"))
 ```
 
-Training is done using input text, then every word is removed (word by word) and machine is supposed to guess missing word.
-
-
+Training is done using input text, then every word is removed (word by word) and machine is supposed to guess missing
+word.
 
 GPT-3 - the biggest transformer, almost 5M$ spent on training this model
 
@@ -83,4 +80,3 @@ General practices:
 - evolve experimentally
 
 Different levels of Kanban boards - eg. 1 WIP per person.
-
