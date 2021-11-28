@@ -4,11 +4,11 @@
 
 Book by Eric Freeman and Elisabeth Robson
 
-* [Chapter 1: The Strategy Pattern - Welcome to Design Patterns](#chapter-1-welcome-to-design-patterns)
-* [Chapter 2: The Observer Pattern - Keeping your Objects in the Know](#chapter-2-keeping-your-objects-in-the-know)
-* [Chapter 3: The Decorator Pattern - Decorating Objects](#chapter-3-decorating-objects)
-* [Chapter 4: The Factory Pattern - Baking with OO Goodness](#chapter-4-baking-with-oo-goodness)
-* [Chapter 5: The Singleton Pattern - One-of-a-kind Objects](#chapter-5-one-of-a-kind-objects)
+- [Chapter 1: The Strategy Pattern - Welcome to Design Patterns](#chapter-1-welcome-to-design-patterns)
+- [Chapter 2: The Observer Pattern - Keeping your Objects in the Know](#chapter-2-keeping-your-objects-in-the-know)
+- [Chapter 3: The Decorator Pattern - Decorating Objects](#chapter-3-decorating-objects)
+- [Chapter 4: The Factory Pattern - Baking with OO Goodness](#chapter-4-baking-with-oo-goodness)
+- [Chapter 5: The Singleton Pattern - One-of-a-kind Objects](#chapter-5-one-of-a-kind-objects)
 
 ## Chapter 1: Welcome to Design Patterns
 
