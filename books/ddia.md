@@ -4,7 +4,18 @@
 
 Book by Martin Kleppmann
 
-[TOC]
+- [Chapter 1: Reliable, Scalable and Maintainable Applications](#chapter-1-reliable-scalable-and-maintainable-applications)
+- [Chapter 2: Data Models and Query Languages](#chapter-2-data-models-and-query-languages)
+- [Chapter 3: Storage and Retrieval](#chapter-3-storage-and-retrieval)
+- [Chapter 4: Encoding and Evolution](#chapter-4-encoding-and-evolution)
+- [Chapter 5: Replication](#chapter-5-replication)
+- [Chapter 6: Partitioning](#chapter-6-partitioning)
+- [Chapter 7: Transactions](#chapter-7-transactions)
+- [Chapter 8: The Trouble with Distributed Systems](#chapter-8-the-trouble-with-distributed-systems)
+- [Chapter 9: Consistency and Consensus](#chapter-9-consistency-and-consensus)
+- [Chapter 10: Batch Processing](#chapter-10-batch-processing)
+- [Chapter 11: Stream Processing](#chapter-11-stream-processing)
+- [Chapter 12: The Future of Data Systems](#chapter-12-the-future-of-data-systems)
 
 ## Chapter 1: Reliable, Scalable and Maintainable Applications
 
