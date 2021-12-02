@@ -9,6 +9,7 @@ Book by Eric Freeman and Elisabeth Robson
 - [Chapter 3: The Decorator Pattern - Decorating Objects](#chapter-3-decorating-objects)
 - [Chapter 4: The Factory Pattern - Baking with OO Goodness](#chapter-4-baking-with-oo-goodness)
 - [Chapter 5: The Singleton Pattern - One-of-a-kind Objects](#chapter-5-one-of-a-kind-objects)
+- [Chapter 6: The Command Pattern - Encapsulating Invocation](#chapter-6-encapsulating-invocation)
 
 ## Chapter 1: Welcome to Design Patterns
 
@@ -170,7 +171,8 @@ You know how newspaper or magazine subscriptions work:
 
 The Observer Pattern:
 
-> Defines a one-to-many dependency between objects so that when one object changes state, all of its dependencies are notified and updated automatically.
+> Defines a one-to-many dependency between objects so that when one object changes state, all of its dependencies are 
+> notified and updated automatically.
 
 There are few different ways to implement the Observer Pattern, but most revolve around a class design that includes
 Subject and Observer interfaces.
@@ -267,7 +269,8 @@ code.
 
 The Decorator Pattern:
 
-> Attaches additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.
+> Attaches additional responsibilities to an object dynamically. Decorators provide a flexible alternative to 
+> subclassing for extending functionality.
 
 The decorator adds its own behaviour before and / or after delegating to the object it decorates to do the rest of the
 job.
@@ -354,7 +357,8 @@ types of New York-style pizza, and so on.
 
 The Factory Method Pattern:
 
-> Defines an interface for creating an object, but lets subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to subclasses.
+> Defines an interface for creating an object, but lets subclasses decide which class to instantiate. Factory Method 
+> lets a class defer instantiation to subclasses.
 
 Creator is written to operate on products produced by the factory method. The Creator class is written without knowledge
 of the ac dual products that will be created. Only subclasses actually implement the factory method and create products.
@@ -464,3 +468,31 @@ Bullet points:
   static variable.
 - Examine your performance and resource constraints and carefully choose an appropriate Singleton for multithreaded
   applications (we should consider all applications multithreaded).
+
+## Chapter 6: Encapsulating Invocation
+
+The Command Pattern - Pattern implementation in Python
+
+In this chapter we are going to encapsulate method invocation. By encapsulating method invocation, we can crystallize
+pieces of computation so that the object invoking the computation doesn't need to worry about how to do things, it just
+uses our crystallized method to get it done.
+
+The Command Pattern allows you to decouple the requester of an action from the object that actually performs the action.
+This can be achieved by introducing command objects into the design. A command object encapsulates a request to do
+something on a specific object.
+
+Example with a waitress taking orders and passing them to a cook - separation of an object making a request from the
+object that receive and execute requests.
+
+- Customer - Client
+- Order - Command
+- Waitress - Invoker
+- Short-Order Cook - Receiver
+- takeOrder - setCommand - sets what is supposed to be executed
+- orderUp - execute
+
+The Command Pattern:
+
+> Encapsulates a request as an object, thereby letting you parametrize other objects with different requests, 
+> queue or log requests, and support undoable operations.
+> 
