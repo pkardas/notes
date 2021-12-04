@@ -171,7 +171,7 @@ You know how newspaper or magazine subscriptions work:
 
 The Observer Pattern:
 
-> Defines a one-to-many dependency between objects so that when one object changes state, all of its dependencies are 
+> Defines a one-to-many dependency between objects so that when one object changes state, all of its dependencies are
 > notified and updated automatically.
 
 There are few different ways to implement the Observer Pattern, but most revolve around a class design that includes
@@ -269,7 +269,7 @@ code.
 
 The Decorator Pattern:
 
-> Attaches additional responsibilities to an object dynamically. Decorators provide a flexible alternative to 
+> Attaches additional responsibilities to an object dynamically. Decorators provide a flexible alternative to
 > subclassing for extending functionality.
 
 The decorator adds its own behaviour before and / or after delegating to the object it decorates to do the rest of the
@@ -357,7 +357,7 @@ types of New York-style pizza, and so on.
 
 The Factory Method Pattern:
 
-> Defines an interface for creating an object, but lets subclasses decide which class to instantiate. Factory Method 
+> Defines an interface for creating an object, but lets subclasses decide which class to instantiate. Factory Method
 > lets a class defer instantiation to subclasses.
 
 Creator is written to operate on products produced by the factory method. The Creator class is written without knowledge
@@ -471,7 +471,7 @@ Bullet points:
 
 ## Chapter 6: Encapsulating Invocation
 
-The Command Pattern - Pattern implementation in Python
+[The Command Pattern - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns.py#L470)
 
 In this chapter we are going to encapsulate method invocation. By encapsulating method invocation, we can crystallize
 pieces of computation so that the object invoking the computation doesn't need to worry about how to do things, it just
@@ -493,6 +493,44 @@ object that receive and execute requests.
 
 The Command Pattern:
 
-> Encapsulates a request as an object, thereby letting you parametrize other objects with different requests, 
+> Encapsulates a request as an object, thereby letting you parametrize other objects with different requests,
 > queue or log requests, and support undoable operations.
-> 
+
+A null object is useful when you don;t have a meaningful object tor eturn, and yet you want to remove the responsibility
+of handling null from the client, e.g. `NoCommand` - surrogate and does nothing when its execute method is called.
+
+Command Pattern can be taken into the next level by using e.g. Java's lambda expressions. Instead of instantiating the
+concrete command objects, you can use function objects in their place. This can be done if Command interface has one
+abstract method.
+
+In order to support undoable Commands, `Command` interface has to be extended with `undo` method.
+
+`MacroCommand` can be used to execute multiple commands:
+
+```java
+MacroCommand partyOnMacro = new MacroCommand({lightOn, stereoOn, tvOn, hottubOn});
+```
+
+More uses of the Command Pattern:
+
+- queueing requests - objects implementing the command interface are added to the queue, threads remove commands from
+  the queue on by one and call their `execute` method. Once complete, they go back for a new command object. This gives
+  us an effective way to limit computation to a fixed number of threads.
+- logging requests - semantics of some applications require that we log all actions and be able to recover after a crash
+  by re-invoking those actions. The Command Pattern can support these semantics with the addition of two
+  methods: `store` and `load`.
+
+Bullet points:
+
+- The Command Pattern decouples an object making a request from the one that knows how to perform it.
+- A Command object is at the center of this decoupling and encapsulates a receiver with an action (or set of actions).
+- An invoker makes a request of a Command object by calling its execute method, which invokes these actions on the
+  receiver.
+- Invokers can be parametrized with Commands, even dynamically at runtime.
+- Commands may support undo by implementing an undo method that restores the object to its previous state before the
+  execute method was last called.
+- MacroCommands are a simple extension of the Command Pattern that allow multiple commands to be invoked. Likewise,
+  MacroCommands can easily support undo.
+- In practice, it is not uncommon for "smart" Command objects to implement the request themselves rather than delegating
+  to a receiver.
+- Commands may also be used to implement logging and transactional systems.
