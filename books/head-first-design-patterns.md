@@ -10,6 +10,7 @@ Book by Eric Freeman and Elisabeth Robson
 - [Chapter 4: The Factory Pattern - Baking with OO Goodness](#chapter-4-baking-with-oo-goodness)
 - [Chapter 5: The Singleton Pattern - One-of-a-kind Objects](#chapter-5-one-of-a-kind-objects)
 - [Chapter 6: The Command Pattern - Encapsulating Invocation](#chapter-6-encapsulating-invocation)
+- [Chapter 7: The Adapter and Facade Patterns - Being Adaptive](#chapter-7-being-adaptive)
 
 ## Chapter 1: Welcome to Design Patterns
 
@@ -534,3 +535,76 @@ Bullet points:
 - In practice, it is not uncommon for "smart" Command objects to implement the request themselves rather than delegating
   to a receiver.
 - Commands may also be used to implement logging and transactional systems.
+
+## Chapter 7: Being Adaptive
+
+The Adapter and Facade Patterns
+
+We are going to wrap some objects with a different purpose: to make their interfaces look something they are not. So we
+can adapt a design expecting one interface to a class that implements a different interface. Also, we are going to look
+at another pattern that wraps objects to simplify their interface.
+
+You will have no trouble understanding what an OO adapter is because the real world is full of them (e.g. power adapter,
+The British wall outlet exposes on interface for getting power, the adapter converts one interface into another, the US
+laptop expects another interface).
+
+OO adapters play the same role as their real-world counterparts: they take an interface and adapt it to one that a
+client ise expecting. For example: you are going to use a new library, but the new vendor designed their interfaces
+differently than the last vendor.
+
+The adapter acts as the middleman by receiving requests from the client and converting them into requests that make
+sense on the vendor classes.
+
+_If it walks like a duck and quacks like a duck, then it ~~must~~ might be a ~~duck~~ turkey wrapped with a duck
+adapter..._
+
+```java
+public class TurkeyAdapter implements Duck {
+  // take Turkey in the constuctor, implement Duck's method by invoking Turkey's methods.
+}
+```
+
+How the Client uses the Adapter:
+
+1. The client makes a request to the adapter by calling a method on it using the target interface.
+2. The adapter translates the request into one or more calls on the adaptee using the adaptee interface.
+3. The client receives the results of teh call and never knows there is an adapter doing the translation.
+
+It is possible to create a Two Way Adapter, just implement both interfaces involved, so the adapter can act as an old
+interface or a new interface.
+
+The Adapter Pattern:
+
+> Converts the interface of a class into another interface the client expects. Adapter lets classes work together that
+> couldn't otherwise because of incompatible interfaces.
+
+Adapter is used to decouple the client from the implemented interface,a nd if we expect the interface to change over
+time, the adapter encapsulates that change that the client doesn't have to be modified each time it needs to operate
+against a different interface.
+
+The Adapter Pattern is full of good OO design principles: uses object composition + binds the client to an interface,
+not an implementation.
+
+There is second type of adapter - class adapter, this one uses multiple inheritance (Target and Adaptee).
+
+Real-world adapters:
+
+- [Java] Enumerators - The Enumerator interface allows you to step through the elements of a collection without knowing
+  the specifics of how they are managed in the collection.
+- [Java] Iterators - The more recent Collection classes use an Iterator interface, allows you to iterate through a set
+  of items in a collection, and adds the ability to remove items.
+
+When a method in an adapter can not be supported you can throw e.g. `UnsupportedOperationException`.
+
+_Some AC adapters do mor ethan just change the interface - they add other features like surge protection, indicator
+lights, and other bells and whistles. If you were going to implement these kinds of features, what pattern would you
+use?_
+
+- My answer: The Decorator Pattern
+
+Decorator vs Adapter:
+
+- Decorators allow new behavior to be added to classes without altering existing code.
+- Adapter always convert the interface of what they wrap.
+
+Decorators and Adapters seem to look somewhat similar on paper, but clearly are miles apart.
