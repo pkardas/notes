@@ -608,3 +608,63 @@ Decorator vs Adapter:
 - Adapter always convert the interface of what they wrap.
 
 Decorators and Adapters seem to look somewhat similar on paper, but clearly are miles apart.
+
+The Facade Pattern alters an interface, but in order to simplify the interface - it hides all the complexity of one or
+more classes behind a clean well-lit facade. The Facade Pattern can take a complex subsystem and make it easier to use.
+
+Example home cinema system: instead of turning on popcorn machine, screen and audio system - all you need to do is
+call `watchMovie`.
+
+Facades don't encapsulate the subsystem classes, they merely provide a simplified interface to their functionality. The
+subsystem classes still remain available. It provides a simplified interface while still exposing the full functionality
+of the system to those who may need it.
+
+A facade not only simplifies an interface, it decouples a client from a subsystem of components.
+
+Facades and adapters may wrap multiple classes, but a facade's intent is to simplify, while an adapter's is to convert
+the interface to something different.
+
+The Facade Pattern:
+
+> Provides a unified interface to a set of interfaces in a subsystem. Facade defines a higher-level interface that makes
+> the subsystem easier to use.
+
+Design principle - Principle of Least Knowledge (The Law of Demeter):
+
+> Talk only to your immediate friends.
+
+This principle guides us to reduce the interactions between objects to just a few close "friends". It means when you are
+designing a system, for any object, be careful of the number of classes it interacts with and also how it comes to
+interact with those classes.
+
+This principle prevents us from creating designs that have a large number of classes coupled together so that changes in
+one part of the system cascade to other parts.
+
+This means, invoke only methods that belong to:
+
+- the object itself
+- objects passed in as a parameter to the method
+- any object the method creates or instantiates
+- any components of the object
+
+_Side note: Principle of Least Knowledge is a better name than The Law of Demeter, because no principle is a law, and
+they don't have to be always applied._
+
+The Facade Pattern and the Principle of Least Knowledge - we try to keep subsystems adhering to the Principle of Least
+Knowledge as well. If this gets too complex and too many friends are intermingling, we can introduce additional facades
+to form layers of subsystems.
+
+Bullet points:
+
+- When you need to use an existing class and its interface is not the one you need, use an adapter.
+- When you need to simplify and unify a large interface or complex set of interfaces, use a facade.
+- An adapter changes an interface into one a client expects.
+- A facade decouples a client from a complex subsystem.
+- Implementing an adapter may require little work or a great deal of work depending on the size and complexity of the
+  target interface.
+- Implementing a facade requires that we compose the facade with its subsystem and use delegation to perform the work of
+  the facade.
+- There are two forms of the Adapter pattern: object and class adapters. Class adapters require multiple inheritance.
+- You can implement more than one facade for a subsystem.
+- An adapter wraps an object to add new behaviours and responsibilities, and a facade "wraps" a set of objects to
+  simplify.
