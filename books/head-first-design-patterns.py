@@ -611,3 +611,84 @@ remote.set_command(3, party_on_command, party_off_command)
 remote.on_button_pushed(1)
 remote.on_button_pushed(3)
 remote.undo_button_pushed()
+
+# Chapter 7 - The Adapter and Facade Patterns
+from unittest.mock import Mock
+
+
+# The Adapter Pattern:
+class Duck:
+    def quack(self) -> None:
+        raise NotImplementedError
+
+    def fly(self) -> None:
+        raise NotImplementedError
+
+
+class Turkey:
+    def gobble(self) -> None:
+        raise NotImplementedError
+
+    def fly(self) -> None:
+        raise NotImplementedError
+
+
+class WildTurkey(Turkey):
+    def gobble(self) -> None:
+        print("Gobble Gobble")
+
+    def fly(self) -> None:
+        print("I am flying a short distance")
+
+
+class TurkeyAdapter(Duck):
+    def __init__(self, turkey: Turkey):
+        self._turkey = turkey
+
+    def quack(self) -> None:
+        self._turkey.gobble()
+
+    def fly(self) -> None:
+        self._turkey.fly()
+
+
+# We ran out of ducks, so we use turkeys:
+turkey = WildTurkey()
+turkey_adapter = TurkeyAdapter(turkey)
+
+turkey_adapter.quack()
+
+
+# The Facade Pattern:
+
+
+class HomeTheaterFacade:
+    def __init__(self, amplifier, tuner, projector, lights, screen, player, popper):
+        self._amplifier = amplifier
+        self._tuner = tuner
+        self._projector = projector
+        self._lights = lights
+        self._screen = screen
+        self._player = player
+        self._popper = popper
+
+    # Wrap complex behavior into single method:
+    def watch_movie(self, movie):
+        self._popper.on()
+        self._popper.pop()
+
+        self._lights.dim(10)
+
+        self._screen.down()
+
+        self._projector.on()
+
+        self._amplifier.on()
+        self._amplifier.set_volume(20)
+
+        self._player.on()
+        self._player.play(movie)
+
+
+home_theater = HomeTheaterFacade(*([Mock()] * 7))
+home_theater.watch_movie("Joker")
