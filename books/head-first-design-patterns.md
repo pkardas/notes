@@ -538,7 +538,7 @@ Bullet points:
 
 ## Chapter 7: Being Adaptive
 
-The Adapter and Facade Patterns
+[The Adapter and Facade Patterns - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns.py#L615)
 
 We are going to wrap some objects with a different purpose: to make their interfaces look something they are not. So we
 can adapt a design expecting one interface to a class that implements a different interface. Also, we are going to look
