@@ -660,8 +660,6 @@ turkey_adapter.quack()
 
 
 # The Facade Pattern:
-
-
 class HomeTheaterFacade:
     def __init__(self, amplifier, tuner, projector, lights, screen, player, popper):
         self._amplifier = amplifier
