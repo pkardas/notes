@@ -1,4 +1,4 @@
-~~[go back](https://github.com/pkardas/learning)
+[go back](https://github.com/pkardas/learning)
 
 # Head First Design Patterns: Building Extensible and Maintainable Object-Oriented Software
 
