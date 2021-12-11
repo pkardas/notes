@@ -1,4 +1,4 @@
-[go back](https://github.com/pkardas/learning)
+~~[go back](https://github.com/pkardas/learning)
 
 # Head First Design Patterns: Building Extensible and Maintainable Object-Oriented Software
 
@@ -11,6 +11,7 @@ Book by Eric Freeman and Elisabeth Robson
 - [Chapter 5: The Singleton Pattern - One-of-a-kind Objects](#chapter-5-one-of-a-kind-objects)
 - [Chapter 6: The Command Pattern - Encapsulating Invocation](#chapter-6-encapsulating-invocation)
 - [Chapter 7: The Adapter and Facade Patterns - Being Adaptive](#chapter-7-being-adaptive)
+- [Chapter 8: The Template Method Pattern - Encapsulating Algorithms](#chapter-8-encapsulating-algorithms)
 
 ## Chapter 1: Welcome to Design Patterns
 
@@ -668,3 +669,96 @@ Bullet points:
 - You can implement more than one facade for a subsystem.
 - An adapter wraps an object to add new behaviours and responsibilities, and a facade "wraps" a set of objects to
   simplify.
+
+## Chapter 8: Encapsulating Algorithms
+
+The Template Method Pattern - Pattern implementation in Python
+
+We are going to get down to encapsulating pieces of algorithms so that subclasses can hook themselves right into a
+computation any time they want.
+
+We can generalize the recipe and place it in a base class.
+
+```java
+public abstract class CaffeineBeverage {
+  final void prepareRecipe() {
+    // Our template method - it serves as a template for an algorithm.
+    boilWater();
+    brew();
+    pourInCup();
+    addCondiments();
+  }
+  
+  abstract void brew();
+  abstract void addCondiments();
+  
+  void boilWater() {}
+  void pourInCup() {}
+}
+```
+
+The Template Method defines the steps of an algorithm and allows subclasses to provide the implementation for one or
+more steps.
+
+The Template Method Pattern:
+
+> Defines the skeleton of an algorithm in a method, deferring some steps to subclasses. Template Method lets subclasses
+> redefine certain steps of an algorithm without changing the algorithm's structure.
+
+This pattern is all about creating a template for an algorithm. Template - just a method, method that defines and
+algorithms as a set of steps. One or more of these steps is defined to be abstract and implemented by a subclass. This
+ensures the algorithm's structure stays unchanged.
+
+We can also have concrete methods that do nothing by default - we call them `hooks`. Subclasses are free to override
+these but don't have to.
+
+Use abstract classes when subclass MUST provide an implementation of the method. Use hooks when that part of the
+algorithm is optional.
+
+The Hollywood Principle:
+
+> Don't call us, we'll call you.
+
+The Hollywood Principle gives us a way to prevent _dependency rot_. We allow low-level components to hook themselves
+into a system, but the high-level components determine when they are needed, and how. In other words, the high-level
+components give the low-level components the "don't call us, we'll call you" treatment.
+
+Patters using The Hollywood Principle:
+
+- The Template Method Principle
+- The Observer Pattern
+- The Strategy Pattern
+- The Factory Pattern
+
+The Dependency Inversion Principle teaches us to avoid the use fo concrete classes and instead work as much as possible
+with abstractions. The Hollywood Principle is a technique for building frameworks or components so that lower-level
+components can be hooked into the computation, but without creating dependencies between lower and higher level
+components.
+
+This pattern is a great design tool for creating frameworks, where the framework controls how something gets done, but
+leaves you to specify your own details about what is actually happening at each step of the framework's algorithm.
+
+`sort` methods are in the spirit of The Template Method Pattern, developer has to define `compare` method.~~
+
+Template Method vs Strategy:
+
+- Strategy defines a family of algorithms and make them interchangeable.
+- Factory Method defines the outline of an algorithm, and lets subclasses do some of the work.
+- Strategy uses object composition.
+- Template Method uses inheritance.
+
+Bullet points:
+
+- A template method defines the steps of an algorithm, deferring to subclasses for the implementation of those steps.
+- The Template Method Pattern gives us an important technique for code reuse.
+- The template method's abstract may define concrete methods, abstract methods and hooks.
+- Abstract methods are implemented by subclasses.
+- Hooks are methods that do nothing or default behavior in the abstract class, but may be overridden in the subclass.
+- To prevent subclasses form changing the algorithm in the template method, declare the template method as final.
+- The Hollywood Principle guides us to put decision making in high-level modules that can decide how and when to call
+  low-level modules.
+- You will see lots of uses of the Template Method Pattern in real-world code, but (as with any pattern) don't expect it
+  all to be designed "by the book".
+- The Strategy and Template Method Patterns both encapsulate algorithms, the first by composition and the other by
+  inheritance.
+- Factory Method is a specialisation of Template Method.
