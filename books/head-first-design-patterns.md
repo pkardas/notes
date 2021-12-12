@@ -672,7 +672,7 @@ Bullet points:
 
 ## Chapter 8: Encapsulating Algorithms
 
-The Template Method Pattern - Pattern implementation in Python
+[The Template Method Pattern - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns.py#L695)
 
 We are going to get down to encapsulating pieces of algorithms so that subclasses can hook themselves right into a
 computation any time they want.
