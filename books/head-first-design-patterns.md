@@ -12,6 +12,7 @@ Book by Eric Freeman and Elisabeth Robson
 - [Chapter 6: The Command Pattern - Encapsulating Invocation](#chapter-6-encapsulating-invocation)
 - [Chapter 7: The Adapter and Facade Patterns - Being Adaptive](#chapter-7-being-adaptive)
 - [Chapter 8: The Template Method Pattern - Encapsulating Algorithms](#chapter-8-encapsulating-algorithms)
+- [Chapter 9: The Iterator and Composite Patterns - Well-Managed Collections](#chapter-9-well-managed-collections)
 
 ## Chapter 1: Welcome to Design Patterns
 
@@ -762,3 +763,38 @@ Bullet points:
 - The Strategy and Template Method Patterns both encapsulate algorithms, the first by composition and the other by
   inheritance.
 - Factory Method is a specialisation of Template Method.
+
+## Chapter 9: Well-Managed Collections
+
+The Iterator and Composite Patterns - Pattern implementation in Python
+
+In this chapter we are going to see how we can allow our clients to iterate through objects without ever getting a peak
+at how we store the objects.
+
+Iterator - encapsulates the way we iterate through a collection of objects. The Iterator Pattern relies on an interface
+called Iterator.
+
+However, in Java following interface does not have to be defined, because Java has built-in Iterator interface.
+
+```java
+public interface Iterator {
+  boolean hasNext();
+  MenuItem next();
+}
+```
+
+Once we have this interface, we can implement Iterators for any kind of collection of objects: arrays, lists, hash
+maps...
+
+The Iterator Pattern:
+
+> Provides a way to access the elements of an aggregate object sequentially without exposing its underlying
+> representation.
+
+The effect of using iterators in the design: once you have a uniform way of accessing the elements of all your aggregate
+objects, you can write polymorphic code that works with any of these aggregates.
+
+The other important impact on the design is that the Iterator Pattern takes the responsibility of traversing elements
+and gives that responsibility of traversing elements to the iterator object, not aggregate object. This not only keeps
+the aggregate interface and implementation simpler, it removes the responsibility for iterator from the aggregate and
+keeps the aggregate focused on the things it should be focused on (managing a collection of objects), not on iteration.
