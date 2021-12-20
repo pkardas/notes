@@ -798,3 +798,32 @@ The other important impact on the design is that the Iterator Pattern takes the 
 and gives that responsibility of traversing elements to the iterator object, not aggregate object. This not only keeps
 the aggregate interface and implementation simpler, it removes the responsibility for iterator from the aggregate and
 keeps the aggregate focused on the things it should be focused on (managing a collection of objects), not on iteration.
+
+The Single Responsibility Principle:
+
+> A class should have only one reason to change.
+
+We want to avoid change in our classes because modifying code provides all sorts of opportunities for problems to creep
+in. Having two ways to change increases the probability the class will change in the future, and when it does, it's
+going to affect two aspects of your design.
+
+**Cohesion** - is a measure of how closely a class of module supports a single purpose or responsibility.
+
+- High cohesion - designed around a set of related functions (easy to maintain, single responsibility)
+- Low cohesion - designed around a set of unrelated functions (difficult to maintain, multiple responsibilities)
+
+There comes a time when we must refactor our code in order for it to grow. To not fo so would leave us with rigid,
+inflexible code that has no hope of ever sprouting new life.
+
+The Composite Pattern:
+
+> Allows you to compose objects into tree structures to represent part-whole hierarchies. Composite lets clients treat
+> individual objects and compositions of objects uniformly.
+
+Part-whole hierarchy - tree of objects that is made of parts (e.g. menus and menu items).
+
+Using a composite structure, we can apply the same operations over both composites and individual objects. In other
+words, in most cases we can ignore differences between compositions of objects and individual objects.
+
+A composite contains components. Components come in two flavors: composites and leaf elements. A composite holds a set
+of children: those children may be other composites or leaf elements.
