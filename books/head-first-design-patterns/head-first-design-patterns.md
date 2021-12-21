@@ -16,7 +16,7 @@ Book by Eric Freeman and Elisabeth Robson
 
 ## Chapter 1: Welcome to Design Patterns
 
-[The Strategy Pattern - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns.py#L1)
+[The Strategy Pattern - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns/ch_01_strategy.py)
 
 Someone has already solved your problems. You can exploit the wisdom and lessons learned by other developers who have
 been down the same design problems road and survived the trip. Instead of code reuse, with patterns you get experience
@@ -148,7 +148,7 @@ Bullet points:
 
 ## Chapter 2: Keeping your Objects in the Know
 
-[The Observer Pattern - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns.py#L67)
+[The Observer Pattern - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns/ch_02_observer.py)
 
 Observer Pattern: Pattern that keeps your objects in the know when something they care about happens.
 
@@ -232,7 +232,7 @@ Bullet points:
 
 ## Chapter 3: Decorating Objects
 
-[The Decorator Pattern - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns.py#L153[)
+[The Decorator Pattern - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns/ch_03_decorator.py)
 
 We will re-examine the typical overuse of inheritance, and we will learn how to decorate classes at runtime using a form
 of object composition.
@@ -306,7 +306,7 @@ Bullet points:
 
 ## Chapter 4: Baking with OO Goodness
 
-[The Factory Pattern - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns.py#L209)
+[The Factory Pattern - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns/ch_02_factory.py)
 
 There is more to making objects than just using the *new* operator. We will learn that instantiation is an activity that
 shouldn't always be done in public and can often lead to coupling problems. The Factory Pattern can save us from
@@ -426,7 +426,7 @@ Bullet points:
 
 ## Chapter 5: One-of-a-kind Objects
 
-[The Singleton Pattern - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns.py#L418)
+[The Singleton Pattern - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns/ch_05_singleton.py)
 
 The ticket to creating one-of-a-kind objects for which there is only one instance, ever. By using singleton you can
 ensure that every object in your application is making use of the same global resource. Often used to manage pools of
@@ -474,7 +474,7 @@ Bullet points:
 
 ## Chapter 6: Encapsulating Invocation
 
-[The Command Pattern - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns.py#L470)
+[The Command Pattern - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns/ch_06_command.py)
 
 In this chapter we are going to encapsulate method invocation. By encapsulating method invocation, we can crystallize
 pieces of computation so that the object invoking the computation doesn't need to worry about how to do things, it just
@@ -540,7 +540,9 @@ Bullet points:
 
 ## Chapter 7: Being Adaptive
 
-[The Adapter and Facade Patterns - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns.py#L615)
+[The Adapter Pattern - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns/ch_07_adapter.py)
+
+[The Facade Pattern - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns/ch_07_facade.py)
 
 We are going to wrap some objects with a different purpose: to make their interfaces look something they are not. So we
 can adapt a design expecting one interface to a class that implements a different interface. Also, we are going to look
@@ -673,7 +675,7 @@ Bullet points:
 
 ## Chapter 8: Encapsulating Algorithms
 
-[The Template Method Pattern - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns.py#L695)
+[The Template Method Pattern - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns/ch_08_template.py)
 
 We are going to get down to encapsulating pieces of algorithms so that subclasses can hook themselves right into a
 computation any time they want.
