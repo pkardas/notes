@@ -74,7 +74,7 @@ Animal animal = new Dog();  // we knwo it is a Dog, but we can now use the anima
 animal.makeSound();
 ```
 
-*Using our new design, what would you do if you needed to add rocker-powered flying to the SimUDuck app?*
+*Using our new design, what would you do if you needed to add rocket-powered flying to the SimUDuck app?*
 
 - My answer: Add a new implementation of the `FlyBehaviour`
 
@@ -306,7 +306,7 @@ Bullet points:
 
 ## Chapter 4: Baking with OO Goodness
 
-[The Factory Pattern - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns/ch_02_factory.py)
+[The Factory Pattern - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns/ch_04_factory.py)
 
 There is more to making objects than just using the *new* operator. We will learn that instantiation is an activity that
 shouldn't always be done in public and can often lead to coupling problems. The Factory Pattern can save us from
@@ -675,7 +675,7 @@ Bullet points:
 
 ## Chapter 8: Encapsulating Algorithms
 
-[The Template Method Pattern - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns/ch_08_template.py)
+[The Template Method Pattern - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns/ch_08_template_method.py)
 
 We are going to get down to encapsulating pieces of algorithms so that subclasses can hook themselves right into a
 computation any time they want.
@@ -835,3 +835,18 @@ Component interface to contain the child management operations and the leaf oper
 composites and leaves uniformly.
 
 We are guided by design principles, but we always need to observe the effect they have on our designs.
+
+Bullet points:
+
+- An Iterator allows access to an aggregate's elements without exposing its internal structure.
+- An Iterator takes the job of iterating over an aggregate and encapsulates it in another object.
+- When using an Iterator, we relieve the aggregate of the responsibility of supporting operations for traversing its
+  data.
+- An Iterator provides a common interface for traversing the items of an aggregate, allowing you to use polymorphism
+  when writing code that makes the use of the items of the aggregate.
+- The Iterable interface provides a means of getting an iterator and enables Java's enhanced for loop (for-each).
+- We should strive for to assign only one responsibility to each class.
+- The Composite Pattern allows clients to treat composites and individual objects uniformly.
+- A Component is any object in a Composite structure. Components may be other composites or leaves.
+- There are many design tradeoffs in implementing Composite. You need to balance transparency and safety with your
+  needs.
