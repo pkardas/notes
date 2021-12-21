@@ -1018,4 +1018,3 @@ side as in the software side. You can make this more fun by calling it a "*zombi
 select 50% of your people and tell them they are zombies for the rest of the day.
 
 After the simulation review the issues. 
-
