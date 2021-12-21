@@ -827,3 +827,9 @@ words, in most cases we can ignore differences between compositions of objects a
 
 A composite contains components. Components come in two flavors: composites and leaf elements. A composite holds a set
 of children: those children may be other composites or leaf elements.
+
+The Composite Pattern takes the Single Responsibility Principle and trades it dor transparency - by allowing the
+Component interface to contain the child management operations and the leaf operations, a client can treat both
+composites and leaves uniformly.
+
+We are guided by design principles, but we always need to observe the effect they have on our designs.
