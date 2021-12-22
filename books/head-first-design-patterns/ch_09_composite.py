@@ -57,16 +57,16 @@ class Waitress:
         self._menu_component.print()
 
 
-breakfast_menu = Menu("Breakfast")
-diner_menu = Menu("Diner")
-dessert_menu = Menu("Dessert")
+breakfast_menu = Menu("BREAKFAST")
+dinner_menu = Menu("DINNER")
+dessert_menu = Menu("DESSERT")
 
-all_menus = Menu("All menus")
+all_menus = Menu("ALL MENUS")
 all_menus.add(breakfast_menu)
-all_menus.add(diner_menu)
+all_menus.add(dinner_menu)
 
-diner_menu.add(MenuItem("Pasta", "Pasta with marinara Sauce", True, 3.89))
-diner_menu.add(dessert_menu)
+dinner_menu.add(MenuItem("Pasta", "Pasta with marinara Sauce", True, 3.89))
+dinner_menu.add(dessert_menu)
 
 dessert_menu.add(MenuItem("Apple Pie", "Apple pie with a flaky crust, topped with vanilla ice cream", True, 1.59))
 

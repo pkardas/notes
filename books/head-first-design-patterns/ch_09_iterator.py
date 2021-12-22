@@ -15,7 +15,7 @@ class MenuItem:
     price: float
 
 
-class DinerMenuIterator(Iterator):
+class DinnerMenuIterator(Iterator):
     # Just for demonstration purposes!
     def __init__(self, collection: List[MenuItem]):
         self._collection = collection
@@ -31,7 +31,7 @@ class DinerMenuIterator(Iterator):
         return value
 
 
-class DinerMenu:
+class DinnerMenu:
     # Just for demonstration purposes!
     menu = [
         MenuItem("Vegetarian BLT", "Fake Bacon with lettuce on whole wheat", True, 2.99),
@@ -40,9 +40,9 @@ class DinerMenu:
         MenuItem("HotDog", "A Hot Dog with sauerkraut, relish, onions, topped with cheese", False, 3.05),
     ]
 
-    def __iter__(self) -> DinerMenuIterator:
+    def __iter__(self) -> DinnerMenuIterator:
         # Factory Method
-        return DinerMenuIterator(self.menu)
+        return DinnerMenuIterator(self.menu)
 
 
 class BreakfastMenuIterator(Iterator):
@@ -75,20 +75,20 @@ class BreakfastMenu:
 
 
 class Waitress:
-    def __init__(self, pancake_menu: BreakfastMenu, diner_menu: DinerMenu):
+    def __init__(self, pancake_menu: BreakfastMenu, dinner_menu: DinnerMenu):
         self._pancake_menu = pancake_menu
-        self._diner_menu = diner_menu
+        self._dinner_menu = dinner_menu
 
     def print_menu(self):
         print("BREAKFAST")
         self._print_menu(self._pancake_menu)
-        print("DINER")
-        self._print_menu(self._diner_menu)
+        print("DINNER")
+        self._print_menu(self._dinner_menu)
 
     @staticmethod
-    def _print_menu(menu: Union[BreakfastMenu, DinerMenu]):
+    def _print_menu(menu: Union[BreakfastMenu, DinnerMenu]):
         for menu_item in menu:
             print(f"{menu_item.name}, {menu_item.price}, {menu_item.description}")
 
 
-Waitress(BreakfastMenu(), DinerMenu()).print_menu()
+Waitress(BreakfastMenu(), DinnerMenu()).print_menu()
