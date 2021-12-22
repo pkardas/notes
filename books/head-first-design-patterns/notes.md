@@ -768,7 +768,9 @@ Bullet points:
 
 ## Chapter 9: Well-Managed Collections
 
-The Iterator and Composite Patterns - Pattern implementation in Python
+[The Iterator Pattern - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns/ch_09_iterator.py)
+
+[The Composite Pattern - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns/ch_09_composite.py)
 
 In this chapter we are going to see how we can allow our clients to iterate through objects without ever getting a peak
 at how we store the objects.
