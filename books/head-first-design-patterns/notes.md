@@ -13,6 +13,7 @@ Book by Eric Freeman and Elisabeth Robson
 - [Chapter 7: The Adapter and Facade Patterns - Being Adaptive](#chapter-7-being-adaptive)
 - [Chapter 8: The Template Method Pattern - Encapsulating Algorithms](#chapter-8-encapsulating-algorithms)
 - [Chapter 9: The Iterator and Composite Patterns - Well-Managed Collections](#chapter-9-well-managed-collections)
+- [Chapter 10: The State Pattern - The State of Things](#chapter-10-the-state-of-things)
 
 ## Chapter 1: Welcome to Design Patterns
 
@@ -852,3 +853,42 @@ Bullet points:
 - A Component is any object in a Composite structure. Components may be other composites or leaves.
 - There are many design tradeoffs in implementing Composite. You need to balance transparency and safety with your
   needs.
+
+## Chapter 10: The State of Things
+
+[The State Pattern - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns/ch_10_state.py)
+
+The Strategy and State Patterns are twins separated at birth. The Strategy Pattern went on to create a wildly successful
+business around interchangeable algorithms, while State took the perhaps more noble path by helping objects to control
+their behavior by changing their internal state. As different as their paths became, however, underneath you will almost
+precisely the same design.
+
+The State Pattern:
+
+> Allows an object to alter its behavior when its internal state changes. The object will appear to change its class.
+
+The pattern encapsulates state into separate classes and delegates to the object representing the current state. What
+does it mean for an object to "appear to change its class"? If an object you are using can completely change its
+behavior, then it appears to you that the object is actually instantiated from another class. In reality, however, you
+know that we are using composition to give the appearance of a class change by simply referencing different state
+objects.
+
+Think of the Strategy Pattern as a flexible alternative to subclassing - if you use inheritance to define the behavior
+of a class, then you are stuck with that behavior even if you need to change it. With Strategy, you can change the
+behavior by composing with a different object.
+
+Think of the State Pattern as an alternative to putting lots of conditionals in your context - by encapsulating the
+behaviors within state objects, you can simply change the state object in context to change its behavior.
+
+Bullet points:
+
+- The State Pattern allows an object to have many behaviors that are based on its internal state.
+- Unlike a procedural state machine, the State Pattern represents each state as a full-blown class.
+- The Context gets its behavior by delegating to the current state object it is composed with.
+- By encapsulating each state into a class, we localize any changes that will need to be made.
+- The State and Strategy Patterns have the same class diagram, but they differ in intent.
+- The Strategy Pattern typically configures Context classes with a behavior or algorithm.
+- The State Pattern allows a Context to change its behavior as the state of the Context changes.
+- State transitions can be controlled by the State classes or by the Context classes.
+- Using the State Pattern will typically result in a greater number of classes in your design.
+- State classes may be shared among Context instances.
