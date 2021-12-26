@@ -1,4 +1,4 @@
-## My learning notes
+## Notes
 
 ### Books
 
