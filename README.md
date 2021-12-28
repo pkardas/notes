@@ -20,11 +20,21 @@ Finished:
 
 ✅ [Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics and Speech Recognition](books/nlp-book.md)
 
-On hold:
+Finished partially:
 
-🚫 [Code Complete: A Practical Handbook of Software Construction](books/code-complete.md)
+[Code Complete: A Practical Handbook of Software Construction](books/code-complete.md)
 
-🚫 [Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems](books/hands-on-ml.md)
+[Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems](books/hands-on-ml.md)
+
+Queue:
+
+[Clean Agile: Back to Basics](books/clean-agile.md)
+
+[Architecture Patterns with Python](books/python-architecture-patterns.md)
+
+[The Pragmatic Programmer](books/pragmatic-programmer.md)
+
+[Cracking the Coding Interview](books/cracking-coding-interview/notes.md)
 
 ### Case Studies
 

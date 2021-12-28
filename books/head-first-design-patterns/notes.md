@@ -14,6 +14,7 @@ Book by Eric Freeman and Elisabeth Robson
 - [Chapter 8: The Template Method Pattern - Encapsulating Algorithms](#chapter-8-encapsulating-algorithms)
 - [Chapter 9: The Iterator and Composite Patterns - Well-Managed Collections](#chapter-9-well-managed-collections)
 - [Chapter 10: The State Pattern - The State of Things](#chapter-10-the-state-of-things)
+- [Chapter 11: The Proxy Pattern - Controlling Object Access](#chapter-11-controlling-object-access)
 
 ## Chapter 1: Welcome to Design Patterns
 
@@ -892,3 +893,77 @@ Bullet points:
 - State transitions can be controlled by the State classes or by the Context classes.
 - Using the State Pattern will typically result in a greater number of classes in your design.
 - State classes may be shared among Context instances.
+
+## Chapter 11: Controlling Object Access
+
+[The Proxy Pattern - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns/ch_11_proxy)
+
+Proxies control and manage access. Proxies have been known to haul entire method calls over the internet for their
+proxied objects - they have been also known to patiently stand in for some pretty lazy objects.
+
+Proxy pretends it is the real object, but it is really communicating over the net to the real object. A remote proxy
+acts as a local representative to a remote object. Remote object is an object that lives in the heap of different JVM.
+Local representative - it is an object that you call local methods on and have them forwarded on to the remote object.
+
+RMI builds the client and the service helper objects. The nice thing about RMI is that you don't have to write any of
+the networking or I/O code yourself. Networking and I/O methods are risky and can fail. The client dopes have to
+acknowledge the risk.
+
+RMI nomenclature: client helper is a "stub" and the service helper is a "skeleton".
+
+The Proxy Pattern:
+
+> Provides a surrogate of placeholder for another object to control access to it.
+
+Use the Proxy Pattern to create a representative object that controls access to another object, which may be remote,
+expensive to create, or in need of securing.
+
+The Proxy Pattern can manifest itself in many forms, e.g. the Virtual Proxy.
+
+Virtual Proxy - acts as a representative for an object that bay be expensive to create. The Virtual Proxy often defers
+the creation of the object until it is needed. The Virtual Proxy also acts as a surrogate for the object before and
+while it is being created. After that, the proxy delegates requests to the RealSubject.
+
+ImageProxy for application displaying images:
+
+1. ImageProxy first creates an ImageIcon and starts loading it from a network URL.
+2. While the bytes of the image are being retrieved, ImageProxy displays "Loading album cover, please wait..."
+3. When the image is fully loaded, ImageProxy delegates all method calls to the image icon
+4. If the user requests a new image, we will create a new proxy and start the process over.
+
+There are a lot of variants of the Proxy Pattern in the real world. What they all have in common is that they intercept
+a method invocation that the client is making to the subject. This level of indirection allows us to do many things,
+including dispatching requests to a remote subject, providing a representative for an expensive object as it is created
+or providing some level of protection that can determine which clients should be calling which methods.
+
+Protection Proxy - a proxy that controls access to an object based on access rights. For example: `Employee` object - a
+Protection Proxy might allow the employee to call certain methods on the object, a manager to call additional methods (
+like `setSalary`), and an HR employee to call any method on the object.
+
+Additional proxies:
+
+- Firewall Proxy - controls access to a set of network resources, protecting the subject from "bad" clients.
+- Smart Reference Proxy - provides additional actions whenever a subject is referenced, such as counting the number of
+  references to an object.
+- Caching Proxy - provides temporary storage for results of operations that are expensive. It can also allow multiple
+  clients to share the results to reduce computation or network latency.
+- Synchronization Proxy - provides safe access to a subject from multiple threads.
+- Complexity Hiding Proxy - hides the complexity of and controls access to a complex set of classes. This is sometimes
+  called the Facade Proxy for obvious reasons. The Complexity Hiding Proxy differs from the Facade Pattern in that the
+  proxy controls access, while the Facade Pattern just provides an alternative interface.
+- Copy-On-Write Proxy - controls the copying of an object by deferring the copying of an object until it is required by
+  a client. This is a variant of the Virtual Proxy.
+
+Bullet points:
+
+- The Proxy Pattern provides a representative for another object in order to control the client's access to it.
+- A Remote Proxy manages interaction between a client and a remote object.
+- A Virtual Proxy controls access to the methods of an object based on the caller.
+- A Protection Proxy controls access to the methods of an object based on the caller.
+- Many other variants of the Proxy Pattern exist, including caching proxies, firewall proxies, copy-on-write proxies,
+  and so on.
+- Proxy is structurally similar to Decorator, but the two patterns differ in their purpose.
+- The Decorator Pattern adds behavior to an object, while Proxy controls access.
+- Java's built-in support for Proxy can build a dynamic proxy class on demand and dispatch all calls on it to a handler
+  of your choosing.
+- Like any wrapper, proxies will increase the number of classes and objects in your designs.
