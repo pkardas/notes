@@ -896,7 +896,7 @@ Bullet points:
 
 ## Chapter 11: Controlling Object Access
 
-[The Proxy Pattern - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns/ch_11_proxy)
+[The Virtual Proxy Pattern - Pattern implementation in Python](https://github.com/pkardas/learning/blob/master/books/head-first-design-patterns/ch_11_virtual_proxy.py)
 
 Proxies control and manage access. Proxies have been known to haul entire method calls over the internet for their
 proxied objects - they have been also known to patiently stand in for some pretty lazy objects.
