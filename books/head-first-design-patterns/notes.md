@@ -15,6 +15,7 @@ Book by Eric Freeman and Elisabeth Robson
 - [Chapter 9: The Iterator and Composite Patterns - Well-Managed Collections](#chapter-9-well-managed-collections)
 - [Chapter 10: The State Pattern - The State of Things](#chapter-10-the-state-of-things)
 - [Chapter 11: The Proxy Pattern - Controlling Object Access](#chapter-11-controlling-object-access)
+- [Chapter 12: Compound patterns - Patterns of Patterns](#chapter-12-patterns-of-patterns)
 
 ## Chapter 1: Welcome to Design Patterns
 
@@ -967,3 +968,65 @@ Bullet points:
 - Java's built-in support for Proxy can build a dynamic proxy class on demand and dispatch all calls on it to a handler
   of your choosing.
 - Like any wrapper, proxies will increase the number of classes and objects in your designs.
+
+## Chapter 12: Patterns of Patterns
+
+Some of the most powerful OO designs use several patterns together. Compound patterns - set of patterns that wort
+together in a design that can be applied over many problems.
+
+Patterns are often used together and combined within the same design solution. A compound pattern combines two or more
+patterns into a solution that solves a recurring or general problem.
+
+It is possible to rework Duck Simulator from the first chapter using 6 patterns. In fact, you never actually want to
+approach a design like this. You only want to apply patterns when and where they make sense. **You never want to start
+out with the intention of using patterns just for the sake of it**.
+
+MVC - it is just a few patterns put together. Music players underneath use MVC.
+
+View - gives you a presentation of the model. The view usually gets the state and data it needs to display directly from
+the model.
+
+Controller - takes user input and figures out what it means to the model.
+
+Model - the model holds all the data, state and application logic. The model is oblivious to the view and controller,
+although it provides an interface to manipulate and retrieve its state, and it can send notifications of state changes
+to observers.
+
+You are the user - you interact with the view. When you do something to the view, then the view tells the controller
+what you did. It is controller's job to handle that. The controller asks the model to change its state.If you click a
+button it is the controller's job to figure out what that means and how the model should be manipulated based on that
+action. The controller may also ask the view to change. The model notifies the view when its state has changed. The view
+asks the model for state.
+
+MVW is made of:
+
+- Strategy - The view and controller implement the classic Strategy Pattern - the view is configured with a strategy,
+  the controller provides strategy.
+- Composite - the display consists of a nested set of windows, panels, buttons, text labels and so on. Each display is a
+  composite (like a window) or a leaf (like a button). When the controller tells the view to update, it only has to tell
+  the top view component, and Composite takes care of the rest.
+- Observer - The model implements the Observer Pattern to keep interested objects updated when state changes occur.
+
+Typically, you need one controller per view at runtime; however the same controller class can easily manage many views.
+
+MVC has been adopted to many web frameworks:
+
+- thin client - the model and most of the view and the controller all reside in the server, with the browser providing a
+  way to display the view, and to get input from the browser to the controller.
+- single page application - almost all of the model, view and controller reside on the client side.
+
+MVC frameworks: Django, AngularJS, EmberJS, ...
+
+Bullet points:
+
+- The Model View Controller Pattern is a compound pattern consisting of the Observer, Strategy and Composite Patterns.
+- The model makes use of the Observer Pattern so that it can keep observers updated yet stayed decoupled from them.
+- The controller is the Strategy for the view. The view can use different implementations of the controller to get
+  different behavior.
+- The view uses the Composite Pattern to implement the user interface, which usually consists of nested components like
+  panels, frames and buttons.
+- These patterns work together to decouple the three players in the MVC model, which keep designs clear and flexible.
+- The Adapter Pattern can be used to adapt a new model to an existing view and controller.
+- MVC has been adapted to the web.
+- There are many web MVC frameworks with various adaptations of the MVC pattern to fit the client/server application
+  structure.
