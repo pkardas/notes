@@ -16,6 +16,7 @@ Book by Eric Freeman and Elisabeth Robson
 - [Chapter 10: The State Pattern - The State of Things](#chapter-10-the-state-of-things)
 - [Chapter 11: The Proxy Pattern - Controlling Object Access](#chapter-11-controlling-object-access)
 - [Chapter 12: Compound patterns - Patterns of Patterns](#chapter-12-patterns-of-patterns)
+- [Chapter 13: Patterns in the Real World](#chapter-13-patterns-in-the-real-world)
 
 ## Chapter 1: Welcome to Design Patterns
 
@@ -1030,3 +1031,91 @@ Bullet points:
 - MVC has been adapted to the web.
 - There are many web MVC frameworks with various adaptations of the MVC pattern to fit the client/server application
   structure.
+
+## Chapter 13: Patterns in the Real World
+
+A Pattern:
+
+> is a solution to a problem in a context.
+
+- The context is the situation in which the pattern applies. This should beL recurring situation.
+- The problem refers to the goal you are trying to achieve in this context, but it also refers to any constraints that
+  occur in the context.
+- The solution is what you are after: a general design that anyone can apply that resolves the goal and set of
+  constraints.
+
+Like design principles, patterns are not meant to be laws or rules - they are guidelines that you can alter to fit your
+needs. A lot of real-world examples don't fit the classic pattern designs. When you adapt patterns, it never hurts to
+document how your pattern differs from the classic design - that way other developers can quickly recognize the patterns
+you are using.
+
+The Design Pattern definition tells us that the problem consists of a goal and set of constraints. Only when solution
+balances both sides of the _force_ (goal - constraints) do we have a useful pattern.
+
+Design pattern should have: a name, a template, an intent, motivation, applicability, code example, use cases, how
+pattern relates to other patterns, consequences.
+
+Design patterns are discovered, not created. Anyone can discover a Design Pattern, however it is not easy and doesn't
+happen quickly. You don't have a pattern until others have used it and found it to work. You don't have a pattern until
+it passes the Rule of Thee - a pattern can be called a pattern only if it has been applied in a real-world solution at
+least 3 times.
+
+Creational Patterns - involve object instantiation and all provide a way to decouple a client from the objects it needs
+to instantiate: Singleton, Abstract Factory, Factory Method.
+
+Behavioral Patterns - concerned with how classes and objects interact and distribute responsibility: Template Method,
+Iterator, Command, State, Observer, Strategy.
+
+Structural Patterns - let you compose classes or objects into larger structures: Proxy, Facade, Composite, Adapter,
+Decorator.
+
+Patterns are often classified by a second attribute - whether the pattern deals with classes or objects: Class
+Patterns (Template Method, Factory Method, Adapter) and Object Patterns (Composite, Decorator, State, Singleton, ...).
+
+Categorisation is confusing because many patterns fit into more than one category. Categories give us a way to think
+about the wa groups of patterns relate and how patterns within a group relate to one another. They also give us a way to
+extrapolate to new patterns.
+
+Keep it simple - KISS - your goal should be simplicity, not "how can I apply a pattern to this problem". Don't feel like
+you aren't a sophisticated developer if you don't use a pattern to solve a problem.
+
+Patterns aren't a magic bullet. You can't plug one in, compile and then take and early lunch. To use patterns, you need
+to think through the consequences for the rest of your design.
+
+Refactoring is a great time to reexamine your design to see if it may be better structured with patterns.
+
+Don't be afraid to remove a Design Pattern from your design. Remove, when a simpler solution without the pattern would
+be better.
+
+_YAGNI_: Resist the temptation of creating architectures that are ready to take on change from any direction. If the
+reason for adding a pattern is only hypothetical, don;t add the pattern: it will only add complexity to your system, and
+you might never need it. Overuse of design patterns can lead to code that is downright overengineered. Always go with
+the simplest solution that does the job and introduce patterns where the need emerges.
+
+The Beginner uses patterns everywhere. The Intermediate starts to see where patterns are needed and where they aren't.
+The Zen mind is able to see patterns where they fit naturally.
+
+Anti-pattern:
+
+> Tells you how to go from a problem to a BAD solution.
+
+An anti-pattern tells you why bad solution is attractive, tells why that solution in the long term is bad and suggests
+other applicable patterns that may provide good solutions.
+
+An anti-pattern always looks like a good solution, but then turns out to be a bad solution when it is applied. BY
+documenting anti-patterns we help others to recognize bad solutions before they implement them. Like many patterns,
+there are many types of anti-patterns including development, OO, organizational, and domain specific anti-patterns.
+
+Bullet points:
+
+- Let Design Patterns emerge in your designs, don't force them in just for the sake of using a pattern.
+- Design Patterns aren't set in stone - adapt and tweak them to meet your needs.
+- Always use the simplest solution that meets your needs, even if it doesn't include a pattern.
+- Study Design Patterns catalogs to familiarize yourself with patterns and the relationship among them.
+- Pattern classifications provide groupings for patterns. When they help, use them.
+- You need to be committed to be a patterns' writer - it takes time and patience, and you have to be willing to do lots
+  of refinement.
+- Remember, most patterns you encounter will be adaptations of existing patterns, not new patterns.
+- Build your team's shared vocabulary. This is one of the most powerful benefits of using patterns.
+- Like any community, the patterns community has its own lingo. Don;t let that hold you back. Having read this book, you
+  know most of it.
