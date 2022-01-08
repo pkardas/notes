@@ -17,6 +17,7 @@ Book by Eric Freeman and Elisabeth Robson
 - [Chapter 11: The Proxy Pattern - Controlling Object Access](#chapter-11-controlling-object-access)
 - [Chapter 12: Compound patterns - Patterns of Patterns](#chapter-12-patterns-of-patterns)
 - [Chapter 13: Patterns in the Real World](#chapter-13-patterns-in-the-real-world)
+- [Chapter 14: Appendix - Leftover Patterns](#chapter-14-leftover-patterns)
 
 ## Chapter 1: Welcome to Design Patterns
 
@@ -503,7 +504,7 @@ The Command Pattern:
 > Encapsulates a request as an object, thereby letting you parametrize other objects with different requests,
 > queue or log requests, and support undoable operations.
 
-A null object is useful when you don;t have a meaningful object tor eturn, and yet you want to remove the responsibility
+A null object is useful when you don;t have a meaningful object to return, and yet you want to remove the responsibility
 of handling null from the client, e.g. `NoCommand` - surrogate and does nothing when its execute method is called.
 
 Command Pattern can be taken into the next level by using e.g. Java's lambda expressions. Instead of instantiating the
@@ -750,7 +751,7 @@ leaves you to specify your own details about what is actually happening at each 
 Template Method vs Strategy:
 
 - Strategy defines a family of algorithms and make them interchangeable.
-- Factory Method defines the outline of an algorithm, and lets subclasses do some of the work.
+- Factory Method defines the outline of an algorithm, and lets subclasses do some work.
 - Strategy uses object composition.
 - Template Method uses inheritance.
 
@@ -1014,7 +1015,7 @@ MVC has been adopted to many web frameworks:
 
 - thin client - the model and most of the view and the controller all reside in the server, with the browser providing a
   way to display the view, and to get input from the browser to the controller.
-- single page application - almost all of the model, view and controller reside on the client side.
+- single page application - almost all the model, view and controller reside on the client side.
 
 MVC frameworks: Django, AngularJS, EmberJS, ...
 
@@ -1119,3 +1120,168 @@ Bullet points:
 - Build your team's shared vocabulary. This is one of the most powerful benefits of using patterns.
 - Like any community, the patterns community has its own lingo. Don;t let that hold you back. Having read this book, you
   know most of it.
+
+## Chapter 14: Leftover Patterns
+
+**Bridge**
+
+> Use the Bridge Pattern to vary not only your implementations, but also your abstractions.
+
+Benefits:
+
++ Decouples an implementation so that it is bout bound permanently to an interface.
++ Abstraction and implementation can be extended independently.
++ Changes to the concrete abstraction classes don;t affect the client.
+
+Bridge Uses and Drawbacks:
+
+- Useful in graphics and windowing systems that need to run over multiple platforms.
+- Useful any time you need to vary an interface and an implementation in different ways.
+- Increases complexity.
+
+**Builder**
+
+> Use the Builder Pattern to encapsulate the construction of a product and allow it to be constructed in steps.
+
+Benefits:
+
++ Encapsulates the way a complex object is constructed.
++ Allows objects to be constructed in a multistep and varying process (as opposed to one-step factories).
++ Hides the internal representation of the product from the client.
++ Product implementations can be swapped in and out because the client only sees an abstract interface.
+
+Builder Uses and Drawbacks:
+
+- Often used for building composite structures.
+- Constructing objects requires more domain knowledge of the client than when using a Factory.
+
+**Chain of Responsibility**
+
+> Use the Chain of Responsibility Pattern when you want to give more than one object a chance to handle a request.
+
+Benefits:
+
++ Decouples the sender of the request and its receivers.
++ Simplifies your object because it doesn't have to know the chain's structure and keep direct references to its
+  members.
++ Allows you to add or remove responsibilities dynamically by changing the members or order of the chain.
+
+Chain of Responsibility Uses and Drawbacks:
+
+- Commonly used in Windows systems to handle events like mouse clicks and keyboard events.
+- Execution of the request isn't guaranteed - it may fall ofo the end of the chain if no object handles it.
+- Can be hard to observe and debug at runtime.
+
+**Flyweight**
+
+> Use the Flyweight Pattern when one instance of a class can be used to provide many virtual instances.
+
+Benefits:
+
++ Reduces the number of objects instances at runtime, saving memory.
++ Centralizes state for many "virtual" objects into a single location.
+
+Flyweight Uses and Drawbacks:
+
+- The Flyweight is used when a class has many instances, and they all can be controlled identically.
+- A drawback, of the Flyweight Pattern is once you have implemented it, single, logical instances of the class will not
+  be able to behave independently from the other instances.
+
+**Interpreter**
+
+> Use the Interpreter Pattern to build an interpreter for a language.
+
+When you need to implement a simple language, the Interpreter Pattern defines a class based representations for its
+grammar along with an interpreter to interpret its sentences. To represent the language, you use a class to represent
+each rule in the language.
+
+Benefits:
+
++ Representing each grammar rule in a class makes the language easy to implement.
++ Because the grammar is represented by classes, you can easily change or extend the language.
++ By adding methods to the class structure, you can add new behaviors beyond interpretation, like pretty printing and
+  more sophisticated program validation.
+
+Interpreter Uses and Drawbacks:
+
+- Use Interpreter when you need to implement a simple language.
+- Appropriate when you have a simple grammar and simplicity is more important than efficiency.
+- Used for scripting and programming languages.
+- This pattern can become cumbersome when the number of grammar rules is large. In these cases a parser/compiler
+  generator may be more appropriate.
+
+**Mediator**
+
+> Use the Mediator Pattern to centralize complex communications and control between related objects.
+
+Benefits:
+
++ Increases the reusability of the objects supported by the Mediator by decoupling them from the system.
++ Simplifies maintenance fo the system by centralizing control logic,
++ Simplifies and reduces the variety of messages sent between objects in the system.
+
+Mediator Uses and Drawbacks:
+
+- The Mediator is commonly used to coordinate related GUI components.
+- A drawback so the Mediator Pattern is that without proper design, the Mediator object itself can become overly
+  complex.
+
+**Memento**
+
+> Use the Memento Pattern when you need to be able to return an object to one of ots previous states: for instance, if
+> your user requests an "undo"
+
+The Memento has 2 goals: Saving the important state of a system's key object. Maintaining the key object's
+encapsulation.
+
+Keeping the Single Responsibility Principle n mind, it is also a good idea to keep the state that you are saving
+separate from the key object. This separate object that holds the state is known as the Memento object.
+
+Benefits:
+
++ Keeping the saved state external from the key object helps to maintain cohesion.
++ Keeps the key object's data encapsulated.
++ Provides easy-to-implement recovery capability.
+
+Memento Uses and Drawbacks:
+
+- The Memento is used to save state.
+- A drawback to using Memento is that saving and restoring state can be time-consuming.
+- In Java systems, consider using Serialization to save a system's state.
+
+**Prototype**
+
+> Use the Prototype Pattern when creating an instance of a given class is either expensive or complicated.
+
+The Prototype Pattern allows you to make new instances by copying existing instances.
+
+Benefits:
+
++ Hides the complexities of making new instances from the client.
++ Provides the option for the client to generate objects whose type is not known.
++ In some circumstances, copying an object can be more efficient than creating a new object.
+
+Prototype Uses and Drawbacks:
+
+- Prototype should be considered wen a system must create new objects of many types in a complex class hierarchy.
+- A drawback to using Prototype is that making a copy of an object can sometimes be complicated.
+
+**Visitor**
+
+> Use the Visitor Pattern when you want to add capabilities to a composite of objects and encapsulation is not
+> important.
+
+The Visitor works hand in hand with a Traverser. The Traverser knows how to navigate to all the objects in a Composite.
+The Traverser guides the Visitor through the Composite so that the Visitor can collect state as it goes. Once state has
+been gathered, the Client can have the Visitor pattern perform various operations on the state.
+
+Benefits:
+
++ Allows you to add operations to a Composite.
++ Adding new operations is relatively easy.
++ The code for operations performed by the Visitor is centralized.
+
+Visitor Drawbacks:
+
+- The Composite classes' encapsulation is broken when the Visitor is used.
+- Because the traversal function is involved, changes to the Composite structure are more difficult.

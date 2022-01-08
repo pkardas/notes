@@ -4,7 +4,7 @@
 
 In progress:
 
-👀 [Head First Design Patterns: Building Extensible and Maintainable Object-Oriented Software](books/head-first-design-patterns/notes.md)
+👀 [Clean Agile: Back to Basics](books/clean-agile.md)
 
 Finished:
 
@@ -13,6 +13,8 @@ Finished:
 ✅ [Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems](books/ddia.md)
 
 ✅ [Domain-Driven Design: Tackling Complexity in the Heart of Software](books/ddd.md)
+
+✅ [Head First Design Patterns: Building Extensible and Maintainable Object-Oriented Software](books/head-first-design-patterns/notes.md)
 
 ✅ [Release It! Design and Deploy Production-Ready Software](books/release-it.md)
 
@@ -27,8 +29,6 @@ Finished partially:
 [Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems](books/hands-on-ml.md)
 
 Queue:
-
-[Clean Agile: Back to Basics](books/clean-agile.md)
 
 [Architecture Patterns with Python](books/python-architecture-patterns.md)
 
