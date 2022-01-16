@@ -5,6 +5,7 @@
 Book by Robert Cecil Martin
 
 - [Chapter 1: Introduction to Agile](#chapter-1-introduction-to-agile)
+- [Chapter 2: The Reasons For Agile](#chapter-2-the-reasons-for-agile)
 
 ## Chapter 1: Introduction to Agile
 
@@ -133,4 +134,85 @@ implement first.
 > Agile is a process wherein a project is subdivided into iterations. The output of each iteration is measured and used
 > to continuously evaluate the schedule. Features are implemented in the order of business value so that the most
 > valuable things are implemented first. Quality is kept as high as possible. The schedule is primarily managed by
-> manipulating scope.  
+> manipulating scope.
+
+## Chapter 2: The Reasons For Agile
+
+Agile is important because of professionalism and the reasonable expectations from our customers.
+
+- Professionalism - nowadays the cost of software failure is high, therefore we need to increase our professionalism. We
+  are surrounded by computers, and they all need to be programmed - they all need software. Nowadays, virtually nothing
+  of significance can be done without interacting with a software system. Now our actions are putting lives and fortunes
+  at stake.
+- Reasonable Expectations - meeting expectations is one of primary goals of Agile development.
+    - we will not ship sh*t - Agile's emphasis on Testing, Refactoring, Simple Design and customer feedback is the
+      obvious remedy fo shipping bad code.
+    - continuous technical readiness - system should be technically (solid enough to be deployed) deployable at the end
+      of every iteration.
+    - stable productivity - big redesigns are horrifically expensive and seldom are deployed. Developers instead, should
+      continuously keep the architecture, design and code as clean as possible, this allows to keep their productivity
+      high and prevent the otherwise inevitable spiral into low productivity and redesign.
+    - inexpensive adaptability - software - soft (easy to change), ware (product). Software was invented because we
+      wanted a way to quickly and easily change the behavior of our machines. Developers should celebrate change because
+      that is why we are here. Changing requirements is the name of the whole game. Our jobs depend on our ability to
+      accept and engineer changing requirements and to make those changes relatively inexpensive. If a change to the
+      requirements breaks your architecture, then your architecture sucks.
+    - continuous improvement - the older a software system is, the better it should be. Unfortunately it seldom happens.
+      We make things worse with time. The Agile practices of Pairing, TDD, Refactoring, and Simple Design strongly
+      support this expectation.
+    - fearless competence - people are afraid of changing bad code, you can break it, and if it breaks it will become
+      yours. This fear forces you to behave incompetently. Customers, users, and managers expect _fearless competence_.
+      They expect that if you see something wrong or dirty, you will fix it and clean it. They don't expect you to allow
+      problems to fester and grow - they expect you to stay on top of the code, keeping it as clean and clear as
+      possible. How to eliminate that fear? Use TDD.
+    - qa should find nothing - the Agile practices support this expectation.
+    - test automation - manual tests are always eventually lost. Manual tests are expensive and so are always a target
+      for reduction. Besides, asking humans to do what machines can do is expensive, inefficient, and immoral. Every
+      test that can be feasibly automated must be automated. Manual testing should be limited to those things that
+      cannot be automatically validated and to the creative discipline of Exploratory Testing.
+    - we cover for each other - each individual member of a software team makes sure that there is someone who can for
+      him if he goes down.It is your responsibility to make sure that one or more of your teammates can cover for you.
+    - honest estimates - you should provide estimates based on what you do and do not know. You can estimate in relative
+      terms (task B should take half of the time spent on task A), you can also estimate using ranges.
+    - you need to say "no" - when answer for something is "no", then the answer is really "no". For example if solution
+      for a problem can not be found.
+    - continuous aggressive learning - our industry changes quickly. We must be able to change with it. So learn, learn,
+      learn! Learn with or without company's help.
+    - mentoring - the best way to learn is to teach. So when new people join the team, teach them. Learn is to teach
+      other.
+
+Customer Bill of Rights:
+
+- You have the right to an overall plan and to know what can be accomplished when and at what cost.
+    - We cannot agree to deliver fixed scopes on gard dates. Either the scopes or the dates must be soft.
+- You have the right to get the most possible value out of every iteration.
+    - The business has the right to expect that developers will work on the most important things at any given time, and
+      that each iteration will provide them the maximum possible usable business value.
+- You have the right to see progress in a running system, proven to work by passing repeatable tests that you specify.
+- You have the right to change your mind, to substitute functionality, and to change priorities without paying
+  exorbitant costs.
+- You have the right to be informed of schedule and estimate changes, in time to choose how to reduce the scope to meet
+  a required date. You can cancel at any time and be left with a useful working system reflecting investment to date.
+
+Developer Bill of Rights:
+
+- You have the right to know what is needed with clear declarations of priority.
+    - Developers are entitled to precision in requirements and in the importance of those requirements.This right
+      applies within the context of an iteration. Outside an iteration, requirements and priorities will shift and
+      change.
+- You have the right to produce hugh-quality work at all times.
+    - The business has no right to tell developers to cut corners or do low quality work. Or, to say this differently,
+      the business has no right to force developers to ruin their professional reputations or violate their professional
+      ethics.
+- You have the right to ask for and receive help from peers, managers, and customers.
+    - This statement gives programmers the right to communicate.
+- You have the right to make and update your estimates.
+    - You can change your estimate when new factors come to light. Estimates are guesses that get better with time.
+      Estimates are never commitments.
+- You have the right to accept your responsibilities instead of having them assigned to you.
+    - Professionals accept work, they are not assigned work. A professional developer has every right to say "no" to a
+      particular job or task. It may be that the developer does not feel confident in their ability to complete tge
+      task, or it may be that the developer believes the task better suited for someone else. Or, it may be that the
+      developer rejects the task for personal or moral reasons. Acceptance implies responsibility.
+
+> Agile is a set of rights, expectations, and disciplines of the kind that form the basis of an ethical profession.
