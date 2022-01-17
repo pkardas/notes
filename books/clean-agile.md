@@ -6,6 +6,7 @@ Book by Robert Cecil Martin
 
 - [Chapter 1: Introduction to Agile](#chapter-1-introduction-to-agile)
 - [Chapter 2: The Reasons For Agile](#chapter-2-the-reasons-for-agile)
+- [Chapter 3: Business Practices](#chapter-3-business-practices)
 
 ## Chapter 1: Introduction to Agile
 
@@ -216,3 +217,81 @@ Developer Bill of Rights:
       developer rejects the task for personal or moral reasons. Acceptance implies responsibility.
 
 > Agile is a set of rights, expectations, and disciplines of the kind that form the basis of an ethical profession.
+
+## Chapter 3: Business Practices
+
+If you would like an accurate and precise estimate of a project, then break it down into individual lines of codes. The
+time it takes you to do this will give you a very accurate and precise measure of how long it took you to build the
+project.
+
+Trivariate Analysis - such estimates are composed of three numbers: best-case, nominal-case, and worst-case. These
+numbers are confidence numbers. The worst-case number is the amount of time which you feel 95% confident that the task
+will be completed. The nominal-case has only 50% confidence, and the best case only 5%.
+
+Stories and Points - a user story is an abbreviated description of a feature of the system, told from the point of view
+of a user. We want to delay the specification of those details as long as possible, right up to the point where the
+story is developed.
+
+Story points are a unit of estimated effort, not real time. They are not even estimated time - they are estimated
+effort. Velocity is not a commitment. The team is not making a promise to get 30 points done during the iteration. They
+aren't even making the promise to try get 30 points done. This is nothing mor ethan their best guess as to how many
+points will be complete by the end of the iteration.
+
+The Four-Quadrant Game (The Highest Return of Investment) - the stories that are valuable but cheap will be done right
+away. Those that are valuable but expensive will be done later. Those that ate neither valuable nor expensive might get
+done one day. Those that are not valuable but are expensive will never be done.
+
+Yesterday's weather - the best predictor of today's weather is yesterday's weather. The best predictor of the progress
+of an iteration is the previous iteration.
+
+The project is over when there are no more stories in the deck worth implementing.
+
+User stories are simple statements that we use as reminders of features. We try not to record too much detail when we
+write the story because we know that those details will likely change. Stories follow a simple set of guidelines that we
+remember with the acronym INVEST:
+
+- I - Independent - they do not need to be implemented in any particular order. This is a soft requirement because there
+  may be stories that depend on other stories. Still, we try to separate the stories so that there is little dependence.
+- N - Negotiable - we want details to be negotiable between the developers and the business.
+- V - Valuable - the story must have clear and quantifiable value to the business. Refactoring/Architecture/Code cleanup
+  is never a story. A story is always something that the business values.
+- E - Estimable - must be concrete enough to allow the developers to estimate it.
+- S - Small - a user story should be larger than one or two developers can implement in a single iteration.
+- T - Testable - the business should be able to articulate tests that will prove that the story has been completed.
+
+There are number of schemes for estimating stories:
+
+- Flying Fingers
+- Planning Poker
+
+A spike is a meta-story, or a story for estimating a story. It is a spike because it often requires us to develop a long
+but very thin slice through all the layers of the system. FOr example, there is a story you cannot estimate: Print PDF -
+you have never used the PDF library. SO you write a new story called Estimate Print PDF - now you estimate that story,
+which is easier to estimate.
+
+The goal of each iteration is to produce data by getting stories done. The team should focus on stories rather than
+tasks within stories. It is far better to get 80% of the stories done than it is to get each story 80% done. Focus on
+driving the stories to completion.
+
+A story cannot be completed without the acceptance tests. If QA continues to miss the midpoint deadline, one iteration
+after another, then the ratio of QA engineers to developers is likely wrong. After the midpoint, if all the acceptance
+tests are done, QA should be working on the tests for the next iteration.
+
+The definition of done is this: acceptance tests pass.
+
+If we see a positive slope in velocity, it likely does not mean that the team is actually going faster. Rather, it
+probably means that the project manager is putting pressure on the team to go faster. ASs that pressure builds, the team
+will unconsciously shift the value of their estimates to make it appear that they are going faster. This is simple
+inflation. The points are a currency, and the team is devaluing them under external pressure. The lesson is that
+velocity is a measurement not an objective. Don't put pressure on the thing you are measuring.
+
+Estimate is not a promise, and the team has not failed if the actual velocity is lower.
+
+The practice of Small Releases suggest that a development team should release their software as often as possible. The
+new goal, is Continuous Delivery - the practice of releasing the code to production after every change.
+
+Acceptance Tests - Requirements should be specified by the business.
+
+BDD - Behavior-Driven Development - the goal is to remove the techie jargon from the tests and make the tests appear
+more like specifications that businesspeople would appreciate. At first, this was just another attempt at formalizing
+the language of testing, in this case using 3 special adverbs: Given, WHen, and Then. 
