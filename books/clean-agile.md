@@ -7,6 +7,7 @@ Book by Robert Cecil Martin
 - [Chapter 1: Introduction to Agile](#chapter-1-introduction-to-agile)
 - [Chapter 2: The Reasons For Agile](#chapter-2-the-reasons-for-agile)
 - [Chapter 3: Business Practices](#chapter-3-business-practices)
+- [Chapter 4: Team Practices](#chapter-4-team-practices)
 
 ## Chapter 1: Introduction to Agile
 
@@ -280,7 +281,7 @@ tests are done, QA should be working on the tests for the next iteration.
 The definition of done is this: acceptance tests pass.
 
 If we see a positive slope in velocity, it likely does not mean that the team is actually going faster. Rather, it
-probably means that the project manager is putting pressure on the team to go faster. ASs that pressure builds, the team
+probably means that the project manager is putting pressure on the team to go faster. As that pressure builds, the team
 will unconsciously shift the value of their estimates to make it appear that they are going faster. This is simple
 inflation. The points are a currency, and the team is devaluing them under external pressure. The lesson is that
 velocity is a measurement not an objective. Don't put pressure on the thing you are measuring.
@@ -294,4 +295,56 @@ Acceptance Tests - Requirements should be specified by the business.
 
 BDD - Behavior-Driven Development - the goal is to remove the techie jargon from the tests and make the tests appear
 more like specifications that businesspeople would appreciate. At first, this was just another attempt at formalizing
-the language of testing, in this case using 3 special adverbs: Given, WHen, and Then. 
+the language of testing, in this case using 3 special adverbs: Given, WHen, and Then.
+
+## Chapter 4: Team Practices
+
+A metaphor can provide a vocabulary that allows the team to communicate effectively. On the other hand, some metaphors
+are silly to the point of being offensive to the customer.
+
+DDD solved the metaphor problem. Eric Evans coined the term _Ubiquitous Language_. WHat the team needs is a model of the
+problem domain, which is described by a vocabulary that everyone (the programmers, QA, managers, customers, users)
+agrees on.
+
+The Ubiquitous Language is used in all parts of the project. It is a thread of consistency that interconnects the entire
+project during every phase of its lifecycle.
+
+A software project is not a marathon, not a sprint, nor a sequence of sprints. In order to win, you must pace yourself.
+If you leap out of the blocks and run full speed, you will run out of energy long before you cross the finish line.
+
+You must run at a Sustainable Pace.If you try to run faster than the pace you can sustain, you will have to slow down
+and rest before you reach the finish line. Managers may ask you to run faster than you should. You must not comply. It
+is your job to husband your resources to ensure that you endure the end.
+
+> Working overtime is not a way to show your dedication to your employer. What it shows is that you are a bad planner,
+> that you agree to deadlines to which you shouldn't agree, that you make promises you shouldn't make, that you are a
+> manipulable laborer and not a professional. This is not to say that all overtime is bad, nor that you should never
+> work overtime. There are extenuating circumstances for which the only option is to work overtime. But they should be
+> extremely rare. And you must be aware that the cost of that overtime will likely be greater than the time you save on
+> the schedule.
+
+The most precious ingredient in the life of a programmer is sufficient sleep. Make sure you know how many hours of sleep
+your body needs, and then prioritize those hours. Those hours will more than pay themselves back.
+
+No one owns the code in an Agile project. The code is owned by the team as a whole. Any member fo the team can check and
+improve any module in the project at any time. The team owns the code collectively. Collective Ownership does not mean
+that you cannot specialize. However, even as you specialize, you must also generalize. Divide your work between your
+specialty and other areas of the code. Maintain your ability to work outside your specialty.
+
+The continuous build should never break.
+
+Standup Meeting:
+
+- This meeting is optional. Many teams get by just fine without one.
+- It can be less often than daily. Pick the schedule that makes sense to you.
+- It should take ~10 minutes, even for large teams.
+- This meeting follows a simple formula.
+
+The basic idea is that the team members stand in a circle and answer 3 questions:
+
+1. What did I do since the last meeting?
+2. What will I do until the next meeting.
+3. What is in my way?
+4. [Optional] Whom do you want to thank?
+
+No discussion. No Posturing. No deep explanations. No complaints. Everybody gets 30 seconds to answer those 3 questions.
