@@ -8,6 +8,7 @@ Book by Robert Cecil Martin
 - [Chapter 2: The Reasons For Agile](#chapter-2-the-reasons-for-agile)
 - [Chapter 3: Business Practices](#chapter-3-business-practices)
 - [Chapter 4: Team Practices](#chapter-4-team-practices)
+- [Chapter 5: Technical Practices](#chapter-5-technical-practices)
 
 ## Chapter 1: Introduction to Agile
 
@@ -348,3 +349,77 @@ The basic idea is that the team members stand in a circle and answer 3 questions
 4. [Optional] Whom do you want to thank?
 
 No discussion. No Posturing. No deep explanations. No complaints. Everybody gets 30 seconds to answer those 3 questions.
+
+## Chapter 5: Technical Practices
+
+Without TDD, Refactoring, Simple Design and Pari Programming, Agile becomes an ineffective flaccid shell of what it was
+intended to be.
+
+TEST-DRIVEN DEVELOPMENT. Every required behavior should be entered twice: once as a test, and then again as production
+code that makes the test pass.
+
+The 3 rules of TDD:
+
+1. Do not write any production code until you have first written a test that fails due to the lack of that code.
+2. Do not write more of a test that is sufficient to fail - and failing to compile counts as a failure.
+3. Do not write more production code that is sufficient to pass the currently failing test.
+
+The tests are a form of documentation that describe the system being tested. This documentation is written in a language
+that the programmers know fluently. It is utterly unambiguous, it is so formal it executes, and it cannot get out of
+sync with the application code. The test are the perfect kind of documentation for programmers: code.
+
+Remember that function that is hard to test after the fact? The function is hard to test because you did not design it
+to be easy to test. You wrote the code first, and you are now writing the tests as and afterthought. By writing the
+tests first, you will decouple the system in ways that you had never thought about before. The whole system will be
+testable, therefore, the whole system will be decoupled.
+
+REFACTORING. Refactoring is the practice of improving the structure of the code without altering the behavior, as
+defined by tests. In other words, we make changes to the names, the classes, the functions and the expressions without
+breaking any of the tests.
+
+Red/Green/Refactor:
+
+1. We create a test that fails.
+2. Then we make the test pass.
+3. Then we clean up the code.
+4. Return to step 1.
+
+The word Refactoring should never appear on a schedule. Refactoring is not the kind of activity that appears on a plan.
+We do not reserve time for refactoring. Refactoring is simply part of our minute-by-minute, hour-by-hour approach to
+writing software.
+
+Sometimes the requirements change is such a way that you realize the current design and architecture of the system is
+suboptimal, and you need to make a significant change to the structure of the system. Such changes are made within the
+Red/Green/Refactor cycle. We do not create a project specifically to change the design. We do not reserve time in the
+schedule for such large refactorings. Instead, we migrate the code one small step at a time, while continuing to add new
+features during normal Agile cycle.
+
+SIMPLE DESIGN. The practice of Simple Design is one of the goals of Refactoring. Simple Design is the practice of
+writing only the code that is required with a structure that keeps it simplest, smallest, and the most expressive.
+
+Rules of Simple Design:
+
+1. Pass all the tests.
+2. Reveal the intent - It should be easy to read and self-descriptive. This is where we apply many of the simpled and
+   more cosmetic refactorings. We also split large functions into smaller, better-named functions.
+3. Remove duplication.
+4. Decrease elements - Once we have removed all the duplication, we should strive to decrease the number of structural
+   elements, such as classes, functions, variables.
+
+The more complex the design, the greater the cognitive load placed on the programmers. That cognitive load is Design
+Weight. The greater the weight of that design, the more time and effort are required for the programmers to understand
+and manipulate the system.
+
+PAIR PROGRAMMING. Pairing is the act of two people working together on a single programming problem. Any configuration
+is fine (the same workspace, sharing the screen, keyboard, ping-pong, ...). We pair so that we behave like a team. When
+a member of a team goes down, the other team members cover the hole left by that member and keep making progress towards
+the goal. **Pairing is the best way, by far, to share knowledge between team members and prevent knowledge silos from
+forming. It is the best way to make sure that nobody on the team is indispensable.**
+
+The word "pair" implies that there are just 2 programmers involved in a pairing session. While this is typically true,
+it is not a rule.
+
+Generally, managers are pleased to see programmers collaborating and working together. It creates the impression that
+work is being done.
+
+**Never, ever, ever, ask for permission to pair. Or test. Or refactor. Or... You are the expert. You decide.**
