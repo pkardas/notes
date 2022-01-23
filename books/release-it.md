@@ -41,7 +41,7 @@ A tiny programming error starts the snowball rolling downhill.
 In any incident, author's priority is always to restore service. Restoring service takes precedence over investigation.
 If it is possible to gather some data for postmortem analysis, that's great - unless it makes the outage longer. The
 trick to restoring the service is figuring out what to target. You can always "reboot the world" by restarting every
-single server, layer by layer but that's not effective. Instead be a doctor diagnosing a disease, look at the symptoms
+single server, layer by layer but that's not effective. Instead, be a doctor diagnosing a disease, look at the symptoms
 and figure what disease to treat.
 
 A postmortem is like a murder mystery, there are set of clues - some are reliable like logs, some are unreliable like
@@ -80,7 +80,7 @@ Lees-couples architectures act as shock absorbers, diminishing the effect of the
 Terminology:
 
 - Fault - a condition that creates an incorrect internal state in the software.
-- Error - visibly incorrect behaviour, eg. trading system buying 10M Pokemon futures
+- Error - visibly incorrect behaviour, e.g. trading system buying 10M Pokemon futures
 - Failure - an unresponsive system
 
 Chain of failure: Triggering a fault opens the crack, faults become errors and errors provoke failures. On each step, a
@@ -101,9 +101,9 @@ Antipatterns that can wreck the system, they create, accelerate or multiply crac
 should be avoided.
 
 You have to set the socket timeout if you want to break out of blocking call, for example request may be stuck in the
-listening queue for minutes or forever. Network failure can hit you in 2 ways: fast (immediate exception, eg. connection
-refused) or slow (dropped ACK). The blocked thread can't process other transactions, so overall capacity is reduced. If
-all threads are blocked, from practical point of view, the server is down.
+listening queue for minutes or forever. Network failure can hit you in 2 ways: fast (immediate exception, e.g.
+connection refused) or slow (dropped ACK). The blocked thread can't process other transactions, so overall capacity is
+reduced. If all threads are blocked, from practical point of view, the server is down.
 
 Sometimes not every problem can be solved at the level of abstraction where it manifests. Sometimes the causes
 reverberate up and down the layers. You need to know how to drill through at least two layers of abstraction to find the
@@ -158,7 +158,7 @@ Cascading failures - occurs when a crack in one layer triggers a crack in a call
 badly it will start to fail, resulting in cascading failure (for example database failure is going to impact any system
 that is calling the database). Every dependency is a chance for a failure to cascade.
 
-- a cascading failure often results from a resource pool (eg. connection pool) that gets exhausted, safe resource pools
+- a cascading failure often results from a resource pool (e.g. connection pool) that gets exhausted, safe resource pools
   always limit the time a thread can wait to check out a resource
 - defend with timeouts and circuit breaker
 
@@ -189,7 +189,7 @@ requests, the server receives them, compute and returns response. Sessions are a
 Truly dangerous users are the ones that target your website, once you are targeted, you will almost certainly be
 breached.
 
-Adding complexity to solve one problem creates the risk of entirely new failure modes, eg. multithreading - enables
+Adding complexity to solve one problem creates the risk of entirely new failure modes, e.g. multithreading - enables
 scalability but also introduces concurrency errors.
 
 Caching can be a powerful response to performance problem, however caching can cause troubles - it can eat away at the
@@ -204,29 +204,30 @@ Self-Denial Attack - any situation in which the system conspires against itself.
 users to be used at certain date is going to attract millions of users (like XBOX preorder). Self-Denial can be avoided
 by building a shared-nothing architecture (no databases nor other resources)  - ideal horizontal scaling. Talk to
 marketing department when they are going to send out mass emails - you will be able to pre-scale (prepare some
-additional instances for increased load). Also be careful for open links to the resources, also watch out for Fight Club
-bugs - increased front-end load causes exponentially increasing backend processing.
+additional instances for increased load). Also be careful with open links to the resources, also watch out for Fight
+Club bugs - increased front-end load causes exponentially increasing backend processing.
 
 WIth point-to-point connections, each instance has to talk directly to every other instance - this means O(n^2) scaling
+
 - be careful. Point-to-point communication can be replaced by: UDP broadcasts, TCP/UDP multicast, pub/sub messaging,
-message queues.
+  message queues.
 
 XP principle: Do the simplest thing that will work.
 
 Watch out for shared resources - they can be a bottleneck, stress-test it heavily, be sure clients will keep working
 despite malfunctioning resource.
 
-Frontend always has the ability to overwhelm the backend, because their capacities are not balanced. However you can not
-build every service to be large enough to serve enormous load from the frontend - instead you myst build services to be
-resilient in the face of tsunami od requests (eg. Circuit Breaker, Handshaking, Back-pressure, Bulkheads).
+Frontend always has the ability to overwhelm the backend, because their capacities are not balanced. However, you can
+not build every service to be large enough to serve enormous load from the frontend - instead you myst build services to
+be resilient in the face of tsunami od requests (e.g. Circuit Breaker, Handshaking, Back-pressure, Bulkheads).
 
 Dog-pile - when a bunch of servers impose transient load all at once (term from American football). Can occur: when
 booting all servers at once, on cron job, when the config management pushes out a change. Use random clock slew to
 diffuse the demand from cron job (every instance does something at different time). Use a backoff algorithm so every
 client retries at different time.
 
-Infrastructure management tools can cause a lot of trouble (eg. Reddit outage) - build limiters and safeguards into them
-so they won't destroy entire system at once.
+Infrastructure management tools can cause a lot of trouble (e.g. Reddit outage) - build limiters and safeguards into
+them, so they won't destroy entire system at once.
 
 Slow response is worse than refusing a connection or returning an error - because ties up resources in the calling
 system and in the called system. Slow responses usually result from excessive demand. System should have the ability to
@@ -236,7 +237,8 @@ Why slow responses are dangerous: because they trigger cascading failures, users
 traffic to already overloaded system. If system tracks its own responsiveness, then it can tell when it is getting slow.
 In such situation developer should consider sending an immediate error response.
 
-> Design with scepticism, and you will achieve resilience. Ask "What can system X do to hurt me" and then design a way to dodge whatever wrench your supposed ally throws.
+> Design with scepticism, and you will achieve resilience. Ask "What can system X do to hurt me" and then design a way
+> to dodge whatever wrench your supposed ally throws.
 
 Use realistic data volumes - typical development and test data sets are too small to exhibit problems, you need
 production size-data to see what happens when your query returns a million rows that you turn into objects. Calls should
@@ -251,7 +253,7 @@ TIMEOUTS - Today every application is a distributed system, every system must gr
 networks - they are fallible. When any element breaks, code can't wait forever for a response that may never come -
 sooner or later. *Hope is not a design method*.
 
-Timeout is a simple mechanism allowing you to stop waiting for an answer once you think it will not come. Well placed
+Timeout is a simple mechanism allowing you to stop waiting for an answer once you think it will not come. Well-placed
 timeouts provide fault isolation - **a problem in some other service does not have to become your problem**.
 
 Timeouts can also be relevant within a single service. Any resource pool can be exhausted. Any resource that block
@@ -262,7 +264,7 @@ Timeouts are often found in the company of retries, fast retries are very likely
 CIRCUIT BREAKER - in the past houses were catching fire because of heated wires, when too many appliances were connected
 to the power source. Energy industry came up with a device that fails first in order to prevent fire.
 
-The circuit breaker exists to fail without breaking the entire system, furthermore once the danger has passed , the
+The circuit breaker exists to fail without breaking the entire system, furthermore once the danger has passed, the
 circuit breaker can be reset to restore full function to the system.
 
 The same technique can be applied to software, dangerous operations can be wrapped with a component that can circumvent
@@ -271,7 +273,7 @@ call when the system is not healthy.
 In closed state, the circuit breaker executes operations as usual (calls to another system or other internal operations
 that are subject to timeout or other failure), if it fails, the circuit breaker makes a note of the failure. Once the
 number of failures exceeds a threshold, the circuit breaker opens the circuit. When the circuit is open, calls are
-suspended - they fail immediately. After some time the circuit decides the operation has a chance of succeeding so it
+suspended - they fail immediately. After some time the circuit decides the operation has a chance of succeeding, so it
 goes to the half-open state, if call succeeds - goes to the open state, if not - returns to the open state.
 
 The circuit breaker can have different thresholds for different types of failures. Involve stakeholders to decide how
@@ -286,10 +288,10 @@ Circuit Breaker - don't do it if it hurts. Use it with timeouts. Ensure proper r
 
 BULKHEADS - in a ship, bulkheads prevents water from moving from one compartment to another. You can apply the same
 technique, by partitioning the system, you can keep a failure in one part of the system from destroying everything. This
-can be achieved by for example running application on multiple servers - if one fails we still have redundancy (eg.
+can be achieved by for example running application on multiple servers - if one fails we still have redundancy (e.g.
 instances across zones and regions in AWS).
 
-Bulkheads partitions capacity to preserve partial functionality when bad things happen. Granularity should be picked
+Bulkhead partitions capacity to preserve partial functionality when bad things happen. Granularity should be picked
 carefully - thread pools in the application, CPUs, servers in a cluster. Bulkheads are especially useful in
 service-oriented or micro-service architectures in order to prevent chain reactions and entire company go down.
 
@@ -314,10 +316,11 @@ Steady State encourages better operational discipline by limiting the need for s
 production servers.
 
 FAIL FAST - if the system can determine in advance that it will fail; at an operation, it is always better to fail fast
+
 - the caller does not have waste its capacity for waiting. No, you don't need Deep Learning team to tell whether it will
-fail. Example: if call requires database connection, application can quickly check if database is available. Other
-approach is to configure load balancer appropriately (no servers - reject request). Use request validation to know if
-data is correct.
+  fail. Example: if call requires database connection, application can quickly check if database is available. Other
+  approach is to configure load balancer appropriately (no servers - reject request). Use request validation to know if
+  data is correct.
 
 The Fail Fast pattern improves overall system stability by avoiding slow responses.
 
@@ -328,7 +331,7 @@ There must be a boundary for trashiness. We want to crash a component in isolati
 itself from a cascading failure. In a micro-service architecture, a whole instance of the service might be the right
 granularity.
 
-We must be able to get back to clean state and resume normal operation as quickly as possibile - otherwise we will see
+We must be able to get back to clean state and resume normal operation as quickly as possible - otherwise we will see
 performance degradation.
 
 Supervisors need to keep close track of how often they restart child processes. It might be necessary to restart
@@ -342,13 +345,13 @@ HANDSHAKING - can be most valuable when unbalanced capacities are leading to slo
 that it will not be able to meet its SLAs, then it should have some means to ask the caller to back off. It is an
 effective way to stop cracks from jumping layers, as in the case of a cascading failure.
 
-The application can notify the load balancer through a health check that is is not able to take more requests (503 - Not
+The application can notify the load balancer through a health check that is not able to take more requests (503 - Not
 Available), then the load balancer knows not to send any additional work to that particular server.
 
 TEST HARNESSES - you can create test harnesses to emulate the remote system on the other end of each integration point.
 A good test harness should be as nasty and vicious as real-world systems will be.
 
-A test harness runs as a separate server, so it is not obliged to conforms to the defined interface. It can provoke
+A test harness runs as a separate server, so it is not obliged to conform to the defined interface. It can provoke
 network errors, protocol errors or application level errors.
 
 Consider building a test harness that substitutes for the remote end for every web services call.
@@ -375,7 +378,7 @@ facilitate cascading failures (this includes JSON over HTTP).
 Message oriented middleware decouples the endpoints in bots space and time, because the requesting system doesn't just
 sit around and wait for a reply. This form of middleware cannot produce a cascading failure.
 
-SHED LOAD - applications have zero control over their demand, at any moment, more that a bilion devices could make a
+SHED LOAD - applications have zero control over their demand, at any moment, more that a billion devices could make a
 request.
 
 Services should model TCPs approach: When load gets too high, start to refuse new requests for work. This is related to
@@ -411,7 +414,7 @@ patter-matching power of the human brain.
 
 Response time is always a lagging indicator. You can only measure the response time on requests that are done. So
 whatever your worst response time may be, you can't measure it until the slowest requests finish. Requests that didn't
-complete never got averaged in.
+complete, never got averaged in.
 
 Recovery-Oriented Computing - principles:
 
@@ -433,12 +436,12 @@ runtime control, security, people who do operations). There are several layers o
 4. Instances - services, processes, components, instance monitoring
 5. Foundation - hardware, VMs, IPs
 
-Virtualisation promised developers a common hardware appearance across the bewildering array of physical configurations
-in the data centre. On the down side, performance is much less predictable. Many virtual machines can reside on the same
+Virtualization promised developers a common hardware appearance across the bewildering array of physical configurations
+in the data centre. On the downside, performance is much less predictable. Many virtual machines can reside on the same
 physical hosts.It is rare to move VMs from one host to another.
 
 When designing applications to run in virtual machines you must make sure that they are not sensitive to the loss or
-slowdown of any of the host.
+slowdown of the host.
 
 A clock on the VM is not monotonic and sequential, because VM can be suspended for an indefinite span of real time. The
 bottom line is: don't trust the OS clock. If external time is important, use an external source like a local NTP server.
@@ -492,7 +495,7 @@ use scripts, playbooks or recipes to transition the machine from one state to a 
 We don't want our instance binaries to change per environment, but we do eat their properties to change. That means the
 code should look outside the deployment directory to find per-environment configurations.
 
-ZooKeeper and etc are popular choices for a configuration service - but any outage to these system can cause a lot of
+ZooKeeper and etc are popular choices for a configuration service - but any outage to these systems can cause a lot of
 trouble.
 
 Shipboard engineers can tell when something is about to go wrong by the sound of the giant Diesel engines. We must
@@ -529,7 +532,7 @@ business with just a few developers would probably stick with direct DNS entries
 
 DNS might be the best choice for small teams, particularly in a slowly changing infrastructure. When using DNS, it is
 important to have a logical service name to call, rather than physical hostname. Even if that logical name is just an
-alias to the underlying host, it is still preferable. DNS round robin an easy approach to load balancing but suffers
+alias to the underlying host, it is still preferable. DNS round-robin an easy approach to load balancing but suffers
 from putting too much control in the client's hands. DNS outage can be serious, do it should not be hosted on the same
 infrastructure as production system. There should be more than one DNS provider with servers on different locations.
 
@@ -574,7 +577,7 @@ Service discover can be built on top of a distributed data store such as ZooKeep
 
 In CAP theorem, ZooKeeper is a CP system - when there is a network partition, some nodes will not answer queries or
 accept writes. HashiCorp's Consul resamples ZooKeeper, however Consul's architecture places it in the AP area - it
-prefers to remain available and risk stale information when a partition occurrs.
+prefers to remain available and risk stale information when a partition occurs.
 
 ## Chapter 10: Control Plane
 
@@ -585,15 +588,15 @@ its main job is to manage other software, it is control plane.
 Every part of control plane is optional if you are willing to make trade-offs. - for example: logging and monitoring
 helps with postmortem analysis, without it all those will take longer or simply not be done.
 
-Mechanical advantage is the multi9plier on human effort that simple machines provide. With mechanical advantage, a
-person can move something much heavier than themselves. It works for good of for ill. High leverage allows a person to
-make large changes with less effort.
+Mechanical advantage is the multiplier on human effort that simple machines provide. With mechanical advantage, a person
+can move something much heavier than themselves. It works for good of for ill. High leverage allows a person to make
+large changes with less effort.
 
 Every postmortem review has 3 important jobs to do: Explain what happened. Apologise. Commit to improvement.
 
 Automation has no judgement. When it goes wrong, it tends to do so really, really quickly. By the time a human perceives
 the problem, it is a question of recovery rather than intervention. We should use automation for the things humans are
-bad at: repetitive tasks and fast response. We should use humans for the things automation is bad at: perceiving the
+bad at: repetitive tasks and fast response. We should use humans for the things' automation is bad at: perceiving the
 whole situation at a higher level.
 
 Monitoring team should be responsible for providing monitoring tools - offer a monitoring service to customers.
@@ -630,13 +633,13 @@ Security must be baked in. It is not a seasoning to sprinkle onto your system at
 your consumers and your company.
 
 OWASP Top 10 - catalogued application security incidents and vulnerabilities. Top 10 list represents a consensus about
-the most critical web ap[plication security flaws:
+the most critical web application security flaws:
 
 1. Injection - an attack on a parser or interpreter that relies on user-supported input. Classic example - SQL
    injection, it happens when code bashes strings together to make queries, but every SQL library allows the use of
-   placeholders in query strings. Keep in mind that "*comes from a user*, doesn't only mean the input arrived just now
-   in an HTTP request, data from a database may have originated fro a user as well. XML parsers are vulnerable as well (
-   XXE injection).
+   placeholders in query strings. Keep in mind that "*comes from a user*", doesn't only mean the input arrived just now
+   in an HTTP request, data from a database may have originated from a user as well. XML parsers are vulnerable as
+   well (XXE injection).
 
 2. Broken Authentication and Session Management - at one time, it was common to use query parameters on URLS and
    hyperlinks to carry session IDs, not only are thoseIDs are visible to every switch, router and proxy server, they are
@@ -663,7 +666,7 @@ the most critical web ap[plication security flaws:
     4. Do allow users to enter overly long passwords
     5. Do allow users to paste passwords into GUIs
     6. Do allow users to paste passwords into GUIs
-    7. Do plan on rehashing passwords at some point in future. We have to keep increasing the strength of our hash
+    7. Do plan on rehashing passwords at some point in the future. We have to keep increasing the strength of our hash
        algorithms. Make sure you can change the salt too
     8. Don't allow attackers to make unlimited authentication attempts
 
@@ -700,8 +703,8 @@ the most critical web ap[plication security flaws:
     5. Make sure sensitive data is encrypted in the database
     6. Decrypt data based on the user's authorisation, not the server's
 
-   Consider using AWS Key Management Service. Ap[plication can request data encryption keys, which they use to encrypt
-   or decrypt data. HashiCorp Vault - alternative to AWS KMS.
+   Consider using AWS Key Management Service. Application can request data encryption keys, which they use to encrypt or
+   decrypt data. HashiCorp Vault - alternative to AWS KMS.
 
 7. Insufficient Attack Protection - always assume that attackers have unlimited access to other machines behind
    firewall. Services do not typically track illegitimate requests by their origin. They do not block callers that issue
@@ -715,7 +718,7 @@ the most critical web ap[plication security flaws:
    effects (password change, mailing address update, purchases) use anti-CSRF tokens. These are extra fields containing
    random data that your system emits when rendering a form. Most frameworks today do this for you.You can also tighten
    up your cookie policy with the "*SameSite*" property. The SameSite attribute causes browser to send the cookie only
-   if the documents origin is the same as the target's origin. SamsSite cookie may require change session management
+   if the documents' origin is the same as the target's origin. SameSite cookie may require change session management
    approach.
 
 9. Using Components with Known Vulnerabilities - most successful attacks are not the exciting "*zero day, rush to patch
@@ -751,7 +754,7 @@ it. Operations would schedule some *planned* downtime to execute the release. HO
 downtime, application should be updated without them knowing about the release.
 
 Most of the time, we design for the state of the system after a release. It assumes the whole system can be changed in
-some instantenous quantum jump. We have to treat deployment as a feature. Three key concerns: automation, orchestration
+some instantaneous quantum jump. We have to treat deployment as a feature. Three key concerns: automation, orchestration
 and zero-downtime deployment.
 
 AUTOMATED DEPLOYMENTS. Build pipeline is the first tool of interest. It picks up after someone commits a change to VCS.
@@ -770,11 +773,11 @@ liability. It may have unknown bugs, may break scaling or cause production downt
 of a feature nobody wants. The idea of continuous deployment is to reduce that delay as much as possible to reduce the
 liability of undeployed code.
 
-A bigger deployment with more change is definitely riskier. "*If it hurts, do it more often* - do everything
+A bigger deployment with more change is definitely riskier. "*If it hurts, do it more often*" - do everything
 continuously, for the build pipeline it means - run the full build on every commit.
 
 Shim - a thin piece of wood that fills a gap where two structures meet. In deployments, shim is a bit of code that helps
-join old and new versions of the application. For example when migrating database, old instances will fead for the old
+join old and new versions of the application. For example when migrating database, old instances will read from the old
 table, new instances will be reading from the new table. Shims can be achieved using SQL triggers - insert to one table
 is propagated to the other.
 
@@ -794,9 +797,9 @@ anomalies and metrics.
 
 Every application should include an end-to-end health check.
 
-[IMMUTABLE INFRASTRUCTURE] To roll code out here, we don't change the old machines. Instead we spin up new machines on
+[IMMUTABLE INFRASTRUCTURE] To roll code out here, we don't change the old machines. Instead, we spin up new machines on
 the new version of the code. Machines can be started in the existing cluster or in a new cluster. With frequent
-deployments, you are better of starting new machines in the existing cluster, that avoids interrupting open connections
+deployments, you are better off starting new machines in the existing cluster, that avoids interrupting open connections
 when switching between clusters. Be careful about cache and session.
 
 Remember about the post-rollout cleanup - drop old tables, views, columns, aliases, ...
@@ -832,7 +835,7 @@ Handling breaking changes - best approach is to add a version discriminator to t
 approach. You have to support both the old and the new versions for the some period of time. Both versions should
 operate side by side. This allows consumers to upgrade as they are able. Internally you want to avoid duplication.
 Handle this in the controller, methods that handle the new API go directly to the most current version of the business
-logic, methods that handle the old API get updated so they convert old objects to the current ones on requests and
+logic, methods that handle the old API get updated, so they convert old objects to the current ones on requests and
 convert new objects to old ones on responses.
 
 When receiving requests or messages, your application has no control over the format. The same goes for calling out to
@@ -848,7 +851,7 @@ Conway's Law:
 Conway argues, two people must - in some fashion - communicate about the specification for that interface. If the
 communication does not occur, interface cannot be built.
 
-Sometimes when you ask questions but you don't get answers, it means nobody knows the answers. At other times, it means
+Sometimes when you ask questions, but you don't get answers, it means nobody knows the answers. At other times, it means
 nobody wants to be seen answering the questions.
 
 Load testing is about: defining a test plan, creating some scripts, configuring the load generators and test
@@ -857,7 +860,7 @@ dispatchers.
 Tests often are prepared wrongly, real word is crude and rude, there are scrapers not respecting your cookie policy,
 search browsers indexing your website, users doing weird stuff.
 
-Most websites have terms and conditions stating "*By viewing this page you agree to ...*, with this you can sue or at
+Most websites have terms and conditions stating "*By viewing this page you agree to ...*", with this you can sue or at
 least block sources of bots hitting your website millions of times.
 
 ## Chapter 16: Adaptation
@@ -881,10 +884,10 @@ lets you install your monitoring rules into the monitoring service provided by t
 
 The Fallacy of the DevOps Team - in larger companies, it is common to find a group called DevOps team. This team sits
 between development and operations with the goal of moving faster and automating releases into production. *This is an
-anti pattern*. DevOps should soften the interface between different teams. DevOps goes deeper than deployment
-automation. It is a shift from ticket and blame-driven operations with throw-it-over-the-wall releases TO one based on
-open sharing of information and skills, data-driven decision making about architecture and design, production
-availability and responsiveness. Isolating these ideas to a single team undermines the whole point.
+antipattern*. DevOps should soften the interface between different teams. DevOps goes deeper than deployment automation.
+It is a shift from ticket and blame-driven operations with throw-it-over-the-wall releases TO one based on open sharing
+of information and skills, data-driven decision making about architecture and design, production availability and
+responsiveness. Isolating these ideas to a single team undermines the whole point.
 
 Frequent releases with incremental functionality allow your company to outpace its competitors.
 
@@ -902,8 +905,8 @@ and kill the ones that are less successful.
 Jeff Bezos said that every team should be sized no bugger than you can feed with 2 large pizzas. Important but
 misleading. It is not just about having fever people on a team. A self-sufficient two-pizza team also means each team
 member has to cover more than one discipline. You can't have a two-pizza team if you need a dedicated DBA, frontend
-developer, an infra guru a backend developer, a ML expert, a product manager, a GUI designed, and so on. The two-pizza
-team is about reducing external dependencies. Thousand of dependencies will keep you from breaking free. It is really
+developer, an infra guru a backend developer, an ML expert, a product manager, a GUI designed, and so on. The two-pizza
+team is about reducing external dependencies. A thousand of dependencies will keep you from breaking free. It is really
 about having a small group that can be self-sufficient and push things all the way through to production.
 
 No coordinated deployments - If you ever find that you need to update both the provider and the caller of a service
@@ -912,7 +915,7 @@ interface at the same time, it is a warning sign that those services are strongl
 Evolutionary architecture is the one that supports incremental, guided c change as a first principle across multiple
 dimensions. Architecture styles:
 
-- Microservice - very small, disposable units of code. Emphasise scalability, team-scale autonomy. Voulnerable to
+- Microservice - very small, disposable units of code. Emphasise scalability, team-scale autonomy. Vulnerable to
   coupling with platform for monitoring, tracing and continuous delivery
 - Microkernel and plugins - in-process, in-memory message passing core with formal interfaces to extensions. Good for
   incremental change in requirements, combining work from different teams. Vulnerable to language and runtime
@@ -924,7 +927,7 @@ dimensions. Architecture styles:
 Microservice size: ideally it should be no bigger than what fits in one developer's head.
 
 Don't pursue microservices just because the Silicon Valley unicorns are doing it. Make sure they address a real problem
-you are likely to suffer. Otherwise, the operational overhead and debugging difficulty of micro services will outweigh
+you are likely to suffer. Otherwise, the operational overhead and debugging difficulty of microservices will outweigh
 your benefits.
 
 Systems should exhibit loose clustering. In a loose cluster, the loss of an individual instance is no more significant
@@ -945,7 +948,7 @@ Modular systems inherently have more options than monolithic ones. 5 modular ope
 5. Porting - is about repurposing a module from a different system. Any time we use a service created by a different
    project or system, we are porting that service to our system. Porting risks adding a coupling.
 
-Information architecture is how we structure data. It is the data and the metadata we use to describe the things that
+Information architecture is how we structure data. It is the data and the metadata we used to describe the things that
 matter to our systems. It is a set of related models that capture some facets of reality. Your job in building systems
 is to decide what facets of reality matter to your system, how are you going to represent those and how that
 representation can survive over time.
@@ -959,9 +962,9 @@ Events can be used for:
 - Command-query responsibility segregation - reading and writing with different structures. Not the same as events, but
   events are often found on the "command" side.
 
-Versioning can be a real challenge with events, especially once you have yers' worth of them. Stay away from closed
+Versioning can be a real challenge with events, especially once you have years' worth of them. Stay away from closed
 formats like serialised objects. Look toward open formats like JSON or self-describing messages. Avoid frameworks that
-require code generation based on schema. Treat messages like data instead of objects and you are going to have a better
+require code generation based on schema. Treat messages like data instead of objects, and you are going to have a better
 time supporting very old formats.
 
 Extract "*policy proxy*", questions of ownership and access control can be factored out of the service itself into a
@@ -985,9 +988,9 @@ large-scale behaviour of systems in production.
 
 Congested networks behave in a qualitatively different way than uncontested ones. Systems that work in a lo-latency,
 low-loss network mat break badly in a congested network. Related paradox - *Volkswagen microbus* - you learn how to fix
-the things that often break. You don't learn how to fix the things that rarely break. But that means when when they do
-break, the situation is likely to be more dire. We want a continuous low level of breakage to make sure our system can
-handle the big things.
+the things that often break. You don't learn how to fix the things that rarely break. But that means when they do break,
+the situation is likely to be more dire. We want a continuous low level of breakage to make sure our system can handle
+the big things.
 
 We use chaos engineering the way a weightlifter uses iron: to create tolerable levels of stress and breakage to increase
 the strength of the system over time.
@@ -1007,9 +1010,9 @@ chaos.You need to know what to restart, disconnect or clean up.
 Chaos Monkey does one kind of injection - it kills instances (randomly). There are different types of monkeys: Latency
 Monkey, Janitor Monkey, Chaos King, ...
 
-Killing instances is the most basic and crude kind of injection. It will absolutely find weaknessess in your system.
+Killing instances is the most basic and crude kind of injection. It will absolutely find weaknesses in your system.
 
-Netflix uses failure injection testing (FIT). FIT can tag a request at the inbound edge with a cookie that says, eg. "
+Netflix uses failure injection testing (FIT). FIT can tag a request at the inbound edge with a cookie that says, e.g. "
 Does the line, this request is going to fail when service G calls service H". Netflix uses a common framework for all
 its outbound service calls, so it has a way to propagate this cookie and treat it uniformly.
 

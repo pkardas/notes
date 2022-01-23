@@ -9,6 +9,7 @@ Book by Robert Cecil Martin
 - [Chapter 3: Business Practices](#chapter-3-business-practices)
 - [Chapter 4: Team Practices](#chapter-4-team-practices)
 - [Chapter 5: Technical Practices](#chapter-5-technical-practices)
+- [Chapter 6: Becoming Agile](#chapter-6-becoming-agile)
 
 ## Chapter 1: Introduction to Agile
 
@@ -112,7 +113,7 @@ what makes a software team mislead managers abut their true progress. Hope is a 
 project. And Agile is a way to provide an early and continuous dose of cold, hard reality as a replacement for hope.
 
 Some folks think that Agile is about going fast. It is not. Agile is about knowing, as early as possible, just how
-screwed we are.The reason we want to know this as early as possible is so that we can manage the situation. Managers
+screwed we are. The reason we want to know this as early as possible is so that we can manage the situation. Managers
 manage software projects by gathering data and then making the best decisions they can base on that data.
 
 Managers do this by making changes to the scope, the schedule, the staff, and the quality:
@@ -423,3 +424,44 @@ Generally, managers are pleased to see programmers collaborating and working tog
 work is being done.
 
 **Never, ever, ever, ask for permission to pair. Or test. Or refactor. Or... You are the expert. You decide.**
+
+## Chapter 6: Becoming Agile
+
+Agile Values:
+
+1. Courage - It is reckless to conform to a schedule by sacrificing quality. The belief that quality and discipline
+   increase speed is a courageous belief because will constantly be challenged by powerful but naive folks who are in a
+   hurry.
+2. Communication - A team that sits together and communicates frequently can work miracles. We value direct and frequent
+   communication that crosses channels. Face-to-face, informal, interpersonal conversations.
+3. Feedback - Maximize the frequency and quantity of feedback. They allow us to determine when things are going wrong
+   early enough to correct them. They provide massive education about the consequences of earlier decisions.
+4. Simplicity - Numbers of problems should be reduced to minimum. Therefore, indirection can be kept to a minimum.
+   Solutions can be simple. This applies to the software, but it also applies to the team. Passive aggression is
+   indirection. Keep the code simple. Keep the team simpler.
+
+These values are diametrically opposed to the values of large organisations who have invested heavily in
+middle-management structures that value safety, consistency, command-and-control, and plan execution.
+
+It is not really possible to transform such an organisation to Agile.
+
+Agile coaches are members of the team whose role is to defend the process within the team. In the heat of development,
+developers may be tempted to go off process. Perhaps they inadvertently stop pairing, stop refactoring, or ignore
+failures in the continuous build. The coach acts as the team's conscience, always reminding the team of the promises
+they made to themselves and the values they agreed to hold. This role typically rotates from one team member to the next
+on an informal schedule and based on need. A mature team working steadily along does not require a coach. On the other
+hand, a team under some kind of stress (schedule, business or interpersonal) may decide to ask someone to fill the role
+temporarily.
+
+Every member of an Agile team needs to understand the values and techniques of Agile. Therefore, if one member of the
+team is trained, all members of the team should be trained.
+
+Agile is for small- to medium-sized teams. period. It works well for such teams. Agile was never intended for large
+teams. The problem of large teams is a problem societies and civilizations. And large teams are a solved problems.
+
+Agile was invented because we did not know how to effectively organize a relatively small group of programmers to be
+effective. SSoftware development needed its own process because software is really like nothing else.
+
+The answer to the question of Agile in the large is simply to organize your developers into small Agile teams, then use
+standard management and operations research techniques to manage those teams.
+
