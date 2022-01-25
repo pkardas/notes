@@ -465,3 +465,59 @@ effective. SSoftware development needed its own process because software is real
 The answer to the question of Agile in the large is simply to organize your developers into small Agile teams, then use
 standard management and operations research techniques to manage those teams.
 
+Great tools do the following:
+
+- Help people accomplish their objectives
+- Can be learned "well enough" quickly
+- Become transparent to users
+- Allow adaptation and exaptation
+- Are affordable
+
+Git is an example of a great tool.
+
+Your team should establish the pattern of work compatible with their specific context first, and then consider using
+tools that support their workflow. Workers use and control tools, tools don't control and use people. You don't want to
+get locked into other people's process flows.
+
+ALM - Agile Lifecycle Management systems despite being feature rich and commercially successful, ALM tools utterly fail
+at being great.:
+
+- ALMs tend to be complicated, usually demanding up-front training.
+- These tools often require constant attention.
+- ALM tools aren't always easily adapted.
+- ALM tools can be expensive.
+- ALM does rarely work the way your team does, and often their default mode is at odds with Agile methods. FOr example
+  many ALM tools assume that team members have individual work assignments, which makes them nearly unusable for teams
+  who work together in a cross-functional way.
+
+You can try different forms of Agile practices and check which one is the most relevant to your team's needs:
+
+- Kanban - making the work visible, limiting work in progress and pulling work through the system.
+- Scrum and XP - short daily meetings, a product owner, a process facilitator (Scrum Master), retrospectives, a
+  cross-functional team, user stories, small releases, refactoring, writing tests first, and pair programming.
+- Align team events - when the team events across multiple teams (standups, retrospectives) are aligned in time, it is
+  possible to then roll up daily and systematic impediments via an escalation tree.
+- Escalation trees - if it makes sense to always work on items that produce the highest value, then it makes sense to
+  escalate impediments immediately via a well-defined escalation path.
+- Regular interteam interaction - regular interaction between the Scrum Masters, Product Owners and team members who are
+  working together toward a common deliverable.
+- Portfolio Kanban - sets work in progress limits at the initiative level in order to ensure that the organization is
+  focused on the highest-value work at all times.
+- Minimum Viable Increments - whet is the shortest path to producing the highest value in the shortest time. A growing
+  number of organizations are taking this to extreme by implementing CContinuous Delivery - releasing small updates on a
+  frequent basis, sometimes as frequently as multiple times per day.
+
+Enablers of multiteam coordination:
+
+- SOLID - especially useful for simplifying multiteam coordination by dramatically reducing dependencies.
+- Small, valuable user stories - limit the scope of dependencies, which simplifies multiteam coordination.
+- Small, frequent releases - whether these releases are delivered to the customer or not, the practice of having a
+  releasable product across all the teams involved helps to surface coordination and architectural issues so that the
+  root cause can be found and addressed.
+- Continuous Integration - calling for integration across the entire product after every checkin.
+- Simple Design - one of the hardest practices to learn and apply because it is one of the most counter-intuitive
+  practices.When coordinating the work of massive dependencies between teams, monolithic, centralized, preplanned
+  architectures create massive dependencies between teams that tend to force them to work in lock step, thus defeating
+  much of the promise of Agile. Simple Design, especially when used with practices such as a microservices architecture,
+  enables Agility in large.
+
