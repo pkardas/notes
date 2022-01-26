@@ -10,6 +10,7 @@ Book by Robert Cecil Martin
 - [Chapter 4: Team Practices](#chapter-4-team-practices)
 - [Chapter 5: Technical Practices](#chapter-5-technical-practices)
 - [Chapter 6: Becoming Agile](#chapter-6-becoming-agile)
+- [Chapter 7: Craftsmanship](#chapter-7-craftsmanship)
 
 ## Chapter 1: Introduction to Agile
 
@@ -521,3 +522,64 @@ Enablers of multiteam coordination:
   much of the promise of Agile. Simple Design, especially when used with practices such as a microservices architecture,
   enables Agility in large.
 
+## Chapter 7: Craftsmanship
+
+Many companies misunderstood Agile. Managers are willing to push developers to work faster and are using the full
+transparency of the process to micromanage them.Developers are pushed hard to fit their estimates into the imposed
+milestones. Failing to deliver all story points in a sprint means developer must work harder in the next sprint to make
+up the delay. If the product owner thinks developers are spending too much time on things like automated tests,
+refactoring, or pairing they simply tell them to stop doing it.
+
+Strategic technical work has no place in _their_ Agile process. There is no need for architecture or design. The order
+is to simply focus on the highest-priority item in the backlog and get it done as fast as possible. This approach
+results in a long sequence of iterative tactical work and accumulation of technical debt. Bugs are accumulating,
+delivery time goes up, people start to blame one another.
+
+> Companies are still not mature enough to understand that technical problems are in fact business problems.
+
+A group of developers met in November 2008 in Chicago to create a new movement: Software Craftsmanship.
+
+Manifesto:
+
+As aspiring Software Craftsmen, we are raising the baf or professional software development by practicing it and helping
+others learn the craft. Through this work we have come to value:
+
+- Not only working software, but also well-crafted software.
+- Not only responding to change, but also steadily adding value.
+- Not only individuals and interactions, but also a community of professionals.
+- Not only customer collaboration, but also productive partnership.
+
+The Software Craftsmanship manifesto describes an ideology, a mindset. It promotes professionalism through different
+perspectives.
+
+**Well-crafted software** - code that is well-designed and well tested. It is code that we are not scared to change and
+code that enables business to react fast. It is code that is both flexible and robust.
+
+**Steadily adding value** - no matter what we do, we should always be committed to continuously provide increasing value
+to our clients and customers.
+
+**A community of professionals** - we are expected to share and learn with each other, raising the bar of our industry.
+We are responsible for preparing the next generation of developers.
+
+**Productive partnership** - we will have a professional relationship with our clients and employers. We will always
+behave ethically and respectfully, advising and working with our clients and employers in the best way possible. We will
+expect a relationship of mutual respect and professionalism.
+
+We will lok at our work not as something we need to fo as part of a job but as a professional service we provide. We
+will take ownership of our won careers, investing our won time and money to get better at what we do. Craftspeople
+strive to do the best job they can, not because someone is paying, but based on a desire to do things well.
+
+Developers should not ask for authorization for writing tests. They should not have separate tasks for unit testing or
+refactoring. These technical activities should be factored into the development of any feature. They are not optional.
+Managers and developers should only discuss what is going to be delivered and when, not how. Every time developers
+volunteer details of how they work, they are inviting managers to micromanage them. Developers should be able to clearly
+describe how they work and the advantages of working that way to whomever is interested. What developers should not do
+is to let other people decide how they work.
+
+Conversations between developers and business should be about why, what and when - not how.
+
+VCraftsmanship promotes software development as a profession. A profession is part of who we are. A job is a thing that
+we do but is not part of who we are. A profession is something we invest in. Ot is something we want to get better at.
+We want to gain more skills and have a long-lasting and fulfilling career.
+
+Combining Agile and Craftsmanship is the perfect way to achieve business agility.
