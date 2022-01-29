@@ -271,8 +271,8 @@ There are number of schemes for estimating stories:
 - Planning Poker
 
 A spike is a meta-story, or a story for estimating a story. It is a spike because it often requires us to develop a long
-but very thin slice through all the layers of the system. FOr example, there is a story you cannot estimate: Print PDF -
-you have never used the PDF library. SO you write a new story called Estimate Print PDF - now you estimate that story,
+but very thin slice through all the layers of the system. For example, there is a story you cannot estimate: Print PDF -
+you have never used the PDF library. So you write a new story called Estimate Print PDF - now you estimate that story,
 which is easier to estimate.
 
 The goal of each iteration is to produce data by getting stories done. The team should focus on stories rather than
@@ -300,14 +300,14 @@ Acceptance Tests - Requirements should be specified by the business.
 
 BDD - Behavior-Driven Development - the goal is to remove the techie jargon from the tests and make the tests appear
 more like specifications that businesspeople would appreciate. At first, this was just another attempt at formalizing
-the language of testing, in this case using 3 special adverbs: Given, WHen, and Then.
+the language of testing, in this case using 3 special adverbs: Given, When, and Then.
 
 ## Chapter 4: Team Practices
 
 A metaphor can provide a vocabulary that allows the team to communicate effectively. On the other hand, some metaphors
 are silly to the point of being offensive to the customer.
 
-DDD solved the metaphor problem. Eric Evans coined the term _Ubiquitous Language_. WHat the team needs is a model of the
+DDD solved the metaphor problem. Eric Evans coined the term _Ubiquitous Language_. What the team needs is a model of the
 problem domain, which is described by a vocabulary that everyone (the programmers, QA, managers, customers, users)
 agrees on.
 
@@ -317,7 +317,7 @@ project during every phase of its lifecycle.
 A software project is not a marathon, not a sprint, nor a sequence of sprints. In order to win, you must pace yourself.
 If you leap out of the blocks and run full speed, you will run out of energy long before you cross the finish line.
 
-You must run at a Sustainable Pace.If you try to run faster than the pace you can sustain, you will have to slow down
+You must run at a Sustainable Pace. If you try to run faster than the pace you can sustain, you will have to slow down
 and rest before you reach the finish line. Managers may ask you to run faster than you should. You must not comply. It
 is your job to husband your resources to ensure that you endure the end.
 
