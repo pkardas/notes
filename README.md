@@ -4,9 +4,11 @@
 
 In progress:
 
-👀 [Clean Agile: Back to Basics](books/clean-agile.md)
+👀 [Architecture Patterns with Python](books/python-architecture-patterns.md)
 
 Finished:
+
+✅ [Clean Agile: Back to Basics](books/clean-agile.md)
 
 ✅ [Clean Code: A Handbook of Agile Software Craftsmanship](books/clean-code.md)
 
@@ -54,9 +56,9 @@ Queue:
 
 ### Teaching
 
-[Introduction to Programming: Python for beginners](teaching/python-intro/)
+[Introduction to Programming: Python for beginners](teaching/python-intro)
 
-[Python Intermediate](teaching/python-intermediate/)
+[Python Intermediate](teaching/python-intermediate)
 
 ### Courses
 

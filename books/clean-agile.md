@@ -11,6 +11,8 @@ Book by Robert Cecil Martin
 - [Chapter 5: Technical Practices](#chapter-5-technical-practices)
 - [Chapter 6: Becoming Agile](#chapter-6-becoming-agile)
 - [Chapter 7: Craftsmanship](#chapter-7-craftsmanship)
+- [Chapter 8: Conclusion](#chapter-8-conclusion)
+- [Afterword](#afterword)
 
 ## Chapter 1: Introduction to Agile
 
@@ -583,3 +585,18 @@ we do but is not part of who we are. A profession is something we invest in. Ot 
 We want to gain more skills and have a long-lasting and fulfilling career.
 
 Combining Agile and Craftsmanship is the perfect way to achieve business agility.
+
+## Chapter 8: Conclusion
+
+This book covered basics of Agile.
+
+## Afterword
+
+Ask the developers in an "Agile organization" what Agile is, and you will likely get a very different answer than if you
+ask anyone beyond the level of a software development manager.
+
+Developers understand Agile to be a methodology for streamlining the development process and for making software
+development more predictable, more practicable, and more manageable.
+
+Many developers ate blissfully unaware of management's use of the metrics provided by the implementation of Agile
+practices and the data it produces.
