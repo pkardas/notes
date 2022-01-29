@@ -32,8 +32,6 @@ Finished partially:
 
 Queue:
 
-[Architecture Patterns with Python](books/python-architecture-patterns.md)
-
 [The Pragmatic Programmer](books/pragmatic-programmer.md)
 
 [Cracking the Coding Interview](books/cracking-coding-interview/notes.md)
