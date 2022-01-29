@@ -127,7 +127,7 @@ Managers do this by making changes to the scope, the schedule, the staff, and th
   people start to get smart enough to actually contribute. Of course, you need enough time, and enough improvement, to
   make up for the initial loss.
 - Decrease Quality - everyone knows that you can go much faster by producing crap. WRONG. There is no such thing as
-  quick and dirty. Anything dirty is slow. **The only wat to go fast, is to go well**. If we want to shorten our
+  quick and dirty. Anything dirty is slow. **The only way to go fast, is to go well**. If we want to shorten our
   schedule, the only option is to _increase_ quality.
 - Changing Scope - if the organization is rational, then the stakeholders eventually bow their heads in acceptance and
   begin to scrutinize the plan.
