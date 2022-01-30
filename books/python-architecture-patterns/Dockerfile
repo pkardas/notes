@@ -7,5 +7,5 @@ COPY setup.cfg .
 
 RUN pip install -r requirements.txt
 
-COPY src/ .
-COPY tests/ .
+COPY src/ src/
+COPY tests/ tests/

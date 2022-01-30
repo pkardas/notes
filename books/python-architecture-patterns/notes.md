@@ -5,6 +5,7 @@
 Book by Harry Percival and Bob Gregory
 
 - [Introduction](#introduction)
+- [Chapter 1: Domain Modeling](#chapter-1-domain-modeling)
 
 ## Introduction
 
@@ -42,3 +43,20 @@ is a coron job or a transient function running on Kubernetes.
 
 We don't want business logic changes to slow down because they arte closely coupled to low-level infrastructure details.
 Adding an abstraction between them allows the two to change independently of each other.
+
+## Chapter 1: Domain Modeling
+
+The _domain_ is a fancy word of saying _the problem you are trying to solve_. A _model_ is a map of a process or
+phenomenon that captures a useful property.
+
+In a nutshell, DDD says that the most important thing about software is that it provides a useful model of a problem. If
+we get that model right, our software delivers value and makes new things possible.
+
+When we hear our business stakeholders using unfamiliar words, or using terms in a specific way, we should listen to
+understand the deeper meaning and encode their hard-won experience into our software.
+
+Choose memorable identifiers for our objects so that the examples are easier to talk about.
+
+Whenever we have a business concept that has data but has no identity, we often choose to represent it using the Value
+Object pattern. A value object is any domain object that is uniquely identified as by the data it holds, we usually make
+them immutable. Named tuples and frozen data classes are a great tool for this.
