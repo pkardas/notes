@@ -4,7 +4,7 @@
 
 In progress:
 
-👀 [Architecture Patterns with Python](books/python-architecture-patterns.md)
+👀 [Architecture Patterns with Python](books/python-architecture-patterns/notes.md)
 
 Finished:
 
