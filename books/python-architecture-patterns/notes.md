@@ -60,3 +60,16 @@ Choose memorable identifiers for our objects so that the examples are easier to 
 Whenever we have a business concept that has data but has no identity, we often choose to represent it using the Value
 Object pattern. A value object is any domain object that is uniquely identified as by the data it holds, we usually make
 them immutable. Named tuples and frozen data classes are a great tool for this.
+
+Entities, unlike values, have identity equality. We can change their values, and they are still recognizably the same
+thing. Batches, in our example, are entities. We can allocate lines to a batch, or change the date that we expect it to
+arrive, and it will still be the same entity.
+
+We usually make this explicit in code by implementing equality operators on entities.
+
+For value objects, the hash should be based on all attributes, and we should ensure that the objects are immutable. For
+entities, the simplest option is to say that the hash is None, meaning that the object is not hashable and cannot, for
+example be used in a set. If for some reason you decide to use set or dict operations with entities, the hash should be
+based on the attributes, that defines the entity's unique identity over time.
+
+Exceptions can express domain concepts too.

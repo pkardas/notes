@@ -1,8 +1,14 @@
-from datetime import date
+from datetime import (
+    date,
+)
+
+import pytest
 
 from src.model import (
     Batch,
     OrderLine,
+    OutOfStock,
+    allocate,
 )
 
 
@@ -48,3 +54,45 @@ def test_allocation_is_idempotent():
     batch.allocate(line)
     batch.allocate(line)
     assert batch.available_quantity == 18
+
+
+def test_prefers_current_stock_batches_to_shipments():
+    in_stock_batch = Batch("in-stock-batch", "RETRO-CLOCK", quantity=100, eta=None)
+    shipment_batch = Batch("shipment-batch", "RETRO-CLOCK", quantity=100, eta=None)
+    line = OrderLine("oref", "RETRO-CLOCK", 10)
+
+    allocate(line, [in_stock_batch, shipment_batch])
+
+    assert in_stock_batch.available_quantity == 90
+    assert shipment_batch.available_quantity == 100
+
+
+def test_prefers_earlier_batches():
+    earliest = Batch("speedy-batch", "MINIMALIST-SPOON", quantity=100, eta=date(2022, 1, 7))
+    medium = Batch("normal-batch", "MINIMALIST-SPOON", quantity=100, eta=date(2022, 1, 8))
+    latest = Batch("slow-batch", "MINIMALIST-SPOON", quantity=100, eta=date(2022, 1, 9))
+    line = OrderLine("oref", "MINIMALIST-SPOON", 10)
+
+    allocate(line, [earliest, medium, latest])
+
+    assert earliest.available_quantity == 90
+    assert medium.available_quantity == 100
+    assert latest.available_quantity == 100
+
+
+def test_returns_allocated_batch_ref():
+    in_stock_batch = Batch("in-stock-batch-ref", "HIGHBROW-POSTER", quantity=100, eta=None)
+    shipment_batch = Batch("shipment-batch-ref", "HIGHBROW-POSTER", quantity=100, eta=date(2022, 1, 7))
+    line = OrderLine("oref", "HIGHBROW-POSTER", 10)
+
+    allocation = allocate(line, [in_stock_batch, shipment_batch])
+
+    assert allocation == in_stock_batch.reference
+
+
+def test_raises_out_of_stock_exceptions_if_cannot_allocate():
+    batch = Batch("batch", "SMALL-FORM", quantity=10, eta=date(2022, 1, 7))
+    allocate(OrderLine("oref", "SMALL-FORM", 10), [batch])
+
+    with pytest.raises(OutOfStock, match="SMALL-FORM"):
+        allocate(OrderLine("oref", "SMALL-FORM", 1), [batch])
