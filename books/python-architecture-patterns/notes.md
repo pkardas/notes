@@ -6,6 +6,7 @@ Book by Harry Percival and Bob Gregory
 
 - [Introduction](#introduction)
 - [Chapter 1: Domain Modeling](#chapter-1-domain-modeling)
+- [Chapter 2: Repository Pattern](#chapter-2-repository-pattern)
 
 ## Introduction
 
@@ -73,3 +74,37 @@ example be used in a set. If for some reason you decide to use set or dict opera
 based on the attributes, that defines the entity's unique identity over time.
 
 Exceptions can express domain concepts too.
+
+## Chapter 2: Repository Pattern
+
+Repository Pattern - a simplifying abstraction over data storage, allowing us to decouple our model layer from the data
+layer. This simplifying abstraction makes our system more testable by hiding the complexities of the database. It hides
+the boring details of data access by pretending that all of our data is in memory. This pattern is very common in DDD.
+
+Layered architecture is a common approach to structuring a system that has a UI, some logic, and a database.
+
+Onion architecture - model being inside, and dependencies flowing inward to it.
+
+ORM gives us persistence ignorance - fancy model doesn't need to know anything about how data is loaded or persisted.
+Using and ORM is already an example of the DIP. Instead of depending on hardcoded SQL, we depend on abstraction - the
+ORM.
+
+The simplest repository has just two methods:
+
+- add - to put a new item in the repository
+- get - to return a previously added item.
+
+One of the biggest benefits of the Repository pattern is the possibility to build a fake repository.
+
+> Building fakes for your abstractions is an excellent way to get design feedback: if it's hard to fake, the abstraction
+> is probably too complicated.
+
+Simple CRUD wrapper around a database, don't need a domain model or a repository.
+
+Repository Pattern Recap:
+
+- Apply dependency inversion to your ORM - Domain model should be free of infrastructure concerns, so your ORM should
+  import your model, and not the other way around.
+- The Repository pattern is a simple abstraction around permanent storage - The repository gives you the illusion of a
+  collection of in-memory objects. It makes it easy to create a FakeRepository for testing and to swap fundamental
+  details of your infrastructure without disrupting your code application.
