@@ -7,6 +7,7 @@ Book by Harry Percival and Bob Gregory
 - [Introduction](#introduction)
 - [Chapter 1: Domain Modeling](#chapter-1-domain-modeling)
 - [Chapter 2: Repository Pattern](#chapter-2-repository-pattern)
+- [Chapter 3: On Coupling and Abstractions](#chapter-3-on-coupling-and-abstractions)
 
 ## Introduction
 
@@ -108,3 +109,29 @@ Repository Pattern Recap:
 - The Repository pattern is a simple abstraction around permanent storage - The repository gives you the illusion of a
   collection of in-memory objects. It makes it easy to create a FakeRepository for testing and to swap fundamental
   details of your infrastructure without disrupting your code application.
+
+## Chapter 3: On Coupling and Abstractions
+
+When we are unable to change component A for fear of breaking component B, we say that the components have become
+coupled. Globally, coupling increases the risk and the cost of changing our code, sometimes to the point where we feel
+unable to make any changes at all.
+
+We can reduce the degree of coupling within a system by abstracting away the details.
+
+According to authors it is better to use fake resources instead of mocks:
+
+- Mocks are used to verify how something gets used, they have methods like `assert_called_once_with`. They are
+  associated with London-school TDD.
+- Fakes are working implementations of the thing they are replacing, but they are designed for use only in tests. They
+  wouldn't work in real life. You can use them to make assertions about the end state of a system rather than the
+  behaviours along the way, so they are associated with classic-style TDD.
+
+TDD is a design practice first and a testing practice second. The tests act as a record of our design choices and serve
+to explain the system to use when we return to the code after a long absence.
+
+Tests that use too many mocks get overwhelmed with setup code that hides the story we care about.
+
+Links:
+
+- [YOW! Conference 2017 - Steve Freeman - Test Driven Development: That’s Not What We Meant](https://www.youtube.com/watch?v=B48Exq57Zg8)
+- [Edwin Jung - Mocking and Patching Pitfalls](https://www.youtube.com/watch?v=Ldlz4V-UCFw)
