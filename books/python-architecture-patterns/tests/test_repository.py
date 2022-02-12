@@ -2,19 +2,16 @@ from src.model import (
     Batch,
     OrderLine,
 )
-from src.repository import SqlAlchemyRepository
+from src.repository import Repository
 
 
 def test_repository_can_save_a_batch(session):
-    batch = Batch("batch1", "RUSTY-SOAPDISH", 100, eta=None)
+    batch = Batch(reference="batch1", sku="RUSTY-SOAPDISH", purchased_quantity=100, eta=None)
 
-    repo = SqlAlchemyRepository(session)
+    repo = Repository(session)
     repo.add(batch)
-    session.commit()
 
-    rows = list(session.execute("SELECT reference, sku, _purchased_quantity, eta FROM 'batches'"))
-
-    assert rows == [("batch1", "RUSTY-SOAPDISH", 100, None)]
+    assert repo.list() == [Batch(reference="batch1", sku="RUSTY-SOAPDISH", eta=None, purchased_quantity=100, id=1)]
 
 
 def insert_order_line(session):
@@ -38,25 +35,22 @@ def insert_batch(session, batch_id):
     return batch_id
 
 
-def insert_allocation(session, orderline_id, batch_id):
+def insert_allocation(session, order_id, batch_id):
     session.execute(
-        "INSERT INTO allocations (orderline_id, batch_id) VALUES (:orderline_id, :batch_id)",
-        dict(orderline_id=orderline_id, batch_id=batch_id),
+        "INSERT INTO allocations (order_id, batch_id) VALUES (:order_id, :batch_id)",
+        dict(order_id=order_id, batch_id=batch_id),
     )
 
 
 def test_repository_can_retrieve_a_batch_with_allocations(session):
-    orderline_id = insert_order_line(session)
-    batch1_id = insert_batch(session, "batch1")
-    insert_batch(session, "batch2")
-    insert_allocation(session, orderline_id, batch1_id)
+    order_line = OrderLine(order_id="order1", sku="GENERIC-SOFA", quantity=10)
+    batch = Batch(reference="batch1", sku="RUSTY-SOAPDISH", purchased_quantity=100, eta=None, allocations=[order_line])
 
-    repo = SqlAlchemyRepository(session)
+    repo = Repository(session)
+    repo.add(batch)
     retrieved = repo.get("batch1")
 
-    expected = Batch("batch1", "GENERIC-SOFA", 100, eta=None)
-
-    assert retrieved == expected
-    assert retrieved.sku == expected.sku
-    assert retrieved._purchased_quantity == expected._purchased_quantity
-    assert retrieved._allocations == {OrderLine("order1", "GENERIC-SOFA", 12)}
+    assert retrieved == batch
+    assert retrieved.sku == batch.sku
+    assert retrieved.purchased_quantity == batch.purchased_quantity
+    assert retrieved.allocations == [order_line]
