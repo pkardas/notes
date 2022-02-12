@@ -8,6 +8,7 @@ Book by Harry Percival and Bob Gregory
 - [Chapter 1: Domain Modeling](#chapter-1-domain-modeling)
 - [Chapter 2: Repository Pattern](#chapter-2-repository-pattern)
 - [Chapter 3: On Coupling and Abstractions](#chapter-3-on-coupling-and-abstractions)
+- [Chapter 4: FlaskAPI and Service Layer](#chapter-4-flaskapi-and-service-layer)
 
 ## Introduction
 
@@ -135,3 +136,7 @@ Links:
 
 - [YOW! Conference 2017 - Steve Freeman - Test Driven Development: That’s Not What We Meant](https://www.youtube.com/watch?v=B48Exq57Zg8)
 - [Edwin Jung - Mocking and Patching Pitfalls](https://www.youtube.com/watch?v=Ldlz4V-UCFw)
+
+## Chapter 4: FlaskAPI and Service Layer
+
+
