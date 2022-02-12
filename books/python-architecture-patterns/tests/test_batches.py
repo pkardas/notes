@@ -12,8 +12,8 @@ from src.model import (
 )
 
 
-def batch_and_line(sku, batch_qty, line_qty):
-    return Batch("batch-001", sku, quantity=batch_qty, eta=date.today()), OrderLine("order-123", sku, line_qty)
+def batch_and_line(sku, batch_quantity, line_quantity):
+    return Batch(reference="batch-001", sku=sku, purchased_quantity=batch_quantity, eta=date.today()), OrderLine(order_id="order-123", sku=sku, quantity=line_quantity)
 
 
 def test_allocating_to_batch_reduces_available_quantity():
@@ -38,8 +38,8 @@ def test_not_allocate_if_available_equal_to_required():
 
 
 def test_cannot_allocate_if_skus_dont_match():
-    batch = Batch("batch-001", "UNCOMFORTABLE-CHAIN", quantity=100, eta=None)
-    different_sku_line = OrderLine("order-123", "EXPENSIVE-TOASTER", 10)
+    batch = Batch(reference="batch-001", sku="UNCOMFORTABLE-CHAIN", purchased_quantity=100, eta=None)
+    different_sku_line = OrderLine(order_id="order-123", sku="EXPENSIVE-TOASTER", quantity=10)
     assert not batch.can_allocate(different_sku_line)
 
 
@@ -57,9 +57,9 @@ def test_allocation_is_idempotent():
 
 
 def test_prefers_current_stock_batches_to_shipments():
-    in_stock_batch = Batch("in-stock-batch", "RETRO-CLOCK", quantity=100, eta=None)
-    shipment_batch = Batch("shipment-batch", "RETRO-CLOCK", quantity=100, eta=None)
-    line = OrderLine("oref", "RETRO-CLOCK", 10)
+    in_stock_batch = Batch(reference="in-stock-batch", sku="RETRO-CLOCK", purchased_quantity=100, eta=None)
+    shipment_batch = Batch(reference="shipment-batch", sku="RETRO-CLOCK", purchased_quantity=100, eta=None)
+    line = OrderLine(order_id="oref", sku="RETRO-CLOCK", quantity=10)
 
     allocate(line, [in_stock_batch, shipment_batch])
 
@@ -68,10 +68,10 @@ def test_prefers_current_stock_batches_to_shipments():
 
 
 def test_prefers_earlier_batches():
-    earliest = Batch("speedy-batch", "MINIMALIST-SPOON", quantity=100, eta=date(2022, 1, 7))
-    medium = Batch("normal-batch", "MINIMALIST-SPOON", quantity=100, eta=date(2022, 1, 8))
-    latest = Batch("slow-batch", "MINIMALIST-SPOON", quantity=100, eta=date(2022, 1, 9))
-    line = OrderLine("oref", "MINIMALIST-SPOON", 10)
+    earliest = Batch(reference="speedy-batch", sku="MINIMALIST-SPOON", purchased_quantity=100, eta=date(2022, 1, 7))
+    medium = Batch(reference="normal-batch", sku="MINIMALIST-SPOON", purchased_quantity=100, eta=date(2022, 1, 8))
+    latest = Batch(reference="slow-batch", sku="MINIMALIST-SPOON", purchased_quantity=100, eta=date(2022, 1, 9))
+    line = OrderLine(order_id="oref", sku="MINIMALIST-SPOON", quantity=10)
 
     allocate(line, [earliest, medium, latest])
 
@@ -81,9 +81,9 @@ def test_prefers_earlier_batches():
 
 
 def test_returns_allocated_batch_ref():
-    in_stock_batch = Batch("in-stock-batch-ref", "HIGHBROW-POSTER", quantity=100, eta=None)
-    shipment_batch = Batch("shipment-batch-ref", "HIGHBROW-POSTER", quantity=100, eta=date(2022, 1, 7))
-    line = OrderLine("oref", "HIGHBROW-POSTER", 10)
+    in_stock_batch = Batch(reference="in-stock-batch-ref", sku="HIGHBROW-POSTER", purchased_quantity=100, eta=None)
+    shipment_batch = Batch(reference="shipment-batch-ref", sku="HIGHBROW-POSTER", purchased_quantity=100, eta=date(2022, 1, 7))
+    line = OrderLine(order_id="oref", sku="HIGHBROW-POSTER", quantity=10)
 
     allocation = allocate(line, [in_stock_batch, shipment_batch])
 
@@ -91,8 +91,8 @@ def test_returns_allocated_batch_ref():
 
 
 def test_raises_out_of_stock_exceptions_if_cannot_allocate():
-    batch = Batch("batch", "SMALL-FORM", quantity=10, eta=date(2022, 1, 7))
-    allocate(OrderLine("oref", "SMALL-FORM", 10), [batch])
+    batch = Batch(reference="batch", sku="SMALL-FORM", purchased_quantity=10, eta=date(2022, 1, 7))
+    allocate(OrderLine(order_id="oref", sku="SMALL-FORM", quantity=10), [batch])
 
     with pytest.raises(OutOfStock, match="SMALL-FORM"):
-        allocate(OrderLine("oref", "SMALL-FORM", 1), [batch])
+        allocate(OrderLine(order_id="oref", sku="SMALL-FORM", quantity=1), [batch])

@@ -1,5 +1,8 @@
 import abc
 
+from sqlalchemy.orm import selectinload
+from sqlmodel import select
+
 from src.model import Batch
 
 
@@ -13,15 +16,16 @@ class AbstractRepository(abc.ABC):
         raise NotImplementedError
 
 
-class SqlAlchemyRepository(AbstractRepository):
+class Repository(AbstractRepository):
     def __init__(self, session):
         self.session = session
 
     def add(self, batch):
         self.session.add(batch)
+        self.session.commit()
 
     def get(self, reference):
-        return self.session.query(Batch).filter_by(reference=reference).one()
+        return self.session.exec(select(Batch).where(Batch.reference == reference)).one()
 
     def list(self):
-        return self.session.query(Batch).all()
+        return self.session.exec(select(Batch).options(selectinload(Batch.allocations))).all()

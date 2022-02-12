@@ -2,3 +2,8 @@ pytest==6.2.5
 mypy==0.931
 flake8==4.0.1
 SQLAlchemy==1.4.31
+fastapi==0.73.0
+sqlmodel==0.0.6
+requests==2.27.1
+psycopg2==2.9.3
+uvicorn==0.17.4
