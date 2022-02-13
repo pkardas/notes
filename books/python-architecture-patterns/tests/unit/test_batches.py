@@ -1,10 +1,8 @@
-from datetime import (
-    date,
-)
+from datetime import date
 
 import pytest
 
-from src.model import (
+from src.domain.model import (
     Batch,
     OrderLine,
     OutOfStock,

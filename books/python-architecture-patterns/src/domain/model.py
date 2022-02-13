@@ -2,7 +2,6 @@ from datetime import date
 from typing import (
     List,
     Optional,
-    Set,
 )
 
 from sqlmodel import (
@@ -78,10 +77,10 @@ class Batch(SQLModel, table=True):
         return self.sku == order_line.sku and self.available_quantity >= order_line.quantity
 
 
-def allocate(line: OrderLine, batches: List[Batch]) -> str:
+def allocate(order_line: OrderLine, batches: List[Batch]):
     try:
-        batch = next(b for b in sorted(batches) if b.can_allocate(line))
+        batch = next(b for b in sorted(batches) if b.can_allocate(order_line))
     except StopIteration:
-        raise OutOfStock(f"Out of stock for SKU: {line.sku}")
-    batch.allocate(line)
+        raise OutOfStock(f"Out of stock for SKU: {order_line.sku}")
+    batch.allocate(order_line)
     return batch.reference

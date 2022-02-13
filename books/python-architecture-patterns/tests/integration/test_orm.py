@@ -1,6 +1,6 @@
 from sqlmodel import select
 
-from src.model import OrderLine
+from src.domain.model import OrderLine
 
 
 def test_order_line_mapper_can_load_lines(session):
