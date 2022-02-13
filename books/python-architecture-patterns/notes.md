@@ -139,4 +139,25 @@ Links:
 
 ## Chapter 4: FlaskAPI and Service Layer
 
+Service Layer - extract logic from the endpoint, because it might be doing too much - validating input, handling errors,
+committing.
 
+Our high-level module, the service layer, depends on the repository abstraction. And the details of the implementation
+for our specific choice of persistent storage also depend on the same abstraction.
+
+The responsibilities of the ~~Flask~~ FastAPI app are just standard web stuff - per-request session management, parsing
+information out of POST parameters, response status codes and JSON. All the orchestration logic is in the use
+case/service layer, and the domain logic stays in the domain.
+
+Application service - its job is to handle requests from the outside world and to orchestrate an operation. Drives the
+application by following a bunch of simple steps:
+
+- Get some data from the database
+- Update the domain model
+- Persist any changes
+
+This is the kind of boring work that has to happen for every operation in your system, and keeping it separate from
+business logic helps to keep things tidy.
+
+Domain service - this is the name for a piece of logic that belongs in the domain model but doesn't sit naturally inside
+a stateful entity or value object.

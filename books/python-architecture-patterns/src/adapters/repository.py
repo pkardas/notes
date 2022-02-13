@@ -3,7 +3,7 @@ import abc
 from sqlalchemy.orm import selectinload
 from sqlmodel import select
 
-from src.model import Batch
+from src.domain.model import Batch
 
 
 class AbstractRepository(abc.ABC):

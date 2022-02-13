@@ -1,8 +1,8 @@
-from src.model import (
+from src.domain.model import (
     Batch,
     OrderLine,
 )
-from src.repository import Repository
+from src.adapters.repository import Repository
 
 
 def test_repository_can_save_a_batch(session):

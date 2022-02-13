@@ -1,16 +1,16 @@
 import time
-from pathlib import Path
 
 import pytest
-from sqlmodel import create_engine
-
-from sqlmodel import Session
+from sqlmodel import (
+    Session,
+    create_engine,
+)
 from starlette.testclient import TestClient
 
 from src import config
 from src.app import api
-from src.model import Batch
-from src.orm import create_db_and_tables
+from src.domain.model import Batch
+from src.adapters.orm import create_db_and_tables
 
 
 @pytest.fixture
@@ -62,18 +62,20 @@ def postgres_session(postgres_db):
 
 @pytest.fixture
 def add_stock(postgres_session):
+    batches = []
+
     def _add_stock(lines):
         for ref, sku, qty, eta in lines:
-            postgres_session.add(Batch(reference=ref, sku=sku, purchased_quantity=qty, eta=eta, allocations=[]))
+            batch = Batch(reference=ref, sku=sku, purchased_quantity=qty, eta=eta, allocations=[])
+            postgres_session.add(batch)
             postgres_session.commit()
+            batches.append(batch)
 
     yield _add_stock
 
-
-@pytest.fixture
-def restart_api():
-    time.sleep(0.5)
-    wait_for_webapp_to_come_up()
+    for batch in batches:
+        postgres_session.delete(batch)
+        postgres_session.commit()
 
 
 @pytest.fixture
