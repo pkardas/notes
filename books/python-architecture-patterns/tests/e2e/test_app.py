@@ -1,6 +1,11 @@
+import json
+from datetime import date
 from uuid import uuid4
 
-from src.domain.model import OrderLine
+from src.domain.model import (
+    Batch,
+    OrderLine,
+)
 
 
 def random_suffix():
@@ -19,16 +24,19 @@ def random_order_id(name=''):
     return f"order-{name}-{random_suffix()}"
 
 
-def test_happy_path_returns_200_and_allocated_batch(add_stock, client):
+def post_to_add_batch(client, ref, sku, qty, eta):
+    response = client.post("/add_batch", json=json.loads(Batch(reference=ref, sku=sku, purchased_quantity=qty, eta=eta).json()))
+    assert response.status_code == 200
+
+
+def test_happy_path_returns_200_and_allocated_batch(client):
     sku, other_sku = random_sku(), random_sku("other")
     early_batch, later_batch, other_batch = random_batch_ref('1'), random_batch_ref('2'), random_batch_ref('3')
-    add_stock([
-        (later_batch, sku, 100, "2011-01-02"),
-        (early_batch, sku, 100, "2011-01-01"),
-        (other_batch, other_sku, 100, None),
-    ])
+    post_to_add_batch(client, later_batch, sku, 100, date(2011, 1, 2))
+    post_to_add_batch(client, early_batch, sku, 100, date(2011, 1, 1))
+    post_to_add_batch(client, other_batch, other_sku, 100, None)
 
-    response = client.post("/allocate", json=OrderLine(order_id=random_order_id(), sku=sku, quantity=3).dict())
+    response = client.post("/allocate", json=json.loads(OrderLine(order_id=random_order_id(), sku=sku, quantity=3).json()))
 
     assert response.status_code == 200, response.status_code
     assert response.json()["batch_ref"] == early_batch
