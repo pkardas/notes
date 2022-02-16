@@ -1,20 +1,27 @@
+from __future__ import annotations
+
+from datetime import datetime
+from typing import Optional
+
 import pytest
 from sqlmodel import Session
 
-from src.domain.model import (
-    Batch,
-    OrderLine,
-)
+from src.adapters.repository import AbstractRepository
+from src.domain.model import Batch
 from src.service_layer.services import (
     InvalidSku,
+    add_batch,
     allocate,
 )
-from src.adapters.repository import AbstractRepository
 
 
 class FakeRepository(AbstractRepository):
     def __init__(self, batches):
         self._batches = set(batches)
+
+    @staticmethod
+    def for_batch(ref: str, sku: str, quantity: int, eta: Optional[datetime] = None) -> FakeRepository:
+        return FakeRepository([Batch(reference=ref, sku=sku, purchased_quantity=quantity, eta=eta)])
 
     def add(self, batch):
         self._batches.add(batch)
@@ -33,31 +40,36 @@ class FakeSession(Session):
         self.committed = True
 
 
-def test_returns_allocation():
-    line = OrderLine(order_id="o1", sku="COMPLICATED-LAMP", quantity=10)
-    batch = Batch(reference="b1", sku="COMPLICATED-LAMP", purchased_quantity=100, eta=None)
-    repo = FakeRepository([batch])
+def test_add_batch():
+    repo, session = FakeRepository([]), FakeSession()
 
-    result = allocate(line, repo, FakeSession())
+    add_batch("b1", "CRUNCHY-ARMCHAIN", 100, None, repo, session)
 
-    assert result == "b1"
+    assert repo.get("b1") is not None
+    assert session.committed
 
 
-def test_error_for_invalid_sku():
-    line = OrderLine(order_id="o1", sku="NONEXISTENTSKU", quantity=10)
-    batch = Batch(reference="b1", sku="AREALSKU", purchased_quantity=100, eta=None)
-    repo = FakeRepository([batch])
+def test_allocate_returns_allocation():
+    repo, session = FakeRepository([]), FakeSession()
+    add_batch("batch1", "COMPLICATED-LAMP", 100, None, repo, session)
+
+    result = allocate("o1", "COMPLICATED-LAMP", 10, repo, session)
+
+    assert result == "batch1"
+
+
+def test_allocate_errors_for_invalid_sku():
+    repo, session = FakeRepository([]), FakeSession()
+    add_batch("b1", "AREALSKU", 100, None, repo, session)
 
     with pytest.raises(InvalidSku, match="Invalid SKU: NONEXISTENTSKU"):
-        allocate(line, repo, FakeSession())
+        allocate("o1", "NONEXISTENTSKU", 10, repo, FakeSession())
 
 
 def test_commits():
-    line = OrderLine(order_id="o1", sku="OMINOUS-MIRROR", quantity=10)
-    batch = Batch(reference="b1", sku="OMINOUS-MIRROR", purchased_quantity=100, eta=None)
-    repo = FakeRepository([batch])
-    session = FakeSession()
+    repo, session = FakeRepository([]), FakeSession()
 
-    allocate(line, repo, session)
+    add_batch("b1", "OMINOUS-MIRROR", 100, None, repo, session)
+    allocate("o1", "OMINOUS-MIRROR", 10, repo, session)
 
     assert session.committed

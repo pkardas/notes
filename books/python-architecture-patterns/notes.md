@@ -161,3 +161,43 @@ business logic helps to keep things tidy.
 
 Domain service - this is the name for a piece of logic that belongs in the domain model but doesn't sit naturally inside
 a stateful entity or value object.
+
+## Chapter 5: TDD in High Gear and Low Gear
+
+Once you implement domain modeling and the service layer, you really actually can get to a stage where unit tests
+outnumber integration and end-to-end tests by an order of magnitude.
+
+Tests are supposed to help us change our system fearlessly, but often we see teams writing too many tests against their
+domain model. This causes problems when they come to change their codebase and find that they need to update tens or
+even hundreds of unit tests.
+
+The service layer forms an API for our system that we can drive in multiple ways. Testing agains this API reduces the
+amount of code that we need to change when we refactor our domain model.If we restrict ourselves to testing only against
+the service layer, we will not have any tests that directly interact with "private" methods or attributes on our model
+objects, which leaves us freer to refactor them.
+
+Most of the time, when we are adding a new feature or fixing a bug, we don;t need to make extensive changes to the
+domain mode. IN these cases, we prefer to write tests against service because of the lower coupling and higher coverage.
+
+WHen starting a new project or when hitting a particularly gnarly problem, we will drop back down to writing tests
+against the domain model, so we get better feedback and executable documentation of our intent.
+
+Metaphor of shifting gears - when starting a journey, the bicycle needs to be in a low hear, so it can overcome inertia.
+Once we are off and running, we can go faster and more efficiently by changing into a high gear. But if we suddenly
+encounter a steep hill or are forced to slow down by a hazard, we again drop to a low gear until we can pick up speed
+again.
+
+Rules of Thumb for Different Types fo Test:
+
+1. Aim for one end-to-end test per feature - the objective is to demonstrate that the feature works, and that all the
+   moving parts are glued together.
+2. Write the bulk of your tests against the service layer - these end-to-end tests offer a good trade-off between
+   coverage, runtime, and efficiency.
+3. Maintain a small core of tests written against your domain model - these tests have highly focused coverage and are
+   more brittle, but they have the highest feedback. Don't be afraid to delete these tests if the functionality is later
+   covered by tests at the service layer.
+4. Error handling counts as a feature - ideally, your application will be structured such that all errors bubble up to
+   your entrypoints are handled in the same way. This means you need to test ony the happy path for each feature, and to
+   reserve one end-to-end test for all unhappy paths.
+
+Express your service layer in terms of primitives rather than domain objects.
