@@ -11,6 +11,8 @@ from sqlmodel import (
 )
 
 
+# TODO: Separate DB fields from business fields using inheritance or making them "private"
+
 class OutOfStock(Exception):
     pass
 
@@ -19,10 +21,8 @@ class OrderLine(SQLModel, table=True):
     order_id: str
     sku: str
     quantity: int
-
     # DB fields:
     id: Optional[int] = Field(default=None, primary_key=True)
-
     batch_id: Optional[int] = Field(default=None, foreign_key="batch.id")
     batch: Optional["Batch"] = Relationship(back_populates="allocations")
 
@@ -32,11 +32,11 @@ class Batch(SQLModel, table=True):
     sku: str
     purchased_quantity: int
     eta: Optional[date]
-
+    allocations: List["OrderLine"] = Relationship(back_populates="batch")
     # DB fields:
     id: Optional[int] = Field(default=None, primary_key=True)
-
-    allocations: List["OrderLine"] = Relationship(back_populates="batch")
+    product_id: Optional[int] = Field(default=None, foreign_key="product.id")
+    product: Optional["Product"] = Relationship(back_populates="batches")
 
     def __eq__(self, other):
         if not isinstance(other, Batch):
@@ -77,10 +77,19 @@ class Batch(SQLModel, table=True):
         return self.sku == order_line.sku and self.available_quantity >= order_line.quantity
 
 
-def allocate(order_line: OrderLine, batches: List[Batch]):
-    try:
-        batch = next(b for b in sorted(batches) if b.can_allocate(order_line))
-    except StopIteration:
-        raise OutOfStock(f"Out of stock for SKU: {order_line.sku}")
-    batch.allocate(order_line)
-    return batch.reference
+class Product(SQLModel, table=True):
+    sku: str
+    batches: List["Batch"] = Relationship(back_populates="product")
+    # DB fields:
+    id: Optional[int] = Field(default=None, primary_key=True)
+
+    def __hash__(self):
+        return hash(self.sku)
+
+    def allocate(self, order_line: OrderLine):
+        try:
+            batch = next(b for b in sorted(self.batches) if b.can_allocate(order_line))
+        except StopIteration:
+            raise OutOfStock(f"Out of stock for SKU: {order_line.sku}")
+        batch.allocate(order_line)
+        return batch.reference

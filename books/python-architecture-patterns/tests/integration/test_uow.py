@@ -8,12 +8,15 @@ from sqlmodel import (
 from src.domain.model import (
     Batch,
     OrderLine,
+    Product,
 )
 from src.service_layer.unit_of_work import UnitOfWork
 
+sku = "GENERIC-SOFA"
+
 
 def insert_batch(session, batch_id):
-    session.add(Batch(reference=batch_id, sku="GENERIC-SOFA", purchased_quantity=100, eta=None))
+    session.add(Product(sku=sku, batches=[Batch(reference=batch_id, sku=sku, purchased_quantity=100, eta=None)]))
 
 
 def get_allocated_batch_ref(session, order_id, sku):
@@ -27,9 +30,9 @@ def test_uow_retrieve_batch_and_allocate_to_it(session):
     session.commit()
 
     with UnitOfWork(session) as uow:
-        batch = uow.batches.get(reference="batch1")
-        line = OrderLine(order_id="o1", sku="GENERIC-SOFA", quantity=10)
-        batch.allocate(order_line=line)
+        product = uow.products.get(sku=sku)
+        line = OrderLine(order_id="o1", sku=sku, quantity=10)
+        product.allocate(order_line=line)
         uow.commit()
 
     assert get_allocated_batch_ref(session, "o1", "GENERIC-SOFA") == "batch1"

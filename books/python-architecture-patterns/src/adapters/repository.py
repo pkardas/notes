@@ -2,28 +2,24 @@ from abc import (
     ABC,
     abstractmethod,
 )
-from typing import List
+from typing import Optional
 
-from sqlalchemy.orm import selectinload
+from sqlalchemy.exc import NoResultFound
 from sqlmodel import (
     Session,
     select,
 )
 
-from src.domain.model import Batch
+from src.domain.model import Product
 
 
 class AbstractRepository(ABC):
     @abstractmethod
-    def add(self, batch: Batch):
+    def add(self, product: Product):
         raise NotImplementedError
 
     @abstractmethod
-    def get(self, reference) -> Batch:
-        raise NotImplementedError
-
-    @abstractmethod
-    def list(self) -> List[Batch]:
+    def get(self, sku: str) -> Optional[Product]:
         raise NotImplementedError
 
 
@@ -31,12 +27,12 @@ class Repository(AbstractRepository):
     def __init__(self, session: Session):
         self.session = session
 
-    def add(self, batch):
-        self.session.add(batch)
+    def add(self, product: Product):
+        self.session.add(product)
         self.session.commit()
 
-    def get(self, reference):
-        return self.session.exec(select(Batch).where(Batch.reference == reference)).one()
-
-    def list(self):
-        return self.session.exec(select(Batch).options(selectinload(Batch.allocations))).all()
+    def get(self, sku: str) -> Optional[Product]:
+        try:
+            return self.session.exec(select(Product).where(Product.sku == sku)).one()
+        except NoResultFound:
+            return None
