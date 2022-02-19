@@ -9,6 +9,8 @@ Book by Harry Percival and Bob Gregory
 - [Chapter 2: Repository Pattern](#chapter-2-repository-pattern)
 - [Chapter 3: On Coupling and Abstractions](#chapter-3-on-coupling-and-abstractions)
 - [Chapter 4: FlaskAPI and Service Layer](#chapter-4-flaskapi-and-service-layer)
+- [Chapter 5: TDD in High Gear and Low Gear](#chapter-5-tdd-in-high-gear-and-low-gear)
+- [Chapter 6: Unit of Work Pattern](#chapter-6-unit-of-work-pattern)
 
 ## Introduction
 
@@ -201,3 +203,42 @@ Rules of Thumb for Different Types fo Test:
    reserve one end-to-end test for all unhappy paths.
 
 Express your service layer in terms of primitives rather than domain objects.
+
+## Chapter 6: Unit of Work Pattern
+
+If the Repository pattern is our abstraction over persistent storage, the Unit of Work pattern is our abstraction over
+the idea of atomic operations. It will allow us to decouple our service layer from the data layer.
+
+Unit of Work acts as a single entrypoint to our persistent storage, and it keeps track of what objects were loaded and
+of the latest state.
+
+Unit of Work and Repository classes are collaborators.
+
+> Don't mock what you don't own
+
+Rule of thumb that forces us to build these simple abstractions over messy subsystems. This encourages us to think
+carefully about or designs.
+
+It is better to require explicit commit, so we can choose when to flush state. The default behaviour is to not change
+anything, this makes software safe by default. There is one code path that leads to changes in the system: total success
+and an explicit commit. Any other code path, any exception, any early exit from the UoW's scope leads to safe state.
+
+You should always feel free to throw away tests if you think they are not going to add value longer term.
+
+SQLAlchemy already uses a Unit Of Work in the shape of Session object (track changes to the entity, and when the session
+is flushed, all your changes are persisted together). Then, why bother? The Session API is very rich, Unit Of Work can
+simplify the session to its essential core: start, commit or throw away. Besides, our Unit Of Work can access Repository
+object.
+
+Unit of Work Pattern Recap:
+
+- _The Unit of Work Pattern is an abstraction around data integrity_ - It helps to enforce the consistency of our domain
+  model, and improves performance, by letting us perform a single flush operation at the end of an operation.
+- _It works closely with the Repository Pattern and Service Layer patterns_ - The Unit of Work pattern completes our
+  abstractions over data access by representing atomic updates. Each of our service-layer use cases runs in a single
+  unit of work that succeeds of rails as a block.
+- _This is a lovely case for a context manager_ - Context managers are an idiomatic way of defining scope in Python. We
+  can use a context manager to automatically roll back our work at the end of a request, which means the system is safe
+  by default.
+- _SQLAlchemy already implements this pattern_ - We introduce an even simpler abstraction over the SQLAlchemy Session
+  object in order to "narrow" the interface between the ORM and our code. This helps keep us loosely coupled.
