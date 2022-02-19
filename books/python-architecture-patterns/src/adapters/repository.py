@@ -1,23 +1,34 @@
-import abc
+from abc import (
+    ABC,
+    abstractmethod,
+)
+from typing import List
 
 from sqlalchemy.orm import selectinload
-from sqlmodel import select
+from sqlmodel import (
+    Session,
+    select,
+)
 
 from src.domain.model import Batch
 
 
-class AbstractRepository(abc.ABC):
-    @abc.abstractmethod
+class AbstractRepository(ABC):
+    @abstractmethod
     def add(self, batch: Batch):
         raise NotImplementedError
 
-    @abc.abstractmethod
+    @abstractmethod
     def get(self, reference) -> Batch:
+        raise NotImplementedError
+
+    @abstractmethod
+    def list(self) -> List[Batch]:
         raise NotImplementedError
 
 
 class Repository(AbstractRepository):
-    def __init__(self, session):
+    def __init__(self, session: Session):
         self.session = session
 
     def add(self, batch):

@@ -4,7 +4,6 @@ from datetime import datetime
 from typing import Optional
 
 import pytest
-from sqlmodel import Session
 
 from src.adapters.repository import AbstractRepository
 from src.domain.model import Batch
@@ -13,6 +12,7 @@ from src.service_layer.services import (
     add_batch,
     allocate,
 )
+from src.service_layer.unit_of_work import AbstractUnitOfWork
 
 
 class FakeRepository(AbstractRepository):
@@ -33,43 +33,41 @@ class FakeRepository(AbstractRepository):
         return list(self._batches)
 
 
-class FakeSession(Session):
-    committed = False
+class FakeUnitOfWork(AbstractUnitOfWork):
+    def __init__(self):
+        self.batches = FakeRepository([])
+        self.committed = False
 
     def commit(self):
         self.committed = True
 
+    def rollback(self):
+        pass
+
 
 def test_add_batch():
-    repo, session = FakeRepository([]), FakeSession()
-
-    add_batch("b1", "CRUNCHY-ARMCHAIN", 100, None, repo, session)
-
-    assert repo.get("b1") is not None
-    assert session.committed
+    uow = FakeUnitOfWork()
+    add_batch("b1", "CRUNCHY-ARMCHAIN", 100, None, uow)
+    assert uow.batches.get("b1") is not None
+    assert uow.committed
 
 
 def test_allocate_returns_allocation():
-    repo, session = FakeRepository([]), FakeSession()
-    add_batch("batch1", "COMPLICATED-LAMP", 100, None, repo, session)
-
-    result = allocate("o1", "COMPLICATED-LAMP", 10, repo, session)
-
+    uow = FakeUnitOfWork()
+    add_batch("batch1", "COMPLICATED-LAMP", 100, None, uow)
+    result = allocate("o1", "COMPLICATED-LAMP", 10, uow)
     assert result == "batch1"
 
 
 def test_allocate_errors_for_invalid_sku():
-    repo, session = FakeRepository([]), FakeSession()
-    add_batch("b1", "AREALSKU", 100, None, repo, session)
-
+    uow = FakeUnitOfWork()
+    add_batch("b1", "AREALSKU", 100, None, uow)
     with pytest.raises(InvalidSku, match="Invalid SKU: NONEXISTENTSKU"):
-        allocate("o1", "NONEXISTENTSKU", 10, repo, FakeSession())
+        allocate("o1", "NONEXISTENTSKU", 10, uow)
 
 
 def test_commits():
-    repo, session = FakeRepository([]), FakeSession()
-
-    add_batch("b1", "OMINOUS-MIRROR", 100, None, repo, session)
-    allocate("o1", "OMINOUS-MIRROR", 10, repo, session)
-
-    assert session.committed
+    uow = FakeUnitOfWork()
+    add_batch("b1", "OMINOUS-MIRROR", 100, None, uow)
+    allocate("o1", "OMINOUS-MIRROR", 10, uow)
+    assert uow.committed
