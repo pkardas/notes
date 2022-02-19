@@ -1,3 +1,4 @@
+from __future__ import annotations
 from abc import (
     ABC,
     abstractmethod,
@@ -16,9 +17,9 @@ from src.config import get_postgres_uri
 
 
 class AbstractUnitOfWork(ABC):
-    batches: AbstractRepository
+    products: AbstractRepository
 
-    def __enter__(self):
+    def __enter__(self) -> AbstractUnitOfWork:
         return self
 
     def __exit__(self, *args):
@@ -34,8 +35,7 @@ class AbstractUnitOfWork(ABC):
 
 
 def default_session():
-    engine = create_engine(get_postgres_uri())
-    return Session(engine)
+    return Session(create_engine(get_postgres_uri()))
 
 
 class UnitOfWork(AbstractUnitOfWork):
@@ -43,7 +43,7 @@ class UnitOfWork(AbstractUnitOfWork):
         self.session = session
 
     def __enter__(self):
-        self.batches = Repository(self.session)
+        self.products = Repository(self.session)
         return super().__enter__()
 
     def __exit__(self, *args):

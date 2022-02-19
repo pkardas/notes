@@ -1,12 +1,11 @@
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Optional
 
 import pytest
 
 from src.adapters.repository import AbstractRepository
-from src.domain.model import Batch
+from src.domain.model import Product
 from src.service_layer.services import (
     InvalidSku,
     add_batch,
@@ -16,26 +15,19 @@ from src.service_layer.unit_of_work import AbstractUnitOfWork
 
 
 class FakeRepository(AbstractRepository):
-    def __init__(self, batches):
-        self._batches = set(batches)
+    def __init__(self, products):
+        self._products = set(products)
 
-    @staticmethod
-    def for_batch(ref: str, sku: str, quantity: int, eta: Optional[datetime] = None) -> FakeRepository:
-        return FakeRepository([Batch(reference=ref, sku=sku, purchased_quantity=quantity, eta=eta)])
+    def add(self, product: Product):
+        self._products.add(product)
 
-    def add(self, batch):
-        self._batches.add(batch)
-
-    def get(self, reference):
-        return next(b for b in self._batches if b.reference == reference)
-
-    def list(self):
-        return list(self._batches)
+    def get(self, sku: str) -> Optional[Product]:
+        return next((product for product in self._products if product.sku == sku), None)
 
 
 class FakeUnitOfWork(AbstractUnitOfWork):
     def __init__(self):
-        self.batches = FakeRepository([])
+        self.products = FakeRepository([])
         self.committed = False
 
     def commit(self):
@@ -48,7 +40,7 @@ class FakeUnitOfWork(AbstractUnitOfWork):
 def test_add_batch():
     uow = FakeUnitOfWork()
     add_batch("b1", "CRUNCHY-ARMCHAIN", 100, None, uow)
-    assert uow.batches.get("b1") is not None
+    assert uow.products.get("CRUNCHY-ARMCHAIN") is not None
     assert uow.committed
 
 

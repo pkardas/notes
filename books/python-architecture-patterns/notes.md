@@ -11,6 +11,7 @@ Book by Harry Percival and Bob Gregory
 - [Chapter 4: FlaskAPI and Service Layer](#chapter-4-flaskapi-and-service-layer)
 - [Chapter 5: TDD in High Gear and Low Gear](#chapter-5-tdd-in-high-gear-and-low-gear)
 - [Chapter 6: Unit of Work Pattern](#chapter-6-unit-of-work-pattern)
+- [Chapter 7: Aggregates and Consistency Boundaries](#chapter-7-aggregates-and-consistency-boundaries)
 
 ## Introduction
 
@@ -242,3 +243,25 @@ Unit of Work Pattern Recap:
   by default.
 - _SQLAlchemy already implements this pattern_ - We introduce an even simpler abstraction over the SQLAlchemy Session
   object in order to "narrow" the interface between the ORM and our code. This helps keep us loosely coupled.
+
+## Chapter 7: Aggregates and Consistency Boundaries
+
+Constraint is a rule that restricts the possible states of our model can get into, while an invariant is defined a
+little more precisely as a condition that is always true.
+
+The Aggregate pattern - a design pattern from the DDD community that helps us to solve concurrency issues. An aggregate
+is just a domain object that contains other domain objects and lets us treat the whole collection as a single unit.
+
+> An aggregate is a cluster of associated objects that we treat as a unit for the purpose of data changes.
+
+We have to choose right granularity for our aggregate. Candidates: Shipment, Cart, Stock, Product.
+
+Bounded contexts were invented as a reaction against attempts to capture entire businesses into a single model.
+Attributes needed in one context are irrelevant in another. Concepts with the same name can have entirely different
+meanings in different contexts. It is better to have several models, draw boundaries around each context, and handle the
+translation between different contexts explicitly.
+
+This concept translates very well to the world of microservices, where each microservice is free to have its own concept
+of "customer" and its own rules for translating that to and from other microservices it integrates with.
+
+Aggregates should be the only way to get to out model.
