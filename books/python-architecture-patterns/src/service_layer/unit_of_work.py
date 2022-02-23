@@ -3,6 +3,7 @@ from abc import (
     ABC,
     abstractmethod,
 )
+from typing import Optional
 
 from sqlmodel import (
     Session,
@@ -35,12 +36,13 @@ class AbstractUnitOfWork(ABC):
 
 
 def default_session():
-    return Session(create_engine(get_postgres_uri()))
+    return Session(create_engine(get_postgres_uri(), isolation_level="REPEATABLE READ"))
 
 
 class UnitOfWork(AbstractUnitOfWork):
-    def __init__(self, session: Session = default_session()):
-        self.session = session
+    def __init__(self, session: Optional[Session] = None):
+        # 'default_session()' can not be in the '__init__' because it would be evaluated only once:
+        self.session = session if session else default_session()
 
     def __enter__(self):
         self.products = Repository(self.session)

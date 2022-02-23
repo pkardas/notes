@@ -1,7 +1,9 @@
 from datetime import date
 from typing import (
+    Iterable,
     List,
     Optional,
+    cast,
 )
 
 from sqlmodel import (
@@ -82,14 +84,16 @@ class Product(SQLModel, table=True):
     batches: List["Batch"] = Relationship(back_populates="product")
     # DB fields:
     id: Optional[int] = Field(default=None, primary_key=True)
+    version_number: int = 0
 
     def __hash__(self):
         return hash(self.sku)
 
-    def allocate(self, order_line: OrderLine):
+    def allocate(self, order_line: OrderLine) -> str:
         try:
-            batch = next(b for b in sorted(self.batches) if b.can_allocate(order_line))
+            batch = next(b for b in sorted(cast(Iterable, self.batches)) if b.can_allocate(order_line))
         except StopIteration:
             raise OutOfStock(f"Out of stock for SKU: {order_line.sku}")
         batch.allocate(order_line)
+        self.version_number += 1
         return batch.reference

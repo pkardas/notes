@@ -8,13 +8,17 @@ from sqlmodel import (
 from starlette.testclient import TestClient
 
 from src import config
-from src.adapters.orm import create_db_and_tables
+from src.adapters.orm import (
+    clean_db_and_tables,
+    create_db_and_tables,
+)
 from src.app import api
 
 
 @pytest.fixture
 def in_memory_db():
     engine = create_engine("sqlite:///:memory:")
+    clean_db_and_tables(engine)
     create_db_and_tables(engine)
     return engine
 
@@ -23,6 +27,7 @@ def in_memory_db():
 def session(in_memory_db):
     create_db_and_tables(in_memory_db)
     yield Session(in_memory_db)
+    clean_db_and_tables(in_memory_db)
 
 
 def wait_for_postgres_to_come_up(engine):
@@ -39,6 +44,7 @@ def wait_for_postgres_to_come_up(engine):
 def postgres_db():
     engine = create_engine(config.get_postgres_uri())
     wait_for_postgres_to_come_up(engine)
+    clean_db_and_tables(engine)
     create_db_and_tables(engine)
     return engine
 
@@ -47,6 +53,7 @@ def postgres_db():
 def postgres_session(postgres_db):
     create_db_and_tables(postgres_db)
     yield Session(postgres_db)
+    clean_db_and_tables(postgres_db)
 
 
 @pytest.fixture

@@ -265,3 +265,27 @@ This concept translates very well to the world of microservices, where each micr
 of "customer" and its own rules for translating that to and from other microservices it integrates with.
 
 Aggregates should be the only way to get to out model.
+
+The Aggregate pattern is designed to help manage some technical constraints around consistency and performance.
+
+Version numbers are just one way to implement optimistic* locking. Optimistic - our default assumption is that
+everything will be fine when two users want to make changes to the database. We think it will be unlikely that they will
+conflict each other. We let them go ahead and just make sure we have a way to notice if there is a problem.
+
+Pessimistic - works under the assumption that two users are to cause conflicts, and we want to prevent conflicts in all
+cases, so we lock everything just to be safe. In our example, that would mean locking the whole `batches` table or using
+`SELECT FOR UPDATE`. With pessimistic locking, you don't need to think about handling failures because the database will
+prevent them.
+
+The usual way to handle a failure is to retry the operation from the beginning.
+
+Aggregates and Consistency Boundaries Recap:
+
+- _Aggregates are your entrypoints into the domain model_ - By restricting the number of ways that things can be
+  changed, we make the system easier to reason about.
+- _Aggregates are in charge of a consistency boundaries_ - An aggregate's job is to be able to manage our business rules
+  about invariants as they apply to a group of related objects. It is the aggregate's job to check that the objects
+  within its remit are consistent with each other and with our rules, and to reject changes that would break the rules.
+- Aggregates and concurrency issues go together - When thinking about implementing these consistency checks, we end up
+  thinking about transactions and locks. Choosing the right aggregate is about performance as well as conceptual
+  organization fo your domain. 
