@@ -12,6 +12,7 @@ Book by Harry Percival and Bob Gregory
 - [Chapter 5: TDD in High Gear and Low Gear](#chapter-5-tdd-in-high-gear-and-low-gear)
 - [Chapter 6: Unit of Work Pattern](#chapter-6-unit-of-work-pattern)
 - [Chapter 7: Aggregates and Consistency Boundaries](#chapter-7-aggregates-and-consistency-boundaries)
+- [Chapter 8: Events and the Message Bus](#chapter-8-events-and-the-message-bus)
 
 ## Introduction
 
@@ -288,4 +289,34 @@ Aggregates and Consistency Boundaries Recap:
   within its remit are consistent with each other and with our rules, and to reject changes that would break the rules.
 - Aggregates and concurrency issues go together - When thinking about implementing these consistency checks, we end up
   thinking about transactions and locks. Choosing the right aggregate is about performance as well as conceptual
-  organization fo your domain. 
+  organization fo your domain.
+
+## Chapter 8: Events and the Message Bus
+
+Reporting, permissions and workflows touching zillions of objects make a mess of our codebase.
+
+> Rule of thumb: if you can't describe what your function does without using words like "then" or "and", you might be
+> violating the SRP.
+
+A message bus gives us a nice way to separate responsibilities when we have to take multiple actions in response to a
+request.
+
+Domain Events and the Message Bus Recap:
+
+- _Events can help with the single responsibility principle_ - Code gets tangled up when we mix multiple concerns in one
+  place. Events can help us to keep things tidy by separating primary use cases from secondary ones. We also use events
+  for communicating between aggregates so that we don;t need to run long-running transactions that lock against multiple
+  tables.
+- _A message bus routes messages to handlers_ - You can think of a message bus as a dict that maps from events to their
+  consumers. It doesn't "know" anything bout the meaning of events; it is just a piece of dumb infrastructure for
+  getting messages around the system.
+- _Option 1: Service layer raises events and passes them to message bus_ - The simplest way to start using events is
+  your system is to raise them from handlers by calling `bus.handle(event)` after you commit your unit of work.
+- _Option 2: Domain model raises events, service layer passes them to message bus_ - The logic about when to raise an
+  event really should live with the model, so we can improve our system's design and testability by raising events from
+  the domain model. It is easy for our handlers to collect events off the model objects after commit and pass them to
+  the bus.
+- _Option 3: UoW collects events from aggregates and passes the to message bus_ - Adding `bus.handle(aggregate.events)`
+  to every handler is annoying, so we can tidy up by making our unit of work responsible for raising events that were
+  raised by loaded objects. This is the most complex design and might rely on ORM magic, but it is clean and easy to use
+  once set up.

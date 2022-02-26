@@ -4,7 +4,10 @@ from typing import Optional
 
 import pytest
 
-from src.adapters.repository import AbstractRepository
+from src.adapters.repository import (
+    AbstractRepository,
+    TrackingRepository,
+)
 from src.domain.model import Product
 from src.service_layer.services import (
     InvalidSku,
@@ -16,6 +19,7 @@ from src.service_layer.unit_of_work import AbstractUnitOfWork
 
 class FakeRepository(AbstractRepository):
     def __init__(self, products):
+        super().__init__()
         self._products = set(products)
 
     def add(self, product: Product):
@@ -27,14 +31,14 @@ class FakeRepository(AbstractRepository):
 
 class FakeUnitOfWork(AbstractUnitOfWork):
     def __init__(self):
-        self.products = FakeRepository([])
+        self.products = TrackingRepository(repo=FakeRepository([]))
         self.committed = False
-
-    def commit(self):
-        self.committed = True
 
     def rollback(self):
         pass
+
+    def _commit(self):
+        self.committed = True
 
 
 def test_add_batch():

@@ -6,14 +6,17 @@ from typing import (
     cast,
 )
 
+from pydantic import PrivateAttr
+from pydantic.fields import ModelPrivateAttr
 from sqlmodel import (
     Field,
     Relationship,
     SQLModel,
 )
 
+from src.domain import events
+from src.domain.events import Event
 
-# TODO: Separate DB fields from business fields using inheritance or making them "private"
 
 class OutOfStock(Exception):
     pass
@@ -23,7 +26,7 @@ class OrderLine(SQLModel, table=True):
     order_id: str
     sku: str
     quantity: int
-    # DB fields:
+    # DB-specific fields:
     id: Optional[int] = Field(default=None, primary_key=True)
     batch_id: Optional[int] = Field(default=None, foreign_key="batch.id")
     batch: Optional["Batch"] = Relationship(back_populates="allocations")
@@ -35,7 +38,7 @@ class Batch(SQLModel, table=True):
     purchased_quantity: int
     eta: Optional[date]
     allocations: List["OrderLine"] = Relationship(back_populates="batch")
-    # DB fields:
+    # DB-specific fields:
     id: Optional[int] = Field(default=None, primary_key=True)
     product_id: Optional[int] = Field(default=None, foreign_key="product.id")
     product: Optional["Product"] = Relationship(back_populates="batches")
@@ -82,18 +85,25 @@ class Batch(SQLModel, table=True):
 class Product(SQLModel, table=True):
     sku: str
     batches: List["Batch"] = Relationship(back_populates="product")
-    # DB fields:
+    # DB-specific fields:
     id: Optional[int] = Field(default=None, primary_key=True)
     version_number: int = 0
+    # DB excluded fields:
+    _events: ModelPrivateAttr = PrivateAttr(default=[])
 
     def __hash__(self):
         return hash(self.sku)
 
-    def allocate(self, order_line: OrderLine) -> str:
+    @property
+    def events(self) -> List[Event]:
+        return self._events.default
+
+    def allocate(self, order_line: OrderLine) -> Optional[str]:
         try:
             batch = next(b for b in sorted(cast(Iterable, self.batches)) if b.can_allocate(order_line))
         except StopIteration:
-            raise OutOfStock(f"Out of stock for SKU: {order_line.sku}")
+            self.events.append(events.OutOfStock(sku=order_line.sku))
+            return None
         batch.allocate(order_line)
         self.version_number += 1
         return batch.reference

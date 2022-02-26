@@ -1,10 +1,9 @@
-from abc import (
-    ABC,
-    abstractmethod,
+from typing import (
+    Optional,
+    Protocol,
+    Set,
 )
-from typing import Optional
 
-from sqlalchemy.exc import NoResultFound
 from sqlmodel import (
     Session,
     select,
@@ -13,14 +12,12 @@ from sqlmodel import (
 from src.domain.model import Product
 
 
-class AbstractRepository(ABC):
-    @abstractmethod
+class AbstractRepository(Protocol):
     def add(self, product: Product):
-        raise NotImplementedError
+        ...
 
-    @abstractmethod
     def get(self, sku: str) -> Optional[Product]:
-        raise NotImplementedError
+        ...
 
 
 class Repository(AbstractRepository):
@@ -32,7 +29,23 @@ class Repository(AbstractRepository):
         self.session.commit()
 
     def get(self, sku: str) -> Optional[Product]:
-        try:
-            return self.session.exec(select(Product).where(Product.sku == sku)).one()
-        except NoResultFound:
-            return None
+        return self.session.exec(select(Product).where(Product.sku == sku)).first()
+
+
+class TrackingRepository(AbstractRepository):
+    seen: Set[Product]
+
+    def __init__(self, repo: AbstractRepository):
+        super().__init__()
+        self.seen = set()
+        self._repo = repo
+
+    def add(self, product: Product):
+        self._repo.add(product)
+        self.seen.add(product)
+
+    def get(self, sku: str) -> Optional[Product]:
+        product = self._repo.get(sku)
+        if product:
+            self.seen.add(product)
+        return product

@@ -13,8 +13,10 @@ from sqlmodel import (
 from src.adapters.repository import (
     AbstractRepository,
     Repository,
+    TrackingRepository,
 )
 from src.config import get_postgres_uri
+from src.service_layer import message_bus
 
 
 class AbstractUnitOfWork(ABC):
@@ -26,12 +28,22 @@ class AbstractUnitOfWork(ABC):
     def __exit__(self, *args):
         self.rollback()
 
-    @abstractmethod
     def commit(self):
-        raise NotImplementedError
+        self._commit()
+        self.publish_events()
+
+    def publish_events(self):
+        for product in self.products.seen:
+            while product.events:
+                event = product.events.pop(0)
+                message_bus.handle(event)
 
     @abstractmethod
     def rollback(self):
+        raise NotImplementedError
+
+    @abstractmethod
+    def _commit(self):
         raise NotImplementedError
 
 
@@ -45,15 +57,15 @@ class UnitOfWork(AbstractUnitOfWork):
         self.session = session if session else default_session()
 
     def __enter__(self):
-        self.products = Repository(self.session)
+        self.products = TrackingRepository(repo=Repository(self.session))
         return super().__enter__()
 
     def __exit__(self, *args):
         super().__exit__(*args)
         self.session.close()
 
-    def commit(self):
-        self.session.commit()
-
     def rollback(self):
         self.session.rollback()
+
+    def _commit(self):
+        self.session.commit()
