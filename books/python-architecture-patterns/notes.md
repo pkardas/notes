@@ -177,12 +177,12 @@ Tests are supposed to help us change our system fearlessly, but often we see tea
 domain model. This causes problems when they come to change their codebase and find that they need to update tens or
 even hundreds of unit tests.
 
-The service layer forms an API for our system that we can drive in multiple ways. Testing agains this API reduces the
+The service layer forms an API for our system that we can drive in multiple ways. Testing against this API reduces the
 amount of code that we need to change when we refactor our domain model.If we restrict ourselves to testing only against
 the service layer, we will not have any tests that directly interact with "private" methods or attributes on our model
 objects, which leaves us freer to refactor them.
 
-Most of the time, when we are adding a new feature or fixing a bug, we don;t need to make extensive changes to the
+Most of the time, when we are adding a new feature or fixing a bug, we don't need to make extensive changes to the
 domain mode. IN these cases, we prefer to write tests against service because of the lower coupling and higher coverage.
 
 WHen starting a new project or when hitting a particularly gnarly problem, we will drop back down to writing tests
@@ -307,7 +307,7 @@ Domain Events and the Message Bus Recap:
 
 - _Events can help with the single responsibility principle_ - Code gets tangled up when we mix multiple concerns in one
   place. Events can help us to keep things tidy by separating primary use cases from secondary ones. We also use events
-  for communicating between aggregates so that we don;t need to run long-running transactions that lock against multiple
+  for communicating between aggregates so that we don't need to run long-running transactions that lock against multiple
   tables.
 - _A message bus routes messages to handlers_ - You can think of a message bus as a dict that maps from events to their
   consumers. It doesn't "know" anything bout the meaning of events; it is just a piece of dumb infrastructure for
@@ -356,7 +356,7 @@ update to an aggregate.
 
 When a user wants to make the system do something, we represent their request as a command. That command should modify a
 single aggregate and either succeed or fail in totality. Any other bookkeeping, cleanup and notification we need to do
-can happen via an event. We don;t require the event handlers to succeed in order for the command to be successful.
+can happen via an event. We don't require the event handlers to succeed in order for the command to be successful.
 
 We raise events about an aggregate after we persist our state to the database. It is OK for events to fail independently
 from the commands that raised them.
