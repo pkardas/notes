@@ -3,6 +3,7 @@ from typing import (
     Iterable,
     List,
     Optional,
+    Union,
     cast,
 )
 
@@ -14,8 +15,12 @@ from sqlmodel import (
     SQLModel,
 )
 
-from src.domain import events
-from src.domain.events import Event
+from src.domain import (
+    commands,
+    events,
+)
+
+Message = Union[commands.Command, events.Event]
 
 
 class OutOfStock(Exception):
@@ -92,20 +97,20 @@ class Product(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     version_number: int = 0
     # DB excluded fields:
-    _events: ModelPrivateAttr = PrivateAttr(default=[])
+    _messages: ModelPrivateAttr = PrivateAttr(default=[])
 
     def __hash__(self):
         return hash(self.sku)
 
     @property
-    def events(self) -> List[Event]:
-        return self._events.default
+    def messages(self) -> List[Message]:
+        return self._messages.default
 
     def allocate(self, order_line: OrderLine) -> Optional[str]:
         try:
             batch = next(b for b in sorted(cast(Iterable, self.batches)) if b.can_allocate(order_line))
         except StopIteration:
-            self.events.append(events.OutOfStock(sku=order_line.sku))
+            self.messages.append(events.OutOfStock(sku=order_line.sku))
             return None
         batch.allocate(order_line)
         self.version_number += 1
@@ -116,4 +121,4 @@ class Product(SQLModel, table=True):
         batch.purchased_quantity = qty
         while batch.available_quantity < 0:
             line = batch.deallocate_one()
-            self.events.append(events.AllocationRequired(order_id=line.order_id, sku=line.sku, qty=line.qty))
+            self.messages.append(commands.Allocate(order_id=line.order_id, sku=line.sku, qty=line.qty))

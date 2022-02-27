@@ -1,5 +1,8 @@
 from src.adapters import email
-from src.domain import events
+from src.domain import (
+    commands,
+    events,
+)
 
 from src.domain.model import (
     Batch,
@@ -13,13 +16,13 @@ class InvalidSku(Exception):
     pass
 
 
-def allocate(event: events.AllocationRequired, uow: AbstractUnitOfWork) -> str:
-    order_line = OrderLine(order_id=event.order_id, sku=event.sku, qty=event.qty)
+def allocate(command: commands.Allocate, uow: AbstractUnitOfWork) -> str:
+    order_line = OrderLine(order_id=command.order_id, sku=command.sku, qty=command.qty)
     with uow:
-        product = uow.products.get(sku=event.sku)
+        product = uow.products.get(sku=command.sku)
 
         if not product:
-            raise InvalidSku(f"Invalid SKU: {event.sku}")
+            raise InvalidSku(f"Invalid SKU: {command.sku}")
 
         batch_ref = product.allocate(order_line)
         uow.commit()
@@ -27,20 +30,20 @@ def allocate(event: events.AllocationRequired, uow: AbstractUnitOfWork) -> str:
     return batch_ref
 
 
-def add_batch(event: events.BatchCreated, uow: AbstractUnitOfWork):
+def add_batch(command: commands.CreateBatch, uow: AbstractUnitOfWork):
     with uow:
-        product = uow.products.get(event.sku)
+        product = uow.products.get(command.sku)
         if not product:
-            product = Product(sku=event.sku, batches=[])
+            product = Product(sku=command.sku, batches=[])
             uow.products.add(product)
-        product.batches.append(Batch(reference=event.ref, sku=event.sku, purchased_quantity=event.qty, eta=event.eta))
+        product.batches.append(Batch(reference=command.ref, sku=command.sku, purchased_quantity=command.qty, eta=command.eta))
         uow.commit()
 
 
-def change_batch_quantity(event: events.BatchQuantityChanged, uow: AbstractUnitOfWork):
+def change_batch_quantity(command: commands.ChangeBatchQuantity, uow: AbstractUnitOfWork):
     with uow:
-        product = uow.products.get_by_batch_ref(event.ref)
-        product.change_batch_quantity(ref=event.ref, qty=event.qty)
+        product = uow.products.get_by_batch_ref(command.ref)
+        product.change_batch_quantity(ref=command.ref, qty=command.qty)
         uow.commit()
 
 

@@ -14,6 +14,7 @@ Book by Harry Percival and Bob Gregory
 - [Chapter 7: Aggregates and Consistency Boundaries](#chapter-7-aggregates-and-consistency-boundaries)
 - [Chapter 8: Events and the Message Bus](#chapter-8-events-and-the-message-bus)
 - [Chapter 9: Going to Town the Message Bus](#chapter-9-going-to-town-the-message-bus)
+- [Chapter 10: Commands and Command Handler](#chapter-10-commands-and-command-handler)
 
 ## Introduction
 
@@ -336,3 +337,28 @@ is quite powerful from a DDD standpoint, since events often translate very well 
 Handlers are the way we react to the events. They can call down to our model or call out to external services. We can
 define multiple handlers for a single event if we want to. Handlers can also raise other events. This allows us to be
 very granular about what a handler does and really stick to the SRP.
+
+## Chapter 10: Commands and Command Handler
+
+Commands are a type of message - instructions sent by one part of a system to another. We usually represent commands
+with dumb data structures and can handle them in much the same way as events. Commands are sent by one actor to another
+specific actor with the expectation that a particular thing will happen as a result. When we post a form to an API
+handler, we are sending a command. We name commands with imperative mood verb phrases like "allocate stock" or "delay
+shipment".
+
+Events are broadcast by an actor to all interested listeners. We often use events to spread the knowledge about
+successful commands. We name events with past-tense verb phrases like "order allocated to stock" or "shipment delayed".
+
+How to mitigate problems caused by the lost messages? The system might be left in an inconsistent state. In our
+allocation service we have already taken steps to prevent that from happening. We have carefully identified aggregates
+that act as consistency boundaries, and whe have introduced a UoW that manages the atomic success or failure of an
+update to an aggregate.
+
+When a user wants to make the system do something, we represent their request as a command. That command should modify a
+single aggregate and either succeed or fail in totality. Any other bookkeeping, cleanup and notification we need to do
+can happen via an event. We don;t require the event handlers to succeed in order for the command to be successful.
+
+We raise events about an aggregate after we persist our state to the database. It is OK for events to fail independently
+from the commands that raised them.
+
+Tenacity is a Python library that implements common patterns for retrying.
