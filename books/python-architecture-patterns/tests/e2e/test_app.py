@@ -36,7 +36,7 @@ def test_happy_path_returns_200_and_allocated_batch(client):
     post_to_add_batch(client, early_batch, sku, 100, date(2011, 1, 1))
     post_to_add_batch(client, other_batch, other_sku, 100, None)
 
-    response = client.post("/allocate", json=json.loads(OrderLine(order_id=random_order_id(), sku=sku, quantity=3).json()))
+    response = client.post("/allocate", json=json.loads(OrderLine(order_id=random_order_id(), sku=sku, qty=3).json()))
 
     assert response.status_code == 200, response.status_code
     assert response.json()["batch_ref"] == early_batch
@@ -44,7 +44,7 @@ def test_happy_path_returns_200_and_allocated_batch(client):
 
 def test_unhappy_path_returns_400_and_error_message(client):
     unknown_sku = random_sku()
-    response = client.post("/allocate", json=OrderLine(order_id=random_order_id(), sku=unknown_sku, quantity=20).dict())
+    response = client.post("/allocate", json=OrderLine(order_id=random_order_id(), sku=unknown_sku, qty=20).dict())
 
     assert response.status_code == 400
     assert response.json()["message"] == f"Invalid SKU: {unknown_sku}"

@@ -7,7 +7,7 @@ from src.domain.model import (
 
 
 def batch_and_line(sku, batch_quantity, line_quantity):
-    return Batch(reference="batch-001", sku=sku, purchased_quantity=batch_quantity, eta=date.today()), OrderLine(order_id="order-123", sku=sku, quantity=line_quantity)
+    return Batch(reference="batch-001", sku=sku, purchased_quantity=batch_quantity, eta=date.today()), OrderLine(order_id="order-123", sku=sku, qty=line_quantity)
 
 
 def test_allocating_to_batch_reduces_available_quantity():
@@ -33,7 +33,7 @@ def test_not_allocate_if_available_equal_to_required():
 
 def test_cannot_allocate_if_skus_dont_match():
     batch = Batch(reference="batch-001", sku="UNCOMFORTABLE-CHAIN", purchased_quantity=100, eta=None)
-    different_sku_line = OrderLine(order_id="order-123", sku="EXPENSIVE-TOASTER", quantity=10)
+    different_sku_line = OrderLine(order_id="order-123", sku="EXPENSIVE-TOASTER", qty=10)
     assert not batch.can_allocate(different_sku_line)
 
 

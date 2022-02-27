@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 from abc import (
     ABC,
     abstractmethod,
@@ -11,16 +12,14 @@ from sqlmodel import (
 )
 
 from src.adapters.repository import (
-    AbstractRepository,
     Repository,
     TrackingRepository,
 )
 from src.config import get_postgres_uri
-from src.service_layer import message_bus
 
 
 class AbstractUnitOfWork(ABC):
-    products: AbstractRepository
+    products: TrackingRepository
 
     def __enter__(self) -> AbstractUnitOfWork:
         return self
@@ -30,13 +29,11 @@ class AbstractUnitOfWork(ABC):
 
     def commit(self):
         self._commit()
-        self.publish_events()
 
-    def publish_events(self):
+    def collect_new_events(self):
         for product in self.products.seen:
             while product.events:
-                event = product.events.pop(0)
-                message_bus.handle(event)
+                yield product.events.pop(0)
 
     @abstractmethod
     def rollback(self):

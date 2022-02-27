@@ -9,7 +9,10 @@ from sqlmodel import (
     select,
 )
 
-from src.domain.model import Product
+from src.domain.model import (
+    Batch,
+    Product,
+)
 
 
 class AbstractRepository(Protocol):
@@ -17,6 +20,9 @@ class AbstractRepository(Protocol):
         ...
 
     def get(self, sku: str) -> Optional[Product]:
+        ...
+
+    def get_by_batch_ref(self, ref: str) -> Optional[Product]:
         ...
 
 
@@ -30,6 +36,9 @@ class Repository(AbstractRepository):
 
     def get(self, sku: str) -> Optional[Product]:
         return self.session.exec(select(Product).where(Product.sku == sku)).first()
+
+    def get_by_batch_ref(self, ref: str) -> Optional[Product]:
+        return self.session.exec(select(Product).join(Batch).where(Batch.reference == ref)).first()
 
 
 class TrackingRepository(AbstractRepository):
@@ -47,5 +56,10 @@ class TrackingRepository(AbstractRepository):
     def get(self, sku: str) -> Optional[Product]:
         product = self._repo.get(sku)
         if product:
+            self.seen.add(product)
+        return product
+
+    def get_by_batch_ref(self, ref: str) -> Optional[Product]:
+        if product := self._repo.get_by_batch_ref(ref):
             self.seen.add(product)
         return product

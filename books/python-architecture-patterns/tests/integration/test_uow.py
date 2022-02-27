@@ -36,7 +36,7 @@ def test_uow_retrieve_batch_and_allocate_to_it(session):
 
     with UnitOfWork(session) as uow:
         product = uow.products.get(sku=sku)
-        line = OrderLine(order_id="o1", sku=sku, quantity=10)
+        line = OrderLine(order_id="o1", sku=sku, qty=10)
         product.allocate(order_line=line)
         uow.commit()
 
@@ -65,7 +65,7 @@ def test_rolls_back_on_error(in_memory_db):
 
 
 def try_to_allocate(order_id: str, exceptions: List[Exception]):
-    line = OrderLine(order_id=order_id, sku=sku, quantity=10)
+    line = OrderLine(order_id=order_id, sku=sku, qty=10)
     try:
         with UnitOfWork() as uow:
             product = uow.products.get(sku)

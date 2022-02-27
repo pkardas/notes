@@ -25,7 +25,7 @@ class OutOfStock(Exception):
 class OrderLine(SQLModel, table=True):
     order_id: str
     sku: str
-    quantity: int
+    qty: int
     # DB-specific fields:
     id: Optional[int] = Field(default=None, primary_key=True)
     batch_id: Optional[int] = Field(default=None, foreign_key="batch.id")
@@ -70,16 +70,19 @@ class Batch(SQLModel, table=True):
             return
         self.allocations.remove(order_line)
 
+    def deallocate_one(self):
+        return self.allocations.pop()
+
     @property
     def allocated_quantity(self) -> int:
-        return sum(line.quantity for line in self.allocations)
+        return sum(line.qty for line in self.allocations)
 
     @property
     def available_quantity(self) -> int:
         return self.purchased_quantity - self.allocated_quantity
 
     def can_allocate(self, order_line: OrderLine) -> bool:
-        return self.sku == order_line.sku and self.available_quantity >= order_line.quantity
+        return self.sku == order_line.sku and self.available_quantity >= order_line.qty
 
 
 class Product(SQLModel, table=True):
@@ -107,3 +110,10 @@ class Product(SQLModel, table=True):
         batch.allocate(order_line)
         self.version_number += 1
         return batch.reference
+
+    def change_batch_quantity(self, ref: str, qty: int):
+        batch = next(b for b in self.batches if b.reference == ref)
+        batch.purchased_quantity = qty
+        while batch.available_quantity < 0:
+            line = batch.deallocate_one()
+            self.events.append(events.AllocationRequired(order_id=line.order_id, sku=line.sku, qty=line.qty))
