@@ -13,6 +13,7 @@ Book by Harry Percival and Bob Gregory
 - [Chapter 6: Unit of Work Pattern](#chapter-6-unit-of-work-pattern)
 - [Chapter 7: Aggregates and Consistency Boundaries](#chapter-7-aggregates-and-consistency-boundaries)
 - [Chapter 8: Events and the Message Bus](#chapter-8-events-and-the-message-bus)
+- [Chapter 9: Going to Town the Message Bus](#chapter-9-going-to-town-the-message-bus)
 
 ## Introduction
 
@@ -320,3 +321,18 @@ Domain Events and the Message Bus Recap:
   to every handler is annoying, so we can tidy up by making our unit of work responsible for raising events that were
   raised by loaded objects. This is the most complex design and might rely on ORM magic, but it is clean and easy to use
   once set up.
+
+## Chapter 9: Going to Town the Message Bus
+
+If we rethink our API calls as capturing events, the service-layer functions can be event handlers too, and we no longer
+need to make a distinction between internal and external event handlers.
+
+Multiple database transactions can cause integrity issues. Something could happen that means the first transaction
+completes but the second one does not.
+
+Events are simple dataclasses that define the data structures for inputs and internal messages within our system. This
+is quite powerful from a DDD standpoint, since events often translate very well into business language.
+
+Handlers are the way we react to the events. They can call down to our model or call out to external services. We can
+define multiple handlers for a single event if we want to. Handlers can also raise other events. This allows us to be
+very granular about what a handler does and really stick to the SRP.
