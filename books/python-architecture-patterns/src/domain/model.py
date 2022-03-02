@@ -114,6 +114,12 @@ class Product(SQLModel, table=True):
             return None
         batch.allocate(order_line)
         self.version_number += 1
+        self.messages.append(events.Allocated(
+            order_id=order_line.order_id,
+            sku=order_line.sku,
+            qty=order_line.qty,
+            batch_ref=batch.reference
+        ))
         return batch.reference
 
     def change_batch_quantity(self, ref: str, qty: int):
