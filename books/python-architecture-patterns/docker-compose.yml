@@ -1,14 +1,37 @@
 version: "3.9"
 services:
-  architecture:
+
+  redis_pubsub:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: allocation-image
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      - DB_HOST=postgres
+      - DB_PASSWORD=abc123
+      - REDIS_HOST=redis
+      - PYTHONDONTWRITEBYTECODE=1
+    entrypoint:
+      - python
+      - src/redis_consumer.py
+
+  api:
+    image: allocation-image
     build:
       context: .
       dockerfile: Dockerfile
     depends_on:
-      - postgres
+      - redis_pubsub
     environment:
       - DB_HOST=postgres
       - DB_PASSWORD=abc123
+      - API_HOST=api
+      - REDIS_HOST=redis
+      - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
     command: uvicorn src.app:api --host 0.0.0.0 --port 80 --reload
     ports:
       - "5005:80"
@@ -20,3 +43,8 @@ services:
       - POSTGRES_PASSWORD=abc123
     ports:
       - "54321:5432"
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "63791:6379"

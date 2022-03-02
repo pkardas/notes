@@ -1,11 +1,14 @@
-import time
-
 import pytest
+import redis
 from sqlmodel import (
     Session,
     create_engine,
 )
 from starlette.testclient import TestClient
+from tenacity import (
+    retry,
+    stop_after_delay,
+)
 
 from src import config
 from src.adapters.orm import (
@@ -30,14 +33,15 @@ def session(in_memory_db):
     clean_db_and_tables(in_memory_db)
 
 
+@retry(stop=stop_after_delay(10))
 def wait_for_postgres_to_come_up(engine):
-    deadline = time.time() + 10
-    while time.time() < deadline:
-        try:
-            return engine.connect()
-        except Exception:
-            time.sleep(0.5)
-    pytest.fail("Postgres never came up")
+    engine.connect()
+
+
+@retry(stop=stop_after_delay(10))
+def wait_for_redis_to_come_up():
+    r = redis.Redis(**config.get_redis_host_and_port())
+    return r.ping()
 
 
 @pytest.fixture(scope="session")

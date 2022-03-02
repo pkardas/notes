@@ -2,10 +2,8 @@ import json
 from datetime import date
 from uuid import uuid4
 
-from src.domain.model import (
-    Batch,
-    OrderLine,
-)
+from src.domain.model import OrderLine
+from tests.e2e.api_client import post_to_add_batch
 
 
 def random_suffix():
@@ -22,11 +20,6 @@ def random_batch_ref(name=''):
 
 def random_order_id(name=''):
     return f"order-{name}-{random_suffix()}"
-
-
-def post_to_add_batch(client, ref, sku, qty, eta):
-    response = client.post("/add_batch", json=json.loads(Batch(reference=ref, sku=sku, purchased_quantity=qty, eta=eta).json()))
-    assert response.status_code == 200
 
 
 def test_happy_path_returns_200_and_allocated_batch(client):

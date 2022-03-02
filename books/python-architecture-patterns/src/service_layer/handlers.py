@@ -1,4 +1,7 @@
-from src.adapters import email
+from src.adapters import (
+    email,
+    redis_publisher,
+)
 from src.domain import (
     commands,
     events,
@@ -49,3 +52,7 @@ def change_batch_quantity(command: commands.ChangeBatchQuantity, uow: AbstractUn
 
 def send_out_of_stock_notification(event: events.OutOfStock, uow: AbstractUnitOfWork):
     email.send_mail("stock@made.com", f"Out of stock for {event.sku}")
+
+
+def publish_allocated_event(event: events.Allocated, uow: AbstractUnitOfWork):
+    redis_publisher.publish("line_allocated", event)

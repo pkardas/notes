@@ -362,3 +362,36 @@ We raise events about an aggregate after we persist our state to the database. I
 from the commands that raised them.
 
 Tenacity is a Python library that implements common patterns for retrying.
+
+## Chapter 11: Event-Driven Architecture: Using Events to Integrate Microservices
+
+Often, first instinct when migrating an existing application to microservices, is to split system into _nouns_.
+
+Style of architecture, where we create a microservice per database table and treat out HTTP APIa as CRUD interfaces to
+anemic models, is the most common initial way for people to approach service-oriented design. This works fine for
+systems that are very simple, but it can quickly degrade into a distributed ball of mud.
+
+WHen two things have to be changed together, we say that they are coupled. We can never completely avoid coupling,
+except by having our software not talk to any other software. What we want is to avoid inappropriate coupling.
+
+How do we get appropriate coupling? We should think in terms of verbs, not nouns. Our domain model is about modeling a
+business process. It is not a static data about a thing, it is a model of a verb.
+
+Instead of thinking about a system for orders and a system for batches, we think about a system for allocating and
+ordering.
+
+Microservices should be consistency boundaries. That means we don't need to rely on synchronous calls.Each service
+accepts commands from the outside world and raises events to record the result. Other services can listen to those
+events to trigger the next steps in the workflow.
+
+Things can fail independently, it is easier to handle degraded behavior - we can still take orders if the allocation
+service is having a bad day. Secondly, we are reducing the strength of coupling between our systems. If we need to
+change the order of operations or to introduce new steps in the process, we can do that locally.
+
+Events can come from the outside, but they can also be published externally.
+
+> Event notification is nice because it implies a low level of coupling, and is pretty simple to set up. It can become
+> problematic, however, if there really is a logical flow that runs over various event notifications. It can be hard to
+> see such flow as it is not explicit in any program text. This can make it hard to debug and modify.
+
+~ Martin Fowler.
