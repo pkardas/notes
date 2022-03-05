@@ -16,6 +16,12 @@ class Allocated(Event):
     batch_ref: str
 
 
-class BatchQuantityChanged(BaseModel):
+class Deallocated(Event):
+    order_id: str
+    sku: str
+    qty: int
+
+
+class BatchQuantityChanged(Event):
     batch_ref: str
     qty: int

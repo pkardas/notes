@@ -15,6 +15,8 @@ Book by Harry Percival and Bob Gregory
 - [Chapter 8: Events and the Message Bus](#chapter-8-events-and-the-message-bus)
 - [Chapter 9: Going to Town the Message Bus](#chapter-9-going-to-town-the-message-bus)
 - [Chapter 10: Commands and Command Handler](#chapter-10-commands-and-command-handler)
+- [Chapter 11: Event-Driven Architecture: Using Events to Integrate Microservices](#chapter-11-event-driven-architecture-using-events-to-integrate-microservices)
+- [Chapter 12: Command-Query Responsibility Segregation (CQRS)](#chapter-12-command-query-responsibility-segregation-cqrs)
 
 ## Introduction
 
@@ -380,7 +382,7 @@ business process. It is not a static data about a thing, it is a model of a verb
 Instead of thinking about a system for orders and a system for batches, we think about a system for allocating and
 ordering.
 
-Microservices should be consistency boundaries. That means we don't need to rely on synchronous calls.Each service
+Microservices should be consistency boundaries. That means we don't need to rely on synchronous calls. Each service
 accepts commands from the outside world and raises events to record the result. Other services can listen to those
 events to trigger the next steps in the workflow.
 
@@ -395,3 +397,40 @@ Events can come from the outside, but they can also be published externally.
 > see such flow as it is not explicit in any program text. This can make it hard to debug and modify.
 
 ~ Martin Fowler.
+
+## Chapter 12: Command-Query Responsibility Segregation (CQRS)
+
+Reads (queries) and writes (commands) are different, so they should be treated differently.
+
+Most users are not going to buy your product, they are just viewers. We can make reads eventually consistent in order to
+make them perform better.
+
+All distributed systems are inconsistent. As soon as you have a web server and two customers, you have the potential for
+stale data.No matter what we do, we are always going to find that our software systems are inconsistent with reality,
+and so we will always need business process to cope with these edge cases. It is OK to trade performance for consistency
+on the read side, because stale data is essentially unavoidable.
+
+READS: Simple read, highly cacheable, can be stale.
+
+WRITE: Complex business logic, uncacheable, must be transactionally consistent.
+
+Post/Redirect/Get Pattern - In this technique, a web endpoint accepts an HTTP POST and responds with a redirect to see
+the result. For example, we might accept a POST to /batches to create a new batch and redirect user to /batches/123 to
+see their newly created batch. This approach fixes the problems that arise whe users refresh the results page in their
+browser. It can lead to our users double-submitting data and thus buying two sofas when they needed only one. This
+technique is a simple example of CQS. In CQS we follow one simple rule - functions should either modify state or answer
+questions. We can apply the same design by returning 201 Created or 202 Accepted, with a Location header containing the
+URI of our new resources.
+
+ORM can expose us to performance problems. SELECT N+1 Problem is a common performance problem with ORMs - when
+retrieving a list of objects, your ORM will often perform an initial query to get all IDs of the objects it needs, and
+then issue individual queries for each object to retrieve their attributes. This is especially likely if there are any
+foreign-key relationships on your objects.
+
+Even with well-tuned indexes, a relational database uses a lot of CPU to perform joins. The fastest queries will always
+be `SELECT * FROM table WHERE condition`. More than raw speed, this approach buys us scale. Read-only stores can be
+horizontally scaled out.
+
+Read model can be implemented using Redis.
+
+As domain model becomes richer and more complex, a simplified read model become compelling.
