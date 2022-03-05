@@ -26,7 +26,7 @@ def test_change_batch_quantity_leading_to_allocation(client):
     post_to_add_batch(client=client, ref=later_batch, sku=sku, qty=10, eta=date(2021, 1, 2))
 
     response = post_to_allocate(client=client, order_id=order_id, sku=sku, qty=10)
-    assert response.json()["batch_ref"] == earlier_batch
+    assert response.status_code == 200
 
     subscription = redis_client.subscribe_to("line_allocated")
 
