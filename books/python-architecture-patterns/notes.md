@@ -17,6 +17,7 @@ Book by Harry Percival and Bob Gregory
 - [Chapter 10: Commands and Command Handler](#chapter-10-commands-and-command-handler)
 - [Chapter 11: Event-Driven Architecture: Using Events to Integrate Microservices](#chapter-11-event-driven-architecture-using-events-to-integrate-microservices)
 - [Chapter 12: Command-Query Responsibility Segregation (CQRS)](#chapter-12-command-query-responsibility-segregation-cqrs)
+- [Chapter 13: Dependency Injection (and Bootstrapping)](#chapter-13-dependency-injection-and-bootstrapping)
 
 ## Introduction
 
@@ -434,3 +435,23 @@ horizontally scaled out.
 Read model can be implemented using Redis.
 
 As domain model becomes richer and more complex, a simplified read model become compelling.
+
+## Chapter 13: Dependency Injection (and Bootstrapping)
+
+Mocks tightly couple us to the implementation. By choosing to monkeypatch `email.send_mail`, we are tied to
+doing `import email`, and if we ever want to do `from email import send_mail`, we will have to change all our mocks.
+
+Declaring explicit dependencies is unnecessary, and using them would make our application code marginally more complex.
+But in return we would get tests that are easier to write and manage.
+
+> Explicit is better than implicit.
+
+Putting all the responsibility for passing dependencies to the right handler onto the message bus feels like a violation
+of the SRP. Instead, we will reach for a pattern called Composition Root (a bootstrap script), and we will do a bit of "
+manual DI" (dependency inversion without a framework).
+
+Setting up dependency injection is just one of many typical setup activities that you need to do when starting your app.
+Putting this all together into a bootstrap script is often a good idea.
+
+The bootstrap is also good as a place to provide sensible default configuration for your adapters, and as a single place
+to override those adapters with fakes for your tests.

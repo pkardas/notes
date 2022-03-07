@@ -9,10 +9,12 @@ services:
     depends_on:
       - postgres
       - redis
+      - mailhog
     environment:
       - DB_HOST=postgres
       - DB_PASSWORD=abc123
       - REDIS_HOST=redis
+      - EMAIL_HOST=mailhog
       - PYTHONDONTWRITEBYTECODE=1
     entrypoint:
       - python
@@ -30,6 +32,7 @@ services:
       - DB_PASSWORD=abc123
       - API_HOST=api
       - REDIS_HOST=redis
+      - EMAIL_HOST=mailhog
       - PYTHONUNBUFFERED=1
       - PYTHONDONTWRITEBYTECODE=1
     command: uvicorn src.app:api --host 0.0.0.0 --port 80 --reload
@@ -48,3 +51,9 @@ services:
     image: redis:alpine
     ports:
       - "63791:6379"
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "11025:1025"
+      - "18025:8025"
