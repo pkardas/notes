@@ -16,6 +16,8 @@ services:
       - REDIS_HOST=redis
       - EMAIL_HOST=mailhog
       - PYTHONDONTWRITEBYTECODE=1
+    volumes:
+      - ./:/src
     entrypoint:
       - python
       - src/redis_consumer.py
@@ -27,6 +29,8 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - redis_pubsub
+    volumes:
+      - ./:/src
     environment:
       - DB_HOST=postgres
       - DB_PASSWORD=abc123

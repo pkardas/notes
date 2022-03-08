@@ -4,9 +4,11 @@
 
 In progress:
 
-👀 [Architecture Patterns with Python](books/python-architecture-patterns/notes.md)
+👀 [The Pragmatic Programmer](books/pragmatic-programmer.md)
 
 Finished:
+
+✅ [Architecture Patterns with Python](books/python-architecture-patterns/notes.md)
 
 ✅ [Clean Agile: Back to Basics](books/clean-agile.md)
 
@@ -31,8 +33,6 @@ Finished partially:
 [Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems](books/hands-on-ml.md)
 
 Queue:
-
-[The Pragmatic Programmer](books/pragmatic-programmer.md)
 
 [Cracking the Coding Interview](books/cracking-coding-interview/notes.md)
 
