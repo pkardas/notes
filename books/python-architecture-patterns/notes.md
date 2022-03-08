@@ -18,6 +18,8 @@ Book by Harry Percival and Bob Gregory
 - [Chapter 11: Event-Driven Architecture: Using Events to Integrate Microservices](#chapter-11-event-driven-architecture-using-events-to-integrate-microservices)
 - [Chapter 12: Command-Query Responsibility Segregation (CQRS)](#chapter-12-command-query-responsibility-segregation-cqrs)
 - [Chapter 13: Dependency Injection (and Bootstrapping)](#chapter-13-dependency-injection-and-bootstrapping)
+- [Epilogue](#epilogue)
+- [Appendix](#appendix)
 
 ## Introduction
 
@@ -455,3 +457,50 @@ Putting this all together into a bootstrap script is often a good idea.
 
 The bootstrap is also good as a place to provide sensible default configuration for your adapters, and as a single place
 to override those adapters with fakes for your tests.
+
+## Epilogue
+
+Making complex changes to a system is often an easier sell if you link it to feature work. Perhaps you are launching a
+new product or opening your service to new markets? This is the right time to spend engineering resources on fixing the
+foundations. With a six-month project to deliver, it is easier to make the argument for three weeks of cleanup work.
+
+The Strangler Fig pattern involves creating a new system around the edges of an old system, while keeping it running.
+Bits of old functionality are gradually intercepted and replaced, until the old system is left doing nothing at all and
+can be switched off.
+
+Focus on a specific problem and ask yourself how you can put the relevant ideas to use, perhaps in an initially limited
+and imperfect fashion.
+
+Reliable messaging is hard: Redis pub/sub is not reliable and should not be used as a general-purpose messaging tool.
+
+We explicitly choose small, focused transactions that can fail independently.
+
+## Appendix
+
+- Entity - A domain object whose attributes may change but that has a recognizable identity over time.
+- Value object - An immutable domain object whose attributes entirely define it. It is fungible with other identical
+  objects.
+- Aggregate - Cluster of associated objects that we treat as a unit for the purpose of data changes. Defines and
+  enforces a consistency boundary.
+- Event - Represents something that happened.
+- Command - Represents a job the system should perform.
+- Unit of work - Abstraction around data integrity. Each unit of work represents an atomic update. Makes repository
+  available. Tracks new events on retrieved aggregates.
+- Repository - Abstraction around persistent storage. Each aggregate has its own repository.
+
+Docker: Mounting our source and test code as `volumes` means we don;t need to rebuild our containers every time we make
+a code change.
+
+Postel's Law (robustness principle):
+
+> Be liberal in what you accept, and conservative in what you emit
+
+Tolerant Reader Pattern: Validate as little as possible. Read only the fields you need, and don't overspecify their
+contents. This will help your system stay robust when other systems change over time. Resist the temptation to share
+message definitions between systems: instead make it easy to define the data you depend on.
+
+If you are in change of an API that is open to the public on the big bad internet, there might be good reasons to be
+more conservative about what inputs you allow.
+
+If validation is needed, do it at the edge of the system in order to avoid polluting domain model. Bear in mind that
+invalid data wandering through your system is a time bomb, the deeper it gets, the more damage it can do.

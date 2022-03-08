@@ -1,8 +1,8 @@
 FROM python:3.10.2
 
-WORKDIR /architecture
+WORKDIR /src
 
-ENV PYTHONPATH "${PYTHONPATH}:/architecture"
+ENV PYTHONPATH "${PYTHONPATH}:/src"
 
 COPY requirements.txt .
 COPY setup.cfg .
