@@ -153,7 +153,7 @@ Agile is important because of professionalism and the reasonable expectations fr
   at stake.
 - Reasonable Expectations - meeting expectations is one of primary goals of Agile development.
     - we will not ship sh*t - Agile's emphasis on Testing, Refactoring, Simple Design and customer feedback is the
-      obvious remedy fo shipping bad code.
+      obvious remedy for shipping bad code.
     - continuous technical readiness - system should be technically (solid enough to be deployed) deployable at the end
       of every iteration.
     - stable productivity - big redesigns are horrifically expensive and seldom are deployed. Developers instead, should
@@ -331,7 +331,7 @@ is your job to husband your resources to ensure that you endure the end.
 The most precious ingredient in the life of a programmer is sufficient sleep. Make sure you know how many hours of sleep
 your body needs, and then prioritize those hours. Those hours will more than pay themselves back.
 
-No one owns the code in an Agile project. The code is owned by the team as a whole. Any member fo the team can check and
+No one owns the code in an Agile project. The code is owned by the team as a whole. Any member of the team can check and
 improve any module in the project at any time. The team owns the code collectively. Collective Ownership does not mean
 that you cannot specialize. However, even as you specialize, you must also generalize. Divide your work between your
 specialty and other areas of the code. Maintain your ability to work outside your specialty.
@@ -567,7 +567,7 @@ We are responsible for preparing the next generation of developers.
 behave ethically and respectfully, advising and working with our clients and employers in the best way possible. We will
 expect a relationship of mutual respect and professionalism.
 
-We will lok at our work not as something we need to fo as part of a job but as a professional service we provide. We
+We will look at our work not as something we need to do as part of a job but as a professional service we provide. We
 will take ownership of our won careers, investing our won time and money to get better at what we do. Craftspeople
 strive to do the best job they can, not because someone is paying, but based on a desire to do things well.
 
@@ -580,7 +580,7 @@ is to let other people decide how they work.
 
 Conversations between developers and business should be about why, what and when - not how.
 
-VCraftsmanship promotes software development as a profession. A profession is part of who we are. A job is a thing that
+Craftsmanship promotes software development as a profession. A profession is part of who we are. A job is a thing that
 we do but is not part of who we are. A profession is something we invest in. Ot is something we want to get better at.
 We want to gain more skills and have a long-lasting and fulfilling career.
 
