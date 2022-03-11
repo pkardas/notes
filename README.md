@@ -34,6 +34,16 @@ Finished partially:
 
 Queue:
 
+[Python Testing with Pytest](books/pytest.md)
+
+[Fundamentals of Software Architecture](books/fundamentals-of-architecture.md)
+
+[Software Architecture: The Hard Parts](books/architecture-hard-parts.md)
+
+[Understanding Distributed Systems](books/understanding-distributed-systems.md)
+
+[Kubernetes in Action](books/kubernetes.md)
+
 [Cracking the Coding Interview](books/cracking-coding-interview/notes.md)
 
 ### Case Studies
