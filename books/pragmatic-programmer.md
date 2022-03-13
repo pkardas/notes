@@ -46,3 +46,52 @@ projects overruns happen a day at a time. It is often the accumulation of small 
 Situational awareness (is there anything out of context, anything that looks like it doesn't belong), a technique
 practiced by folks ranging from Boy and Girl Scouts and Navy SEALs. Get in a habit of really looking and noticing your
 surroundings.
+
+**Make quality a requirements issue.** Involve your users in determining the project's real quality requirements.
+
+> An investment in knowledge always pays the best interest ~ Benjamin Franklin
+
+**Invest regularly in your knowledge portfolio.** Your knowledge and experience are your most important day-to-day
+professional assets. Knowledge may become out of date, as the value of your knowledge declines, so does your value to
+your company or client.
+
+1. Invest regularly - invest in knowledge regularly, even small amounts.
+2. Diversify - the more different things you know, the more valuable you are.
+3. Manage risk - don't put all your technical eggs in one basket.
+4. Buy low, sell high - learning an emerging technology before it becomes popular can be just as hard as finding an
+   undervalues stock, but the payoff can be just as rewarding.
+5. Review and rebalance - that hot technology you started investing last month might be stone-cold by now.
+
+Goals:
+
+- learn at least one programming language per year - by learning several approaches, you can broaden your thinking
+- read a technical book each month
+- read nontechnical books too - don't forget the human side of the equation, as that requires an entirely different
+  skill set
+- take classes - look for interesting courses at local or online college
+- participate in local user groups and meetups - isolation can be deadly to your career, find out what people are
+  working on outside of your company
+- experiment with different environments - try Linux, Windows, Mac, a new IDE, ...
+- stay current - read news and posts online on technology different from that of your current project
+
+**Critically analyze what you read and hear.** You need to ensure that the knowledge in your portfolio is accurate and
+unswayed by either vendor or media hype.
+
+_Critical Thinking Tutorial:_
+
+1. Ask the "Five Whys" - ask why at least 5 times. Ask a question and get an answer. Dig deeper by asking "why".
+2. Who does this benefit? - "follow the money" can be a very helpful path to analyze. The benefits to someone else or
+   another organization may be aligned with your won, or not.
+3. What is the context? - everything occurs in its own context. Good for someone, doesn't mean it is good for you.
+4. WHy is this a problem? - is there an underlying model? How does the underlying model work?
+
+**English is just another programming language.** Having the best ideas, the finest code, or the most pragmatic thinking
+is ultimately sterile unless you can communicate with other people.
+
+**It is both what you say and the way you say it.** There is no point in having great ideas if you don't communicate
+them effectively. The more effective communication, the more influential you become.
+
+**Build documentation in, don't bolt it on.** It is easy to produce good-looking documentation from the comments in
+source code, and we recommend adding comments to modules and exported functions to give other developers a leg up when
+they come to use it. Restrict your non-API commenting to discussing why something is done, its purpose and its goal. The
+code already shows how it is done, so commenting on this is redundant - and is a violation of the DRY principle.
