@@ -5,6 +5,7 @@
 Book by David Thomas and Andrew Hunt
 
 - [Chapter 1: A Pragmatic Philosophy](#chapter-1-a-pragmatic-philosophy)
+- [Chapter 2: A Pragmatic Approach](#chapter-2-a-pragmatic-approach)
 
 ## Chapter 1: A Pragmatic Philosophy
 
@@ -95,3 +96,29 @@ them effectively. The more effective communication, the more influential you bec
 source code, and we recommend adding comments to modules and exported functions to give other developers a leg up when
 they come to use it. Restrict your non-API commenting to discussing why something is done, its purpose and its goal. The
 code already shows how it is done, so commenting on this is redundant - and is a violation of the DRY principle.
+
+## Chapter 2: A Pragmatic Approach
+
+**Good design is easier to change than bad design.** A thing is well-designed if it adapts to the people who use it.
+Code should be Easy To Change. That's why SRP, decoupling, naming, ... are important, because of ETC.
+
+**DRY - Don't Repeat Yourself.** Every piece of knowledge must have a single, unambiguous, authoritative representation
+within a system.
+
+Most people maintenance begins when an application is released, that maintenance means fixing bugs and enhancing
+features. This is wrong. Programmers are constantly in maintenance mode. Maintenance is not a discrete activity, but a
+routine part of the entire development process. When we perform maintenance, we have to find and change the
+representation of things. It is easy to duplicate knowledge in the specifications, processes, and programs we develop,
+and when we do so, we invite a maintenance nightmare.
+
+DRY is about the duplication of knowledge, of intent. It is about expressing the same thing in two different places,
+possibly in two totally different ways.
+
+Code may be the same, but the knowledge they represent may be different, and this is not a duplication, that is a
+coincidence.
+
+> All services offered by a module should be visible through a uniform notation, which does not betray whether they are
+> implemented through storage of through computation.
+
+**Make it easy to reuse.** You should foster an environment where it is easier to find and reuse existing stuff than to
+write it yourself. If it isn't easy, people will not do it. And if you fail to reuse, you risk duplicating knowledge. 
