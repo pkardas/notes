@@ -121,4 +121,30 @@ coincidence.
 > implemented through storage of through computation.
 
 **Make it easy to reuse.** You should foster an environment where it is easier to find and reuse existing stuff than to
-write it yourself. If it isn't easy, people will not do it. And if you fail to reuse, you risk duplicating knowledge. 
+write it yourself. If it isn't easy, people will not do it. And if you fail to reuse, you risk duplicating knowledge.
+
+Two or more things are orthogonal if changes in one do not affect any of the others. In a well-designed system, the
+database code will be orthogonal to the user interface - you can change the interface without affecting the database,
+and swap databases without changing the interface. Non-orthogonal systems are more complex to change and control.
+
+**Eliminate effects between unrelated things.** We want to design components that are self-contained - independent and
+with a single, well-defined purpose.
+
+When components are well isolated from one another, you know that you can change one without having to worry about the
+rest. As long as you don't change that component's external interfaces, you can be confident that you will not cause
+problems that ripple through the entire system.
+
+Modular, component-based, layered systems -> these are orthogonal systems.
+
+- Keep your code decoupled - write shy modules, modules that don;t reveal anything unnecessary to other modules and that
+  don't rely on other modules' implementations.If you need to change an object's state, get the other object to do it
+  for you.
+- Avoid global data - in general, your code is easier to understand and maintain if you explicitly pass any required
+  context into your modules.
+- Avoid similar functions - duplicate code is a symptom of structural problems.
+
+**There are no final decisions.** The mistake lies in assuming that any decision is cast in stone - and not in preparing
+for the contingencies that might arise. Think of decisions as being written in the sand at the beach. A big wave can
+come along and wipe them out at any time.
+
+**Forgo following fads.** Choose architecture based on fundamentals, not fashion. No one knows what the future may hold. 
