@@ -147,4 +147,31 @@ Modular, component-based, layered systems -> these are orthogonal systems.
 for the contingencies that might arise. Think of decisions as being written in the sand at the beach. A big wave can
 come along and wipe them out at any time.
 
-**Forgo following fads.** Choose architecture based on fundamentals, not fashion. No one knows what the future may hold. 
+**Forgo following fads.** Choose architecture based on fundamentals, not fashion. No one knows what the future may hold.
+
+**Use tracer bullets to fin the target.** Look for important requirements, the one that define the system. Look for
+areas where you have doubts, and where you see the biggest risks. Then prioritize your development so that these are the
+first areas you code. Benefits of the tracer code:
+
+- Users get to see something working early.
+- Developers build a structure to work in.
+- You have an integration platform.
+- You have something to demonstrate.
+- You have a better feel for progress.
+
+Prototyping generates disposable code. Tracer code is lean but complete, and forms part of the skeleton of the final
+system. Think of prototyping as the reconnaissance and intelligence gathering that takes place before a single tracer
+bullet is fired.
+
+Prototypes are designed to answer just a few questions, so they are much cheaper and faster to develop than applications
+that go into production. You can prototype: architecture, new functionality in an existing system, structure or contents
+of external data, third-party tools or components, performance issues, user interface design.
+
+**Prototype to learn.** Prototyping is a learning experience. Its value lies not in the code produced, but in the lesson
+learned. That's really the point of prototyping. It is easy to become mislead by the apparent completeness of a
+demonstrated prototype, and project sponsors or management may insist on deploying the prototype. Remind them that you
+can build a great prototype of a new car out of balsa wood and duct tape, but you wouldn't try to drive it in rush-hour
+traffic.
+
+If you feel there is a strong possibility in your environment or culture that the purpose of prototype code may be
+misinterpreted, you may be better off with the tracer bullet approach.
