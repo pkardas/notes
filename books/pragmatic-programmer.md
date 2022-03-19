@@ -175,3 +175,22 @@ traffic.
 
 If you feel there is a strong possibility in your environment or culture that the purpose of prototype code may be
 misinterpreted, you may be better off with the tracer bullet approach.
+
+**Program close to the problem domain.** Try to write code using the vocabulary of the application domain.
+
+**Estimate to avoid surprises.** Estimate before you start. You will spot potential problems up front.
+
+Basic estimating trick: ask someone who's already done it. Before you get too committed to model building, cast around
+for someone who has been in a similar situation in teh past. See how their problems got resolved.
+
+Model building can be both creative and useful in the long term. Often, the process of building the model leads to
+discoveries of underlying patterns and processes that weren't apparent on the surface. Building the model introduces
+inaccuracies into the estimating process.
+
+_PERT - Program Evaluation Review Technique_ - an estimating methodology, every PERT task has an optimistic, a most
+likely, and a pessimistic estimate. Using a range of values like this is a great way to avoid one of the most common
+causes of estimation error - padding a number because you are unsure.
+
+**Iterate the schedule with the code.** Make the management understand that the team, their productivity, and the
+environment will determine the schedule. By formalizing this, and refining the schedule as part of each iteration, you
+will be giving them the most accurate scheduling estimates you can.
