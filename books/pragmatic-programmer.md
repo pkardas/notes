@@ -6,6 +6,7 @@ Book by David Thomas and Andrew Hunt
 
 - [Chapter 1: A Pragmatic Philosophy](#chapter-1-a-pragmatic-philosophy)
 - [Chapter 2: A Pragmatic Approach](#chapter-2-a-pragmatic-approach)
+- [Chapter 3: The Basic Tools](#chapter-3-the-basic-tools)
 
 ## Chapter 1: A Pragmatic Philosophy
 
@@ -194,3 +195,32 @@ causes of estimation error - padding a number because you are unsure.
 **Iterate the schedule with the code.** Make the management understand that the team, their productivity, and the
 environment will determine the schedule. By formalizing this, and refining the schedule as part of each iteration, you
 will be giving them the most accurate scheduling estimates you can.
+
+## Chapter 3: The Basic Tools
+
+Tools amplify your talent. The better your tools, and the better your tools, and the better you know how to use them,
+the more productive you can be.
+
+**Keep knowledge in plain text.** Text will not become obsolete. Make plain text understandable to humans.
+
+**Always use version control.** Make sure that everything is under version control: documentation, phone number lists,
+memos to vendors, makefiles, build and release procedures - everything.
+
+**Fix the problem, not the blame.** It doesn't really matter whether the bug is your fault or someone else's.
+
+**Don't panic.** The first rule of debugging. Don't waste a single neutron on the train of thought that begins "but that
+can't happen" because clearly it can, and has.
+
+**Failing test before fixing code.** We want a bug that can be reproduced with a single command. It is a lot harder to
+fix a bug if you have to go through 15 steps to get to the point where the bug shows up.
+
+**Read the damn error message.** Most exceptions tell both what failed and where it failed.
+
+Binary search can be used for finding releases that caused the error, determining minimal subset of values that cause
+program to fail.
+
+**Select isn't broken.** It is possible that a bug exists in the OS, the compiler, or a third-party product - but this
+should not be your first thought. It is much more likely that the bug exists in the application code under development.
+
+**Don't assume it - prove it.** Don't gloss over a routine or piece of code involved in the bug because you "know" it
+works. Prove it. Prove it in this context, with this data, with these boundary conditions.
