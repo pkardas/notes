@@ -7,6 +7,7 @@ Book by David Thomas and Andrew Hunt
 - [Chapter 1: A Pragmatic Philosophy](#chapter-1-a-pragmatic-philosophy)
 - [Chapter 2: A Pragmatic Approach](#chapter-2-a-pragmatic-approach)
 - [Chapter 3: The Basic Tools](#chapter-3-the-basic-tools)
+- [Chapter 4: Pragmatic Paranoia](#chapter-4-pragmatic-paranoia)
 
 ## Chapter 1: A Pragmatic Philosophy
 
@@ -224,3 +225,24 @@ should not be your first thought. It is much more likely that the bug exists in 
 
 **Don't assume it - prove it.** Don't gloss over a routine or piece of code involved in the bug because you "know" it
 works. Prove it. Prove it in this context, with this data, with these boundary conditions.
+
+## Chapter 4: Pragmatic Paranoia
+
+**You can't write perfect software.** Perfect software doesn't exist. Pragmatic Programmers don't trust themselves.
+Knowing that no one writes perfect code, including themselves. Pragmatic Programmers build in defenses against their own
+mistakes.
+
+**Design with contracts.** Be strict in what you will accept before you begin, and promise as little as possible in
+return. Remember, if your contract indicates that you will accept anything and promise the world in return, you have got
+a lot of code to write.
+
+**Crash early.** Don't catch or rescue all exceptions, re-raising them after writing some kind of message. Do not
+eclipse code by the error handling. Without exception handling code is less coupled. Crashing often is the best thing
+you can do. The Erland and Elixir languages embrace this philosophy.
+
+When your code discovers that something that was supposed to be impossible just happened, your program is no longer
+viable. Anything it does from this point forward becomes suspect, so terminate it as soon as possible.
+
+**Use assertions to prevent the impossible.** Whenever you find yourself thinking "but of course that could never
+happen" add code to check it. Assertions are also useful checks on an algorithm's operation. Assertions check for things
+that should never happen. LEAVE ASSERTIONS TURNED ON.
