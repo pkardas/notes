@@ -246,3 +246,13 @@ viable. Anything it does from this point forward becomes suspect, so terminate i
 **Use assertions to prevent the impossible.** Whenever you find yourself thinking "but of course that could never
 happen" add code to check it. Assertions are also useful checks on an algorithm's operation. Assertions check for things
 that should never happen. LEAVE ASSERTIONS TURNED ON.
+
+**Finish what you start.** It simply means that the function or object that allocates a resource should be responsible
+for deallocating it.
+
+**Take small steps - always.** Always take small, deliberate steps, checking for feedback and adjusting before
+proceeding. Consider that the rate of feedback is your speed limit. You never take on a step or a task that is "too big"
+. The more you have to predict what the future will look like, the more risk you incur that you will be wrong. Instead
+of wasting effort designing for an uncertain future, you can always fall back on designing your code to be replaceable.
+
+Making code replaceable will also help with cohesion, coupling, and DRY, leading to a better design overall.
