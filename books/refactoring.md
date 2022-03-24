@@ -22,7 +22,8 @@ Book by Martin Fowler (Second Edition)
 A poorly designed system is hard to change - because it is hard to figure out what to change and hoe these changes will
 interact with existing code.
 
-> When you have to add a feature to a program but the code is not structured in a convenient way, first refactor the program to make it easy to add the feature, then add the feature.
+> When you have to add a feature to a program but the code is not structured in a convenient way, first refactor the
+> program to make it easy to add the feature, then add the feature.
 
 Before making any changes, start with self-checking tests (assertions checked by testing framework). Tests can be
 considered as bug detectors, they should catch any change that introduces bugs.
@@ -42,7 +43,9 @@ Loop, Slide Statements.
 Think of the best name at the moment and rename it later. Breaking large functions into smaller, only adds value if the
 names are good.
 
-> Programmers are poor judges of how code actually performs. Many of our intuitions are broken by clever compilers, modern caching techniques, .... The performance of software usually depends on just a few parts of the code, and changes anywhere else don't make an appreciable difference.
+> Programmers are poor judges of how code actually performs. Many of our intuitions are broken by clever compilers,
+> modern caching techniques, .... The performance of software usually depends on just a few parts of the code, and
+> changes anywhere else don't make an appreciable difference.
 
 ANYHOW, if refactoring introduces performance slow-downs, finish refactoring first and then do performance tuning.
 
@@ -63,9 +66,9 @@ modify without changing its observable behaviour.
 Refactoring (verb) - to restructure software by applying a series of refactorings without changing its observable
 behaviour.
 
-When doing refactoring, code should not spend much time in a broken state, meaning it allows to stop at any moment even
-if you haven't finished. If someone says their code was broken for couple of days while they are refactoring, you can be
-pretty sure they were not refactoring.
+When doing refactoring, code should not spend much time in a broken state, meaning it allows stopping at any moment even
+if you haven't finished. If someone says their code was broken for a couple of days while they are refactoring, you can
+be pretty sure they were not refactoring.
 
 Two Hats - when developing new functionalities - do not change existing code, when refactoring - do not add new
 functionalities. Swap hats: refactor, add functionality, refactor, ...
@@ -79,17 +82,19 @@ Why should we refactor?
   have to remember every aspect of code, make it easy to understand and decrease load on your brain.
 - helps in finding bugs - clarify the structure, certain assumptions.
 - helps programming faster - adding new features might be difficult in a system full of patches and patches for patches,
-  clear structure allows to add new capabilities faster. Good design allows to quickly find place where a change needs
-  to be made. Also if code is clear, it is less likely to introduce a bug. Code base should be a platform for building
+  clear structure allows adding new capabilities faster. Good design allows to quickly find place where a change needs
+  to be made. Also, if code is clear, it is less likely to introduce a bug. Code base should be a platform for building
   new features for its domain.
 
-> The Rule of Three - The first time you do something, you just do it. The second time you do something similar, you wince at the duplication, but you do the duplicate anyway. The third time you do something similar, you refactor.
+> The Rule of Three - The first time you do something, you just do it. The second time you do something similar, you
+> wince at the duplication, but you do the duplicate anyway. The third time you do something similar, you refactor.
 
-When should we refactoring?
+When should we refactor?
 
 - preparatory refactoring - building a foundation for a new feature.
 
-    - > It is like you want to go 100 km east but instead of traipsing through the woods, you drive 20 kms north to the highway and the you are going 3x the speed you could have if you just went straight there.
+    - > It is like you want to go 100 km east but instead of traipsing through the woods, you drive 20 kms north to the
+      > highway, and then you are going 3x the speed you could have if you just went straight there.
 
 - comprehension refactoring - making code easier to understand. Move understanding of a subject from head to code
   itself.
@@ -105,16 +110,16 @@ When should we refactoring?
 - refactoring in a code review - code reviews help spread knowledge, through a development team. Code may look clear to
   me but not for my team. Code reviews give the opportunity for more people to suggest useful ideas.
 
-Sometimes it easier to rewrite than refactor. The decision to refactor or rewrite requires good judgement and
+Sometimes it is easier to rewrite than refactor. The decision to refactor or rewrite requires good judgement and
 experience.
 
-However, there are couple of problems associated to refactoring:
+However, there are a couple of problems associated to refactoring:
 
 - some people see refactoring as something that is slowing down development (which is not really true), this should be
   explained - the economic benefits of refactoring should always be the driving factor, we refactor because it makes us
   faster to add features and fix bugs.
 - merge conflicts may be painful, especially in a team of multiple full-time developers, suggested approach is to use CI
-  - Continuous Integration - each team member integrates with mainline at least once per day.
+    - Continuous Integration - each team member integrates with mainline at least once per day.
 - to perform refactoring correctly you need to have good tests, code needs to be self-testing, without self-testing code
   refactoring carries high risk of introducing bugs
 - refactoring legacy code is hard, but is a fantastic tool to help understand a legacy system. Legacy code is often
@@ -130,12 +135,12 @@ self-testing code, the second is CI.
 
 Good programmers know that they rarely write clean code the first time around.
 
-IDEs use the syntax tree to analyse and refactor code (eg. changing variable name is on syntax tree level, not on text
+IDEs use the syntax tree to analyse and refactor code (e.g. changing variable name is on syntax tree level, not on text
 level), this makes IDEs more powerful than text editors.
 
 ## Chapter 3: Bad Smells in Code
 
-When you should start refactoring? It is a matter of intuition. However there are some indicators.
+When you should start refactoring? It is a matter of intuition. However, there are some indicators.
 
 MYSTERIOUS NAME - code needs to be mundane and clear, good name can save hours of puzzled incomprehension in the future.
 
@@ -160,7 +165,7 @@ DIVERGENT CHANGE - making changes should be easy, if you need to, for example, e
 financial instrument, something is off.
 
 SHOTGUN SURGERY - every time you make a change, you have to make a lot of little edits to a lot of different classes,
-when changes are all over the place, they are hard to find and it is easy to miss an important change. In such case all
+when changes are all over the place, they are hard to find, and it is easy to miss an important change. In such case all
 fields should be put in a single module.
 
 FEATURE ENVY - for example: a function in one module spends more time communicating with functions or data inside
@@ -168,6 +173,7 @@ another module than it does within its own module - the function clearly wants t
 get it there. Put things together that change together.
 
 DATA CLUMPS - some items enjoy hanging around together, same three or four data items appear together in lots of places
+
 - you can group them together.
 
 PRIMITIVE OBSESSION - many programmers are reluctant to create their own fundamental types which are useful for their
@@ -210,7 +216,7 @@ superfluous.
 Proper refactoring can not be done without proper tests. A suite of tests is a powerful bug detector that decapitates
 the time it takes to find bugs.
 
-TDD allows to concentrate on the interface rather than the implementation, which is a good thing.
+TDD allows concentrating on the interface rather than the implementation, which is a good thing.
 
 Always make sure a test will fail when it should (try to break your code, to see if test fails as well).
 
@@ -264,7 +270,9 @@ the size of parameter lists. Grouping helps to identify new structures.
 COMBINE FUNCTIONS INTO CLASS - when group of functions operate closely together on a common body of data, there is an
 opportunity to form a class.
 
-> Uniform access principle - All services offered by a module should be available through a uniform notation, which does not betray whether they are implemented through storage or through computation. With this, the client of the class can't tell whether the *value* is a field or derived value.
+> Uniform access principle - All services offered by a module should be available through a uniform notation, which does
+> not betray whether they are implemented through storage or through computation. With this, the client of the class
+> can't tell whether the *value* is a field or derived value.
 
 COMBINE FUNCTIONS INTO TRANSFORM - instead of aggregating function into classes you can build functions that are
 enriching existing objects. Transformation is about producing essentially the same thing with some additional
@@ -275,13 +283,13 @@ some processing has 2 stages, make the difference explicit by turning them into 
 
 ## Chapter 7: Encapsulation
 
-ENCAPSULATE RECORD - instead of using plain dictionaries, encapsulate them into object. With object you can hide what is
-stored and provide methods for all the values. The user does not have to care which value is calculated and which is
+ENCAPSULATE RECORD - instead of using plain dictionaries, encapsulate them into object. With object, you can hide what
+is stored and provide methods for all the values. The user does not have to care which value is calculated and which is
 stored. **Dictionaries are useful** in many programming situations **but they are not explicit about their fields**.
 Refactor implicit structures into explicit ones.
 
 ENCAPSULATE COLLECTION - good idea is to ensure that the getter for the collection can not accidentally change it. One
-way to proevent modification of a collection is to use some form of read-only proxy to the collection. Such proxy can
+way to prevent modification of a collection is to use some form of read-only proxy to the collection. Such proxy can
 allow all reads but block any write to the collection. The most popular approach is to provide a getting method for the
 collection, but make it return a copy of underlying collection.
 
@@ -297,7 +305,7 @@ REPLACE PRIMITIVE WITH OBJECT - simple facts can be represented by simple data i
 development proceeds, those simple items aren't so simple anymore. This is one of the most important refactorings.
 Starting with simple wrapping value with the object, you can extend the class with additional behaviours.
 
-REPLACE TEMP WITH QUERY - using temporary variables allows to refer to the value while explaining its meaning and
+REPLACE TEMP WITH QUERY - using temporary variables allows referring to the value while explaining its meaning and
 avoiding repeating the code that calculates it. But while using a variable is handy, it can often be worthwhile to go a
 step further and use a function instead, mostly when the variable needs to be calculated multiple times across the
 class.
@@ -310,7 +318,7 @@ EXTRACT CLASS - split classes containing too much logic into separate classes. G
 Useful test: Ask question: what would happen if you remove a piece of data or a method, what other fields and methods
 would become nonsense?
 
-INLINE CLASS - inverse of *Extract Class*. Generally useful as intermediate step when performing refactoring, eg. you
+INLINE CLASS - inverse of *Extract Class*. Generally useful as intermediate step when performing refactoring, e.g. you
 put all attributes in one class, just to split them later.
 
 HIDE DELEGATE - Example: `person.department.manager` should be replaced with `person.manager` (additional getter hiding
@@ -321,7 +329,7 @@ Sometimes it is easier to call the delegate directly (violation of Law of Demete
 Occasionally Useful Suggestion of Demeter).
 
 SUBSTITUTE ALGORITHM - There are usually several ways to do the same thing, same is with algorithms. When you learn more
-about the problem, you can realise there is an easier way way to do it.
+about the problem, you can realise there is an easier way to do it.
 
 ## Chapter 8: Moving Features
 
@@ -343,16 +351,17 @@ MOVE STATEMENTS TO CALLERS - this is inverse of *Move Statements into Function*.
 we rarely get the boundaries right. Sometimes common behaviour used in several places needs to vary in some of its
 calls, that is why you can move the varying behaviour function to its callers.
 
-REPLACE INLINE CODE WITH FUNCTION CALL - functions allow to package bits of behaviour, this is useful for understanding
-- a named function can explain the purpose of the code rather than its mechanics. Also useful for deduplication.
+REPLACE INLINE CODE WITH FUNCTION CALL - functions allow packaging bits of behaviour, this is useful for understanding
+
+- a named function can explain the purpose of the code rather than its mechanics. Also, useful for deduplication.
 
 SLIDE STATEMENTS - code is easier to understand when things that are related to each other appear together. If several
 lines of code accesses the same data structure, it is best for them to be together rather than intermingled with code
 accessing other data structures. You can also declare the variable just before you first use it.
 
-SPLIT LOOP - you often seen loops that are doing two different things at once just because they can do that with one
-pass trough a loop. But if you are doing two different things in the same loop, then whenever you need to modify the
-loop you have to understand both things. By splitting loop, you ensure you only need to understand the behaviour you
+SPLIT LOOP - you have often seen loops that are doing two different things at once just because they can do that with
+one pass through a loop. But if you are doing two different things in the same loop, then whenever you need to modify
+the loop you have to understand both things. By splitting loop, you ensure you only need to understand the behaviour you
 need to modify. Many programmers are uncomfortable with this refactoring as it forces you to execute the loop twice.
 REMINDER: Once you have your code clear, you can optimise it, and if the loop traversal is a bottleneck, it is easy to
 slam the loops back together. But the actual iteration through even a large list I rarely a bottleneck, and splitting
@@ -364,8 +373,8 @@ from top to bottom to see how objects flow through the pipeline.
 
 REMOVE DEAD CODE - decent compilers will remove unused code. But unused code is still a significant burden when trying
 to understand how the software works. Once code is not used it should be deleted. If you need it sometime in future -
-you have a version control system so you can always dig it out again. Commenting out dead code was once a bad habit, it
-wa useful before version control systeuswere widely used or when they were inconvenient.
+you have a version control system, so you can always dig it out again. Commenting out dead code was once a bad habit, it
+was useful before version control systems were widely used or when they were inconvenient.
 
 ## Chapter 9: Organising Data
 
@@ -375,13 +384,13 @@ them.
 SPLIT VARIABLE - Using a variable for two different things is very confusing for the reader. Any variable with more than
 one responsibility should be replaced with multiple variables, one for each responsibility.
 
-Exception: Collecting variables (eg. `i = i + 1`) - often used for calculating sums, string concatenation, writing to
+Exception: Collecting variables (e.g. `i = i + 1`) - often used for calculating sums, string concatenation, writing to
 stream or adding to a collection - don't split it.
 
 RENAME FIELD - Data structures are the key to understand what is going in inside the system. It is essential to keep
-them clear. Rename fields in classes / records so they are easy to understand.
+them clear. Rename fields in classes / records, so they are easy to understand.
 
-REPLACE DERIVED VARIABLE WITH QUERY - One of biggest sources of problems in software is mutable data. Data changes can
+REPLACE DERIVED VARIABLE WITH QUERY - One of the biggest sources of problems in software is mutable data. Data changes can
 often couple together parts of code in awkward ways, with changes in one part leading to knock-on effects that are hard
 to spot. Remove variables that can be easily calculated. A calculation often makes it clearer what the meaning of the
 data is, and it is being protected by from being corrupted when you fail to update the variable as the source data
@@ -421,8 +430,8 @@ to `result` variable, just to have one single return statement at the end of the
 *// A guard clause is simply a check that immediately exits the function, either with a return statement or an
 exception.*
 
-REPLACE CONDITIONAL WITH POLYMORPHISM - It is possible to put logic in superclasses which allows to reason about it
-without having to worry about the variants. Each variant case can be put in in a subclass. Complex conditional logic can
+REPLACE CONDITIONAL WITH POLYMORPHISM - It is possible to put logic in superclasses which allows reasoning about it
+without having to worry about the variants. Each variant case can be put in a subclass. Complex conditional logic can
 be improved using polymorphism. This feature can be overused, basic conditional logic should use basic conditional
 statements.
 
@@ -432,7 +441,7 @@ captures all the common behaviour, this allows to replace most of special-case c
 that needs special-case processing is null, which is why this pattern is often called the Null Object pattern.
 
 INTRODUCE ASSERTION - Often, sections of code work only if certain conditions are true. Such assumptions are not often
-stated explicitly, but can only be deducted by looking trough an algorithm. Sometimes, these assumptions are stated with
+stated explicitly, but can only be deducted by looking through an algorithm. Sometimes, these assumptions are stated with
 a comment. A better technique is to make the assumption explicit by writing assertion. Failure of an assertion indicates
 a programmer error. Assertions should never be checked by other parts of the system. Assertions should be written that
 the program functions equally correctly if they all removed. Use assertions to check things that need to be true, use
@@ -443,10 +452,10 @@ them when you think they should never fail.
 Modules and functions are building the blocks of our software. APIs are the joints that we use to plug them together.
 Making APIs easy to understand and use is difficult.
 
-SEPARATING QUERY FROM MODIFIER - It is a good idea to to clearly signal the difference between functions with side
+SEPARATING QUERY FROM MODIFIER - It is a good idea to clearly signal the difference between functions with side
 effects and those without. A good rule to follow is that any function that returns value should not have *observable* (
-eg. cache does not count) side effects (command-query separation). Having a function that gives value without observable
-side effects is very valuable because you can call this function as often as you like.
+e.g. cache does not count) side effects (command-query separation). Having a function that gives value without
+observable side effects is very valuable because you can call this function as often as you like.
 
 PARAMETRISE FUNCTION - If you see two functions that carry out very similar logic with different literal values, you can
 remove duplication by using a single function with parameters for the different values.
@@ -477,7 +486,7 @@ force caller to figure out how to provide this value. This complicates life for 
 make life easier for customers).
 
 REMOVE SETTING METHOD - Providing a setting method indicates that a field may be changed. If you don't want that field
-to change once the object is created, do not provide a setting method (and make field immutable). Remove setter to to
+to change once the object is created, do not provide a setting method (and make field immutable). Remove setter to
 make it clear that updates make no sense after construction.
 
 REPLACE CONSTRUCTOR WITH FACTORY FUNCTION - Constructors often come with awkward limitations that aren't there for
@@ -504,7 +513,7 @@ will not be made to the other). Pulling method up means putting method in a pare
 
 PULL UP CONSTRUCTOR BODY - Common constructor behaviour should reside in the superclass.
 
-PUSH DOWN METHOD - (inverse of *Pull Up Method*). If a method is only relevant to some one subclass (or a small
+PUSH DOWN METHOD - (inverse of *Pull Up Method*). If a method is only relevant to someone subclass (or a small
 proportion of subclasses), removing it from the superclass and putting it only on the subclass makes that clearer. You
 can only do this refactoring if the caller knows it is working with a particular subclass - otherwise, use *Replace
 Conditional with Polymorphism* with some placebo behaviour on the superclass.
@@ -513,11 +522,11 @@ PUSH DOWN FIELD - If a field is only used by one subclass (or a small proportion
 subclasses.
 
 REPLACE TYPE CODE WITH SUBCLASS - Instead of using *flag* in the object indicating type of the class (
-eg. `Employe(engineer)`) create specialised superclass.
+e.g. `Employe(engineer)`) create specialised superclass.
 
 REMOVE SUBCLASS - (inverse of *Replace Type Code with Subclasses*). Subclasses are useful, but as software system
-evolves, subclasses can lose their value. A subclass that does too little incurs a cost in understanding that is no
-longer worthwhile. When that time, it is best to remove to remove the subclass, replacing it with a field on its
+evolves, subclasses can lose their value. A subclass that does too little incur a cost in understanding that is no
+longer worthwhile. When that time, it is best to remove the subclass, replacing it with a field on its
 superclass.
 
 EXTRACT SUPERCLASS - If you see 2 classes doing similar things, you can take advantage of the basic mechanism of

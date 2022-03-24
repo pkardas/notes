@@ -29,11 +29,11 @@ wrong.
 Hardware faults - on a cluster with 10 000 disks, you can expect, on average, one disk to die per day. Nowadays,
 multi-machine redundancy is no longer required - only in few use cases.
 
-Software errors - eg. many applications hang simultaneously on 30.06.2012 because of bug in Linux kernel. These kind of
+Software errors - e.g. many applications hang simultaneously on 30.06.2012 because of bug in Linux kernel. This kind of
 bugs lie dormant for a long time until they are triggered by an unusual set of circumstances.
 
-Human errors - humans are responsible for majority of errors. There are measures that can be taken in order to prevent
-the errors:
+Human errors - humans are responsible for the majority of errors. There are measures that can be taken in order to
+prevent the errors:
 
 - well-defined abstractions, easy to use tools, interfaces that discourage doing the wrong things
 - provide fully functional non-production sandbox environment where people can explore and experiment with real data
@@ -42,13 +42,13 @@ the errors:
 - set up detailed monitoring
 
 *Scalability* - system's ability to cope with increased load. Load can be described with a few numbers (load parameters)
-, eg. requests per second, read/write ratio, number of simultaneous connections, hit rate on cache or something else.
+, e.g. requests per second, read/write ratio, number of simultaneous connections, hit rate on cache or something else.
 
 *Describing performance*
 
 Response times (client waiting time) vary, always look at averages or medians (p50). In order to know how bad you
 outliers are you need to look at 95th, 99th and 99.9th percentiles. High percentiles (tail latencies) are important
-because they directly affect users' experience. Anyhow optimising 99.99th percentile might be really expensive.
+because they directly affect users' experience. Anyhow, optimising 99.99th percentile might be really expensive.
 
 SLO (service level objectives) and SLA (service level agreements) - contracts that define the expected performance and
 availability of a service. Example SLA: service up and median response time < 200 ms, 99th percentile < 1s. High
@@ -80,10 +80,10 @@ Project's complexity grove with time, this slows everyone down. Symptoms of comp
 - tight coupling of modules
 - tangled dependencies
 - inconsistent naming and terminology
-- special-casing to wark around issues
+- special-casing to work around issues
 
 Complex software makes it easy to introduce bugs, system makes it harder to understand hidden assumptions, unintended
-consequences and many many more. **Simplicity should be a key goal for the systems we build**. One fo the best tools for
+consequences and many more. **Simplicity should be a key goal for the systems we build**. One fo the best tools for
 removing complexity is *abstraction*. Great abstraction can hide implementation details behind a clean interface.
 
 *Evolvability*
@@ -120,11 +120,11 @@ runtime) type checking - schema on read.
 
 Data locality - because document databases store document as a string continuous string - JSON, XML, ... - often access
 will be faster because of locality, if data is split across multiple tables -> multiple disks -> more disk seeks -> more
-time required. However the document database will need to load entire document even if you need a small portion of it.
+time required. However, the document database will need to load entire document even if you need a small portion of it.
 
 *Query Languages for Data*
 
-SQL is declarative - you define what you want and it is up to the computer do determine how to get this data. Most
+SQL is declarative - you define what you want, and it is up to the computer do determine how to get this data. Most
 programming languages are imperative - you define how to process the data.
 
 *MapReduce Querying*
@@ -138,10 +138,10 @@ Very good approach form data with many-to-many relationships. Each vertex has: I
 outgoing edges, a collection of properties (key-value pairs). Each edge has: ID, the tail vertex, the head vertex, label
 describing the type of relationship, a collection of properties (key-value pairs).
 
-Graphs give great flexibility in modeling relationships. Eg. France has departments and regions, whereas the US has
+Graphs give great flexibility in modeling relationships. e.g. France has departments and regions, whereas the US has
 counties and states.
 
-Cypher is a declarative query language for property graphs, created for Neo4j DB, eg.: find the names of all people who
+Cypher is a declarative query language for property graphs, created for Neo4j DB, e.g.: find the names of all people who
 emigrated from the US to Europe:
 
 ```cypher
@@ -151,14 +151,14 @@ MATCH
 RETURN person.name
 ```
 
-This can be expressed in SQL (recursive common table expressions :grimacing:), but with one difficulty, `LIVES_IN` might
-point to any location (region, country, state, continent), here we are interested only in the US and Europe. 4 lines in
-Cypher vs 29 lines in SQL.
+This can be expressed in SQL (recursive common table expressions), but with one difficulty, `LIVES_IN` might point to
+any location (region, country, state, continent), here we are interested only in the US and Europe. 4 lines in Cypher vs
+29 lines in SQL.
 
-*Tripple-Stores*
+*Triple-Stores*
 
 Very similar to graph model, all information stored in the form of very simple three-part
-statements: `(subject, predicate, object)`, eg. `(Jim, likes, bananas)`.
+statements: `(subject, predicate, object)`, e.g. `(Jim, likes, bananas)`.
 
 ## Chapter 3: Storage and Retrieval
 
@@ -185,7 +185,7 @@ LSM-tree:
 - can be compressed better, thus often produce smaller files on disk
 - lower storage overheads
 - compaction process can sometimes interfere with the performance of ongoing reads and writes
-- if throughput is high and compaction is not configured carefully, compaction might not keep up with with the rate of
+- if throughput is high and compaction is not configured carefully, compaction might not keep up with the rate of
   incoming writes
 
 B-trees are so old, and so well optimised so that they can deliver good, consistent performance for many workloads.
@@ -204,7 +204,7 @@ Data structures discussed so far are specific for disks. However, as RAM becomes
 to keep in memory. This led to the development of in-memory databases. Some in-memory key-value stores (Memcached) are
 intended for caching, data can be lost on machine restart. Other in-memory databases aim for durability, which can be
 achieved with special battery-powered RAM, by writing a log changes to disk or replicating memory state to other
-machines. When restarted it needs to load the data from the disk of from a replica. Even though it is a in-memory
+machines. When restarted it needs to load the data from the disk of from a replica. Even though it is an in-memory
 database, a disk is still used. Other in-memory databases with relational model: VoltDB, MemSQL, Oracle TimesTen.
 RAMCloud is a key-value store, Redis and Couchbase provide weak durability by writing to disk asynchronously.
 
@@ -219,16 +219,16 @@ In 90s companies stopped using OLTP systems for analytics purposes and shifted t
 separate database. This separate database is called a data warehouse.
 
 Data warehouse - separate database that analyst can query without affecting OLTP operations. Read-only copy of the data.
-Data extracted fro OLTP databases, transformed into analysis-friendly schema. Process fo getting data info the ware
-house is known as Extract-Transform-Load. Biggest advantage of OLAP for analysis is that this database can be optimised
-for large queries.
+Data extracted from OLTP databases, transformed into analysis-friendly schema. Process fo getting data info the
+warehouse is known as Extract-Transform-Load. Biggest advantage of OLAP for analysis is that this database can be
+optimised for large queries.
 
 Many data warehouses use star schema (dimensional modeling). Variation of this schema is called the snowflake schema.
 Snowflakes are more normalised than stars.
 
 Fact tables are often 100 columns wide, however `SELECT * ` queries are rarely used. In most OLTP databases, storage is
 laid out in a row-oriented fashion. How to execute queries more efficiently? The idea behind column-oriented storage is
-simple: don't store all the values from one row together, but store all values from each columns together. Eg. one file
+simple: don't store all the values from one row together, but store all values from each column together. e.g. one file
 = one column - much faster than parsing each row.
 
 Columns can be compressed using for example bitmap encoding - unique values encoded using bits. Efficient in situations
@@ -239,7 +239,7 @@ cache.
 
 Rolling update / staged rollout - deploying the new version to a few nodes at a time, checking whether the new version
 is running smoothly. With client-side applications you are at mercy of the user, who may not install the update for some
-time. This means that old and new versions of the code might co exists for some time.
+time. This means that old and new versions of the code might co-exist for some time.
 
 Backward compatibility - newer code can read data that was written by older code (normally not hard).
 
@@ -251,16 +251,16 @@ Programs usually work with data in 2 representations:
 - byte sequence structures - for example JSON
 
 The translation from the in-memory to a byte sequence is called encoding. The reverse is called decoding (also: parsing,
-deserialisation, unmarshaling).
+deserialization, unmarshalling).
 
 Many programming languages have built-in support for encoding in-memory data structures. Python has pickle, Java has
-Serialisable, Ruby has Marshal, however:
+Serializable, Ruby has Marshal, however:
 
 - encoding is tied to programming language
 - potential source of security issues
 - Java's built-in serialisation is said to have bad performance
 
-In general it is bad idea to use language's built-in encoding for anything other than very transient purposes.
+In general, it is bad idea to use language's built-in encoding for anything other than very transient purposes.
 
 JSON:
 
@@ -284,7 +284,7 @@ Despite flaws of JSON, XML and CSV they are good enough for many purposes and th
 
 JSON is less verbose than XMAL, but still uses a lot of space - this might be an issue when you are dealing with
 terabytes of data. This led to the development of binary encodings for JSON - BSON, BJSON, UBJSON, BISON. XMAL has also
-its binary encodings - WBXML and Fast Infoset. However, non of them are widely adopted.
+its binary encodings - WBXML and Fast Infoset. However, none of them are widely adopted.
 
 Apache Thrift (Facebook), Protocol Buffers (Google) are binary encoding libraries that are based on the same principle.
 Schema defined in interface definition language, this schema can generate code for encoding and decoding data.
@@ -293,8 +293,7 @@ Field numbers in Apache Thrift are used for more compact encoding (no need for p
 CompactProtocol). Required / optional makes no difference for encoding, this is used for the runtime.
 
 Every field you add after the initial deployment of schema must be optional of have default value. Removing is like
-adding, you can remove only optional fields. Also with ProtoBuf / Thrift you can never use use the same tag number
-again.
+adding, you can remove only optional fields. Also, with ProtoBuf / Thrift you can never use the same tag number again.
 
 Avro is another binary encoding format, it has optional code generation for dynamically typed programming languages.
 
@@ -302,7 +301,7 @@ Data can flow through:
 
 - database
 - services - REST and RPC, services are similar to databases, they allow clients to submit and query data. A key design
-  goal of a service-oriented / micro services architecture is to make the application easier to change and maintain by
+  goal of a service-oriented / microservices architecture is to make the application easier to change and maintain by
   making services independently deployable and evolvable.
 
 REST is not a protocol, but rather a design philosophy that builds upon the principles of HTTP.
@@ -316,7 +315,7 @@ request is very different from a local function call:
   unpredictable - connection might be lost
 - a local function call either returns a result or throws an exception, a network request may return without a result -
   timeout
-- retry mechanism might cause duplication (fist request went went through), unless you build deduplication mechanism
+- retry mechanism might cause duplication (fist request went through), unless you build deduplication mechanism
 - duration of remote call depends on the network congestion
 - when you call a local function you can effectively pass references
 - if client and server use different languages, data translation might end up ugly
@@ -328,7 +327,7 @@ different from local function invocation.
   delivered with low latency, similar to databases because message is not sent via a direct network connection but goes
   through message broker.
 
-Message brokers have couple of advantages comparing to RPC:
+Message brokers have a couple of advantages comparing to RPC:
 
 - can acs as a buffer when recipient is unavailable
 - can automatically redeliver messages
@@ -352,13 +351,14 @@ single-leader, multi-leader and leaderless replication.
 
 Leaders and Followers - each node (replica) stores a copy of the database . One of the replicas is designated to be a
 leader (master), when clients want to write to the database, they must send their requests to the leader. Other replicas
+
 - followers (slaves), take the log from the leader and updates local copy of the data, applying all writes in the same
-order as they were processed by the leader. Writes are accepted only to the leader, read can be performed using any
-follower.
+  order as they were processed by the leader. Writes are accepted only to the leader, read can be performed using any
+  follower.
 
 On follower failure, if the connection between leader and follower is temporarily corrupted, follower can recover
 easily, because it knows the last processed transaction from the log. It can request missing data from the last
-successful transaction. Leader failure is more trickier. One of the followers can be promoted to be the new leader, for
+successful transaction. Leader failure is trickier. One of the followers can be promoted to be the new leader, for
 example replica with the most recent data (election) - data loss minimisation.
 
 Implementation of Replication Logs:
@@ -412,13 +412,13 @@ outweigh the added complexity, however there are some situations in which this c
   possible.
 - clients with offline operation - for example calendar app have to work even if it is disconnected from the internet,
   if you make changes while you are offline then they need to be synced with a server and all other devices. This
-  basically mans every device has a local database that acts as a leader. For example CouchDB is designed for this mode
+  basically means every device has a local database that acts as a leader. For example CouchDB is designed for this mode
   of operation.
 
-- collaborative editing - multiple people editing the same document - eg. Google Docs, very similar case to the previous
-  one. If you want to guarantee that there will be no editing conflicts, the application must obtain a lock on the
-  document before user can edit - this collaboration model is equivalent to single-leader replication with transaction
-  on the leader.
+- collaborative editing - multiple people editing the same document - e.g. Google Docs, very similar case to the
+  previous one. If you want to guarantee that there will be no editing conflicts, the application must obtain a lock on
+  the document before user can edit - this collaboration model is equivalent to single-leader replication with
+  transaction on the leader.
 
 Handling Write Conflicts:
 
@@ -433,9 +433,9 @@ Automatic Conflict Resolution - Amazon was frequently cited example of surprisin
 handler - customers were seeing items removed from the cart. Some ideas for automatic conflict resolution:
 
 - conflict-free replicated datatypes - family of data structures that can be concurrently edited by multiple users
-- mergeable persistent data structures - similar to GIT
+- merge-able persistent data structures - similar to GIT
 - operational transformation - algorithm behind Google Docs - designed specifically for concurrent edits of an ordered
-  list of items - eg. string.
+  list of items - e.g. string.
 
 Replication topology describes the communication paths along which writes are propagated from one node to another (
 circular, star, all-to-all).
@@ -467,14 +467,14 @@ Partitioning - breaking up the data into partitions (each piece of data belongs 
 reason for partitioning is scalability - different partitions can be placed on different nodes.
 
 Partitioning is usually combined with replication. Copies of each partition are stored on multiple nodes. The goal with
-partitioning is to spread the data and the query load evenly across nodes. If every node takes fair share, eg. 10 nodes
+partitioning is to spread the data and the query load evenly across nodes. If every node takes fair share, e.g. 10 nodes
 should be able to handle 10x much data. If partitioning is unfair ot is called skewed. Skew makes partitioning less
 effective. In order to reduce skew data needs to be distributed evenly.
 
 One way is to assign a continuous range of keys to each partition (PARTITION 1: A-B, PARTITION 2: C-D, ...). The ranges
 of keys are not necessarily evenly spaced, for example majority of entries with letter A. Partition boundaries need to
 be carefully selected by application developer with domain knowledge. Partitioning by data is problematic too - all
-writes going to single partition, whereas remaining partitions are idle. For example you could solve this issue by
+writes going to single partition, whereas remaining partitions are idle. For example, you could solve this issue by
 partitioning first by name (for example sensor name) and then by the time, this will balance the load.
 
 Skew can be reduced by using hash function that is evenly distributing data across partitions. The partition boundaries
@@ -487,7 +487,8 @@ Using hash of the key loses the ability to do efficient range queries (sort orde
 
 Hashing a key can reduce hot spots, but can not reduce them entirely. For example celebrity on social media can cause
 storm of activity - this may lead to many writes to the same key. It is up to application developer to handle hot spots
-- eg. add random prefix.
+
+- e.g. add random prefix.
 
 Secondary indexes are slightly more problematic because they don't identify a record uniquely. There are 2 main
 approaches to partitioning a database with secondary indexes:
@@ -507,7 +508,8 @@ database should remain available for writes and reads and only minimal amount of
 DO NOT USE hash mod N when rebalancing between partitions. Problem with this approach is that number of nodes changes.
 This requires moving more data than necessary when new node is added.
 
-Better solution is to create fixed number of partitions (more partitions than the nodes, eg. 10 nodes - 1000 partitions)
+Better solution is to create fixed number of partitions (more partitions than the nodes, e.g. 10 nodes - 1000
+partitions)
 . If new node is added to the cluster, it can steal few partitions from the others. The only thing that changes is
 partitions assignment. This is followed by for example by ElasticSearch (number of partitions set up at the beginning).
 Choosing the right number of partitions is difficult.
@@ -519,7 +521,7 @@ amount of data, this can overload the network. For this reason it is a good appr
 performing rebalancing.
 
 How to route request to particular partition? How can system know where is data? This problem is known as service
-discovery. System can keep track of the data in separate register. Another possibility is that client connect to any
+discovery. System can keep track of the data in separate register. Another possibility is that client connects to any
 node, if node can not serve the request, client is forwarded to another node.
 
 ## Chapter 7: Transactions
@@ -546,7 +548,7 @@ between DBMSs.
   from each other, they can not step on each other's toes. The classic database textbooks define isolation as
   serialisability (however this is rarely sued because it has performance penalty).
 - Durability - the promise that once a transaction has committed successfully, any data it has written will not be
-  forgotten, even if there is a hardware fault or the database crash. Anyhow perfect durability does not exist (for
+  forgotten, even if there is a hardware fault or the database crash. Anyhow, perfect durability does not exist (for
   example all backup destroyed at the same time).
 
 ACID databases are based on this philosophy: "if the database is in danger of violating its guarantee of atomicity,
@@ -563,7 +565,7 @@ Read committed - most basic level of transaction isolation, makes 2 guarantees:
 - no dirty writes - you will only override data that has been committed
 
 Snapshot isolation - read committed is not solving all the issues (for example non-repeatable reads - when you select
-data in the middle of transaction). Data unavailable fro few seconds is not a problem, more problematic are long-lasting
+data in the middle of transaction). Data unavailable for few seconds is not a problem, more problematic are long-lasting
 data inconsistencies. Read committed is a boon for long-running , read-only queries such as backups and analytics.
 Transaction should see a consistent snapshot of the database, frozen at a particular point in time (so data is not
 changing when it is being processed). Key principle of snapshot isolation is: readers never block writers and writers
@@ -585,7 +587,7 @@ PL/SQL and use existing general-purpose programming languages instead.
 
 Serial execution of transactions makes concurrency control much simpler, but limits the transaction throughput of the
 database to the speed of a single CPU core on a single machine. Simple solution is to partition the database, each CPU
-core have its own partition. However if partition needs to access multiple partitions, the database must coordinate
+core have its own partition. However, if partition needs to access multiple partitions, the database must coordinate
 across all the partitions that it touches.
 
 Serial execution is a viable way of achieving serialisable isolation within certain constraints:
@@ -662,12 +664,14 @@ Time Protocol). Time-of-day clocks are unsuitable for measuring time (clock migh
 it was desynchronised).
 
 Monotonic clocks - suitable for measuring elapsed time, they are guaranteed to always move forward (time-of-day clock my
-jump back in time). NTS may adjust monotonic clock frequency if it discoveries it is too slow of too fast.
+jump back in time). NTS may adjust monotonic clock frequency if it discovers it is too slow or too fast.
 
 Software must be designed on the assumption that the network will occasionally be faulty, and the software must handle
 such faults gracefully.
 
-> Distributed systems are different from programs running on a single computer - there is no shared memory, only massage passing through unreliable network with variable delays and the systems may suffer from partial failures, unreliable clocks and processing pauses.
+> Distributed systems are different from programs running on a single computer - there is no shared memory, only massage
+> passing through unreliable network with variable delays and the systems may suffer from partial failures, unreliable
+> clocks and processing pauses.
 
 There are algorithms designed to solve distributed systems problems:
 
@@ -690,11 +694,11 @@ used for reasoning about the correctness of a distributed algorithm.
 ## Chapter 9: Consistency and Consensus
 
 Tolerating faults - keeping the service functioning correctly, even if some internal component is faulty. The best way
-of building fault-tolerant systems is to find some general-purpose abstractions with useful guarantees (eg.
+of building fault-tolerant systems is to find some general-purpose abstractions with useful guarantees (e.g.
 transactions).
 
-When working with a database that provides only weak guarantees (eg. eventual consistency), you need to be constantly
-aware of its limitations (eg. when you write and immediately read there is no guarantee that you will see the value you
+When working with a database that provides only weak guarantees (e.g. eventual consistency), you need to be constantly
+aware of its limitations (e.g. when you write and immediately read there is no guarantee that you will see the value you
 just wrote).
 
 LINEARIZABILITY (atomic consistency, strong consistency, immediate consistency) - is to make a system appear as if there
@@ -725,7 +729,7 @@ Causality imposes an ordering on the events (what happened before what) - questi
 sent before it is received, ... These chains of casually dependent operations define the casual order in the system. If
 system obeys the ordering imposed by causality, we say it is causally consistent.
 
-Linearisability ensures causality. However it is not the only way of preserving causality - system can be causally
+Linearisability ensures causality. However, it is not the only way of preserving causality - system can be causally
 consistent without incurring the performance (the strongest possible consistency model that does not slow down due to
 network errors).
 
@@ -736,7 +740,7 @@ order events. If there is not a single leader it is less clear how to generate s
 - attach timestamp to each operation
 - preallocate blocks of sequence numbers (1-1000 for node A, 1001-2000 for node B, ...)
 
-Methods above allow to generate unique sequence numbers efficiently, but do not capture correctly the ordering of
+Methods above allow generating unique sequence numbers efficiently, but do not capture correctly the ordering of
 operations across different nodes.
 
 Lamport timestamp - method for generating sequence numbers that is consistent with causality. Every node keeps track of
@@ -755,7 +759,7 @@ node may crash, in a distributed system we must assume that node may crash, so r
 Two-phase locking is an algorithm for achieving atomic transaction commit across multiple nodes (all commit or all
 abort). 2 phases:
 
-- the coordinator begins phase 1 - it send prepare to to each of the nodes, asking whether they are able to commit
+- the coordinator begins phase 1 - it sends prepare to each of the nodes, asking whether they are able to commit
 - the coordinator tracks the responses from the participants, if all say yes - the coordinator sends out a commit
   request, if any of the participant say no - the coordinator sends an abort request to all nodes
 
@@ -766,7 +770,8 @@ and promising more than it can deliver.
 
 ## Chapter 10: Batch Processing
 
-> A system cannot be successful if it is too strongly influenced by a single person. Once the initial design is complete and fairly robust, the real test begins as people with many different viewpoints undertake their own experiments.
+> A system cannot be successful if it is too strongly influenced by a single person. Once the initial design is complete
+> and fairly robust, the real test begins as people with many viewpoints undertake their own experiments.
 
 3 types of systems:
 
@@ -775,7 +780,7 @@ and promising more than it can deliver.
 - batch processing (offline systems) - system takes a large amount of input data, runs a job to process it and produces
   some output data. Batch jobs are often scheduled to run periodically. The primary performance measure is throughput.
 - stream processing systems (near-real-time systems) - something between online and offline systems. A stream processor
-  consumes inputs and produces outputs (rather than responding to requests).
+  consumes inputs and produces outputs (rather than responding to request).
 
 Simple Batch Processing can be performed in UNIX via awk, grep and other command line tools (using a chain of commands).
 
@@ -809,8 +814,8 @@ In order to achieve good throughput in a batch processing, the computation must 
 machine.
 
 HDFS is somewhat like a distributed version of UNIX, where HDFS is the filesystem and MapReduce is a quirky
-implementation of a UNIX process. When MapReduce was published is was not all new. Some concepts were already known -
-eg. massively parallel processing databases. Hadoop vs Distributed Databases:
+implementation of a UNIX process. When MapReduce was published it was not all new. Some concepts were already known -
+e.g. massively parallel processing databases. Hadoop vs Distributed Databases:
 
 - databases require you to structure data according to particular model, whereas files in a distributed filesystem are
   just byte sequences. Hadoop opened up the possibility of indiscriminately dumping data into HDFS and later figuring
@@ -822,9 +827,9 @@ eg. massively parallel processing databases. Hadoop vs Distributed Databases:
   recommendation systems, full-text search or image analysis). MapReduce gave the engineers the ability to easily run
   their own code over large datasets.
 - MPP databases and MapReduce took different approach to handling faults and the use of memory and disk. Natch processes
-  are less sensitive to faults than online systems, because they do not immediately affect users if they fail and they
+  are less sensitive to faults than online systems, because they do not immediately affect users if they fail, and they
   always can be run again. If a node fails, most MPP databases abort the entire query, MapReduce can tolerate the
-  failure of a map or reduce task. MapReduce dumps partial results to the disk so they can be restored after failure.
+  failure of a map or reduce task. MapReduce dumps partial results to the disk, so they can be restored after failure.
   MPP databases are more willing to store data in the memory for faster access. MapReduce is designed to tolerate
   frequent unexpected task termination, not because hardware is unreliable, it is because the freedom to arbitrarily
   terminate processes enables better resource utilisation in a computing cluster (Google came up wit this idea, this
@@ -833,13 +838,13 @@ eg. massively parallel processing databases. Hadoop vs Distributed Databases:
 MapReduce is just one of many possible programming models for distributed systems. MapReduce has problems with *
 materialisation* of the data - the process of writing out intermediate state files. Several new execution engines for
 distributed batch processing were developed in order to fix this problem with MapReduce (data-flow engines) - Spark,
-Tez, Flink. Dataflow engines provide several different options for connecting one operator's output to another's input -
-sort by by key, tak several inputs and to partition them, but skip the sorting, for broadcast hash joins, the same
-output from one operator can be sent to all partitions of the join operator.
+Tez, Flink. Dataflow engines provide several options for connecting one operator's output to another's input - sort by
+key, tak several inputs and to partition them, but skip the sorting, for broadcast hash joins, the same output from one
+operator can be sent to all partitions of the join operator.
 
 Systems like Dryrad and Nephele offer several advantages compared to MapReduce model:
 
-- expensive work (eg. sorting) only performed in places where it is actually required
+- expensive work (e.g. sorting) only performed in places where it is actually required
 - no unnecessary map tasks
 - intermediate state between operators kept in memory or written to local disk
 - operators can start executing as soon as their input is ready
@@ -857,7 +862,8 @@ laborious.
 
 ## Chapter 11: Stream Processing
 
-> Complex systems always evolve from simple system that works. A complex system designed from scratch never works and cannot be made to work.
+> Complex systems always evolve from simple system that works. A complex system designed from scratch never works and
+> cannot be made to work.
 
 Batch processing must artificially divide data into chunks of fixed duration (for example: processing a day's worth of
 data at the end of every day). The problem with daily batch processes is that changes in the input are only reflected in
@@ -886,16 +892,16 @@ Message brokers - kind of database, that is optimised for handling message strea
 and consumers connecting to it as clients. Producers write messages, consumers receive them by reading them from the
 broker. By centralising the data in the broker, these systems can more easily tolerate clients that come and go. A
 consequence of queueing is also that consumers are generally asynchronous: when a producer send a message it normally
-only waits for the broker to confirm that it has buffered the message and it does not wait for the message to be
+only waits for the broker to confirm that it has buffered the message, and it does not wait for the message to be
 consumed.
 
 Multiple consumers - when multiple consumers read messages in the same topic, two main patterns of messaging are used:
 
 - load balancing - each message is delivered to one of the consumers, so the consumers can share the work of processing
-  the messages in the topic.This pattern is useful then the messages are expensive to process and you want to bale to
-  add consumers to parallelise the processing.
-- fan-out - each message is delivered to all of the consumers, equivalent of having several different batch jobs that
-  read the same input file.
+  the messages in the topic.This pattern is useful then the messages are expensive to process, and you want to bale to
+  add consumers to parallelize the processing.
+- fan-out - each message is delivered to all the consumers, equivalent of having several batch jobs that read the same
+  input file.
 
 Message brokers use acknowledgements: a client must explicitly tell the broker when it has finished processing a message
 so that the broker can remove it from the queue.
@@ -926,21 +932,22 @@ Event Sourcing - involves storing all changes to the application state as log of
 reflect things that happened at the application level, rather than low-level state changes. Powerful technique for data
 modeling: from an application point of view it is more meaningful to record the user's actions as immutable events,
 rather than recording the effect of those actions on a mutable database: "student cancelled their course enrolment" vs "
-one entry was deleted from the enrolments table. Event Store is a specialised database to support applications using
+one entry was deleted from the enrolments table". Event Store is a specialised database to support applications using
 event sourcing.
 
 Applications that use event sourcing typically have some mechanism for storing snapshots of the current state that is
 derived from the log of events, so they don't need to repeatedly reprocess the full log.
 
 CQRS - Command Query Responsibility Segregation - separating the form in which data is written from the form it is read,
-by allowing several different read views.
+by allowing several read views.
 
 Streams can be used to produce other, derived streams. Stream processing has long been used for monitoring purposes:
 fraud detection, trading system examining price changes, machines monitoring, monitoring in military.
 
-Complex Event Processing (CEP) - an approach developed in 1990s for analysing event streams, especially geared toward
-the kind of application that requires searching for certain event patterns. CEP allows you to specify rules to search
-for certain patterns of events in a stream. CEP systems use a high-level declarative query language like SQL or GUI.
+Complex Event Processing (CEP) - an approach developed in the 1990s for analysing event streams, especially geared
+toward the kind of application that requires searching for certain event patterns. CEP allows you to specify rules to
+search for certain patterns of events in a stream. CEP systems use a high-level declarative query language like SQL or
+GUI.
 
 Stream processing is used also for analytics on streams, boundary between CEP and stream analytics is blurry.
 Frameworks: Apache Storm, Spark Streaming, Flink, Concord, Samza, Kafka Streams, Google Cloud Dataflow, Azure Stream
@@ -984,7 +991,7 @@ straightforward to handle. Possible approaches:
 - idempotence - our goal is to discard the partial output of any failed tasks so that they can be safely retried without
   taking effect twice. Distributed transactions are the one way of achieving this, but another way is to rely on
   idempotence. An idempotent operation is one that you can perform multiple times, and it has the same effect as if you
-  performed it only once (eg. setting key in a key-value store, incrementing counter value is not idempotent). Even if
+  performed it only once (e.g. setting key in a key-value store, incrementing counter value is not idempotent). Even if
   an operation is not naturally idempotent, it can often be made idempotent with a bit of extra metadata.
 
 ## Chapter 12: The Future of Data Systems
@@ -1009,7 +1016,7 @@ continually read back files, compare them to other replicas and move files from 
 mitigate the risk of silent corruption.
 
 ACID databases has led us toward developing applications on the basis of blindly trusting technology. Since the
-technology we trusted worked well enough most of time, auditing mechanisms were deemed worth the investment.
+technology we trusted worked well enough most time, auditing mechanisms were deemed worth the investment.
 
 Having continuous end-to-end integrity checks gives you increased confidence about the correctness of your systems,
 which in turn allows you to move faster (like automated testing software).
@@ -1026,12 +1033,12 @@ Decisions made by an algorithm are not necessarily any better or worse than thos
 likely to have biases. In many countries, anti-discrimination laws prohibit treating people differently depending on
 protected traits (ethnicity, age, gender, sexuality, disability, beliefs).
 
-Automated decision making opens the question of responsibility and accountability. Who is responsible if self-driving
+Automated decision-making opens the question of responsibility and accountability. Who is responsible if self-driving
 car causes an accident?
 
-Besides the problems of predictive analysis, there are ethical problems with data collection itself. Though experiment,
-whenever you see "data" (eg. data driven company), replace it with the word surveillance (eg. surveillance driven
-company). Even the most totalitarian and presessivq regimes could only dream of putting a microphone in every room and
+Besides, the problems of predictive analysis, there are ethical problems with data collection itself. Though experiment,
+whenever you see "data" (e.g. data driven company), replace it with the word surveillance (e.g. surveillance driven
+company). Even the most totalitarian and oppressive regimes could only dream of putting a microphone in every room and
 forcing every person to constantly carry a device capable of tracking their location and movements.
 
 Declining to use a service due to its tracking of users is only an option for the small number of people who are

@@ -36,18 +36,19 @@ reveal its content. Names should be pronounceable. One letter variables are hard
 as local variables inside short methods. The length of a name should correspond to the size of its scope. Avoid
 encodings.
 
-> Difference between a smart programmer and a professional programmer is that professional programmer understands that **clarity is a king**.
+> Difference between a smart programmer and a professional programmer is that professional programmer understands that 
+> **clarity is a king**.
 
 Don't be funny 😔 People tend to forget jokes, so people will forget true meaning of a variable. Choose clarity over
 entertainment. Do not use slang or culture-dependant names.
 
-Pick one word per concept, eg. `get` instead of `fetch`, `retrieve`, ...
+Pick one word per concept, e.g. `get` instead of `fetch`, `retrieve`, ...
 
 ## Chapter 3: Functions
 
 Functions are the first line of organisation in any program. Functions should be small. No more than 2-3 indents.
 
-> Functions should do one thing. They should do it well. The should do it only.
+> Functions should do one thing. They should do it well. They should do it only.
 
 The reason we write functions is to decompose a larger concept. A function should not mix the levels of abstractions.
 
@@ -55,7 +56,7 @@ The reason we write functions is to decompose a larger concept. A function shoul
 
 Don't be afraid to make a name long. The more function arguments the worse - difficulties with testing.
 
-Passing a boolean flag to a function is extremely ugly. Grouping arguments into objects seems like cheating but it is
+Passing a boolean flag to a function is extremely ugly. Grouping arguments into objects seems like cheating, but it is
 not.
 
 Functions should have no side effects
@@ -67,13 +68,14 @@ Exceptions are preferred than error codes. Suggestion to extract exception handl
 *Don't repeat yourself* - duplication may be the root of all evil in software. Database norms formed to eliminate
 duplication in data, OOP concentrates the code, etc.
 
-> Writing software is like any other kind of writing. When you write a paper or article, you get your thoughts down first, then you massage it until it **reads well**.
+> Writing software is like any other kind of writing. When you write a paper or article, you get your thoughts down 
+> first, then you massage it until it **reads well**.
 
 > The art of programming is, and always has been, the art of language design.
 
 ## Chapter 4: Comments
 
-Comments are usually bad, they mean you failed to express yourself in code. IMO: Best comments are the ones that are
+Comments are usually bad, they mean you failed to express yourself in code. IMO: the Best comments are the ones that are
 explaining why things were done in a particular way.
 
 Don't put historical discussions or irrelevant details into the comments.
@@ -81,11 +83,9 @@ Don't put historical discussions or irrelevant details into the comments.
 ## Chapter 5: Formatting
 
 Code formatting is important. Visual design of the code is important. Variable should be declared "in well-known for
-everybody place". Functions should show natural flow -> top-down.
+everybody places". Functions should show natural flow -> top-down.
 
-Horizontal formatting? Python got you covered :D
-
-Another matter is alignment, eg. of test cases in parametrised tests. However variables declarations ins an overkill.
+Another matter is alignment, e.g. of test cases in parametrised tests. However, variables declarations ins an overkill.
 
 However, a team should agree upon a single formatting style.
 
@@ -99,10 +99,10 @@ held in an instance variable of *C*.
 
 Train wreck: `ctxt.getOptions().getScratchDir().getAbsolutePath()` - a bunch of couples train cars. Does it violate The
 Law of Demeter? `ctxt` contains options, which contain a scratch directory, which has absolute path - a lot of
-knowledge.However in this case this law does nto apply because these are data structures with no behaviour. It would be
-good to hide the structure of `ctxt`, eg.: `ctxt.getScratchDirectoryOption().getAbsolutePath()`.
+knowledge. However, in this case this law does nto apply because these are data structures with no behaviour. It would
+be good to hide the structure of `ctxt`, e.g.: `ctxt.getScratchDirectoryOption().getAbsolutePath()`.
 
-Data Transfer Objects - a class with public variables and no functions, eg. for communicating with the database.
+Data Transfer Objects - a class with public variables and no functions, e.g. for communicating with the database.
 
 Objects - expose behaviour and hide data, data structures - expose data and have no significant behaviour.
 
@@ -119,7 +119,7 @@ It might be a good idea to wrap library's error with your own exceptions - this 
 
 ## Chapter 8: Boundaries
 
-How to keep boundaries of our system clean - eg. when using external libraries:
+How to keep boundaries of our system clean - e.g. when using external libraries:
 
 - when working with collections, wrap them with object and provide only required functionalities.
 - write learning tests - write tests to explore and understand API
@@ -172,7 +172,7 @@ Dependency Inversion Principle - our classes should depend upon abstractions, no
 
 ## Chapter 11: Systems
 
-It is a myth we can get the systems "right the first time". Instead we should implement only today's stories, then
+It is a myth we can get the systems "right the first time". Instead, we should implement only today's stories, then
 refactor and expand the system to implement new stories tomorrow. This is the essence of iterative and incremental
 agility.
 
@@ -187,8 +187,8 @@ According to Kent, a design is simple if it follows these rules:
 - contains no duplication
 - expresses the intent of the programmer - the clearer the code, the less time others will have to spend understanding
   it (small functions and classes, good names)
-- minimises the number of classes and methods - least important rule, above rules are more important, however overall
-  goal should be to keep system small
+- minimises the number of classes and methods - the least important rule, above rules are more important, however
+  overall goal should be to keep system small
 
 Can set of practices replace experience? No. On the other hand, practices are a crystallised form of the many decades of
 experience of many authors.
@@ -206,15 +206,15 @@ Concurrency Defence Principles:
 - use copy of data , collect results from multiple threads and merge results
 - threads should be as independent as possible
 
-Java supports thread-safe collections, eg. ConcurrentHashMap, there are also other classes to support advanced
-concurrency: ReentrantLock - a lock that can be acquired and released, Semaphore - a classic lock with count,
-CountDownLatch - a lock that waits for a number of events before releasing all threads waiting on it.
+Java supports thread-safe collections, e.g. ConcurrentHashMap, there are other classes to support advanced concurrency:
+ReentrantLock - a lock that can be acquired and released, Semaphore - a classic lock with count, CountDownLatch - a lock
+that waits for a number of events before releasing all threads waiting on it.
 
 Couple of behaviours:
 
-- Bound Resources - resources of a fixed size or number used in a concurrent environment, eg. database connection
+- Bound Resources - resources of a fixed size or number used in a concurrent environment, e.g. database connection
 - Mutual Exclusion - only one thread can access shared data or a shared resource at a time
-- Starvation - thread(s) prohibited from proceeding fro an excessively long time or forever
+- Starvation - thread(s) prohibited from proceeding for an excessively long time or forever
 - Deadlock - two or more threads waiting for each other to finish
 - Livelock - threads in lockstep, each trying to do work but finding another "in the way", threads continue trying to
   make progress but are unable
@@ -273,7 +273,7 @@ General:
 - No duplication, perhaps the most important rule. Duplicated code means a missed opportunity for abstraction. Codd
   Normals Forms are a strategy for eliminating duplication.
 - It is important to create abstractions that separate higher level general concepts from lower level detailed concepts.
-- High level concepts should be independent from low level derivatives.
+- High level concepts should be independent of low level derivatives.
 - A well-defined interface does not offer very many functions to depend upon, so coupling is low. Good software
   engineers learn to limit what they expose at the interfaces of their classes and modules.
 - Get rid of dead code - code that is never executed.
@@ -284,7 +284,7 @@ General:
 - Feature envy - the methods of a class should be interested in the variables and functions of the class they belong to,
   and not the variables and functions of other classes.
 - Code should be expressive as possible.
-- Code should be placed where a reader would naturally expect it to be (the principle of least surprise).
+- Code should be placed where a reader would naturally expect it to be (the principle of the least surprise).
 - Think if function should be static or not.
 - Variables should have meaningful names, also use intermediate variables when performing difficult calculations.
 - Function names should say what they do, if you can't understand what function does by reading the call - change the

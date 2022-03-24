@@ -7,7 +7,7 @@ Book by Michael T. Nygard (Second Edition)
 - [Chapter 1: Living in Production](#chapter-1-living-in-production)
 - [Chapter 2: Case Study: The Exception That Grounded an Airline](#chapter-2-case-study-the-exception-that-grounded-an-airline)
 - [Chapter 3: Stabilise Your System](#chapter-3-stabilise-your-system)
-- [Chapter 4: Stability Antipatterns](#chapter-4-stability-antipatterns)
+- [Chapter 4: Stability Anti-patterns](#chapter-4-stability-anti-patterns)
 - [Chapter 5: Stability Patterns](#chapter-5-stability-patterns)
 - [Chapter 6: Case Study: Phenomenal Cosmic Powers, Itty-Bitty Living Space](#chapter-6-case-study-phenomenal-cosmic-powers-itty-bitty-living-space)
 - [Chapter 7: Foundations](#chapter-7-foundations)
@@ -95,7 +95,7 @@ IT community is divided into 2 camps:
 1. Make system fault-tolerant, catch exceptions, check error codes, keep faults from becoming errors
 2. "let it crash", so you can restart from a good known state
 
-## Chapter 4: Stability Antipatterns
+## Chapter 4: Stability Anti-patterns
 
 Antipatterns that can wreck the system, they create, accelerate or multiply cracks in the system. These bad behaviours
 should be avoided.
@@ -293,7 +293,7 @@ instances across zones and regions in AWS).
 
 Bulkhead partitions capacity to preserve partial functionality when bad things happen. Granularity should be picked
 carefully - thread pools in the application, CPUs, servers in a cluster. Bulkheads are especially useful in
-service-oriented or micro-service architectures in order to prevent chain reactions and entire company go down.
+service-oriented or microservice architectures in order to prevent chain reactions and entire company go down.
 
 STEADY STATE - every time human touches a severer it is an opportunity for unforced errors. It is best to keep people
 off production systems to the greatest extent possible. People should treat servers as "cattle", not "pets", they should
@@ -317,10 +317,10 @@ production servers.
 
 FAIL FAST - if the system can determine in advance that it will fail; at an operation, it is always better to fail fast
 
-- the caller does not have waste its capacity for waiting. No, you don't need Deep Learning team to tell whether it will
-  fail. Example: if call requires database connection, application can quickly check if database is available. Other
-  approach is to configure load balancer appropriately (no servers - reject request). Use request validation to know if
-  data is correct.
+- the caller does not have wasted its capacity for waiting. No, you don't need Deep Learning team to tell whether it
+  will fail. Example: if call requires database connection, application can quickly check if database is available.
+  Other approach is to configure load balancer appropriately (no servers - reject request). Use request validation to
+  know if data is correct.
 
 The Fail Fast pattern improves overall system stability by avoiding slow responses.
 
@@ -328,7 +328,7 @@ LET IT CRASH - there is no way to test everything or predict all the ways a syst
 will happen.
 
 There must be a boundary for trashiness. We want to crash a component in isolation, the rest of the system must protect
-itself from a cascading failure. In a micro-service architecture, a whole instance of the service might be the right
+itself from a cascading failure. In a microservice architecture, a whole instance of the service might be the right
 granularity.
 
 We must be able to get back to clean state and resume normal operation as quickly as possible - otherwise we will see
@@ -656,8 +656,8 @@ the most critical web application security flaws:
        vulnerabilities
     6. Use cookies to exchange session IDs, do not accept session IDS via other mechanisms
 
-   *Authentication* means we verify the identity of the caller. Is the caller who he or she claims to be? Some do's and
-   and don'ts:
+   *Authentication* means we verify the identity of the caller. Is the caller who he or she claims to be? Some dos and
+   don't:
 
     1. Don't keep passwords in your database
     2. Never email a password to a user as a part of "*forgotten password*" process
@@ -749,7 +749,7 @@ attacks.
 
 How to design applications for easy rollout - packaging, integration point versioning and database schema.
 
-Once upon a time, we wrote our software, zipped it up and threw it over the wall to the operations so they could deploy
+Once upon a time, we wrote our software, zipped it up and threw it over the wall to the operations, so they could deploy
 it. Operations would schedule some *planned* downtime to execute the release. HOWEVER, users should not care about
 downtime, application should be updated without them knowing about the release.
 
@@ -832,11 +832,11 @@ Postel's Robustness Principle can be seen as Liskov Substitution Principle: We c
 before, but we cannot less or require more. We can return more than we returned before, but we cannot return less.
 
 Handling breaking changes - best approach is to add a version discriminator to the URL. This is the most common
-approach. You have to support both the old and the new versions for the some period of time. Both versions should
-operate side by side. This allows consumers to upgrade as they are able. Internally you want to avoid duplication.
-Handle this in the controller, methods that handle the new API go directly to the most current version of the business
-logic, methods that handle the old API get updated, so they convert old objects to the current ones on requests and
-convert new objects to old ones on responses.
+approach. You have to support both the old and the new versions for some period of time. Both versions should operate
+side by side. This allows consumers to upgrade as they are able. Internally you want to avoid duplication. Handle this
+in the controller, methods that handle the new API go directly to the most current version of the business logic,
+methods that handle the old API get updated, so they convert old objects to the current ones on requests and convert new
+objects to old ones on responses.
 
 When receiving requests or messages, your application has no control over the format. The same goes for calling out to
 other services. The other endpoint can start rejecting your requests at any time. After all, they may not observe the
@@ -886,7 +886,7 @@ The Fallacy of the DevOps Team - in larger companies, it is common to find a gro
 between development and operations with the goal of moving faster and automating releases into production. *This is an
 antipattern*. DevOps should soften the interface between different teams. DevOps goes deeper than deployment automation.
 It is a shift from ticket and blame-driven operations with throw-it-over-the-wall releases TO one based on open sharing
-of information and skills, data-driven decision making about architecture and design, production availability and
+of information and skills, data-driven decision-making about architecture and design, production availability and
 responsiveness. Isolating these ideas to a single team undermines the whole point.
 
 Frequent releases with incremental functionality allow your company to outpace its competitors.
@@ -1002,7 +1002,8 @@ organisation, consider starting with opting-in.
 You must be able to break the system without breaking the bank. It that is not the case, chaos engineering is not for
 you.
 
-> If you have a wall full of green dashboards, that means your monitoring tools aren't good enough. There is always something weird going on.
+> If you have a wall full of green dashboards, that means your monitoring tools aren't good enough. There is always
+> something weird going on.
 
 Make sure you have a recovery plan. The system may not automatically return to a healthy state when you turn off the
 chaos.You need to know what to restart, disconnect or clean up.

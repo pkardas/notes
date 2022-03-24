@@ -38,21 +38,22 @@ Guidelines:
 - no executable code in asserts:
     - bad: `assert foo(), ...`
     - good: `result = foo(); assert result, ...`
-- use asserts to document and verify preconditions (before executing the routine) and postconditions (after executing
+- use asserts to document and verify preconditions (before executing the routine) and post conditions (after executing
   the routine)
 - for high robustness: failed assertions should be handled anyway
 
 Error handling:
 
 - return neutral value - 0, empty string, ...
-- substitute the next piece of valid data - for example when processing stream of data from the sensor (eg. temperature)
+- substitute the next piece of valid data - for example when processing stream of data from the sensor (e.g.
+  temperature)
   , you may want to skip the missing value and wait for another
 - return the same answer as the previous time - some data might not change in time dramatically, so it is okay to return
   the last correct value
 - substitute the closest legal value - for example reversing car does not show negative speed value but instead shows
-  0 (closest legal value)
+  0 (the closest legal value)
 - log a warning message on incorrect data
-- return error code - report error has ben encountered and trust some other routine higher up will handle the error
+- return error code - report error has been encountered and trust some other routine higher up will handle the error
 - call centralised error-processing routine, disadvantage is that entire program coupled with the mechanism
 - display error message to the user, warning: don't share too much with the user, attacker may use this information
 - shut down - useful in safety-critical applications
@@ -92,7 +93,8 @@ prototyping.
 Defect-detection techniques: design reviews, code reviews, prototyping, unit tests, integration tests, regression tests,
 ... even all of them combined will not detect all the issues.
 
-> Most studies have found that inspections are cheaper than testing. A study at the Software Engineering Laboratory found that code reading detected about 80% more faults per hour than testing.
+> Most studies have found that inspections are cheaper than testing. A study at the Software Engineering Laboratory 
+> found that code reading detected about 80% more faults per hour than testing.
 
 Cost of detection is only one part. There is also cost of fixing the issues. The longer defect remains in the system,
 the more expensive it becomes to remove.
@@ -130,17 +132,19 @@ meeting, however should be briefed with the results after the discussion. Design
 appraisals. Group should be focused on identifying defects. Goal of this meeting is not to explore alternatives ar
 debate who is right and who is wrong.
 
-> NASA's Software Engineering Laboratory found that code reading detected about 3.3 defects per hour of effort. Testing detected 1.8 errors per hour.
+> NASA's Software Engineering Laboratory found that code reading detected about 3.3 defects per hour of effort. Testing
+> detected 1.8 errors per hour.
 
 ## Chapter 22: Developer Testing
 
-> You must hope to find errors in your code. Such hope might seem like an unnatural act, but you should hope that it's you who who finds the errors and not someone else.
+> You must hope to find errors in your code. Such hope might seem like an unnatural act, but you should hope that it's
+> you who finds the errors and not someone else.
 
 Why TDD:
 
 - same effort to write test cases before and after
-- you detect defects earlier and you can correct them more easily
-- forces you to think a little bit about the requirements and design before writing code
+- you detect defects earlier, and you can correct them more easily
+- forces you to think a little about the requirements and design before writing code
 - exposes requirements problems sooner
 
 Developers tend to write *clean tests* rather than test for all the ways code breaks. Developer's testing isn't
@@ -164,10 +168,10 @@ Signs / smells that indicate refactoring is needed:
 - overloaded primitive data type
 - class doesn't do much - sometimes the result of refactoring is that an old class doesn't have much to do
 - trap data - one routine just passes data to another
-- one class hows too much about the other
+- one class knows too much about the other
 - poor names
 - public data members - in general bad idea
-- subclass uses only a small percentage of its' parent routines
+- subclass uses only a small percentage of its parent routines
 - comments should not be used to explain bad code - "don't comment bad code, rewrite it"
 - usage of setup code before routine call
 - code that "seems like it might be needed one day" - programmers are rather bad at guessing what functionality might be
@@ -193,7 +197,7 @@ Routine-Level Refactoring:
 - Inline simple routines
 - Convert long routine into a class
 - Separate query operations from modification operations
-- Combine similar routines by parametrising themIf routine depends on the parameter passed in - consider splitting the
+- Combine similar routines by parametrizing themIf routine depends on the parameter passed in - consider splitting the
   routine
 - Pass a whole object instead of specific fields, however if you are creating an object just to pass it to a routine,
   consider changing the routine to take only specific fields
@@ -236,7 +240,8 @@ complex modules, etc.
 Code tuning is one way of improving a program's performance. You can find other ways to improve performance - faster and
 without harm to the code.
 
-> More computing sins are committed in the name of efficiency (without necessarily achieving it) than for any other single reason - including blind stupidity ~ Wulf
+> More computing sins are committed in the name of efficiency (without necessarily achieving it) than for any other 
+> single reason - including blind stupidity ~ Wulf
 
 Efficiency can be seen from many viewpoints:
 
@@ -258,7 +263,7 @@ On this level algorithms and data structures matter.
 
 - OS interactions
 
-You might not be aware thet your compiler generated code using heavy OS calls.
+You might not be aware the compiler generated code using heavy OS calls.
 
 - code compilation
 
@@ -272,8 +277,8 @@ Sometimes cheapest and the beast way to improve a program's performance is to bu
 
 Small-scale changes that affect a single class, routine or just few lines of code, that make it run mode efficiently.
 
-Some sources say, you can multiply improvements on each of the six levels, achieving performance improvement of a milion
-fold.
+Some sources say, you can multiply improvements on each of the six levels, achieving performance improvement of a
+million-fold.
 
 Code tuning is not the most effective way to improve performance! Writing micro-efficient code does not prove you are
 cool. Efficient code isn't necessarily better.
@@ -329,7 +334,8 @@ Internal documentation (within the program) is the most detailed kind of documen
 code-level documentation isn't comments, but good programming style, good variable names, clear layout and minimisation
 of control-flow and data-structure complexity,
 
-> **Good comments don't repeat the code or explain it. They clarify its intent. Comments should explain, at a higher level of abstraction than the code, what you are trying to do.**
+> **Good comments don't repeat the code or explain it. They clarify its intent. Comments should explain, at a higher 
+> level of abstraction than the code, what you are trying to do.**
 
 Kinds of comments:
 
@@ -389,9 +395,9 @@ How to exercise curiosity and make a learning a priority?
 - If your workload consists entirely on short-term assignments that don't develop your skills, be dissatisfied. Half of
   what you need to know will be outdated in three years. You are not learning, you are turning into a dinosaur. If you
   can't learn at your job, find a new one.
-- Experiment if you don't understand something. Learn making mistakes, learning from the each time. Making a mistake is
-  no sin. Failing to learn from mistake is.
-- Read about problem solving, don't reinvent the wheel.
+- Experiment if you don't understand something. Learn to make mistakes, learn from the each. Making a mistake is no sin.
+  Failing to learn from mistake is.
+- Read about problem-solving, don't reinvent the wheel.
 - Study the work of the great programmers, it is not about reading 500-long source code but for example about high-level
   design.
 - Read books, one book is more than most programmers read each year.
@@ -422,7 +428,7 @@ There are many intellectual tools for handling computer science complexity:
 - carefully define error handling strategy
 - prevent monster classes creation
 - keep functions short
-- use self explanatory names
+- use self-explanatory names
 - minimise number of parameters passed to the routine
 - use conventions
 
@@ -445,7 +451,7 @@ professional programmer writes readable code. Even if you think you are the only
 reality, chances are good that someone else will need to modify your code. One study found that 10 generations of
 maintenance programmers work on an average program before it gets rewritten.
 
-If your language doesn't support some mechanisms do not hesitate and implement them (eg. missing `assert`) on your own.
+If your language doesn't support some mechanisms do not hesitate and implement them (e.g. missing `assert`) on your own.
 
 At the highest level, you shouldn't have any idea how the data is stored. Suggested levels of abstraction:
 

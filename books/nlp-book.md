@@ -70,9 +70,9 @@ the (.*)er they were, the \1er they will be
 the bigger they were, the bigger they will be
 ```
 
-Number operator, eg.: `\1` allows to repeat matched group. So parenthesis operator not only allows to group but also
+Number operator, e.g.: `\1` allows repeating matched group. So parenthesis operator not only allows to group but also
 store in a numbered register. It is possible to disable register and use non-capturing group,
-eg.: `(:?some: a few) (people|cats) like some \1`. Famous chatbot ELIZA used a series of regular expressions
+e.g.: `(:?some: a few) (people|cats) like some \1`. Famous chatbot ELIZA used a series of regular expressions
 substitutions.
 
 ```
@@ -81,7 +81,7 @@ I'M (depressed|sad) -> I AM SORRY TO HEAR YOU ARE \1
 
 Look ahead - look ahead in the text to see if some pattern matches BUT not advance the match cursor.
 
-Negative lookahead - used for ruling out special cases, eg. rule out strings starting with word
+Negative lookahead - used for ruling out special cases, e.g. rule out strings starting with word
 Volcano: `(?!Volcano)[A-Za-z]+`
 
 *Words*
@@ -123,8 +123,8 @@ Problem: Keep specific words together: `2020/02/02`, `km/h`, `$65`, `www.github.
 
 Tokeniser can be used to expand clitic contractions: `we're -> we are`. Tokenisation is tied up with Named Entity
 Recognition. Tokenisation needs to be fast, hence often uses deterministic algorithms based on regular expressions
-compiled into efficient finite state automata. Tokenisation is more complex for eg.: Chinese or Japanese (languages not
-using spaces for separating words). For Japanese algorithms like words segmentation work better. Also it is possible to
+compiled into efficient finite state automata. Tokenisation is more complex for e.g.: Chinese or Japanese (languages not
+using spaces for separating words). For Japanese algorithms like words segmentation work better. Also, it is possible to
 use neural networks for the task of tokenisation.
 
 Penn Treebank Tokeniser
@@ -143,10 +143,10 @@ Byte-Pair Encoding
 
 *Normalisation*
 
-Task of putting words in a standard format, choosing a single normal form for words with multiple forms like USA/US.
+Task of putting words in a standard format, choosing a single normal form for words with multiple forms like the USA/US.
 Valuable proces despite spelling information is lost.
 
-Case folding - mapping everything to lower/upper case. However might give wrong results, eg.: US (country) -> us (
+Case folding - mapping everything to lower/upper case. However, might give wrong results, e.g.: US (country) -> us (
 people, we)
 
 *Lemmatisation*
@@ -164,7 +164,7 @@ Lemmatisation is hard, that's why sometimes we use stemming.
 This -> Thi, was -> wa, Bone's -> Bone s, ...
 ```
 
-Stemming is based on series of rules, eg.: `ATIONAL -> ATE` (relational -> relate). They do make errors, but are fast
+Stemming is based on series of rules, e.g.: `ATIONAL -> ATE` (relational -> relate). They do make errors, but are fast
 and deterministic.
 
 Sentence Segmentation
@@ -172,22 +172,22 @@ Sentence Segmentation
 `?`, `!` are unambiguous, `.` is unfortunately ambiguous, it doesn't need to mean sentence end. Rule-based approach or
 machine learning.
 
-*MInimum Edit Distance* - minimum number of editing operations (add, delete, substitution) needed to transform one
+*Minimum Edit Distance* - minimum number of editing operations (add, delete, substitution) needed to transform one
 string into another.
 
-How to find Minimal Edit Distance? This can be think of as a shortest path problem. Shortest sequence of edits from one
-string to another. This can be solved using dynamic programming (table-driven method for solving problems by combining
-solutions to sub-problems).
+How to find Minimal Edit Distance? This can be thought of as the shortest path problem. Shortest sequence of edits from
+one string to another. This can be solved using dynamic programming (table-driven method for solving problems by
+combining solutions to sub-problems).
 
 ## Chapter 3: N-gram Language Models
 
 Assigning probabilities of upcoming words in a sentence is a very important task in speech recognition, spelling
 correction, machine translation and AAC systems. Systems that assign probabilities to sequences of models are called **
-language models**. Simplest model is a n-gram.
+language models**. Simplest model is an n-gram.
 
 *P(w|h)* - the probability of a word *w* given some history *h*. $$ P(the|its\ water\ is\ so\ transparent\ that) =
 \dfrac{count(its\ water\ is\ so\ transparent\ that\ the)}{count(its\ water\ is\ so\ transparent\ that)} $$ You can
-compute these probabilities for a large corpus, eg. wikipedia. This method works fine in many cases, but it turned out
+compute these probabilities for a large corpus, e.g. wikipedia. This method works fine in many cases, but it turned out
 even the web can not give us good estimates in most cases - language is dynamic, you are not able to count ALL the
 possible sentences. Hence, there is a need for introducing more clever way for estimating the probability *P(w|h)*.
 
@@ -200,14 +200,14 @@ $$ This assumption, that next word depends on the previous one is called a **Mar
 
 Probability of a sentence can be calculated using chain rule of probability:
 $$ P(<s>\ i\ want\ english\ food\ </s>) = P(i|<s>)P(want|i)P(english|want)P(food|english)P(</s>|food) =\ ... $$ Such
-technique is able to capture eg. cultural things - people more often look for Chinese food than English. Language models
-are always computed in log format - log probabilities. Why? Probability always fall between 0 and 1, multiplying small
-float numbers - you end up with numerical underflow, using logarithms you get numbers that are not as small.
+technique is able to capture e.g. cultural things - people more often look for Chinese food than English. Language
+models are always computed in log format - log probabilities. Why? Probability always fall between 0 and 1, multiplying
+small float numbers - you end up with numerical underflow, using logarithms you get numbers that are not as small.
 
 *Evaluating Language Models*
 
 Best way to evaluate the performance of a language model is to embed it in an application and measure how much the
-application improves - **extrinsic evaluation**. However this technique requires running multiple models in order to
+application improves - **extrinsic evaluation**. However, this technique requires running multiple models in order to
 measure the improvement. Better approach is to use  **intrinsic evaluation** - standard approach from ML, training set
 and validation (unseen) set. So the better predictions on the test set, the better model you got. Sample from test set
 can not appear in training set - this introduces bias - probabilities gets too high (unreliable) - huge inaccuracies in
@@ -252,7 +252,7 @@ to the events we have never seen. There are variety of ways to do smoothing:
 - Laplace Smoothing (add-one smoothing) - adds 1 to all bigram counts before we normalise them into probabilities. So
   all the counts that uses do be 0, becomes 1, 1 will be 2, ... This method is not used in state-of-the-art solutions.
   Can be treated as a baseline.
-- Add-k smoothing - Instead of adding 1, we add a fractional count eg. 0.5, 0.05, 0.01, ... Useful for some of the
+- Add-k smoothing - Instead of adding 1, we add a fractional count e.g. 0.5, 0.05, 0.01, ... Useful for some of the
   applications but still, does not perform perfectly.
 
 Backoff - we can use available knowledge, if you need to computer trigram, maybe bigram can help you with that, or even
@@ -312,7 +312,7 @@ Confusion matrix - table for visualising how an algorithm performs with respect 
 data - gold labels). Has 2 dimensions - system output and gold labels.
 
 Accuracy - what percentage of all observations our system labelled correctly, doesn't work well for unbalanced classes -
-eg. 80 negative classes, 20 *positive*, learn to always answer *negative* and you have 80% *accuracy*.
+e.g. 80 negative classes, 20 *positive*, learn to always answer *negative* and you have 80% *accuracy*.
 
 Precision - percentage of the items that the system detected that are in fact positive.
 
@@ -346,6 +346,7 @@ We often need to compare the performance of two systems. How can we know one sys
 order to do this, create random variable *X* ranging over all test sets, we ask: how likely is it if the null hypothesis
 is correct that among these test sets we would encounter the value of *delta* that we found. This likelihood is called *
 p-value*. We select the threshold - usually small, if we can reject the *null hypothesis* we can tell A is better than B
+
 - is *statistically significant*.
 
 *Avoiding harms in classification*
@@ -355,7 +356,7 @@ Representational harms - system perpetuating negative stereotypes about social g
 Toxicity detection - hate speech, abuse, harassment detection. These systems make harm themselves, for example: mark
 sentences mentioning minorities.
 
-System based on stereotypes can lead to censorship. Also human labeled data can be biased.
+System based on stereotypes can lead to censorship. Also, human labeled data can be biased.
 
 It is important to include *model card* when releasing a system. Model card includes: training algorithms and
 parameters, data sources, intended users and use, model performance across different groups.
@@ -366,13 +367,14 @@ Logistic regression - one of the most important analytic tools in the social and
 machine learning algorithm for classification. Neural network can be seen as a series of logistic regression classifiers
 stacked on top of each other. This is a discriminative classifier (unlike Naive Bayes - generative classifier - you can
 literally as such model how for example dog or cat looks like, discriminative model learns only how to distinguish the
-classes, eg. training set with dogs with collars and cats - when you ask a model what does it know about cats it would
+classes, e.g. training set with dogs with collars and cats - when you ask a model what does it know about cats it would
 respond: it doesn't wear a collar).
 
 Classification: *The Sigmoid*
 
 Sigmoid function - takes a real value (even x -> infinity) and maps it to the range [0, 1]. Nearly linear near 0. This
-is extremely useful for calculating eg. *P(y=1|x)* - belonging to the class. $$ z = weights\ of \ feature\ vector\ *\ x
+is extremely useful for calculating e.g. *P(y=1|x)* - belonging to the class. $$ z = weights\ of \ feature\ vector\ *\ x
+
 + bias $$
 
 $$ P(y=1) = \sigma(z)
@@ -380,7 +382,7 @@ $$
 
 *z* - ranges from *-inf* to *+inf*.
 
-Logistic regression can be used for all sorts of NLP tasks, eg. period disambiguation (deciding if a period is the end
+Logistic regression can be used for all sorts of NLP tasks, e.g. period disambiguation (deciding if a period is the end
 of a sentence or part of a word).
 
 *Designing features* - features are generally designed by examining the training set with an eye to linguistic
@@ -418,27 +420,28 @@ classifier made certain decision. Logistic regression is interpretable.
 
 *Distributional hypothesis* - the link between similarity in how words are distributed and similarity.
 
-*Lemma / citation* form - basic form of a word. *Wordform* - inflected lemma. Lemma can have multiple meanings, eg.
+*Lemma / citation* form - basic form of a word. *Wordform* - inflected lemma. Lemma can have multiple meanings, e.g.
 mouse might refer to a rodent or to a pointer, each of these are called word senses. Lemmas can be polysemous (have
 multiple senses), this makes interpretation difficult. Word sense disambiguation - the task of determining which sense
 of a word is being used in particular context.
 
 *Synonyms* - two words are synonymous if they are substitutable - have the same propositional meaning.
 
-*Principle of contrast* - a difference in in linguistic form is always associated with some difference in meaning, eg.:
+*Principle of contrast* - a difference in linguistic form is always associated with some difference in meaning, e.g.:
 water / H2O, H2O - rather used in scientific context.
 
 *Word similarity* - *cat* is not a synonym of a *dog*, but these are 2 similar words. There are many human-labelled
 datasets for this.
 
-*Word relatedness* - (or association) eg.: *coffee* is not similar to *cup*, they shave ro similar features, but they
-are very related - associated, they co-exist. Very common kind of relatedness is semantic field, eg.: *surgeon, scalpel,
-nurse, hospital*. Semantic fields are related to topic models like LDa - Latent Dirichlet Allocation - unsupervised
-learning on large sets of texts to induce sets of associated words from text. There are more relations between words:
+*Word relatedness* - (or association) e.g.: *coffee* is not similar to *cup*, they shave ro similar features, but they
+are very related - associated, they co-exist. Very common kind of relatedness is semantic field, e.g.: *surgeon,
+scalpel, nurse, hospital*. Semantic fields are related to topic models like LDa - Latent Dirichlet Allocation -
+unsupervised learning on large sets of texts to induce sets of associated words from text. There are more relations
+between words:
 hypernymy, antonymy or meronymy.
 
 *Semantic Frames and Roles* - a set of words that denote perspectives or participants in a particular type of event,
-eg.: *Ling sold the book to Sam* - seller / buyer relation. Important problem in question answering.
+e.g.: *Ling sold the book to Sam* - seller / buyer relation. Important problem in question answering.
 
 *Connotation* - affective meaning - emotions, sentiment, opinions or evaluations.
 
@@ -468,11 +471,11 @@ near word *u*, we train a classifier on a binary classification task: "Is word *
 can use running text as supervised training data. - this is called self-supervised training data.
 
 Visualising embeddings - visualise the meaning of a word embedded in space by listing the most similar words, clustering
-algorithms and the most important method - dimensionality projection, eg. t-SNE.
+algorithms and the most important method - dimensionality projection, e.g. t-SNE.
 
-*First-order co-occurrence / Syntagmatic association* - if words are near each other, eg. *wrote* and *book*.
+*First-order co-occurrence / Syntagmatic association* - if words are near each other, e.g. *wrote* and *book*.
 
-*Second-order co-occurrence / Paradigmatic association* - if words have similar neighbours, eg. *wrote*, *said*
+*Second-order co-occurrence / Paradigmatic association* - if words have similar neighbours, e.g. *wrote*, *said*
 
 *Representational harm*. Embeddings are capable of capturing bias and stereotypes. More, they are capable of amplifying
 bias.
@@ -486,7 +489,7 @@ logistic regression. Neural networks can automatically learn useful representati
 taking weighted sum of inputs + bias. Output of this function is called an activation. $$ y = a = f(z) = f(w \cdot x +
 b)
 $$
-*f* - eg. sigmoid, tanh, ReLU. Sigmoid most commonly used for teaching. Tanh is almost always better than sigmoid.
+*f* - e.g. sigmoid, tanh, ReLU. Sigmoid most commonly used for teaching. Tanh is almost always better than sigmoid.
 ReLU (rectified linear unit) - most commonly used and the simplest.
 
 *The (famous) XOR problem* - Minsky proved it is not possible to build a perceptron (very simple neural unit that has a
@@ -500,23 +503,23 @@ units. Standard architecture is that each layer is fully connected - each unit i
 the previous layer.
 
 Purpose of learning is to learn weights and bias on each layer. *Loss function* - the distance between the system output
-and the gold output, eg. cross-entropy loss. To find the parameters that minimise this loss function, we use for
+and the gold output, e.g. cross-entropy loss. To find the parameters that minimise this loss function, we use for
 example *gradient descent*. Gradient descent requires knowing the gradient of the loss function with respect to each of
 the parameters. Solution for computing this gradient is error back-propagation.
 
-Language modeling - predicting upcoming words from prior word context - neural networks are really good at this task.
-Much better than *n-gram* models - better generalisation, higher accuracy, on the other hand - much slower to train.
+Language modeling - predicting upcoming words from prior word context - neural networks are perfect at this task. Much
+better than *n-gram* models - better generalisation, higher accuracy, on the other hand - much slower to train.
 
 ## Chapter 8: Sequence Labeling for Parts of Speech and Named Entities
 
-*Named entity* - eg. Marie Curie, New York City, Stanford University, ... important for for many natural language
-understanding tasks (eg. sentiment towards specific product, question answering). Generally speaking, anything that can
+*Named entity* - e.g. Marie Curie, New York City, Stanford University, ... important for many natural language
+understanding tasks (e.g. sentiment towards specific product, question answering). Generally speaking, anything that can
 be referred to with a proper name (person, location, organisation). Possible output tags: PER (person), LOC (location),
-ORG (organisation) and GPE (geo-political entity).
+ORG (organisation) and GPE (geopolitical entity).
 
 *POS/Part of Speech* - knowing if a word is noun or verb tells us about likely neighbouring words. They fall into 2
 categories: closed class and open class. POS-tagging is the process of assigning a part-of-speech to each word in a
-text. Tagging is a disambiguation task. Words are ambiguous, one can have more than one POS eg. book flight, hand me
+text. Tagging is a disambiguation task. Words are ambiguous, one can have more than one POS e.g. book flight, hand me
 that book, ... The goal is to resolve these ambiguities. The accuracy of POS tagging algorithms is very high +97%. Most
 Frequent Class Baseline - effective, baseline method, assign token to the class that occurs most often in the training
 set.
@@ -525,7 +528,7 @@ Markov chain - a model that tells about the probabilities of sequences of random
 strong assumption - if you want to predict future sentence, all that matters is the current state. Formally a Markov
 chain is specified by: set of *N* states, a transition probability matrix and initial probability distribution.
 
-The Hidden Markov Model - allows to talk about both observed events (words seen in the input) and hidden events (
+The Hidden Markov Model - allows talking about both observed events (words seen in the input) and hidden events (
 part-of-speech tags). Formally HMM is specified by: set of *N* states, a transition probability, observations,
 observation likelihoods / emission probabilities (probability of an observation begin generated from a state *q*) and
 initial probability distribution.
@@ -535,7 +538,7 @@ model that assigns a probability to an entire output sequence. We can think of a
 multinomial logistic regression does for a single token.
 
 Gazetteer - list of place names, millions of entries for locations with detailed geographical and political information,
-eg. https://www.geonames.org/
+e.g. https://www.geonames.org/
 
 POS tags are evaluated by accuracy. NERs are evaluated using recall, precision and F1.
 
@@ -563,16 +566,16 @@ the current word and the previous hidden state as inputs.
 RNNs can be used for many other tasks:
 
 - sequence labeling - task is to assign a label chosen from a small fixed set of labels to each element of a sequence (
-  eg. POS tagging or named entity recognition). Inputs for RNN are word embeddings and the outputs are tag probabilities
-  generated by softmax layer.
-- sequence classification - eg. sentiment analysis, spam detection, message routing for customer support applications.
+  e.g. POS tagging or named entity recognition). Inputs for RNN are word embeddings and the outputs are tag
+  probabilities generated by softmax layer.
+- sequence classification - e.g. sentiment analysis, spam detection, message routing for customer support applications.
 
 Stacked RNN - multiple networks where the output of one layer serves as the input to a subsequent layer. They very often
 outperform single-layer networks, mainly because stacked layers are able to have different level of abstractions across
 layers. Optimal number of layers is application-dependant.
 
-Bidirectional RNN = forward and backward networks combined together. In these 2 independent networks input is processed
-form the start to the end and from the end to the start. Also very effective for sequence classification.
+Bidirectional RNN = forward and backward networks combined. In these 2 independent networks input is processed form the
+start to the end and from the end to the start. Also, very effective for sequence classification.
 
 It is difficult to train RNNs for tasks that require a network to make use of information distant from the current point
 of processing. RNNs can not carry forward critical information because of hidden layers and because they are fairly
@@ -581,10 +584,10 @@ local.
 LSTM - Long Short-Term Memory - divide the context management problem into two sub-problems:
 
 - removing information no longer needed from the context
-- adding information likely to be needed for later decision making
+- adding information likely to be needed for later decision-making
 
-LSTM is capable of mitigating the loss of distant information. However there are still RNNs, so relevant information can
-be lost.
+LSTM is capable of mitigating the loss of distant information. However, there are still RNNs, so relevant information
+can be lost.
 
 Transformers - approach to sequence processing that eliminates recurrent connections and returns to architectures
 reminiscent of the fully connected networks. Transformers are made up of stacks of networks of the same length of simple
@@ -607,9 +610,9 @@ Missing chapter.
 ## Chapter 11: Machine Translation and Encode-Decoder Models
 
 Machine translation - the use of computers to translate from one language to another. The most common use of machine
-translation is information access - when you want to for example translate some instructions on the web. Also often used
-in CAT - Computer-Aided Translation, where computer produces draft translation and then human fixes it in post-editing.
-Last but not least, useful in human communication needs.
+translation is information access - when you want to for example translate some instructions on the web. Also, often
+used in CAT - Computer-Aided Translation, where computer produces draft translation and then human fixes it in
+post-editing. Last but not least, useful in human communication needs.
 
 Standard algorithm for MT is encoder-decoder network (can be implemented with RNNs or with Transformers). They are
 extremely successful in catching small differences between languages.
@@ -649,7 +652,7 @@ Skipped for now.
 
 ## Chapter 17: Information Extraction
 
-Information extraction - turns the unstructured information embedded in texts into structured data - eg. relational
+Information extraction - turns the unstructured information embedded in texts into structured data - e.g. relational
 database to enable further processing.
 
 Relation extraction - finding and classifying semantic relations among the text entities. These are often binary
@@ -672,8 +675,8 @@ For unsupervised and semi-supervised approaches it is possible to calculate esti
 
 Knowledge graphs - dataset of structured relational knowledge.
 
-Event extraction - task of identification mentions of events in texts. In English most events correspond to to verbs and
-most verbs introduce events (United Airlines SAID, prices INCREASED, ...). Some nouns phrases can also denote events (
+Event extraction - task of identification mentions of events in texts. In English most events correspond to verbs and
+most verbs introduce events (United Airlines SAID, prices INCREASED, ...). Some noun phrases can also denote events (
 the increase, the move, ...).
 
 With extracted events and extracted temporal expressions, events from text can be put on a timeline. Determining
@@ -688,8 +691,8 @@ be normalised.
 - absolute: date
 - durations
 
-Temporal expressions task consists of finding the start end end of all the text spans that correspond to such temporal
-expressions. Such task can use rule-based approach.
+Temporal expressions task consists of finding the start and the end of all the text spans that correspond to such
+temporal expressions. Such task can use rule-based approach.
 
 Temporal Normalisation - process of mapping a temporal expressions to either a specific point in time or to a duration.
 
@@ -727,7 +730,7 @@ Word Sense Disambiguation - the task of determining which sense of a word is bei
 algorithms take as input some word and context and output the correct word sense.
 
 Lexical sample tasks - small pre-selected set of target words and an inventory of senses. All-words task (harder
-problem) - the system is given an entire texts and a lexicon with an inventory of senses for each entry and we have
+problem) - the system is given an entire texts and a lexicon with an inventory of senses for each entry, and we have
 disambiguate every word in the text.
 
 The best WSD algorithm is simple 1-nearest-neighbour algorithm using contextual word embeddings.
@@ -803,13 +806,13 @@ Museum located?
 Information retrieval. The resulting IR system is often called a search engine. Ad hoc retrieval, user poses a query to
 a retrieval system, which then returns an ordered set of documents from some collection.
 
-Basic IR system architecture uses the vector space, queries and documents are mapped to vectors, then cosine similarity
-is being used to rank potential documents answering the query. This is an example of the bag-of-words model. However we
+Basic IR system architecture uses the vector space, queries and documents are mapped to vector, then cosine similarity
+is being used to rank potential documents answering the query. This is an example of the bag-of-words model. However, we
 don't use raw word counts in IR, instead we use TD-IDF.
 
 TD-IDF - The term frequency tells us how frequent the word is, words that occur more often are likely to be informative
-about the document's contest. However terms that occur across all documents aren't useful. In such case inverse document
-frequency comes handy.
+about the document's contest. However, terms that occur across all documents aren't useful. In such case inverse
+document frequency comes handy.
 
 Documents scoring - we score document d by the cosine of its vector d with the query vector q. $$ score(q, d) = cos(q *
 d) = \frac{q*d}{|q|*|d|} $$ More commonly used version of the score (because queries are usually short):
@@ -841,11 +844,11 @@ Datasets:
 - TyDi QA - questions from diverse languages
 
 Entity linking - the task of associating a mention in text with the representation of some real-word entity in an
-ontology (eg. Wikipedia).
+ontology (e.g. Wikipedia).
 
 Knowledge-based question answering - idea of answering a question by mapping it to a query over a structured database.
 
-RDF triples - a tuple of 3 elements: subject, predicate and object, eg. (Ada Lovelace, birth-year, 1815). This can be
+RDF triples - a tuple of 3 elements: subject, predicate and object, e.g. (Ada Lovelace, birth-year, 1815). This can be
 used to perform queries: "When was Ada Lovelace born?" - birth-year(Ada Lovelace, ?).
 
 Second kind uses a semantic parser to map the question to a structured program to produce an answer.
@@ -854,7 +857,7 @@ Another alternative is to query a pretrained model, forcing model to answer a qu
 its parameters.
 
 T5 is an encoder-decoder architecture, in pretraining it learns to fill in masked spans of task by generating missing
-spans in the decoder. It is then fine tuned on QA datasets, given the question without adding any additional context or
+spans in the decoder. It is then fine-tuned on QA datasets, given the question without adding any additional context or
 passages.
 
 Watson DeepQA - system from IBM that won the Jeopardy - main stages - Question processing, Candidate Answer Generation,
@@ -892,9 +895,9 @@ Properties of Human Conversation:
 Because of characteristics of human conversations it is difficult to build dialogue systems that can carry on natural
 conversations.
 
-Chatbots - simplest form of dialogue systems. Chatbots have 3 categories:
+Chatbots - the simplest form of dialogue systems. Chatbots have 3 categories:
 
-- rule based chatbots - for example ELIZA based on psychological research, cerated in 1966, the most important chatbot.
+- rule based chatbots - for example ELIZA based on psychological research, created in 1966, the most important chatbot.
   Few years later PARRY was created - this chatbot had model of its own mental state (fear, anger, ...) - first known
   system to pass the Turing test (1972) - psychiatrists couldn't distinguish text transcripts of interviews with PARRY
   from transcripts of interviews with real paranoids (!!!)
@@ -921,9 +924,9 @@ risk of mistakes, but awkward and increases the length of conversation.
 
 System might as clarification questions.
 
-Dialogue systems might be evaluated using different metrics, eg. engagingness, avoiding repetition, making sense.
+Dialogue systems might be evaluated using different metrics, e.g. engagingness, avoiding repetition, making sense.
 Commonly used high-level metric is called acute-eval - annotator looks at two conversations and choose the one in which
-the dialogue system participant performed better. Automatic metrics are generally not used for chatbots. However there
+the dialogue system participant performed better. Automatic metrics are generally not used for chatbots. However, there
 are some attempts to train a Turing-like evaluator classifier to distinguish a human-generated responses and
 machine-generated responses.
 

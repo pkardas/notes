@@ -74,7 +74,7 @@ the model underlying it. The model is not the diagram, diagrams help to communic
 Extreme Programming advocates using no extra design documents at all (usually because the fall out of sync) - the code
 should speak for itself. This motivates developers to keep code clean and transparent.
 
-However if document exists, it should not try to do what code already does well - document should illuminate meaning,
+However, if document exists, it should not try to do what code already does well - document should illuminate meaning,
 give insight into large-scale structures, clarify design intent, complement the code and the talking.
 
 ## Chapter 3: Binding Model and Implementation
@@ -126,7 +126,7 @@ Domain-driven design requires only one particular layer to exist.
 ## Chapter 5: A Model Expressed in Software
 
 ASSOCIATIONS. For every traversable association in the model, there is a mechanism in the software with the same
-properties. Constraints on associations should be included in the model and implementation (eg. president of ... for a
+properties. Constraints on associations should be included in the model and implementation (e.g. president of ... for a
 period of time), they make the model more precise and the implementation easier to maintain.
 
 ENTITIES. Object modeling tends to lead us to focus on the attributes of an object, but the fundamental concept of an
@@ -136,7 +136,9 @@ an object must be matched with another object even though attributes differ.
 Transactions in a banking application, two deposits of the same amount to the same account on the same day are still
 distinct transactions. They have identity and are entities.
 
-> When an object is distinguished by its identity, rather than its attributes, make this primary to its definition in the model. Keep the class definition simple and focused on life cycle continuity and identity. Define a means of distinguishing each object regardless of its form or history.
+> When an object is distinguished by its identity, rather than its attributes, make this primary to its definition in
+> the model. Keep the class definition simple and focused on life cycle continuity and identity. Define a means of
+> distinguishing each object regardless of its form or history.
 
 Identity - this may simply mean unique identifier.
 
@@ -161,8 +163,8 @@ analyse the contents of one module with a minimum of reference to others that in
 Choose modules that tell the story of the system and contain a cohesive set of concepts. Give the modules names that
 become part of the ubiquitous language. Modules and their names should reflect insight into the domain.
 
-Modules need to coevolve with the rest of the model. This means refactoring modules right along with the model and code.
-But this refactoring often doesn't happen.
+Modules need to co-evolve with the rest of the model. This means refactoring modules right along with the model and
+code. But this refactoring often doesn't happen.
 
 Use packaging to separate the domain layer from other code. Otherwise, leave as much freedom as possible to the domain
 developers to package the domain objects in ways that support their model and design choices.
@@ -176,7 +178,7 @@ The challenges:
 
 These issues can be addressed using 3 patterns.
 
-AGGREGATES. It is difficult to guarantee the consistency of changes to objects in a model with complex associations.
+AGGREGATES. It is difficult to guarantee the consistency of changes to object in a model with complex associations.
 Invariants need to be maintained that apply to closely related groups of objects, not just discrete objects. Yet
 cautious locking schemes cause multiple users to interfere pointlessly with each other and make a system unusable. An
 aggregate is a cluster or associated objects that we treat as a unit for the purpose of data changes. Each aggregate has
@@ -254,9 +256,9 @@ concept is recognised and made explicit in the model and design.
 Transformation of a formerly implicit concept into an explicit one is a breakthrough that leads to a deep model. More
 often, though, the breakthrough comes later, after a number of important concepts are explicit in the model.
 
-Listen to the language the domain experts use. Are there terms that succinctly state state something complicated? Are
-they correcting your word choice? Do the puzzled looks on their faces go away when you use a particular phrase? These
-are hints of a concept that might benefit the model.
+Listen to the language the domain experts use. Are there terms that succinctly state something complicated? Are they
+correcting your word choice? Do the puzzled looks on their faces go away when you use a particular phrase? These are
+hints of a concept that might benefit the model.
 
 Constraints make up a particularly important category of model concepts. They often emerge implicitly, and expressing
 them explicitly can greatly improve a design. Sometimes constraints find a natural home in an object or separate method.
@@ -294,7 +296,8 @@ Where it fits, define an operation whose return type is the same as the type of 
 
 ## Chapter 11: Applying Analysis Patterns
 
-> Analysis patterns are groups of concepts that represent a common construction in business modelling. It may be relevant to only one domain or it may span many domains.
+> Analysis patterns are groups of concepts that represent a common construction in business modelling. It may be
+> relevant to only one domain, or it may span many domains.
 
 An analysis pattern is a template for solving an organizational, social or economic problem in a professional domain.
 
@@ -327,9 +330,8 @@ Multifaceted process. There are 3 things you have to focus on:
 
 Seeking insight into the domain creates a broader context for the process of refactoring.
 
-Refactoring toward deeper insight is a continuing process. Implicit concepts are recognised and made explicit. Parts of
-the design are made suppled, perhaps taking on a declarative style. Development suddenly comes to the brink of a
-breakthrough and plunges through to a deep model.
+Refactoring toward deeper insight is a continuing process. Implicit concepts are recognised and made explicit.
+Development suddenly comes to the brink of a breakthrough and plunges through to a deep model.
 
 ## Chapter 14: Managing Model Integrity
 
@@ -376,7 +378,7 @@ CONFORMIST. When two development teams have an upstream / downstream relationshi
 motivation to provide for the downstream team's needs, the downstream team is helpless. Therefore, eliminate the
 complexity of translation between bounded contexts by slavishly adhering to the model of the upstream team.
 
-ANTICORRUPTION LAYER. When a new system is being built that must have a large interface with another, the difficulty of
+ANTI-CORRUPTION LAYER. When a new system is being built that must have a large interface with another, the difficulty of
 relating two models can eventually overwhelm the intent of the new model altogether, causing it to be modified to
 resemble the other system's model, in an ad hoc fashion. Therefore, create an isolating layer to provide clients with
 functionality in terms of their own domain model. The layer talks to the other system through its existing interface,
@@ -410,7 +412,7 @@ does not require an in-depth study of the model. Therefore, write a short descri
 narrow. Write this statement early and revise it as you gain new insight.
 
 HIGHLIGHTED CORE. The mental labor of constantly filtering the model to identify key parts absorbs concentration better
-spent on design thinking and it requires comprehensive knowledge of the model. Therefore, write a brief document that
+spent on design thinking, and it requires comprehensive knowledge of the model. Therefore, write a brief document that
 describes the core domain and the primary interactions among core elements.
 
 COHESIVE MECHANISMS. Computations sometimes reach a level of complexity that begins to bloat the design. The
@@ -428,7 +430,7 @@ factor them into distinct classes, abstract classes or interfaces.
 
 ## Chapter 16: Large-Scale Structure
 
-EVOLVING ORDER. Design free-for-alls produce systems no one can make sense of as whole.Therefore, let this conceptual
+EVOLVING ORDER. Design free-for-all's produce systems no one can make sense of as whole. Therefore, let this conceptual
 large-scale structure evolve with the application, possibly changing to a completely different type of structure along
 the way. Don't over constrain the detailed design and model decisions that must be made with detailed knowledge.
 
