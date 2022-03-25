@@ -8,6 +8,7 @@ Book by David Thomas and Andrew Hunt
 - [Chapter 2: A Pragmatic Approach](#chapter-2-a-pragmatic-approach)
 - [Chapter 3: The Basic Tools](#chapter-3-the-basic-tools)
 - [Chapter 4: Pragmatic Paranoia](#chapter-4-pragmatic-paranoia)
+- [Chapter 5: Bend, or Break](#chapter-5-bend-or-break)
 
 ## Chapter 1: A Pragmatic Philosophy
 
@@ -256,3 +257,36 @@ proceeding. Consider that the rate of feedback is your speed limit. You never ta
 of wasting effort designing for an uncertain future, you can always fall back on designing your code to be replaceable.
 
 Making code replaceable will also help with cohesion, coupling, and DRY, leading to a better design overall.
+
+## Chapter 5: Bend, or Break
+
+Decoupling shows how to keep separate concepts separate, decreasing coupling. Coupling is the enemy of change, because
+it links together things that must change in parallel.
+
+When you are designing bridges, you want them to hold their shape - you need them to be rigid. But when you are
+designing software that you will want to change, you want exactly the opposite - you want it to be flexible.
+
+**Decoupled code is easier to change.**
+
+**Tell, don't ask.** (The Law of Demeter) You shouldn't make decisions based on the internal state of an object abd then
+update the object. Doing so totally destroys the benefits of encapsulation, and, in doing so, spreads the knowledge of
+the implementation thought the code.
+
+A method defined in a class C should only call:
+
+- Other instance methods
+- Its parameters
+- Methods in objects it creates
+- Global variables
+
+**Don't chain method calls.** (Something simpler than the Law of Demeter.) Try not to have more than one "." when you
+access something. The rule doesn't apply if the things you are changing are really unlikely to change (e.g. libraries
+that come with the language).
+
+**Avoid global data.** It is like adding extra parameter to every method.
+
+**If it is important enough to be global, wrap it in an API.** Any mutable external resource is global data (database,
+file system, service API, ...). Always wrap these resources behind code that you control.
+
+Keeping your code shy - having it deal with things it directly knows about, will help keep you applications decoupled,
+and that will make them more amenable to change.
