@@ -290,3 +290,21 @@ file system, service API, ...). Always wrap these resources behind code that you
 
 Keeping your code shy - having it deal with things it directly knows about, will help keep you applications decoupled,
 and that will make them more amenable to change.
+
+Publish/Subscribe generalizes the observed pattern, at the same time solving the problems of coupling and performance.
+
+Streams let us treat events as if they were a collection of data. It's as if we had a list of events, which got longer
+when new events arrive. We can treat streams like any other collection (manipulate, filter, combine).
+
+Baseline for reactive event handling: reactivex.io
+
+**Programming is about code, but programs are about data.** Start designing using transformations (unix-like pipelines).
+Using pipelines means that you are automatically thinking in terms of transforming data.
+
+**Don't hoard state, pass it around.** Functions greatly reduce coupling. A function can be used (and reused) anywhere
+its parameters match the output of some other function. There is still a degree of coupling, but it is more manageable
+than the OO-style of command and control.
+
+Thinking of code as a series of nested transformations can be a liberating approach to programming. It takes a while to
+get used to, but once you have developed the habit you will find your code becomes cleaner, your functions shorter, and
+your designs flatter.
