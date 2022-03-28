@@ -598,5 +598,5 @@ ask anyone beyond the level of a software development manager.
 Developers understand Agile to be a methodology for streamlining the development process and for making software
 development more predictable, more practicable, and more manageable.
 
-Many developers ate blissfully unaware of management's use of the metrics provided by the implementation of Agile
+Many developers are blissfully unaware of management's use of the metrics provided by the implementation of Agile
 practices and the data it produces.

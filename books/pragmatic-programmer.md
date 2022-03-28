@@ -308,3 +308,27 @@ than the OO-style of command and control.
 Thinking of code as a series of nested transformations can be a liberating approach to programming. It takes a while to
 get used to, but once you have developed the habit you will find your code becomes cleaner, your functions shorter, and
 your designs flatter.
+
+**Don't pay inheritance tax.** Inheritance is coupling. Not only is the child class coupled to the parent, the parent's
+parent, and so on, but the code that uses the child is also coupled to al the ancestors.
+
+Alternatives to inheritance:
+
+- interfaces and protocols - these declarations create no code. We can use them to create types, and any class that
+  implements the appropriate interface will be compatible with that type.
+- delegation - has-a is better than is-a.If parent has 20 methods, and the subclass wants to make use of just 2 of them,
+  its objects will still have the other 18 just lying around and callable.
+- mixins and traits - use them to share functionality. The basic ide is simple, we want ot be able to extend classes and
+  objects with new functionality without using inheritance. So we create a set of these functions, give that set a name,
+  and then somehow extend a class with them.
+
+**Prefer interfaces to express polymorphism.** Interfaces and protocols give us polymorphism without inheritance.
+
+**Parametrize your app using external configuration.** When code relies on values that may change after the application
+has gone live, keep those values external to the app. Keep the environment and customer-specific values outside the
+app (credentials, logging levels, IP addresses, validation parameters, external rates - e.g. tax rates, formatting
+details, license keys).
+
+While static configuration is common, we currently favor a different approach. We still want configuration data kept
+external to the application, but rather than in a flat file ro database, we would like to see it stored behind a service
+API.
