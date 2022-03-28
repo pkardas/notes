@@ -9,6 +9,7 @@ Book by David Thomas and Andrew Hunt
 - [Chapter 3: The Basic Tools](#chapter-3-the-basic-tools)
 - [Chapter 4: Pragmatic Paranoia](#chapter-4-pragmatic-paranoia)
 - [Chapter 5: Bend, or Break](#chapter-5-bend-or-break)
+- [Chapter 6: Concurrency](#chapter-6-concurrency)
 
 ## Chapter 1: A Pragmatic Philosophy
 
@@ -291,7 +292,7 @@ file system, service API, ...). Always wrap these resources behind code that you
 Keeping your code shy - having it deal with things it directly knows about, will help keep you applications decoupled,
 and that will make them more amenable to change.
 
-Publish/Subscribe generalizes the observed pattern, at the same time solving the problems of coupling and performance.
+Publish/Subscribe generalizes the observer pattern, at the same time solving the problems of coupling and performance.
 
 Streams let us treat events as if they were a collection of data. It's as if we had a list of events, which got longer
 when new events arrive. We can treat streams like any other collection (manipulate, filter, combine).
@@ -332,3 +333,20 @@ details, license keys).
 While static configuration is common, we currently favor a different approach. We still want configuration data kept
 external to the application, but rather than in a flat file ro database, we would like to see it stored behind a service
 API.
+
+## Chapter 6: Concurrency
+
+Concurrency - when the execution of two or more pieces of code act as if they run at the same time (context switching).
+Parallelism is when they do run at the same time (multiple cores).
+
+Temporal coupling - coupling in time. Temporal coupling happens when your code imposes a sequence on things that is not
+required to solve the problem.
+
+**Analyze workflow to improve concurrency.** Find out what can happen at the same time, and what must happen in a strict
+order. One way to do this is to capture the workflow using a notation such as the activity diagram.
+
+**Shared state is incorrect state.** A semaphore is a thing that only one person can own at a time. You can create a
+semaphore and the use it to control some other resource.
+
+**Random failures are often concurrency issues.** Whenever tow or more instances or your code can access some resource
+at the same time, you are looking at a potential problem. 
