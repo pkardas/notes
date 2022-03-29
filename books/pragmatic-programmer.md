@@ -349,4 +349,13 @@ order. One way to do this is to capture the workflow using a notation such as th
 semaphore and the use it to control some other resource.
 
 **Random failures are often concurrency issues.** Whenever tow or more instances or your code can access some resource
-at the same time, you are looking at a potential problem. 
+at the same time, you are looking at a potential problem.
+
+**Use actors for concurrency without shared state.** Actors execute concurrently, asynchronously and share nothing. An
+actor is an independent virtual processor with its own local state. Each actor has a mailbox. WHen a message appears in
+the mailbox and the actor is idle, it kicks into life and processes the message. When it finishes processing, it
+processes another message in the mailbox, or goes back to sleep.
+
+**Use blackboards to coordinate workflow.** Order of data arrival is irrelevant - when a fact is posted it can trigger
+the appropriate rules. The output of any rules can post to the backboard and cause the triggering of yet more applicable
+rules.
