@@ -504,7 +504,7 @@ The Command Pattern:
 > Encapsulates a request as an object, thereby letting you parametrize other objects with different requests,
 > queue or log requests, and support undoable operations.
 
-A null object is useful when you don;t have a meaningful object to return, and yet you want to remove the responsibility
+A null object is useful when you don't have a meaningful object to return, and yet you want to remove the responsibility
 of handling null from the client, e.g. `NoCommand` - surrogate and does nothing when its execute method is called.
 
 Command Pattern can be taken into the next level by using e.g. Java's lambda expressions. Instead of instantiating the
@@ -577,7 +577,7 @@ How the Client uses the Adapter:
 
 1. The client makes a request to the adapter by calling a method on it using the target interface.
 2. The adapter translates the request into one or more calls on the adaptee using the adaptee interface.
-3. The client receives the results of teh call and never knows there is an adapter doing the translation.
+3. The client receives the results of the call and never knows there is an adapter doing the translation.
 
 It is possible to create a Two Way Adapter, just implement both interfaces involved, so the adapter can act as an old
 interface or a new interface.
@@ -1089,7 +1089,7 @@ Don't be afraid to remove a Design Pattern from your design. Remove, when a simp
 be better.
 
 _YAGNI_: Resist the temptation of creating architectures that are ready to take on change from any direction. If the
-reason for adding a pattern is only hypothetical, don;t add the pattern: it will only add complexity to your system, and
+reason for adding a pattern is only hypothetical, don't add the pattern: it will only add complexity to your system, and
 you might never need it. Overuse of design patterns can lead to code that is downright overengineered. Always go with
 the simplest solution that does the job and introduce patterns where the need emerges.
 
@@ -1118,7 +1118,7 @@ Bullet points:
   of refinement.
 - Remember, most patterns you encounter will be adaptations of existing patterns, not new patterns.
 - Build your team's shared vocabulary. This is one of the most powerful benefits of using patterns.
-- Like any community, the patterns community has its own lingo. Don;t let that hold you back. Having read this book, you
+- Like any community, the patterns community has its own lingo. Don't let that hold you back. Having read this book, you
   know most of it.
 
 ## Chapter 14: Leftover Patterns
@@ -1131,7 +1131,7 @@ Benefits:
 
 + Decouples an implementation so that it is bout bound permanently to an interface.
 + Abstraction and implementation can be extended independently.
-+ Changes to the concrete abstraction classes don;t affect the client.
++ Changes to the concrete abstraction classes don't affect the client.
 
 Bridge Uses and Drawbacks:
 

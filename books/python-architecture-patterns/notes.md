@@ -488,7 +488,7 @@ We explicitly choose small, focused transactions that can fail independently.
   available. Tracks new events on retrieved aggregates.
 - Repository - Abstraction around persistent storage. Each aggregate has its own repository.
 
-Docker: Mounting our source and test code as `volumes` means we don;t need to rebuild our containers every time we make
+Docker: Mounting our source and test code as `volumes` means we don't need to rebuild our containers every time we make
 a code change.
 
 Postel's Law (robustness principle):
