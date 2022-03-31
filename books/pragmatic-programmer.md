@@ -20,9 +20,9 @@ The team needs to be able to trust you and rely on you, and you need to be comfo
 In a healthy environment based in trust, you can safely speak your mind, present your ideas, and rely on your team
 members who can in turn rely on you.
 
-**Provide options, don't make lame excuses.** Instead of excuses provide options. Don;t say it can't be done: explain
+**Provide options, don't make lame excuses.** Instead of excuses provide options. Don't say it can't be done: explain
 what can be done to salvage the solution. When you find yourself saying "_I don't know_" be sure to follow it up with
-"_--but I'll find out_". It is a great way to admit what you don;t know, but then take responsibility like a pro.
+"_--but I'll find out_". It is a great way to admit what you don't know, but then take responsibility like a pro.
 
 _Entropy_ - a term from physics that refers to the amount of "disorder" in a system. The entropy in the universe tends
 toward a maximum. When disorder increases in software, we call it "software rot". Some folks might call it by the more
@@ -40,7 +40,7 @@ with your colleagues what the problems are and what could be done to fix them.
 
 **Be a catalyst for change.** You may be in a situation where you know exactly what needs doing and how to do it. People
 will form committees, budgets will need approval, and things will get complicated. Work out what can you reasonably ask
-for.Develop it well. Once you have got it, show people, and let them marvel. Sit back and wait for them to start asking
+for. Develop it well. Once you have got it, show people, and let them marvel. Sit back and wait for them to start asking
 you to add the functionality you originally wanted. Show them a glimpse of the future, and you will get them to rally
 around.
 
@@ -88,7 +88,7 @@ _Critical Thinking Tutorial:_
 2. Who does this benefit? - "follow the money" can be a very helpful path to analyze. The benefits to someone else or
    another organization may be aligned with your won, or not.
 3. What is the context? - everything occurs in its own context. Good for someone, doesn't mean it is good for you.
-4. WHy is this a problem? - is there an underlying model? How does the underlying model work?
+4. Why is this a problem? - is there an underlying model? How does the underlying model work?
 
 **English is just another programming language.** Having the best ideas, the finest code, or the most pragmatic thinking
 is ultimately sterile unless you can communicate with other people.
@@ -140,7 +140,7 @@ problems that ripple through the entire system.
 
 Modular, component-based, layered systems -> these are orthogonal systems.
 
-- Keep your code decoupled - write shy modules, modules that don;t reveal anything unnecessary to other modules and that
+- Keep your code decoupled - write shy modules, modules that don't reveal anything unnecessary to other modules and that
   don't rely on other modules' implementations.If you need to change an object's state, get the other object to do it
   for you.
 - Avoid global data - in general, your code is easier to understand and maintain if you explicitly pass any required
@@ -153,7 +153,7 @@ come along and wipe them out at any time.
 
 **Forgo following fads.** Choose architecture based on fundamentals, not fashion. No one knows what the future may hold.
 
-**Use tracer bullets to fin the target.** Look for important requirements, the one that define the system. Look for
+**Use tracer bullets to find the target.** Look for important requirements, the one that define the system. Look for
 areas where you have doubts, and where you see the biggest risks. Then prioritize your development so that these are the
 first areas you code. Benefits of the tracer code:
 
@@ -185,7 +185,7 @@ misinterpreted, you may be better off with the tracer bullet approach.
 **Estimate to avoid surprises.** Estimate before you start. You will spot potential problems up front.
 
 Basic estimating trick: ask someone who's already done it. Before you get too committed to model building, cast around
-for someone who has been in a similar situation in teh past. See how their problems got resolved.
+for someone who has been in a similar situation in the past. See how their problems got resolved.
 
 Model building can be both creative and useful in the long term. Often, the process of building the model leads to
 discoveries of underlying patterns and processes that weren't apparent on the surface. Building the model introduces
@@ -201,8 +201,8 @@ will be giving them the most accurate scheduling estimates you can.
 
 ## Chapter 3: The Basic Tools
 
-Tools amplify your talent. The better your tools, and the better your tools, and the better you know how to use them,
-the more productive you can be.
+Tools amplify your talent. The better your tools, and the better you know how to use them, the more productive you can
+be.
 
 **Keep knowledge in plain text.** Text will not become obsolete. Make plain text understandable to humans.
 
