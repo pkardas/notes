@@ -10,6 +10,7 @@ Book by David Thomas and Andrew Hunt
 - [Chapter 4: Pragmatic Paranoia](#chapter-4-pragmatic-paranoia)
 - [Chapter 5: Bend, or Break](#chapter-5-bend-or-break)
 - [Chapter 6: Concurrency](#chapter-6-concurrency)
+- [Chapter 7: While you are coding](#chapter-7-while-you-are-coding)
 
 ## Chapter 1: A Pragmatic Philosophy
 
@@ -359,3 +360,110 @@ processes another message in the mailbox, or goes back to sleep.
 **Use blackboards to coordinate workflow.** Order of data arrival is irrelevant - when a fact is posted it can trigger
 the appropriate rules. The output of any rules can post to the backboard and cause the triggering of yet more applicable
 rules.
+
+## Chapter 7: While You Are Coding
+
+**Listen to your inner lizard.** When it feels like your code is pushing back, it is really your subconscious trying to
+tell you something is wrong.
+
+Learning to listen to your gut feeling when coding is an important skill to foster. But it applies to the bigger picture
+as well. Sometimes a design just feels wrong, or some requirements makes you feel uneasy. Stop and analyze these
+feelings. If you are in a supportive environment, express them out loud. Explore them.
+
+**Don't program by coincidence.** Don't rely on luck and accidental success.
+
+- Always be aware fo what you are doing.
+- Can you explain the code, in detail, to a more junior programmer? If not, perhaps you are relying on coincidences.
+- Don't code in dark. If you are not sure why it works, you will not know why it fails.
+- Proceed from a plan.
+- Don't depend on assumptions. If you can't tell something is reliable, assume the worst.
+- Document your assumptions.
+- Don't just test your code, but test your assumptions as well. Don't guess, try it.Write an assertion to test your
+  assumptions. If your assertion is right, you have improved the documentation in your code. If you discover your
+  assumption is wrong, then count yourself lucky.
+- _Don't be a slave to history. Don't let existing code dictate future code. All code can be replaced if it is no longer
+  appropriate._
+
+**Estimate the order of your algorithms.** Estimate the resources that algorithms use - time, processor, memory, and so
+on. When you write anything containing loops or recursive calls, check the runtime and memory requirements. When a more
+detailed analysis is needed - use Big-O notation.
+
+Think of the _O_ as meaning _on the order of_. Big-O is never going to give you actual numbers for time of memory of
+whatever - it simply tells you how these values will change as the input changes.
+
+Common sense estimation:
+
+- simple loops - _O(n)_
+- nested loops - _O(n^2)_
+- binary chop - _O(log n)_
+- divide and conquer - _O(n log n)_
+- combinatorics - running time might run out of time, _O(n!)_
+
+**Test your estimates.** The fastest one is not always the best for the job. Given a small input set, a straightforward
+insertion sort will perform just as well as a quicksort, and will take less time to write and debug.
+
+Be wary of _premature optimisation_. It is always a good idea to make sure an algorithm really is a bottleneck before
+investing your precious time trying to improve it.
+
+Refactoring: As a program evolves, it will become necessary to rethink earlier decisions and rework portions of code.
+This process is perfectly natural. Code needs to evolve - it is not a static thing.
+
+The most common metaphor for software development is building construction. Rather than a construction, software is more
+like a gardening - it is more organic than concrete.
+
+Refactoring is not intended to be a special, high-ceremony, once-in-a-while activity. Refactoring is a day-to-day
+activity, taking low risk small steps. It is a targeted, precise approach to help keep the code easy to change. You need
+good, automated unit testing that validates the behavior of the code.
+
+Any number of things may cause code to qualify for refactoring:
+
+- duplication
+- non-orthogonal design - change to one thing affects the other
+- outdated knowledge
+- usage - some features may be more important than originally thought
+- performance
+- the test pass - when you have added a small amount of code, and that extra test passes, you have a great opportunity
+  to dive in and tidy up what you just wrote.
+
+**Refactor early, refactor often.** Time pressure is often used as an excuse for not refactoring. Fail to refactor now,
+and there will be a far greater time investment to fix the problem down the road.
+
+**Explain this principle to others by using a medical analogy: think of the code that needs refactoring as "a growth".
+Removing it requires invasive surgery. You can go in now, and take it out while it is still small. Or, you could wait
+while it grows and spreads - but removing it then will be both more expensive and more dangerous. Wait even longer, and
+you may lose the patient entirely.**
+
+How to refactor without doing more harm than good:
+
+1. Don't try to refactor and add functionality at the same time.
+2. Make sure you have good tests before you begin refactoring. Run the tests as often as possible.
+3. Take short, deliberate steps. Refactoring often involves making many localized changes that result in a larger-scale
+   change.
+
+Don't live with broken windows.
+
+**Testing is not about finding bugs.** Major benefits of testing happen when you think about and write the tests, not
+when you run them.
+
+**A test is the first user of your code.** Testing is vital feedback that guides your coding. _A function or method that
+is tightly coupled to other code is hard to test, because you have to set up all that environment._ Making your stuff
+testable also reduces its coupling.
+
+**Build end-to-end, not top-down or bottom up.** Build small pieces of end-to-end functionality, learning about the
+problem as you go.
+
+Like our hardware colleagues, we need to build testability into the software from the very beginning, and test each
+piece thoroughly before trying to wire them together. Chip-level testing for hardware is roughly equivalent to unit
+testing in software. Write test cases that ensure a given unit honors its contract. We want to test that the module
+delivers the functionality it promises.
+
+**Design to test.** Start thinking about testing before you write a line of code.
+
+Approaches:
+
+- Test first - TDD - probably the best choice in most circumstances.
+- Test during - a good fallback when TDD is not useful or convenient.
+- Test never - the worst choice.
+
+**Test your software, or your users will.** Make no mistake, testing is part of programming. It is not something left to
+other departments or staff. Testing, design, coding - it is all programming.
