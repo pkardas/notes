@@ -6,6 +6,8 @@ In progress:
 
 👀 [The Pragmatic Programmer](books/pragmatic-programmer.md)
 
+👀 [Cracking the Coding Interview](books/cracking-coding-interview/notes.md)
+
 Finished:
 
 ✅ [Architecture Patterns with Python](books/python-architecture-patterns/notes.md)
@@ -49,8 +51,6 @@ Queue:
 [Understanding Distributed Systems](books/understanding-distributed-systems.md)
 
 [Kubernetes in Action](books/kubernetes.md)
-
-[Cracking the Coding Interview](books/cracking-coding-interview/notes.md)
 
 ### Case Studies
 
