@@ -7,6 +7,8 @@ Book by Gayle Laakmann McDowell
 - [Chapter 1: The Interview Process](#chapter-1-the-interview-process)
 - [Chapter 2: Behind the Scenes](#chapter-2-behind-the-scenes)
 - [Chapter 3: Special situations](#chapter-3-special-situations)
+- [Chapter 4: Before the Interview](#chapter-4-before-the-interview)
+- [Chapter 5: Behavioral Questions](#chapter-5-behavioral-questions)
 
 ## Chapter 1: The Interview Process
 
@@ -46,7 +48,7 @@ interviews and veto power in the hiring decision.
 
 **Experienced candidates.** More experienced engineers might see slightly less focus on algorithm questions. Some
 interviewers might hold experienced candidates to a somewhat lower standard. After all, it has been years since these
-candidates took an algorithms class. Others though hold experienced candidates to a higher standard. On average it
+candidates took an algorithms class. Others though hold experienced candidates to a higher standard. On average, it
 balances out.
 
 The exception to this rule is system design and architecture questions. Performance in such interview questions would be
@@ -57,8 +59,8 @@ conversation with your interviewers is your ticket to many job offers.
 
 **For interviewers.**
 
-- Don't actually ask the exact questions in here. You can ask similar questions to these. Some candidates are reading
-  this book. Your goal is to test their problem-solving skills, not their memorization skills.
+- Don't actually ask the exact questions in here (this book). You can ask similar questions to these. Some candidates
+  are reading this book. Your goal is to test their problem-solving skills, not their memorization skills.
 - Ask Medium and Hard problems.When you ask questions that are too easy, performance gets clustered together.
 - Use hard questions, not hard knowledge. If your question expects obscure knowledge, ask yourself: is this truly an
   important skill? Most won't remember Dijkstra's algorithm or the specifics of how AVL trees work.
@@ -87,4 +89,58 @@ conversation with your interviewers is your ticket to many job offers.
     - Quality Check - More challenging questions. Designed to be more rigorous and make a candidate think.
     - Specialist Questions - Test knowledge on specific topics, e.g. Java or machine learning.
     - Proxy Knowledge - This is knowledge that is not quite at the specialist level, but that you would expect a
-      candidate at their level to know. 
+      candidate at their level to know.
+
+## Chapter 4: Before the Interview
+
+If you are smart, you can code, and you can prove that, you can land your interview.
+
+Resume screeners want to know that you are smart, and you can code. You should prepare your resume to highlight these 2
+things. Think twice before cutting more technical lines in order to allow space for your non-technical hobbies.
+
+Keep your resume short, max. 1.5-2 pages. Long resumes are not a reflection of having tons of experience, there are a
+reflection of not understanding hot to prioritize content. A resume should not include a full history of every role you
+have ever had. Include only the relevant positions - the ones that make you a more impressive candidate.
+
+For each role, try to discuss you accomplishments with the following approach: "_Accomplishment X by implementing Y
+which led to Z_". Not everything will fit into this approach, but the principle is the same: what you did, how you did
+it, and what the results were.
+
+## Chapter 5: Behavioral Questions
+
+Ensure that you have one to three projects that you can talk about in detail. You should be able to discuss the
+technical components in depth. These should be projects where you played a central role.
+
+What are your weaknesses? A good answer conveys a real, legitimate weakness but emphasises how you work to overcome it.
+
+What questions should you ask the interviewer?
+
+- Genuine Questions: these are the questions you actually want to know the answer to.
+- Insightful Questions: these questions demonstrate your knowledge or understanding of technology. These questions will
+  typically require advance research about the company.
+- Passion Questions: these questions are designed to demonstrate your passion for technology. They show that you are
+  interested in learning and will be a strong contributor to the company. E.g.: I am very interested in scalability, and
+  I would love to learn more about it. WHat opportunities are there at this company to learn about this?
+
+Be specific, not arrogant. How do you make yourself sound good without being arrogant? Be specific. Specificity means
+giving just the facts and letting the interviewer derive an interpretation.
+
+Stay light on details and just state the key points. Your interviewer can ask for more details.
+
+Focus on yourself, not your team. More "I", less "we".
+
+Give structured answers.
+
+1. Nugget first - means starting your response with a "nugget" that succinctly describes what your response will be
+   about.
+2. S.A.R (Situation, Action, Result) - you start off outlining the situation, then explaining the actions you took, and
+   lastly, describing the result.
+
+Tell me about yourself, suggested structure:
+
+1. Current role (headline only)
+2. College
+3. Post college & onwards (job, technologies)
+4. Current role (more details)
+5. Outside of work (hobbies)
+6. Wrap up (what are you looking for)
