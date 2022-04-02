@@ -467,3 +467,36 @@ Approaches:
 
 **Test your software, or your users will.** Make no mistake, testing is part of programming. It is not something left to
 other departments or staff. Testing, design, coding - it is all programming.
+
+**Use property-based tests to validate your assumptions.** Property-based tests will try things you never thought to
+try, and exercise your code in ways it wasn't meant to be used. For python use _Hypothesis_ framework. Hypothesis gives
+you a minilanguage for describing the data it should generate.
+
+**Keep it simple and minimize attack surfaces.** Bear in mind these security principles:
+
+1. Minimize Attack Surface Area
+    1. Code complexity makes the attack surface larger, with more opportunities for unanticipated side effects. Think of
+       complex code as making the surface area more porous and open to infection. Simple, smaller code is better.
+    2. Never trust data from an external entity, always sanitize it before passing it on to a database, view rendering,
+       or other processing.
+    3. Unauthenticated services are an attack vector. Any user anywhere in the world cal call unauthenticated services.
+    4. Keep the number of authenticated users at an absolute minimum.Cull unused, old, or outdated users and services.
+       If an account with development services is compromised, your entire product is compromised.
+    5. Don't give too much information about an error in the response.
+2. Principle of Least Privilege - Every program and every privileged user of the system should operate using the least
+   amount of privilege necessary to complete the job.
+3. Don't leave personally identifiable information, financial data, passwords, or other credentials in plain text. Don't
+   check in secrets, API keys, SSH keys, encryption passwords or other credentials alongside your code in version
+   control.
+4. Apply security patches quickly. The largest data breaches in history were caused by systems that were behind on their
+   updates.
+
+You don't want to do encryption yourself. Even the tiniest error can compromise everything. Rely on reliable things.
+Take the more pragmatic approach and let someone else worry about it and use a third party authentication provider.
+
+**Name well, rename when needed.** Things should be named according to the role they play in your code. Honor the local
+culture (snake_case vs CamelCase vs ...). Every project has its own vocabulary - jargon words that have a special
+meaning to the team. It is important everyone on the team knows what these words mean. One way is to encourage a lot of
+communication, another way is to have a project glossary.
+
+When you see a name that no longer expresses the intent, or is misleading or confusing, fix it.

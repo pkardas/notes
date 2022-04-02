@@ -4,3 +4,5 @@
 .idea
 .ipynb_checkpoints
 */.pytest_cache/
+git-user.sh
+magic-script.sh
