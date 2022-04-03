@@ -409,7 +409,7 @@ Most users are not going to buy your product, they are just viewers. We can make
 make them perform better.
 
 All distributed systems are inconsistent. As soon as you have a web server and two customers, you have the potential for
-stale data.No matter what we do, we are always going to find that our software systems are inconsistent with reality,
+stale data. No matter what we do, we are always going to find that our software systems are inconsistent with reality,
 and so we will always need business process to cope with these edge cases. It is OK to trade performance for consistency
 on the read side, because stale data is essentially unavoidable.
 
