@@ -500,3 +500,60 @@ meaning to the team. It is important everyone on the team knows what these words
 communication, another way is to have a project glossary.
 
 When you see a name that no longer expresses the intent, or is misleading or confusing, fix it.
+
+## Chapter 8: Before the Project
+
+**No one knows exactly what they want.** Requirements rarely lie on the surface. Normally, they are buried deep beneath
+layers of assumptions, misconceptions, and politics.
+
+**Programmers help people understand what they want.** Our job is to help people understand what they want.
+
+**Requirements are learned in a feedback loop.** Your role is to interpret what the client says and to feed back to them
+the implications. This is both an intellectual proces and a creative one. Your job is to help the client understand the
+consequences of their stated requirements.
+
+**Work with the user to think like a user.** There is a simple technique for getting inside your client's heads: become
+a client.
+
+**Policy is metadata.** Don't hardcode policy into a system, instead express it as metadata used by the system.
+
+**Use a project glossary.** Create and maintain a project glossary - one place that defines all the specific terms and
+vocabulary used in a project. It is hard to succeed on a project if users and developers call the same thing by
+different names.
+
+**Don't think outside the box - find the box.** When faced with an impossible problem, identify the real constraints.
+Ask yourself: Does it have to be done this way? Does it have to be done at all?
+
+Sometimes you find yourself working on a problem that seems much harder than you thought it should be. You may think
+this particula problem is "impossible". This is an ideal time to do something else for a while. Sleep on it, go walk the
+dog. People who were distracted did better on a complex problem-solving task than people who put in conscious effort. If
+you are not willing to drop the problem for a while, the next best thing is probably finding someone to explain it to (
+rubber duck).
+
+Conway's Law: "_Organizations which design systems are constrained to produce designs which are copies of the
+communication structures of these organizations_".
+
+**Don't go into code alone.**
+
+Pair programming - the inherited peer-pressure of a second person helps against moments of weakness and bad habits of
+naming variables such as foo and such. You are less inclined to take a potentially embarrassing shortcut when someone is
+actively watching, which also results in higher-quality code.
+
+Mob programming - it is an extension of pair programming that involves more than just two developers. You can think of
+mob programming as tight collaboration with live coding.
+
+**Agile is not a noun, agile is how you do things.** Agile is an adjective. Remember the values from the manifesto:
+
+1. Individuals and interactions over processes and tools
+2. Working software over comprehensive documentation
+3. Customer collaboration over contract negotiation
+4. Responding to change over following a plan
+
+Agility is all about responding to change, responding to the unknowns you encounter after you set out.
+
+Recipe for working in an agile way:
+
+1. WOrk out where you are.
+2. Make the smallest meaningful step towards where you want to be.
+3. Evaluate where you end up, and fix anything you broke (this requires a good design, because it is easier to fix good
+   design).
