@@ -4,7 +4,6 @@
 
 👀 In progress:
 
-- [The Pragmatic Programmer](books/pragmatic-programmer.md)
 - [Cracking the Coding Interview](books/cracking-coding-interview/notes.md)
 
 #### ✅ Finished:
@@ -22,6 +21,7 @@
 - Process:
     - [Clean Agile: Back to Basics](books/clean-agile.md)
     - [Domain-Driven Design: Tackling Complexity in the Heart of Software](books/ddd.md)
+    - [The Pragmatic Programmer](books/pragmatic-programmer.md)
 
 - ML:
     - [Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics and Speech Recognition](books/nlp-book.md)

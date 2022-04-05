@@ -738,7 +738,7 @@ Patters using The Hollywood Principle:
 - The Strategy Pattern
 - The Factory Pattern
 
-The Dependency Inversion Principle teaches us to avoid the use fo concrete classes and instead work as much as possible
+The Dependency Inversion Principle teaches us to avoid the use of concrete classes and instead work as much as possible
 with abstractions. The Hollywood Principle is a technique for building frameworks or components so that lower-level
 components can be hooked into the computation, but without creating dependencies between lower and higher level
 components.
@@ -821,7 +821,7 @@ going to affect two aspects of your design.
 - High cohesion - designed around a set of related functions (easy to maintain, single responsibility)
 - Low cohesion - designed around a set of unrelated functions (difficult to maintain, multiple responsibilities)
 
-There comes a time when we must refactor our code in order for it to grow. To not fo so would leave us with rigid,
+There comes a time when we must refactor our code in order for it to grow. To not of so would leave us with rigid,
 inflexible code that has no hope of ever sprouting new life.
 
 The Composite Pattern:
@@ -1169,7 +1169,7 @@ Benefits:
 Chain of Responsibility Uses and Drawbacks:
 
 - Commonly used in Windows systems to handle events like mouse clicks and keyboard events.
-- Execution of the request isn't guaranteed - it may fall ofo the end of the chain if no object handles it.
+- Execution of the request isn't guaranteed - it may fall to the end of the chain if no object handles it.
 - Can be hard to observe and debug at runtime.
 
 **Flyweight**
@@ -1217,7 +1217,7 @@ Interpreter Uses and Drawbacks:
 Benefits:
 
 + Increases the reusability of the objects supported by the Mediator by decoupling them from the system.
-+ Simplifies maintenance fo the system by centralizing control logic,
++ Simplifies maintenance of the system by centralizing control logic,
 + Simplifies and reduces the variety of messages sent between objects in the system.
 
 Mediator Uses and Drawbacks:

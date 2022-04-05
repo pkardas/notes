@@ -198,7 +198,7 @@ Once we are off and running, we can go faster and more efficiently by changing i
 encounter a steep hill or are forced to slow down by a hazard, we again drop to a low gear until we can pick up speed
 again.
 
-Rules of Thumb for Different Types fo Test:
+Rules of Thumb for Different Types of Test:
 
 1. Aim for one end-to-end test per feature - the objective is to demonstrate that the feature works, and that all the
    moving parts are glued together.
@@ -296,7 +296,7 @@ Aggregates and Consistency Boundaries Recap:
   within its remit are consistent with each other and with our rules, and to reject changes that would break the rules.
 - Aggregates and concurrency issues go together - When thinking about implementing these consistency checks, we end up
   thinking about transactions and locks. Choosing the right aggregate is about performance as well as conceptual
-  organization fo your domain.
+  organization of your domain.
 
 ## Chapter 8: Events and the Message Bus
 

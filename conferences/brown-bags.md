@@ -1,9 +1,9 @@
 [go back](https://github.com/pkardas/learning)
 
-- [NLP - State fo the Art](#nlp---state-fo-the-art)
+- [NLP - State of the Art](#nlp---state-fo-the-art)
 - [Kanban Training](#kanban-training)
 
-## NLP - State fo the Art
+## NLP - State of the Art
 
 *By Michał Jakóbczyk*
 

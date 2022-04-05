@@ -83,7 +83,7 @@ Project's complexity grove with time, this slows everyone down. Symptoms of comp
 - special-casing to work around issues
 
 Complex software makes it easy to introduce bugs, system makes it harder to understand hidden assumptions, unintended
-consequences and many more. **Simplicity should be a key goal for the systems we build**. One fo the best tools for
+consequences and many more. **Simplicity should be a key goal for the systems we build**. One of the best tools for
 removing complexity is *abstraction*. Great abstraction can hide implementation details behind a clean interface.
 
 *Evolvability*
@@ -219,7 +219,7 @@ In 90s companies stopped using OLTP systems for analytics purposes and shifted t
 separate database. This separate database is called a data warehouse.
 
 Data warehouse - separate database that analyst can query without affecting OLTP operations. Read-only copy of the data.
-Data extracted from OLTP databases, transformed into analysis-friendly schema. Process fo getting data info the
+Data extracted from OLTP databases, transformed into analysis-friendly schema. Process of getting data info the
 warehouse is known as Extract-Transform-Load. Biggest advantage of OLAP for analysis is that this database can be
 optimised for large queries.
 

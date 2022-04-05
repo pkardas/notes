@@ -43,7 +43,7 @@ effective knowledge crunchers.
 Software is unable to fill in gaps with common sense - that is why knowledge crunching is important.
 
 Example with overbooking strategy: overbooking check should be extracted from the booking functionality to be more
-explicit and visible. This is example fo domain modeling and securing and sharing knowledge.
+explicit and visible. This is example of domain modeling and securing and sharing knowledge.
 
 ## Chapter 2: Communication and the Use of Language
 
@@ -278,7 +278,7 @@ Supple design is the complement to deep modelling. Once you have dug out implici
 have the raw material. Thorough the iterative cycle, you hammer that material into a useful shape.
 
 If developer must consider the implementation of a component in order to use it, the value of encapsulation is lost.
-Tames should conform to the ubiquitous language so that team members can quickly infer their meaning. Write a test fo a
+Tames should conform to the ubiquitous language so that team members can quickly infer their meaning. Write a test of a
 behaviour before creating it, to force your thinking into client developer mode.
 
 Place as much of the logic of the program as possible into functions, operations that return results with no observable

@@ -724,7 +724,7 @@ antonymy - words with opposite meaning.
 
 English WordNet has 3 separate databases (nouns, verbs, adjectives and adverbs).
 
-Synset - (Synonym Set) - the set of near-synonyms for a WordNet sense. Glosses are properties fo a synset.
+Synset - (Synonym Set) - the set of near-synonyms for a WordNet sense. Glosses are properties of a synset.
 
 Word Sense Disambiguation - the task of determining which sense of a word is being used in a particular context. WSD
 algorithms take as input some word and context and output the correct word sense.

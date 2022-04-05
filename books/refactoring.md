@@ -500,7 +500,7 @@ mechanism. Commands can have operations such as `undo`. There are good reasons t
 this flexibility comes at a price paid in complexity.
 
 REPLACE COMMAND WITH FUNCTION - (inverse of *Replace Function with Command*) - Command object provide a powerful
-mechanism for handling complex computations. Most fo the time, you just want to invoke a function and have it to do its
+mechanism for handling complex computations. Most of the time, you just want to invoke a function and have it to do its
 thing. If the function isn't too complex, then a command object is more trouble than its worth and should be turned into
 a regular function.
 

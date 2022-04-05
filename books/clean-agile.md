@@ -218,7 +218,7 @@ Developer Bill of Rights:
       Estimates are never commitments.
 - You have the right to accept your responsibilities instead of having them assigned to you.
     - Professionals accept work, they are not assigned work. A professional developer has every right to say "no" to a
-      particular job or task. It may be that the developer does not feel confident in their ability to complete tge
+      particular job or task. It may be that the developer does not feel confident in their ability to complete the
       task, or it may be that the developer believes the task better suited for someone else. Or, it may be that the
       developer rejects the task for personal or moral reasons. Acceptance implies responsibility.
 
@@ -581,7 +581,7 @@ is to let other people decide how they work.
 Conversations between developers and business should be about why, what and when - not how.
 
 Craftsmanship promotes software development as a profession. A profession is part of who we are. A job is a thing that
-we do but is not part of who we are. A profession is something we invest in. Ot is something we want to get better at.
+we do but is not part of who we are. A profession is something we invest in. It is something we want to get better at.
 We want to gain more skills and have a long-lasting and fulfilling career.
 
 Combining Agile and Craftsmanship is the perfect way to achieve business agility.

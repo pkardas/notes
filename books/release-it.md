@@ -365,7 +365,7 @@ related to the real application. Broadly speaking, a test harness leads toward "
 The Test Harness pattern augments other testing methods. It does not replace unit tests, acceptance test, penetration
 tests and so on.
 
-DECOUPLING MIDDLEWARE - middleware is a graceless name fo tools that inhabit a singularly messy space - integrating
+DECOUPLING MIDDLEWARE - middleware is a graceless name of tools that inhabit a singularly messy space - integrating
 systems that were never meant to work together. The connective tissue that bridges gaps between different islands of
 automation.
 
@@ -956,7 +956,7 @@ representation can survive over time.
 Events can be used for:
 
 - Notifications - fire and forget, one-way announcement, no response is expected
-- Even-carried state transfer - an event that replicates entities or parts of entities so other systems can fo their
+- Even-carried state transfer - an event that replicates entities or parts of entities so other systems can do their
   work
 - Event sourcing - when all changes are recorded as events that describe the change
 - Command-query responsibility segregation - reading and writing with different structures. Not the same as events, but

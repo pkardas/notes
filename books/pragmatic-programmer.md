@@ -12,6 +12,8 @@ Book by David Thomas and Andrew Hunt
 - [Chapter 6: Concurrency](#chapter-6-concurrency)
 - [Chapter 7: While you are coding](#chapter-7-while-you-are-coding)
 - [Chapter 8: Before the Project](#chapter-8-before-the-project)
+- [Chapter 9: Pragmatic Projects](#chapter-9-pragmatic-projects)
+- [Postface](#postface)
 
 ## Chapter 1: A Pragmatic Philosophy
 
@@ -373,7 +375,7 @@ feelings. If you are in a supportive environment, express them out loud. Explore
 
 **Don't program by coincidence.** Don't rely on luck and accidental success.
 
-- Always be aware fo what you are doing.
+- Always be aware of what you are doing.
 - Can you explain the code, in detail, to a more junior programmer? If not, perhaps you are relying on coincidences.
 - Don't code in dark. If you are not sure why it works, you will not know why it fails.
 - Proceed from a plan.
@@ -558,3 +560,116 @@ Recipe for working in an agile way:
 2. Make the smallest meaningful step towards where you want to be.
 3. Evaluate where you end up, and fix anything you broke (this requires a good design, because it is easier to fix good
    design).
+
+## Chapter 9: Pragmatic Projects
+
+**Maintain small, stable teams.** A pragmatic team is small, under 10-12 or so members. Members come and go rarely.
+Everyone knows everyone well, trust each other, and depends on each other.
+
+Quality is a team issue. The most diligent developer placed on a team that just doesn't care will find it difficult to
+maintain the enthusiasm needed to fix niggling problems. Teams as a whole should not tolerate broken windows - those
+small imperfections that no one fixes.
+
+**Schedule to make it happen.** If your team is serious about improvement and innovation, you need to schedule it.
+Trying to get things done "whenever there is a free moment" means they will never happen. Whatever sort of backlog or
+task list or flow you are working with, don;t reserve it for only feature development. The team works on more than just
+new features:
+
+- old systems maintenance
+- process reflection and refinement - continuous improvement can only happen when you take the time to look around
+- new tech experiments - try new stuff and analyze results
+- learning and skill improvements - brown bags, training sessions
+
+**Organize fully functional teams.**
+
+There is a simple marketing trick that helps teams communicate as one - generate a brand. When you start a project, come
+up with a name for it, ideally off-the-wall. Spend 30 minutes coming up with a zany logo, and use it, but it gives your
+team an identity to build on, and the world something memorable to associate with your work.
+
+Good communication is key to avoiding problems. You should be able to ask a question of team members and get a
+more-or-less instant reply. If you have to wait for a week for the team meeting to ask your question or share your
+status, that is an awful lot of friction.
+
+**Do what works, not what is fashionable.** Ask yourself, why are you even using that particular development
+method/framework/whatever? Does it work well for you? Or it was adopted just because it was being used by the latest
+internet-fueled story?
+
+You want to take the best pieces from any particular methodology and adapt the for use. No one fits for all, and current
+methods are far from complete, so you will need to look at more than just one popular method. That is very different
+mindset from "but Scrum/Lean/Kanban/XP/agile does it this way...".
+
+The goal isn't to do Scrum/do agile/ do Lean or what-have-you. The goal is to be in a position to deliver working
+software that gives the users some new capability at a moment's notice. Not weeks, months, or years from now. If you are
+delivering in years, they shorten the cycle to months. From months, cut it down to weeks. From a four-week sprint, try
+two. From a two-week sprint, try one. Then daily. Then, finally, on demand. Note that being able to deliver on demand
+deos not mean you are forced to deliver every minute of every day. You deliver when the users need it, when it makes
+business sense to do so.
+
+**Deliver when users need it.** In order to move to this style of continuous development, you need to a rock-solid
+infrastructure.
+
+Once your infrastructure is in order, you need to decide how to organize the work. Beginners might want to start with
+Scrum for project management. More disciplined and experienced teams might look to Kanban and Lean techniques. But
+investigate it first. Try these approaches for yourself.
+
+**Use version control to drive builds, tests and releases.** Build, test, and deployment are triggered via commits or
+pushes version control, and built in a container in the cloud. Release to staging or production is specified by using a
+tag in your version control system.
+
+**Test early, test often, test automatically.** A good project may well have more test code than production code. The
+time it takes to produce this test code is worth the effort. It ends up being much cheaper in the long run, and you
+actually stand a chance of producing a product with close to zero defects.
+
+**Coding ain't done till all the tests run.** The automatic build runs all available tests. It is important to aim to "
+test for real" - the test environment should match the production environment closely. The build may cover several major
+types of software testing: unit testing, integration testing, validation and verification and performance testing.
+
+**Use Saboteurs to test your testing.** Because we can't write perfect software, we can't write perfect tests. We need
+to test the tests. After you have written a test to detect a bug, cause the bug deliberately and make sure the test
+complains. If you are really serious about testing, take a separate branch, introduce bugs on purpose and verify that
+the tests will catch them. At a higher level, you can use something like Netflix's Chaos Monkey.
+
+**Test state coverage, not code coverage.** Even if you happen to hit every line of code, that is not whole picture.
+What is important is the number of states that your program may have. States are not equivalent to lines of code. A
+great wat to explore how your code handles unexpected states is to have a computer generate those states (property-based
+testing).
+
+**Find bug once.** Once a human tester finds a bug, it should be the last time a human tester finds that bug. If a bug
+slips through the net of existing tests, you need to add a new test to trap it next time.
+
+**Don't use manual procedures.** Tracking down differences of any one component usually reveals a surprise. People
+aren't as repeatable as computers are. Nor should we expect them to be. Everything should depend on automation. Project
+build, deployment, ... Once you introduce manual steps, you have broken a very large window.
+
+**Delight users, don't just deliver code.** If you want to delight your client, forge a relationship with them where you
+can actively help solve their problems. Be a _Problem Solver_ (not Software Engineer/Developer). That is the essence of
+a Pragmatic Programmer.
+
+**Sign your work.** If we are responsible for a design, or a piece of code, we do a job we can be proud of. Artisans of
+an earlier age were proud to sign their work. You should be, too.
+
+However, you shouldn't jealously defend your code against interlopers, by the same token, you should treat other
+people's code with respect. Mutual respect among the developers is critical to make this tip work.
+
+We want to see pride in ownership "_I wrote this, and I stand behind my work_". Your signature should come to be
+recognized as an indicator of quality. People should see your name on a piece of code and expect it to be solid, well
+written, tested and documented.
+
+A really professional job. Written by a professional. A Pragmatic Programmer.
+
+## Postface
+
+We have a duty to ask ourselves two questions about every piece of code we deliver:
+
+1. Have I protected the user?
+2. Would I use this myself?
+
+**First, do no harm.** Would I be happy to be a user of this software? Do I want my details shared? Do I want my
+movements to be given to retail outlets? Would I be happy to be driven by this autonomous vehicle? Am I comfortable
+doing this? If you are involved in the project, you are just as responsible as the sponsors.
+
+**Don't enable scumbags.**
+
+**It is your life. Share it. Celebrate. Build It. AND HAVE FUN.** You are building the future. Your duty is to make a
+future that we would all want to inhabit. Recognize when you are doing something against this ideal, and have courage to
+say no.
