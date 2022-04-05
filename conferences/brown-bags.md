@@ -74,9 +74,10 @@ General practices:
 - you need to have a board to visualise progress
 - number of items in Work In Progress is limited
 - manage flow - work flow management, not people optimisation
-- make policies explicit - define policy how to treat a card in a column, eg. when card moves from one column to another
+- make policies explicit - define policy how to treat a card in a column, e.g. when card moves from one column to
+  another
 - implement feedback loops
 - improve collaboratively
 - evolve experimentally
 
-Different levels of Kanban boards - eg. 1 WIP per person.
+Different levels of Kanban boards - e.g. 1 WIP per person.

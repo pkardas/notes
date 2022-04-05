@@ -22,7 +22,7 @@ DEMO:
 2. Open SageMaker Studio (limitation: one instance per region)
 3. We are going through Standard setup:
     1. Authentication method selection (SSO or IAM)
-    2. Permissions: which resources it can access - eg. storage, by default SageMaker has access to any bucket with "
+    2. Permissions: which resources it can access - e.g. storage, by default SageMaker has access to any bucket with "
        sagemaker" in the name
     3. You can make your notebook shareable
     4. Network and storage definitions - VPC or Public Internet, security groups, encryption
@@ -46,13 +46,14 @@ SageMaker is not just a notebook - it allows for data preparation, building mode
 Bias - unfair representation of reality, as we use datasets, there is a risk, that data we use does not represent
 reality.
 
-Explainability - complex models, hard to understand why model came up with a prediction (eg. deep learning). We need to
-know why model came up with certain decision, eg. medicine, legal obligations.
+Explainability - complex models, hard to understand why model came up with a prediction (e.g. deep learning). We need to
+know why model came up with certain decision, e.g. medicine, legal obligations.
 
 **How to solve these issues?**
 
-We used some dataset that have following columns: age, sex, skin colour, ... Zooming in on sex: 1/3 female, 2/3 males -
-imbalanced. Zoom even more, 1:7 for sex earnings with >50k USD. Model can be biased towards overrepresented group.
+We used some dataset that have the following columns: age, sex, skin colour, ... Zooming in on sex: 1/3 female, 2/3
+males - imbalanced. Zoom even more, 1:7 for sex earnings with >50k USD. Model can be biased towards overrepresented
+group.
 
 So the first approach is to visualise the data to detect bias. But AWS has something better.
 
@@ -73,9 +74,9 @@ For explainability AWS outputs similar report:
 
 ## Deploy state-of-the-art ML models and solutions in a single click
 
-SageMaker Studio. Problem: text analysis, there are 60 models prepared for text analysis. We can select one, eg. trained
-on Wikipedia. Then we can deploy the model, we can fine tune the model - we need to provide the dataset in a special
-format. Model has an endpoint, which can be tested in the Jupyter Notebook.
+SageMaker Studio. Problem: text analysis, there are 60 models prepared for text analysis. We can select one, e.g.
+trained on Wikipedia. Then we can deploy the model, we can fine tune the model - we need to provide the dataset in a
+special format. Model has an endpoint, which can be tested in the Jupyter Notebook.
 
 ![aws-innovate-ai-ml-21-5](../_images/aws-innovate-ai-ml-21-5.png)
 

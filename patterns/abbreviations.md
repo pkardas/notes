@@ -81,7 +81,8 @@ High-level modules, which provide complex logic, should be easily reusable and u
 modules, which provide utility features. To achieve that, you need to introduce an abstraction that decouples the
 high-level and low-level modules from each other.
 
-> Entities must depend on abstractions, not on concretions. It states that the high-level module must not depend on the low-level module, but they should depend on abstractions.
+> Entities must depend on abstractions, not on concretions. It states that the high-level module must not depend on the 
+> low-level module, but they should depend on abstractions.
 
 For example password reminder should not have knowledge about database provider (low level information).
 
