@@ -10,8 +10,8 @@ TODO: *Re-read Part I.*
 
 ## Chapter 10: Introduction to Artificial Neural Networks with Keras
 
-ANNs - Artificial Neural Networks - inspired by by the networks of biological neurons, have gradually become quite
-different from their biological cousins,.
+ANNs - Artificial Neural Networks - inspired by the networks of biological neurons, have gradually become quite
+different from their biological cousins.
 
 ANNs introduced in 1943 by McCulloch and Pitts - a simplified computational model of how biological neurons might work
 together in animal brains to perform complex computation using propositional logic.

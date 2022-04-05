@@ -32,7 +32,7 @@ Basic data structure and algorithm knowledge is useful. It is a good proxy. Thes
 well-correlated with being a good developer. Also, it is hard to ask problem-solving questions that don't involve
 algorithms and data structures.
 
-Your interviewer develops a feel for your performance by comparing you to other people. Getting a hard question sin;t a
+Your interviewer develops a feel for your performance by comparing you to other people. Getting a hard question isn't a
 bad thing. When it is harder fot you, it is harder for everyone.
 
 If you haven't heard back from a company within 3-5 business days after interview, check in with your recruiter.
@@ -61,7 +61,7 @@ conversation with your interviewers is your ticket to many job offers.
 
 - Don't actually ask the exact questions in here (this book). You can ask similar questions to these. Some candidates
   are reading this book. Your goal is to test their problem-solving skills, not their memorization skills.
-- Ask Medium and Hard problems.When you ask questions that are too easy, performance gets clustered together.
+- Ask Medium and Hard problems. When you ask questions that are too easy, performance gets clustered together.
 - Use hard questions, not hard knowledge. If your question expects obscure knowledge, ask yourself: is this truly an
   important skill? Most won't remember Dijkstra's algorithm or the specifics of how AVL trees work.
 - Avoid "scary" questions. Some questions intimidate candidates, because it seems like they involve some specialized

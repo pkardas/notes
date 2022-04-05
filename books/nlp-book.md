@@ -410,7 +410,7 @@ mini-batch* training, we train on a group of *m* examples (512 or 1024).
 perfectly. There is a possibility to add a regularisation - L1 (lasso regression) and L2 (ridge regression)
 regularisation.
 
-*Multinomial logistic regression* (*softmax* regression) - for classification problems with more than 2 classes.The
+*Multinomial logistic regression* (*softmax* regression) - for classification problems with more than 2 classes. The
 multinomial logistic classifier uses a generalisation of the sigmoid function called softmax function.
 
 *Model interpretation* - Often we want to know more than just the result of classification, we want to know why

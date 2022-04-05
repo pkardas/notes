@@ -11,6 +11,7 @@ Book by David Thomas and Andrew Hunt
 - [Chapter 5: Bend, or Break](#chapter-5-bend-or-break)
 - [Chapter 6: Concurrency](#chapter-6-concurrency)
 - [Chapter 7: While you are coding](#chapter-7-while-you-are-coding)
+- [Chapter 8: Before the Project](#chapter-8-before-the-project)
 
 ## Chapter 1: A Pragmatic Philosophy
 
@@ -46,7 +47,7 @@ you to add the functionality you originally wanted. Show them a glimpse of the f
 around.
 
 **Remember the Big Picture.** Constantly review what is happening around you, not just what you personally are doing.
-Projects slowly and inexorably get totally out of hand.Most software disasters start out too small to notice, and most
+Projects slowly and inexorably get totally out of hand. Most software disasters start out too small to notice, and most
 projects overruns happen a day at a time. It is often the accumulation of small things that breaks morale and teams.
 
 Situational awareness (is there anything out of context, anything that looks like it doesn't belong), a technique
@@ -142,7 +143,7 @@ problems that ripple through the entire system.
 Modular, component-based, layered systems -> these are orthogonal systems.
 
 - Keep your code decoupled - write shy modules, modules that don't reveal anything unnecessary to other modules and that
-  don't rely on other modules' implementations.If you need to change an object's state, get the other object to do it
+  don't rely on other modules' implementations. If you need to change an object's state, get the other object to do it
   for you.
 - Avoid global data - in general, your code is easier to understand and maintain if you explicitly pass any required
   context into your modules.
@@ -318,8 +319,8 @@ Alternatives to inheritance:
 
 - interfaces and protocols - these declarations create no code. We can use them to create types, and any class that
   implements the appropriate interface will be compatible with that type.
-- delegation - has-a is better than is-a.If parent has 20 methods, and the subclass wants to make use of just 2 of them,
-  its objects will still have the other 18 just lying around and callable.
+- delegation - has-a is better than is-a. If parent has 20 methods, and the subclass wants to make use of just 2 of
+  them, its objects will still have the other 18 just lying around and callable.
 - mixins and traits - use them to share functionality. The basic ide is simple, we want ot be able to extend classes and
   objects with new functionality without using inheritance. So we create a set of these functions, give that set a name,
   and then somehow extend a class with them.
@@ -353,7 +354,7 @@ semaphore and the use it to control some other resource.
 at the same time, you are looking at a potential problem.
 
 **Use actors for concurrency without shared state.** Actors execute concurrently, asynchronously and share nothing. An
-actor is an independent virtual processor with its own local state. Each actor has a mailbox. WHen a message appears in
+actor is an independent virtual processor with its own local state. Each actor has a mailbox. When a message appears in
 the mailbox and the actor is idle, it kicks into life and processes the message. When it finishes processing, it
 processes another message in the mailbox, or goes back to sleep.
 
@@ -378,7 +379,7 @@ feelings. If you are in a supportive environment, express them out loud. Explore
 - Proceed from a plan.
 - Don't depend on assumptions. If you can't tell something is reliable, assume the worst.
 - Document your assumptions.
-- Don't just test your code, but test your assumptions as well. Don't guess, try it.Write an assertion to test your
+- Don't just test your code, but test your assumptions as well. Don't guess, try it. Write an assertion to test your
   assumptions. If your assertion is right, you have improved the documentation in your code. If you discover your
   assumption is wrong, then count yourself lucky.
 - _Don't be a slave to history. Don't let existing code dictate future code. All code can be replaced if it is no longer
@@ -480,7 +481,7 @@ you a minilanguage for describing the data it should generate.
     2. Never trust data from an external entity, always sanitize it before passing it on to a database, view rendering,
        or other processing.
     3. Unauthenticated services are an attack vector. Any user anywhere in the world cal call unauthenticated services.
-    4. Keep the number of authenticated users at an absolute minimum.Cull unused, old, or outdated users and services.
+    4. Keep the number of authenticated users at an absolute minimum. Cull unused, old, or outdated users and services.
        If an account with development services is compromised, your entire product is compromised.
     5. Don't give too much information about an error in the response.
 2. Principle of Least Privilege - Every program and every privileged user of the system should operate using the least
@@ -553,7 +554,7 @@ Agility is all about responding to change, responding to the unknowns you encoun
 
 Recipe for working in an agile way:
 
-1. WOrk out where you are.
+1. Work out where you are.
 2. Make the smallest meaningful step towards where you want to be.
 3. Evaluate where you end up, and fix anything you broke (this requires a good design, because it is easier to fix good
    design).

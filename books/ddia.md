@@ -618,8 +618,8 @@ Reads from the database are made based on snapshot isolation.
 
 ## Chapter 8: The Trouble with Distributed Systems
 
-Anything that can go wrong, will go wrong. Working with distributed systems is fundamentally different different from
-writing software on a single computer. When writing software that runs on several computers, connected by a network, the
+Anything that can go wrong, will go wrong. Working with distributed systems is fundamentally different from writing
+software on a single computer. When writing software that runs on several computers, connected by a network, the
 situation is fundamentally different.
 
 Partial failure - some parts of the system are broken in an unpredictable way. Partial failures are nondeterministic.
@@ -898,7 +898,7 @@ consumed.
 Multiple consumers - when multiple consumers read messages in the same topic, two main patterns of messaging are used:
 
 - load balancing - each message is delivered to one of the consumers, so the consumers can share the work of processing
-  the messages in the topic.This pattern is useful then the messages are expensive to process, and you want to bale to
+  the messages in the topic. This pattern is useful then the messages are expensive to process, and you want to bale to
   add consumers to parallelize the processing.
 - fan-out - each message is delivered to all the consumers, equivalent of having several batch jobs that read the same
   input file.

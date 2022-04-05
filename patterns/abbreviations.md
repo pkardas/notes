@@ -128,8 +128,8 @@ immediately.
 ### Soft State
 
 Due to the lack of immediate consistency, data values may change over time. The state of the system could change over
-time, so even during times without input there may be changes going on due to ‘eventual consistency,’ thus the state of
-the system is always ‘soft.’
+time, so even during times without input there may be changes going on due to 'eventual consistency', thus the state of
+the system is always 'soft'.
 
 ### Eventually Consistent
 

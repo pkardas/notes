@@ -178,7 +178,7 @@ Agile is important because of professionalism and the reasonable expectations fr
       test that can be feasibly automated must be automated. Manual testing should be limited to those things that
       cannot be automatically validated and to the creative discipline of Exploratory Testing.
     - we cover for each other - each individual member of a software team makes sure that there is someone who can for
-      him if he goes down.It is your responsibility to make sure that one or more of your teammates can cover for you.
+      him if he goes down. It is your responsibility to make sure that one or more of your teammates can cover for you.
     - honest estimates - you should provide estimates based on what you do and do not know. You can estimate in relative
       terms (task B should take half of the time spent on task A), you can also estimate using ranges.
     - you need to say "no" - when answer for something is "no", then the answer is really "no". For example if solution
@@ -204,7 +204,7 @@ Customer Bill of Rights:
 Developer Bill of Rights:
 
 - You have the right to know what is needed with clear declarations of priority.
-    - Developers are entitled to precision in requirements and in the importance of those requirements.This right
+    - Developers are entitled to precision in requirements and in the importance of those requirements. This right
       applies within the context of an iteration. Outside an iteration, requirements and priorities will shift and
       change.
 - You have the right to produce hugh-quality work at all times.
@@ -519,7 +519,7 @@ Enablers of multiteam coordination:
   root cause can be found and addressed.
 - Continuous Integration - calling for integration across the entire product after every checkin.
 - Simple Design - one of the hardest practices to learn and apply because it is one of the most counter-intuitive
-  practices.When coordinating the work of massive dependencies between teams, monolithic, centralized, preplanned
+  practices. When coordinating the work of massive dependencies between teams, monolithic, centralized, preplanned
   architectures create massive dependencies between teams that tend to force them to work in lock step, thus defeating
   much of the promise of Agile. Simple Design, especially when used with practices such as a microservices architecture,
   enables Agility in large.
@@ -527,7 +527,7 @@ Enablers of multiteam coordination:
 ## Chapter 7: Craftsmanship
 
 Many companies misunderstood Agile. Managers are willing to push developers to work faster and are using the full
-transparency of the process to micromanage them.Developers are pushed hard to fit their estimates into the imposed
+transparency of the process to micromanage them. Developers are pushed hard to fit their estimates into the imposed
 milestones. Failing to deliver all story points in a sprint means developer must work harder in the next sprint to make
 up the delay. If the product owner thinks developers are spending too much time on things like automated tests,
 refactoring, or pairing they simply tell them to stop doing it.

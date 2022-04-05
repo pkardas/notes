@@ -42,7 +42,7 @@ subclass. A localised update to the code caused a non-local side effect (flying 
   per duck, reuse classes and make them parametrised with a name.
 
 There is one constant in software development. What is the one thing you can always count on in software development. **
-CHANGE**.No matter how well you design an application, over time an application must grow and change, or it will die.
+CHANGE**. No matter how well you design an application, over time an application must grow and change, or it will die.
 
 *List some reasons you have had to change code in your application*:
 
@@ -587,7 +587,7 @@ The Adapter Pattern:
 > Converts the interface of a class into another interface the client expects. Adapter lets classes work together that
 > couldn't otherwise because of incompatible interfaces.
 
-Adapter is used to decouple the client from the implemented interface,a nd if we expect the interface to change over
+Adapter is used to decouple the client from the implemented interface, and if we expect the interface to change over
 time, the adapter encapsulates that change that the client doesn't have to be modified each time it needs to operate
 against a different interface.
 
@@ -995,7 +995,7 @@ although it provides an interface to manipulate and retrieve its state, and it c
 to observers.
 
 You are the user - you interact with the view. When you do something to the view, then the view tells the controller
-what you did. It is controller's job to handle that. The controller asks the model to change its state.If you click a
+what you did. It is controller's job to handle that. The controller asks the model to change its state. If you click a
 button it is the controller's job to figure out what that means and how the model should be manipulated based on that
 action. The controller may also ask the view to change. The model notifies the view when its state has changed. The view
 asks the model for state.

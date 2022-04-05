@@ -183,7 +183,7 @@ domain model. This causes problems when they come to change their codebase and f
 even hundreds of unit tests.
 
 The service layer forms an API for our system that we can drive in multiple ways. Testing against this API reduces the
-amount of code that we need to change when we refactor our domain model.If we restrict ourselves to testing only against
+amount of code that we need to change when we refactor our domain model. If we restrict ourselves to testing only against
 the service layer, we will not have any tests that directly interact with "private" methods or attributes on our model
 objects, which leaves us freer to refactor them.
 

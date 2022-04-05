@@ -438,7 +438,7 @@ runtime control, security, people who do operations). There are several layers o
 
 Virtualization promised developers a common hardware appearance across the bewildering array of physical configurations
 in the data centre. On the downside, performance is much less predictable. Many virtual machines can reside on the same
-physical hosts.It is rare to move VMs from one host to another.
+physical hosts. It is rare to move VMs from one host to another.
 
 When designing applications to run in virtual machines you must make sure that they are not sensitive to the loss or
 slowdown of the host.
@@ -716,7 +716,7 @@ the most critical web application security flaws:
    attacker uses a web page with JS, CSS or HTML that includes a Lin to your system. When the hapless user's browser
    accesses your system, your system thinks it is a valid request from that user. Make sure that requests with side
    effects (password change, mailing address update, purchases) use anti-CSRF tokens. These are extra fields containing
-   random data that your system emits when rendering a form. Most frameworks today do this for you.You can also tighten
+   random data that your system emits when rendering a form. Most frameworks today do this for you. You can also tighten
    up your cookie policy with the "*SameSite*" property. The SameSite attribute causes browser to send the cookie only
    if the documents' origin is the same as the target's origin. SameSite cookie may require change session management
    approach.
@@ -726,7 +726,7 @@ the most critical web application security flaws:
 
 10. Underprotected APIs - it is essential to make are sure that APIs are not misused. APIs must ensure that malicious
     request cannot access data the original user would not be able to see. API should use the most secure means
-    available to communicate. Make sure the parser is hardened against malicious input.Fuzz-testing APIs is especially
+    available to communicate. Make sure the parser is hardened against malicious input. Fuzz-testing APIs is especially
     important.
 
 The principle of Least Privilege - a process should have the lowest level of privilege needed to accomplish the task.
@@ -1006,7 +1006,7 @@ you.
 > something weird going on.
 
 Make sure you have a recovery plan. The system may not automatically return to a healthy state when you turn off the
-chaos.You need to know what to restart, disconnect or clean up.
+chaos. You need to know what to restart, disconnect or clean up.
 
 Chaos Monkey does one kind of injection - it kills instances (randomly). There are different types of monkeys: Latency
 Monkey, Janitor Monkey, Chaos King, ...
