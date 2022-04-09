@@ -1,0 +1,9 @@
+tinydb
+pytest
+faker
+tox
+coverage
+pytest-cov
+tinydb
+typer
+rich

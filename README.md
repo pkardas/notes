@@ -4,6 +4,7 @@
 
 👀 In progress:
 
+- [Python Testing with Pytest](books/pytest/notes.md)
 - [Cracking the Coding Interview](books/cracking-coding-interview/notes.md)
 
 #### ✅ Finished:
@@ -33,7 +34,6 @@
 
 #### ⏳ Queue:
 
-- [Python Testing with Pytest](books/pytest.md)
 - [Elixir in Action](books/elixir.md)
 - [Learning Go: An Idiomatic Approach to Real-World Go Programming](books/go.md)
 - [Peopleware: Productive Projects and Teams](books/peopleware.md)
