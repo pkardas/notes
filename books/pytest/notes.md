@@ -6,6 +6,7 @@ Book by Brian Okken
 
 - [Chapter 1: Getting Started with pytest](#chapter-1-getting-started-with-pytest)
 - [Chapter 2: Writing Test Functions](#chapter-2-writing-test-functions)
+- [Chapter 3: pytest Fixtures](#chapter-3-pytest-fixtures)
 
 ## Chapter 1: Getting Started with pytest
 
@@ -66,3 +67,57 @@ examples:
 - `pytest -v -k equality`
 - `pytest -v -k "equality and not equality_fail"` (_and, or, parenthesis, not_ are allowed to create complex
   expressions)
+
+## Chapter 3: pytest Fixtures
+
+Fixtures are helper functions, run by pytest before (and sometimes after) the actual test functions. Code in the fixture
+can do whatever you want it to do. Fixture can be also used to refer to the resource that is being set up by the fixture
+functions.
+
+`pytest` treats exceptions differently during fixtures compared to during a test function.
+
+- FAIL - the failure is somewhere in the test function
+- ERROR - the failure is somewhere in the fixture
+
+Fixtures help a lot when dealing with databases.
+
+Fixture functions run before the tests that use them. If there is a `yield` in the function, it stops there, passes
+control to the tests, and picks up on the next line after the tests are done. The code above `yield` is "setup" and the
+code after `yield` is "teardown". The code after `yield`, is guaranteed to run regardless of what happens during the
+tests.
+
+Flag `--setup-show` shows us the order of operations of tests and fixtures, including the setup and teardown phases of
+the fixtures.
+
+The scope dictates how often the setup and teardown get run whet it is used by multiple test functions:
+
+- _function_ - (default scope) run once per test function. The setup is run before each test using the fixture. The
+  teardown is run after each test using the fixture.
+- _class_ - run once per test class, regardless of how many test methods are in the class.
+- _module_ - run once per module, regardless of how many test functions/methods of other fixtures in the module use it.
+- _package_ - run once per package, regardless of how many test functions/methods of other fixtures in the package use
+  it.
+- _session_ - run once per session, all test methods/functions using a fixture of session scope share one setup and
+  teardown call.
+
+The scope is set at the definition of a fixture, and not at the place where it is called `@pytest.fixture(scope=...)`.
+
+Fixtures can only depend on other fixtures of their same scope or wider.
+
+`conftest.py` is considered by `pytest` as a "local plugin". Gets read by pytest automatically. Use `conftest.py` to
+share fixtures among multiple test files. We can have `conftest.py` files at every level of our test directory. Test can
+use any fixture that is in the same test module as a test function, or in a `conftest.py` file in the same directory (or
+in the parent directory).
+
+Use `--fixtures` to show list of all available fixtures our test can use.
+
+Use `--fixtures-per-test` to see what fixtures are used by each test and where the functions are defined.
+
+Using multiple stage fixtures can provide some incredible speed benefits and maintain test order independence.
+
+It is possible to set fixture scope dynamically, e.g. by passing a new flag as an argument.
+
+Use `autouse=True` to run fixture all the time. The `autouse` feature is good to have around. But it is more of an
+exception than a rule. Opt for named fixtures unless you have a really great reason not to.
+
+`pytest` allows you to rename fixtures with a `name` parameter to `@pytest.fixture`.
