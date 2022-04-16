@@ -7,6 +7,7 @@ Book by Brian Okken
 - [Chapter 1: Getting Started with pytest](#chapter-1-getting-started-with-pytest)
 - [Chapter 2: Writing Test Functions](#chapter-2-writing-test-functions)
 - [Chapter 3: pytest Fixtures](#chapter-3-pytest-fixtures)
+- [Chapter 4: Built-in fixtures](#chapter-4-built-in-fixtures)
 
 ## Chapter 1: Getting Started with pytest
 
@@ -121,3 +122,47 @@ Use `autouse=True` to run fixture all the time. The `autouse` feature is good to
 exception than a rule. Opt for named fixtures unless you have a really great reason not to.
 
 `pytest` allows you to rename fixtures with a `name` parameter to `@pytest.fixture`.
+
+## Chapter 4: Built-in fixtures
+
+`tmp path` and `tmp_path_factory` - used to create temporary directories.
+
+- `tmp path`
+    - function scope
+- `tmp_path_factory`
+    - session scope
+    - you have to call `mktemp` to get a directory
+- `tmpdir_factory`
+    - similar to `tmp_path_factory`, but instead of `Path`, returns `py.path.local`
+
+`capsys` - enables the capturing of writes to `stdout` and `stderr`.
+
+- `capfd` - like `capsys`, but captures file descriptors 1 and 2 (stdout and stderr)
+- `capsysbinary` - `capsys` captures text, `capsysbinary` captures binary
+- `caplog` - captures output written with the logging package
+
+A "monkey patch" is a dynamic modification of a class or module during runtime. "Monkey patching" is a convenient way to
+take over part of the runtime environment of the application code and replace it with entities that are more convenient
+for testing.
+
+`monkeypatch` - used to modify objects, directories, evn variables. When test ends, the original unpatched code is
+restored. It has the following functions:
+
+- `setattr` - sets an attribute
+- `delattr` - deletes an attribute
+- `setitem` - sets a directory entry
+- `delitem` - deletes a directory entry
+- `setenv` - sets an env variable
+- `delenv` - deletes an env variable
+- `syspath_prepend` - prepends, `path` to `sys.path`, which is Python's lis of import locations
+- `chdir` - changes the current working directory
+
+If you start using monkey-patching:
+
+- you will start to understand this
+- you will start to avoid mocking and monkey-patching whenever possible
+
+DESIGN FOR TESTABILITY. A concept borrowed from hardware designers. Concept of adding functionality to software to make
+it easier to test.
+
+More fixtures: https://docs.pytest.org/en/6.2.x/fixture.html or run `pytest --fixtures`.

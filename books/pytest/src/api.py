@@ -15,6 +15,8 @@ __all__ = [
     "InvalidCardId",
 ]
 
+__version__ = "1.0.0"
+
 
 @dataclass
 class Card:
