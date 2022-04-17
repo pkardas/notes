@@ -8,6 +8,7 @@ Book by Brian Okken
 - [Chapter 2: Writing Test Functions](#chapter-2-writing-test-functions)
 - [Chapter 3: pytest Fixtures](#chapter-3-pytest-fixtures)
 - [Chapter 4: Built-in fixtures](#chapter-4-built-in-fixtures)
+- [Chapter 5: Parametrization](#chapter-5-parametrization)
 
 ## Chapter 1: Getting Started with pytest
 
@@ -166,3 +167,18 @@ DESIGN FOR TESTABILITY. A concept borrowed from hardware designers. Concept of a
 it easier to test.
 
 More fixtures: https://docs.pytest.org/en/6.2.x/fixture.html or run `pytest --fixtures`.
+
+## Chapter 5: Parametrization
+
+Parametrized tests refer to adding parameters to our test functions and passing in multiple sets of arguments to the
+test to create new test cases.
+
+With fixture parametrization, we shift parameters to a fixture, `pytest` will then call the fixture once each for every
+set of values we provide.
+
+Fixture parametrization has the benefit of having a fixture run for each set of arguments. This is useful if you have
+setup or teardown code that needs to run for each test case - e.g. different database connection, different file
+content, ...
+
+`pytest_generate_tests` - hook function. Allows you to modify the parametrization list at test collection time in
+interesting ways. 
