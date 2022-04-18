@@ -572,7 +572,7 @@ small imperfections that no one fixes.
 
 **Schedule to make it happen.** If your team is serious about improvement and innovation, you need to schedule it.
 Trying to get things done "whenever there is a free moment" means they will never happen. Whatever sort of backlog or
-task list or flow you are working with, don;t reserve it for only feature development. The team works on more than just
+task list or flow you are working with, don't reserve it for only feature development. The team works on more than just
 new features:
 
 - old systems maintenance

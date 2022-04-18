@@ -6,6 +6,7 @@ Book by Jon Bodner
 
 - [Chapter 1: Setting Up Your Go Environment](#chapter-1-setting-up-your-go-environment)
 - [Chapter 2: Primitive Types and Declarations](#chapter-2-primitive-types-and-declarations)
+- [Chapter 3: Composite Types](#chapter-3-composite-types)
 
 ## Chapter 1: Setting Up Your Go Environment
 
@@ -140,3 +141,128 @@ Naming:
 - do not put type in the variable name
 - use short names, they remove repetitive typing and force you to write smaller blocks of code (if you need a complete
   name to keep track of it, it is likely that your block of code does too much)
+
+## Chapter 3: Composite Types
+
+ARRAYS - rarely used in Go. All the elements in the array must be of the type that is specified.
+
+```go
+var x [3] int
+var x [3] int{10, 20, 30}
+var x = [12]int{1, 5: 4}  // Sparse array (most elements are set to zero value)
+var x = [...]int{12, 20, 30}
+```
+
+Arrays are rarely used in go because they come with an unusual limitations:
+
+- _size_ of the array is part of the _type_, `[3]int` has different type than `[4]int`, you can't use a variable to
+  specify the size of an array
+- you can't use a type conversion to convert arrays of different sizes to identical types
+
+Don't use arrays unless you know the exact length you need ahead of time. Arrays in Go exist to provide backing stores
+for SLICES.
+
+SLICES - slices remove limitations of arrays. We can write a single function that processes slices of any size. We can
+also grow slices as needed.
+
+Slice definition:
+
+```go
+var x = []int{12, 20, 30}
+```
+
+Using `[...]` makes an array. Using `[]` makes a slice.
+
+`nil` in Go has no type, can be assigned or compared against values of different types.
+
+Built-in functions:
+
+- `len` - `len(nil)`
+- `append` - `x = append(x, 10, 20, 30)`, `x = append(x, y...)` (`...` used to expand the source slice)
+- `cap` - `cap(v)` - returns the current capacity of a slice
+- `make` - `x := make([]int, 5)` - it allows us to specify the type, length, and optionally, the capacity
+- `copy` - `numberOfElementsCopied := copy(destination, source)` - if you need to create a copy that is independent of
+  the original
+
+Go is _Call by value_ - every time you pass a parameter to a function, Go makes a copy of the value that is passed in.
+
+When a slice grows via `append`, Go increases a slice by more than a one when it runs out of capacity. Doubles the size
+when the size of the capacity is less than 1024 and then grow by at least 25% afterward.
+
+`make` and `append` is a preferred way of declaring slices.
+
+Slicing: `[startingOffset: endingOffset]`. In Go when you take a slice from a slice, you are not making a copy of the
+data, Instead you have 2 variables that are sharing two variables. Avoid modifying slices after they have been sliced or
+if they were produced by slicing. Use the full slice expression to prevent `append` from sharing capacity between
+slices (`x[:2:2]`, `x[2:4:4]`). The last position indicates the last position in the parent slice's capacity that is
+available for the subslice. Subtract the starting offset from this number to get the subslice's capacity.
+
+Array can be converted to Slice by using slicing expression.
+
+Go allows us to use slicing notation to make substrings. Be very careful when doing so. Strings are immutable, they
+don't have modification problem BUT a string is composed of _bytes_, a code point in UTF-8 can be anywhere from one to
+four bytes long. When dealing with languages other than English or with emojis, you run into code points that are
+multiple bytes long.
+
+UTF-8 is very clever, in worst case uses 4 bytes, in best case only one. The only downside is that you cannot randomly
+access a string encoded with UTF-8.
+
+MAPS - dictionary/hash map. Declaration `map[keyType]valueType`.
+
+- maps automatically grow as you add key-value pairs
+- is you know how many key-value pairs you plan to insert into a map, you can use `make` to create a map with specific
+  initial size
+- passing a _map_ to the _len_ function tells you the number of key-value pairs in a _map_
+- the zero value for a map is nil
+- maps are not comparable
+
+Go doesn't allow you to define your own hash algorithm.
+
+Comma ok idiom - boolean value, if ok is true - key is present, ok is false - key is not present.
+
+- `delete` - `delete(m, key)` (remove key-value pair from the map)
+
+Go does not include sets, but you can use a map to simulate some of its features. Set simulation:
+
+```go
+set := map[int]bool{}
+```
+
+If you need sets that provide operations like union, intersection, and subtraction - write one yourself or use 3rd-party
+library.
+
+STRUCT - when you have related data that you want to group together.
+
+```
+type person struct {
+    name string
+    age  int
+    pet  string
+}
+julia := person{
+    "Julia",
+    30,
+    "cat",
+}
+beth := person{
+    name: "Beth",
+}
+```
+
+Anonymous struct - without giving it a name first:
+
+```
+var person struct {
+    name string
+    age  int
+    pet  string
+}
+person.name = "Bob"
+```
+
+Whether struct is comparable depends on struct's fields. Structs that are entirely composed of comparable types are
+comparable, those with slice of map fields are not. Unlike Python, there are no methods that can be overridden to
+redefine equality.
+
+Go allows you to perform a type conversion from one struct to another _if the fields of both structs have the same
+names, order, and types_.
