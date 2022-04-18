@@ -181,4 +181,44 @@ setup or teardown code that needs to run for each test case - e.g. different dat
 content, ...
 
 `pytest_generate_tests` - hook function. Allows you to modify the parametrization list at test collection time in
-interesting ways. 
+interesting ways.
+
+## Chapter 6: Markers
+
+Markers are a way to tell pytest there is something special about a particular test. You can think of them like tags or
+labels. If some tests are slow, you can mark them with `@pytest.mark.slow` and have pytest skip those tests when you are
+in hurry. You can pick a handful of tests out of a test suite and mark them with `@pytest.mark.smoke`.
+
+Built-in markers:
+
+- `@pytest.mark.filterwarnings(warning)` - adds a warning filter to the given test
+- `@pytest.mark.skip(reason=None)` - skip the test with an optional reason
+- `@pytest.mark.skipif(condition, ..., *, reason)` - skip the test if any of the conditions are true
+- `@pytest.mark.xfail(condition, ..., *, reason, run=True, raises=None, stric=xfail_strict)` - we can expect the test to
+  fail. If we want to run all tests, even those that we know will fail, we can use this marker.
+- `@pytest.mark.parametrize(argnames, argvalues, indirect, ids, scope)` - call a test function multiple times
+- `@pytest.mark.usefixtures(fixturename1, fizxturename2, ...)` - marks tests as needing all rhe specified fixtures
+
+Custom markers - you need to add `pytest.ini` with marker definition, some ideas for markers:
+
+- `@pytest.mark.smoke` - run `pytest -v -m smoke` to run smoke tests only
+- `@pytest.mark.exception` - run `pytest -v -m exception` to run exception-related tests only
+
+Custom markers shine when we have more files involved. We can also add markers to entire files or classes. We can even
+put multiple markers on a single test.
+
+File-level marker:
+
+```python
+pytestmark = [pytest.mark.marker_one, pytest.mark.marker_two]
+```
+
+When filtering tests using markers, it is possible to combine markers and use a bit of logic, just like we did with
+the `-k` keyword, e.g. `pytest -v -m "custom and exception"`, `pytest -v -m "finish and not smoke"`.
+
+`--strict-markers` - raises an error when mark was not found (by default a warning is raised). Also, an error is raised
+at collection time, not at run time - error is reported earlier.
+
+Markers can be used in conjunction with fixtures.
+
+Use `--markers` to list all available markers.

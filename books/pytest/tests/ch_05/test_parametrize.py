@@ -1,6 +1,3 @@
-from pathlib import Path
-from tempfile import TemporaryDirectory
-
 import pytest
 
 from src import (
@@ -10,12 +7,11 @@ from src import (
 
 
 @pytest.fixture(scope="session")
-def db():
-    with TemporaryDirectory() as db_dir:
-        db_path = Path(db_dir)
-        _db = CardsDB(db_path)
-        yield _db
-        _db.close()
+def db(tmp_path_factory):
+    db_path = tmp_path_factory.mktemp("cards_db")
+    _db = CardsDB(db_path)
+    yield _db
+    _db.close()
 
 
 @pytest.fixture(scope="function")
