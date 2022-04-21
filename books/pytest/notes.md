@@ -9,6 +9,8 @@ Book by Brian Okken
 - [Chapter 3: pytest Fixtures](#chapter-3-pytest-fixtures)
 - [Chapter 4: Built-in fixtures](#chapter-4-built-in-fixtures)
 - [Chapter 5: Parametrization](#chapter-5-parametrization)
+- [Chapter 6: Markers](#chapter-6-markers)
+- [Chapter 7: Strategy](#chapter-7-strategy)
 
 ## Chapter 1: Getting Started with pytest
 
@@ -222,3 +224,32 @@ at collection time, not at run time - error is reported earlier.
 Markers can be used in conjunction with fixtures.
 
 Use `--markers` to list all available markers.
+
+## Chapter 7: Strategy
+
+_Testing enough to sleep at night_: The idea of testing enough so that you can sleep at night may have come from
+software systems where developers have to be on call to fix software if it stops working in the middle of the night. It
+has been extended to including sleeping soundly, knowing that your software is well tested.
+
+Testing through the API tests most of the system and logic.
+
+Before you create the test cases you want to test, evaluate what features to test. When you have a lot of functionality
+and features to test, you have to prioritize the order of developing tests. At least a rough idea of order helps.
+Prioritize using the following factors:
+
+1. Recent - new features, new areas of code, recently modified, refactored.
+2. Core - your product's unique selling propositions. The essential functions that must continue to work in order for
+   the product to be useful.
+3. Risk - areas of the application that pose more risk, such as areas important to customers but not used regularly by
+   the development team or parts that use 3-rd party code you don't trust.
+4. Problematic - functionality that frequently breaks or even gets defect reports against it.
+5. Expertise - features or algorithms understood by a limited subset of people
+
+Creating test cases.
+
+- start with a non-trivial, "happy path" test case
+- then look at test cases that represent
+    - interesting set of inputs
+    - interesting starting states
+    - interesting end states
+    - all possible error states
