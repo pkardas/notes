@@ -11,6 +11,7 @@ Book by Brian Okken
 - [Chapter 5: Parametrization](#chapter-5-parametrization)
 - [Chapter 6: Markers](#chapter-6-markers)
 - [Chapter 7: Strategy](#chapter-7-strategy)
+- [Chapter 8: Configuration Files](#chapter-8-configuration-files)
 
 ## Chapter 1: Getting Started with pytest
 
@@ -253,3 +254,78 @@ Creating test cases.
     - interesting starting states
     - interesting end states
     - all possible error states
+
+## Chapter 8: Configuration Files
+
+Non-test files that affect how _pytest_ runs.
+
+- `pytest.ini` - primary pytest configuration file that allows you to change pytest's default behavior. Its location
+  also defines the pytest root directory.
+- `conftest.py` - this file contains fixtures and hook functions. It can exist in at the root directory or in any
+  subdirectory. It is a good idea to stick to only one `conftest.py` file, so you can find fixture definitions easily.
+- `__init__.py` - when put into test subdirectories, this file allows you to have identical test file names in multiple
+  test directories. This means you can have `api/test_add.py` and `cli/test_add.py` but only if you have `__init__.py`
+  in both directories.
+- `tox.ini`, `pyproject.toml`, `setup.cfg` - these files can take the place of `pytest.ini`
+
+Example `pytest.ini`:
+
+```
+[pytest]              -- including `[pytest]` in `pytest.ini` allows the pytest ini parsing to treat `pytest.ini` and `tox.ini` identically
+addopts =             -- enables us to list the pytest flags we always want to run in this project
+    --stric-markers   -- raise an error for any unregistered marker
+    --strict-config   -- raise an error for any difficulty in parsing config files
+    -ra               -- display extra text summary at the end of a test run
+    
+testpaths = tests     -- tells the python wehere to look for tests
+
+markers =             -- declare markers
+    smoke: subset of tests
+    exception: check for expected exceptions
+```
+
+Example `tox.ini`:
+
+```
+[tox]
+; tox specific settings
+
+[pytest]
+addopts =
+    --stric-markers
+    --strict-config
+    -ra
+...
+```
+
+Example `pyptoject.toml`:
+
+```
+[tool.pytest.ini_options]
+addopts = [
+  "--stric-markers",
+  "--strict-config",
+  "-ra"
+]
+
+testpaths = tests 
+
+markers =[
+  "smoke: subset of tests",
+  "exception: check for expected exceptions"
+]
+```
+
+Example `setup.cfg`:
+
+```
+[tool:pytest]
+addopts =
+    --stric-markers
+    --strict-config
+    -ra
+...
+```
+
+Even if you don't need any configuration settings, it is still a great idea to place an empty `pytest.ini` at the top of
+your project, because pytest may keep searching for this file.
