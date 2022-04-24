@@ -7,6 +7,8 @@ Book by Jon Bodner
 - [Chapter 1: Setting Up Your Go Environment](#chapter-1-setting-up-your-go-environment)
 - [Chapter 2: Primitive Types and Declarations](#chapter-2-primitive-types-and-declarations)
 - [Chapter 3: Composite Types](#chapter-3-composite-types)
+- [Chapter 4: Blocks, Shadows, and Control Structures](#chapter-4-blocks-shadows-and-control-structures)
+- [Chapter 5: Functions](#chapter-5-functions)
 
 ## Chapter 1: Setting Up Your Go Environment
 
@@ -310,7 +312,7 @@ When iterating over a string with `for-range` loop, it iterates over the runes, 
 loop encounters a multibyte rune in a string, it converts the UTF-8 representation into a single 32-nit number and
 assigns it to the value.
 
-Every time teh `for-loop` iterates over your compound type, it copies the value from the compound type to the value
+Every time the `for-loop` iterates over your compound type, it copies the value from the compound type to the value
 variable.
 
 SWITCH - like an `if` statement, you can declare a variable that is scoped to all the branches of the switch statement.
@@ -330,3 +332,59 @@ understand what a goto-using program did.
 
 Go has a `goto` statement (most modern languages don't). You should still do what you can to avoid using it. Go forbids
 jumps that skip over variable declarations and jumps that go into an inner or parallel block.
+
+## Chapter 5: Functions
+
+`main` - the starting point for every Go program.
+
+Go is a typed language, so you must specify the types of parameters. If a function returns a value, you must supply a
+return.
+
+Go doesn't have named and optional input parameters. If you want to emulate named and optional parameters, define a
+struct that has fields that match the desired parameters, and pass the struct to your function.
+
+Not having named and optional parameters isn't a limitation. A function shouldn't have more than a few parameters, and
+named and optional parameters are mostly useful when a function has many inputs. If you find yourself in that situation,
+your function is quite possibly too complicated.
+
+Variadic input - `func addTo(base int, vals ... int)` - must be the last parameter in the input parameter list.
+
+Go allows for multiple return values - `def divAndRemainder(numerator int, denominator int) (int, int, error)`. You can
+pre-declare variables that you use within function to hold the return
+values: `def divAndRemainder(numerator int, denominator int) (result int, remainder int, err error)`. Name that is used
+for a named returned value is local to the function - it doesn't enforce any name outside the function.
+
+If you use named return values, you can use empty/blank/naked return - never use it. This returns the last values
+assigned to the named return values. It can be really confusing to figure out what value is actually returned.
+
+Use `_` whenever you don't need to read a value that is returned by a function.
+
+Just like in many other languages, functions in Go are values. Any function that has the exact same number and types of
+parameters and return values meets the type signature.
+
+Anonymous functions - they don't have a name. You don't have to assign them to a variable. You can write them inline and
+call them immediately.
+
+Functions declared inside functions are called _closures_. This is a computer science word that means that functions
+declared inside of functions are able to access and modify variables declared in the outer function.
+
+Not only you can use a closure to pass some function state to another function, you can also return a closure from a
+function.
+
+`defer` - used to release resources. Programs often create temporary resources, like files or network connections, that
+need to be cleaned up. You can `defer` multiple closures in a GO function. They run last-in-first-out order - the last
+defer registered runs first.
+
+In Go, _defer_ statements delay the execution of the function or method or an anonymous method until the nearby
+functions returns. In other words, defer function or method call arguments evaluate instantly, but they don't execute
+until the nearby functions returns.
+
+A common pattern in Go is for a function that allocates a resource to also return a closure that cleans up the resource.
+
+Empirical Software Engineering:
+> Of... eleven proposed characteristics, only two markedly influence complexity growth: the nesting depth and the lack
+> of structure.
+
+Go is _Call By Value_ - it means that when you supply a variable for a parameter to a function, Go always makes a copy
+of the value of the variable. Every type in Go is a value type. It is just that sometimes the value is pointer (map,
+slice).
