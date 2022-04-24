@@ -11,7 +11,7 @@ from rich.table import Table
 
 import src.api as cards
 
-app = typer.Typer(add_completion=False)
+app = typer.Typer(name="cards", add_completion=False)
 
 
 @app.command()

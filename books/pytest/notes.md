@@ -12,6 +12,8 @@ Book by Brian Okken
 - [Chapter 6: Markers](#chapter-6-markers)
 - [Chapter 7: Strategy](#chapter-7-strategy)
 - [Chapter 8: Configuration Files](#chapter-8-configuration-files)
+- [Chapter 9: Coverage](#chapter-9-coverage)
+- [Chapter 10: Mocking](#chapter-10-mocking)
 
 ## Chapter 1: Getting Started with pytest
 
@@ -354,4 +356,40 @@ help view coverage data in more detail.
 
 **Beware of Coverage-Driven Development!** The problem with adding tests just to hit 100% is that doing so will mask the
 fact that these lines aren't being used and therefore are not needed by the application. It also adds test code and
-coding time that is not necessary. 
+coding time that is not necessary.
+
+## Chapter 10: Mocking
+
+The `mock` package is used to swap out pieces of the system to isolate bits of our application code from the rest of the
+system. Mock objects are called sometimes _test doubles_, _spies_, _fakes_ or _stubs_.
+
+Typer provides a testing interface. With it, we don't have use `subprocess.run`, which is good, because we can't mock
+stuff running in a separate process.
+
+Mocks by default accept any access. If real object allows `.start(index)`, we want our mock objects to
+allow `start(index)` as well. Mock objects are too flexible by default - they will also accept `star()` - any misspelled
+methods, additional parameters, really anything.
+
+_Mock drift_ - occurs when the interface you are mocking changes, and your mock in your test code doesn't.
+
+Use `autospec=True` - without it, mock will allow you to call any function, with any parameters, even if it doesn't make
+sense for the real thing being mocked. Always use _autospec_ when you can.
+
+**Mocking tests implementation, not behavior.** When we are using mocks in a test, we are no longer testing behavior,
+but testing implementation. Focusing tests on testing implementation is dangerous and time-consuming.
+
+_Change detector test_ - test that break during valid refactoring. When test fail whenever the code changes, they are
+change detector tests, and are usually more trouble than they worth.
+
+Mocking is useful when you need to generate an exception or make sure your code calls a particular API method when it is
+supposed to, with the correct parameters.
+
+There are several special-purpose mocking libraries:
+
+- mocking database: `pytest-postgresql`, `pytest-mongo`, `pytest-mysql`, `pytest-dynamodb`
+- mocking HTTP servers: `pytest-httpserver`
+- mocking requests: `responses`, `betamax`
+- other: `pytest-rabbitmq`, `pytest-soir`, `pytest-elasticsearch`, `pytest-redis`
+
+Adding functionality that makes testing easier is part of "design for testability" and can be used to allow testing at
+multiple levels or testing at a higher level.

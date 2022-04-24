@@ -270,17 +270,17 @@ circuit breaker can be reset to restore full function to the system.
 The same technique can be applied to software, dangerous operations can be wrapped with a component that can circumvent
 call when the system is not healthy.
 
-In closed state, the circuit breaker executes operations as usual (calls to another system or other internal operations
-that are subject to timeout or other failure), if it fails, the circuit breaker makes a note of the failure. Once the
-number of failures exceeds a threshold, the circuit breaker opens the circuit. When the circuit is open, calls are
-suspended - they fail immediately. After some time the circuit decides the operation has a chance of succeeding, so it
-goes to the half-open state, if call succeeds - goes to the open state, if not - returns to the open state.
+In a closed state, the circuit breaker executes operations as usual (calls to another system or other internal
+operations that are subject to timeout or other failure), if it fails, the circuit breaker makes a note of the failure.
+Once the number of failures exceeds a threshold, the circuit breaker opens the circuit. When the circuit is open, calls
+are suspended - they fail immediately. After some time the circuit decides the operation has a chance of succeeding, so
+it goes to the half-open state, if the call succeeds - goes to the open state, if not - returns to the open state.
 
 The circuit breaker can have different thresholds for different types of failures. Involve stakeholders to decide how
 system should behave when circuit is open.
 
 How to measure number of failures - interesting idea is Leaky Bucket - separate thread counting failures and
-periodically removing them. If buckets becomes empty quickly it means, the system is flooded with errors.
+periodically removing them. If buckets become empty quickly it means, the system is flooded with errors.
 
 It should be possible to automatically open/close circuit.
 
