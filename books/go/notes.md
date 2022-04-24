@@ -261,8 +261,72 @@ person.name = "Bob"
 ```
 
 Whether struct is comparable depends on struct's fields. Structs that are entirely composed of comparable types are
-comparable, those with slice of map fields are not. Unlike Python, there are no methods that can be overridden to
+comparable, those with slice or map fields are not. Unlike Python, there are no methods that can be overridden to
 redefine equality.
 
 Go allows you to perform a type conversion from one struct to another _if the fields of both structs have the same
 names, order, and types_.
+
+## Chapter 4: Blocks, Shadows, and Control Structures
+
+BLOCKS - Go lets you declare variables in lots of places. You can declare them outside of functions, as the parameters
+to functions, and as local variables within functions.
+
+Each place where a declaration occurs is called a _block_. Variables, constants, types and functions declared outside
+any functions are placed in the package module.
+
+`:=` reuses variables that are declared in the current block. WHen using `:=` make sure that you don't have any
+variables from an outer scope on the left-hand side, unless you intend to shadow them.
+
+Sometimes avoid using `:=` because it may make it unclear what variables are being used.
+
+There is a `shadow` linter - a tool to detect shadowing.
+
+The Universe Block - the block that contains all other blocks. Never redefine any of the identifiers in the universe
+block (`true`, `false`, `string`, `int`, ...). If you accidentally do so, you will get some very strange behavior.
+
+IF - Go doesn't require you to put parenthesis around the condition. You can declare variables that are scoped to the
+condition and to both the `if` and `else` blocks.
+
+```go
+if n := rand.Intn(10); n == 10
+```
+
+Having this special scope is very handy, it lets you create variables that are available only where they are needed.
+Once the series of `if/else` statements ends, `n` is undefined.
+
+FOR - Go has 4 formats of `for`.
+
+- C-style `for`
+- condition only `for`
+- infinite `for`
+- `for-range`
+
+When iterating over `map`, some runs may be identical. This is a security feature. In older Go versions, the iteration
+order was usually the same. People used to write code that the order was fixed, and this would break at weird times.
+Random read, prevents _Hash DoS_ attack.
+
+When iterating over a string with `for-range` loop, it iterates over the runes, not the bytes. Whenever a `for-range`
+loop encounters a multibyte rune in a string, it converts the UTF-8 representation into a single 32-nit number and
+assigns it to the value.
+
+Every time teh `for-loop` iterates over your compound type, it copies the value from the compound type to the value
+variable.
+
+SWITCH - like an `if` statement, you can declare a variable that is scoped to all the branches of the switch statement.
+
+If you have a `switch` statement inside a `for loop`, and you want to break out of the `for loop`, put a label on
+the `for` statement, and then do `break label`. If you don't use a label, Go assumes that you want to break out of the
+case.
+
+You can create a "blank switch" - this allows you to use any boolean comparison for each case. There isn't a lot of
+difference between a series of `if/else` statements and a blank `switch`. Favor blank `switch` statements over `if/else`
+chains when you have multiple related cases. Using a `switch` makes the comparisons more visible and reinforces that
+they ate a related set of concerns.
+
+GOTO - Traditionally `goto` was dangerous because it could jump to nearly anywhere in a program (jump into/out of a
+loop, skip variable definitions, or into the middle of a set of statements in `if`). This made it difficult to
+understand what a goto-using program did.
+
+Go has a `goto` statement (most modern languages don't). You should still do what you can to avoid using it. Go forbids
+jumps that skip over variable declarations and jumps that go into an inner or parallel block.

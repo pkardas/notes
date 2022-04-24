@@ -36,7 +36,7 @@ reveal its content. Names should be pronounceable. One letter variables are hard
 as local variables inside short methods. The length of a name should correspond to the size of its scope. Avoid
 encodings.
 
-> Difference between a smart programmer and a professional programmer is that professional programmer understands that 
+> Difference between a smart programmer and a professional programmer is that professional programmer understands that
 > **clarity is a king**.
 
 Don't be funny 😔 People tend to forget jokes, so people will forget true meaning of a variable. Choose clarity over
@@ -68,7 +68,7 @@ Exceptions are preferred than error codes. Suggestion to extract exception handl
 *Don't repeat yourself* - duplication may be the root of all evil in software. Database norms formed to eliminate
 duplication in data, OOP concentrates the code, etc.
 
-> Writing software is like any other kind of writing. When you write a paper or article, you get your thoughts down 
+> Writing software is like any other kind of writing. When you write a paper or article, you get your thoughts down
 > first, then you massage it until it **reads well**.
 
 > The art of programming is, and always has been, the art of language design.
@@ -85,7 +85,7 @@ Don't put historical discussions or irrelevant details into the comments.
 Code formatting is important. Visual design of the code is important. Variable should be declared "in well-known for
 everybody places". Functions should show natural flow -> top-down.
 
-Another matter is alignment, e.g. of test cases in parametrised tests. However, variables declarations ins an overkill.
+Another matter is alignment, e.g. of test cases in parametrised tests. However, variables declarations is an overkill.
 
 However, a team should agree upon a single formatting style.
 
