@@ -329,3 +329,29 @@ addopts =
 
 Even if you don't need any configuration settings, it is still a great idea to place an empty `pytest.ini` at the top of
 your project, because pytest may keep searching for this file.
+
+## Chapter 9: Coverage
+
+Tools that measure code coverage watch your code while a test suite is being run and keep track of which lines are hit
+and which are not. That measurement is called "line coverage" = "total number of lines" / "total lines of code".
+
+Code coverage tools can also tell you if all paths are taken in control statements - "branch coverage".
+
+Code coverage cannot tell you if your test suite is good - it can only tell you how much of the application code is
+getting hit by your test suite.
+
+`coverage.py` - preferred Python coverage tool, `pytest-cov` - popular pytest plugin (depends on `coverage.py`, so it
+will be installed as well).
+
+To run tests with `coverage.py`, you need to add `--cov` flag.
+
+To add missing lines to the terminal report, add the `--cov-report=term-missing` flag.
+
+`coverage.py` is able to generate HTML reports: `docker-compose run --rm book pytest --cov=src --cov-report=html`, to
+help view coverage data in more detail.
+
+`# pragra: no cover` - tells `coverage` to exclude either a single line or a block of code.
+
+**Beware of Coverage-Driven Development!** The problem with adding tests just to hit 100% is that doing so will mask the
+fact that these lines aren't being used and therefore are not needed by the application. It also adds test code and
+coding time that is not necessary. 
