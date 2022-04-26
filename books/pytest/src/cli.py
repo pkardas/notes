@@ -103,7 +103,7 @@ def finish(card_id: int):
 @app.command()
 def config():
     """List the path to the Cards db."""
-    with cards_db() as db:
+    with cards_dbz() as db:
         print(db.path())
 
 

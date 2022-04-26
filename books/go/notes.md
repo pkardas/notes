@@ -277,7 +277,7 @@ to functions, and as local variables within functions.
 Each place where a declaration occurs is called a _block_. Variables, constants, types and functions declared outside
 any functions are placed in the package module.
 
-`:=` reuses variables that are declared in the current block. WHen using `:=` make sure that you don't have any
+`:=` reuses variables that are declared in the current block. When using `:=` make sure that you don't have any
 variables from an outer scope on the left-hand side, unless you intend to shadow them.
 
 Sometimes avoid using `:=` because it may make it unclear what variables are being used.
@@ -372,7 +372,7 @@ Not only you can use a closure to pass some function state to another function, 
 function.
 
 `defer` - used to release resources. Programs often create temporary resources, like files or network connections, that
-need to be cleaned up. You can `defer` multiple closures in a GO function. They run last-in-first-out order - the last
+need to be cleaned up. You can `defer` multiple closures in a Go function. They run last-in-first-out order - the last
 defer registered runs first.
 
 In Go, _defer_ statements delay the execution of the function or method or an anonymous method until the nearby

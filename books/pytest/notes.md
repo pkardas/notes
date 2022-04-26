@@ -14,6 +14,9 @@ Book by Brian Okken
 - [Chapter 8: Configuration Files](#chapter-8-configuration-files)
 - [Chapter 9: Coverage](#chapter-9-coverage)
 - [Chapter 10: Mocking](#chapter-10-mocking)
+- [Chapter 11: tox and Continuous Integration](#chapter-11-tox-and-continuous-integration)
+- [Chapter 12: Testing Scripts and Applications](#chapter-12-testing-scripts-and-applications)
+- [Chapter 13: Debugging Test Failures](#chapter-13-debugging-test-failures)
 
 ## Chapter 1: Getting Started with pytest
 
@@ -393,3 +396,77 @@ There are several special-purpose mocking libraries:
 
 Adding functionality that makes testing easier is part of "design for testability" and can be used to allow testing at
 multiple levels or testing at a higher level.
+
+## Chapter 11: tox and Continuous Integration
+
+CI refers to the practice of merging all developers' code changes into a shared repository on a regular basis - often
+several times a day.
+
+Before the implementation of CI, teams used version control to keep track of code updates, and different developers
+would add a feature/fix on the separate branches. Then code was merged, built, and tested. The frequency of merge varied
+from "when your code is ready, merge it" to regularly scheduled merges (weekly, monthly). The merge was called
+_integration_ because the code is being integrated together.
+
+With this soft of version control, code conflicts happened often. Some merge errors were not found until very late.
+
+CI tools build and run tests all on their own, usually triggered by a merge request. Because the build and test stages
+are automated, developers can integrate more frequently, even several times a day.
+
+CI tools automate the process of build and test.
+
+`tox` - command-line tool that allows you to run complete suite of tests in multiple envs. Great starting point when
+learning about CI. `tox`:
+
+1. creates a virtual env in a .tox directory
+2. pip installs some dependencies
+3. builds your package
+4. pip installs your package
+5. runs your tests
+
+`tox` can automate testing process locally, but also it helps with cloud-based CI. You can integrate tox with GitHub
+Actions.
+
+## Chapter 12: Testing Scripts and Applications
+
+Definitions:
+
+- script - a single file containing Python code that is intended to be run directly from Python
+- importable script - a script in which no code is executed when it is imported. Code is executed only when it is run
+  directly
+- application - package or script that has external dependencies
+
+Testing a small script with `subprcoess.run` works okay, but it does have drawbacks
+
+- we may want to test sections of larger scripts separately
+- we may want to separate test code and scripts into different directories
+
+Solution for this is to make a script importable. Add `if __name__ == "__main__"` - this code is executed only when we
+call the script with `python script.py`.
+
+## Chapter 13: Debugging Test Failures
+
+pytest includes few command-line flags that are useful for debugging:
+
+- `-lf` / `--last-failed` - runs just the tests that failed last
+- `-ff` / `--failed-first` - runs all the test, starting from the last failed
+- `-x` / `--exitfirst` - stops the test session after the first failure
+- `--maxfail=num` -stops the tests after `num` failures
+- `-nf` / `--new-first` - runs all the tests, ordered by the modification time
+- `--sw` / `--stepwise` - stops the tests at the first failure, starts the test at the last failure next time
+- `--sw-skip` / `--stepwise-skip` - same as `--sw`, but skips the first failure
+
+Flags to control pytest output:
+
+- `-v` / `--verbose` - all the test names, passing or failing
+- `--tb=[auto/long/short/line/native/no]` - controls the traceback style
+- `-l` / `--showlocals` - displays local variables alongside the stacktrace
+
+Flags to start a command-line debugger:
+
+- `--pdb` - starts an interactive debugging session at the point of failure
+- `--trace` - starts the pdb source-code debugger immediately when running each test
+- `--pdbcls` - uses alternatives to pdb
+
+`pdb` - Python Debugger - part of the Python standard library. Add `breakpoint()` call, when a pytest hits this function
+call, it will stop there and launch `pdb`. There are common commands recognized by `pdb` - full list in the
+documentation (or use PyCharm's debugger instead if you can).

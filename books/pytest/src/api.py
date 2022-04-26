@@ -87,7 +87,7 @@ class CardsDB:
             ]
         else:
             return [Card.from_dict(t) for t in all]
-
+z
     def count(self) -> int:
         """Return the number of cards in db."""
         return self._db.count()
