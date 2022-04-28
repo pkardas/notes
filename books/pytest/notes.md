@@ -18,6 +18,7 @@ Book by Brian Okken
 - [Chapter 12: Testing Scripts and Applications](#chapter-12-testing-scripts-and-applications)
 - [Chapter 13: Debugging Test Failures](#chapter-13-debugging-test-failures)
 - [Chapter 14: Third-Party Plugins](#chapter-14-third-party-plugins)
+- [Chapter 15: Building Plugins](#chapter-15-building-plugins)
 
 ## Chapter 1: Getting Started with pytest
 
@@ -520,4 +521,23 @@ Plugins that extend pytest functionality:
   also set a particular date or time
 - `pytest-mock` - thin wrapper around the `unittest.mock`
 
-Full list of plugins: https://docs.pytest.org/en/7.0.x/reference/plugin_list.html
+Full list of plugins: https://docs.pytest.org/en/latest/reference/plugin_list.html
+
+## Chapter 15: Building Plugins
+
+Hook functions - function entry points that pytest provides to allow plugin developers to intercept pytest behaviour at
+certain points and make changes. There are multiple hook functions, example:
+
+- `pytest_configure()` - perform initial config. We can use this function to for example, pre-declare `slow` marker.
+- `pytest_addoption()` - register options and settings, e.g. new flag: _--slow_
+- `pytest_collection_modifyitems()` - called after test collection, can be used to filter or re-order the test items,
+  e.g. to find _slow_ tests
+
+The Node Interface: https://docs.pytest.org/en/latest/reference/reference.html#node
+
+You can transform local `conftest.py` to installable plugin. You can use `Flit` to get help with the `pyproject.toml`
+and `LICENSE`.
+
+Plugins are code that needs to be tested just like any other code. `pytester` ias a plugin shipped with `pytest`.
+`pytester` creates a temporary directory for each test that uses the `pytester` fixture, there are a bunch of
+functions to help populate this directory - https://docs.pytest.org/en/latest/reference/reference.html#pytester
