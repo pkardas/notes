@@ -17,6 +17,7 @@ Book by Brian Okken
 - [Chapter 11: tox and Continuous Integration](#chapter-11-tox-and-continuous-integration)
 - [Chapter 12: Testing Scripts and Applications](#chapter-12-testing-scripts-and-applications)
 - [Chapter 13: Debugging Test Failures](#chapter-13-debugging-test-failures)
+- [Chapter 14: Third-Party Plugins](#chapter-14-third-party-plugins)
 
 ## Chapter 1: Getting Started with pytest
 
@@ -470,3 +471,53 @@ Flags to start a command-line debugger:
 `pdb` - Python Debugger - part of the Python standard library. Add `breakpoint()` call, when a pytest hits this function
 call, it will stop there and launch `pdb`. There are common commands recognized by `pdb` - full list in the
 documentation (or use PyCharm's debugger instead if you can).
+
+## Chapter 14: Third-Party Plugins
+
+The pytest code is designed to allow customisation and extensions, and there are hooks available to allow modifications
+and improvements through plugins.
+
+Every time you put fixtures and/or hook functions into a project's `conftest.py` file, you create a local plugin. Only
+some extra work is needed to turn these files into installable plugins.
+
+`pytest` plugins are installed with `pip`.
+
+Plugins that change the normal test run flow:
+
+- `pytest-order` - specify the order using marker
+- `pytest-randomly` - randomize order, first by file, then by a class, then by test
+- `pytest-repeat` - makes it easy to repeat a single/multiple test(s), specific number of times
+- `pytest-rerunfailures` - rerun failed tests (helpful for flaky tests)
+- `pytest-xdist` - runs tests in parallel, either using multiple CPUs or multiple remote machines
+
+Plugins that alter or enhance output:
+
+- `pytest-instafail` - reports tracebacks and output from failed tests right after the failure
+- `pytest-sugar` - shows green checkmarks instead of dots and has nice progress bar
+- `pytest-html` - allows for HTML report generation
+
+Plugins for web development:
+
+- `pytest-selenium` - additional fixtures to allow easy configuration of browser-based tests
+- `pytest-splinter` - built on top of Selenium, allows Splinter to be used more easily from pytest
+- `pytest-django`, `pytest-flask` - make testing Django/Flask apps easier
+
+Plugins for fake data:
+
+- `Faker` - generates fake data, provides `faker` fixture
+- `model-bakery` - generates Django models with fake data
+- `pytest-factoryboy` - includes fixtures for Factory Boy
+- `pytest-mimesis` - generates fake data similarly to Faker, but Mimesis is quite a bit faster
+
+Plugins that extend pytest functionality:
+
+- `pytest-cov` - runs coverage while testing
+- `pytest-benchmark` - runs benchmark timing on code within tests
+- `pytest-timeout` - doesn't let tests run too long
+- `pytest-asyncio` - test async functions
+- `pytest-bdd` - BDD-style tests with pytest
+- `pytest-freezegun` - freezes time so that any code that reads the time will get the same value during a tests, you can
+  also set a particular date or time
+- `pytest-mock` - thin wrapper around the `unittest.mock`
+
+Full list of plugins: https://docs.pytest.org/en/7.0.x/reference/plugin_list.html
