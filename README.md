@@ -4,7 +4,6 @@
 
 👀 In progress:
 
-- [Python Testing with Pytest](books/pytest/notes.md)
 - [Learning Go: An Idiomatic Approach to Real-World Go Programming](books/go/notes.md)
 - [Cracking the Coding Interview](books/cracking-coding-interview/notes.md)
 
@@ -12,6 +11,7 @@
 
 - Code:
     - [Clean Code: A Handbook of Agile Software Craftsmanship](books/clean-code.md)
+    - [Python Testing with Pytest](books/pytest/notes.md)
     - [Refactoring: Improving the Design of Existing Code](books/refactoring.md)
 
 - Architecture:

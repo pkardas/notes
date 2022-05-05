@@ -19,6 +19,7 @@ Book by Brian Okken
 - [Chapter 13: Debugging Test Failures](#chapter-13-debugging-test-failures)
 - [Chapter 14: Third-Party Plugins](#chapter-14-third-party-plugins)
 - [Chapter 15: Building Plugins](#chapter-15-building-plugins)
+- [Chapter 16: Advanced Parametrization](#chapter-16-advanced-parametrization)
 
 ## Chapter 1: Getting Started with pytest
 
@@ -541,3 +542,102 @@ and `LICENSE`.
 Plugins are code that needs to be tested just like any other code. `pytester` ias a plugin shipped with `pytest`.
 `pytester` creates a temporary directory for each test that uses the `pytester` fixture, there are a bunch of
 functions to help populate this directory - https://docs.pytest.org/en/latest/reference/reference.html#pytester
+
+## Chapter 16: Advanced Parametrization
+
+When using complex parametrization values, `pytest` numbers test cases like: `starting_card0, starting_card1, ...`. It
+is possible to generate custom identifiers:
+
+```py
+card_list = [
+    Card("foo", "todo"),
+    Card("foo", "in prog"),
+    Card("foo", "done"),
+]
+
+
+@pytest.mark.parametrize("starting_card", card_list, ids=str)
+```
+
+You can write custom ID function:
+
+```py
+def cards_state(card):
+    return card.state
+
+
+@pytest.mark.parametrize("starting_card", card_list, ids=cards_state)
+```
+
+Lambda function works as well:
+
+```py
+@pytest.mark.parametrize("starting_card", card_list, ids=lambda c: c.state)
+```
+
+If you have one wor two parameters requiring special treatment, use `pytest.param` to override the ID:
+
+```py
+card_list = [
+    Card("foo", "todo"),
+    pytest.param(Card("foo", "in prog"), id="special"),
+    Card("foo", "done"),
+]
+
+
+@pytest.mark.parametrize("starting_card", card_list, ids=cards_state)
+```
+
+You can supply a list to `ids`, instead of a function:
+
+```py
+id_list = ["todo", "in prog", "done"]
+
+
+@pytest.mark.parametrize("starting_card", card_list, ids=id_list)
+```
+
+but you have to be extra careful to keep the lists synchronized. Otherwise, the IDs are wrong.
+
+It is possible to write our own function to generate parameter values:
+
+```py
+def text_variants():
+    # This function can read data from a file/API/database/... as well.
+    variants = {...: ...}
+
+    for key, value in variants.items():
+        yield pytest.param(value, id=key)
+
+
+@pytest.mark.parametrize("variant", text_variants())
+```
+
+If you want to test all combinations, stacking parameters is the way to go:
+
+```py
+@pytest.mark.parametrize("state", states)
+@pytest.mark.parametrize("owner", owners)
+@pytest.mark.parametrize("summary", summaries)
+def test_stacking(summary, owner, state):
+```
+
+this will act rather like cascading for loops, looping on the parameters from the bottom decorator to the top.
+
+An _indirect parameter_ is the one that get passed to a fixture before it gets send to the test function. Indirect
+parameters essentially let us parameterize a fixture, while keeping the parameter values with the test function. This
+allows different tests to use the same fixture with different parameter values.
+
+```py
+@pytest.fixture()
+def user(request):
+    role = request.param
+    print(f"Logging in as {role}")
+    yield role
+    print(f"Logging out {role}")
+
+
+@pytest.mark.parametrize("user", ["admin", "team_member", "visitor"], indirect=["user"])
+def test_access_rights(user):
+    ...
+```
