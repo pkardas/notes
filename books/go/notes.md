@@ -9,6 +9,7 @@ Book by Jon Bodner
 - [Chapter 3: Composite Types](#chapter-3-composite-types)
 - [Chapter 4: Blocks, Shadows, and Control Structures](#chapter-4-blocks-shadows-and-control-structures)
 - [Chapter 5: Functions](#chapter-5-functions)
+- [Chapter 6: Pointers](#chapter-6-pointers)
 
 ## Chapter 1: Setting Up Your Go Environment
 
@@ -388,3 +389,59 @@ Empirical Software Engineering:
 Go is _Call By Value_ - it means that when you supply a variable for a parameter to a function, Go always makes a copy
 of the value of the variable. Every type in Go is a value type. It is just that sometimes the value is pointer (map,
 slice).
+
+## Chapter 6: Pointers
+
+A pointer - a variable that holds the location in memory where a value is stored. Every variable is stored in one or
+more contiguous memory locations - _addresses_.
+
+- `&` - the _address_ operator, returns the address of the memory location where the value is stored.
+- `*` - the _indirection_ operator, returns pointed-to value.
+
+Example pointer **type**: `*int`
+
+Before de-referencing a pointer, you must make sure that the pointer is non-nil. Your program will panic if you attempt
+to de-reference a _nil_ pointer.
+
+Java, Python, JavaScript, and Ruby are pass-by-value (values passed to functions are copies) - just like Go. Every
+instance of a class in these languages is implemented as a pointer. When a class instance is passed to a function or
+method, the value being copied is the pointer to the instance.
+
+> Immutable types are safer from bugs, easier to understand, and more ready for change. Mutability makes it harder to
+> understand what your program is doing, and much harder ro enforce contracts.
+
+The lack of immutable declarations in Go might seem problematic, but the ability to choose between value and pointer
+parameter types addresses the issue.
+
+Be careful when using pointers in Go. They make it hard to understand data flow anc can create extra work for the
+garbage collector. Rather than populating a struct by passing a pointer to it to function, have the function instantiate
+the struct. The only time you should use pointer params to modify a variable is when the function expects an interface,
+You see this pattern when working with JSON.
+
+The time to pass a pointer into a function ~ 1ns. Passing a value into a function takes longer as the data gets larger,
+1ms for ~10MB data. So if data is large enough, there are performance benefits from using a pointer. On the other hand
+it does not pay off to use a pointer for small data (< 1MB), e.g. 100 byte data: 30ns (pointer) vs 10ns (copy value).
+
+Pointers indicate mutability - be careful when using this pattern.
+
+Avoid using maps for input or return values (map is implemented as a pointer to a struct). Rather than passing map
+around, use a struct. Passing a slice to a function has even more complicated behavior: any modification to the contents
+is reflected, but use of _append_ is not reflected. As the only linear data structure, slices are often passed around in
+Go programs - by default you should assume that a slice is not modified by a function.
+
+Garbage - data that has no more pointers pointing to it. Once there are no more pointers pointing to some data, the
+memory can be reused. If the memory isn't recovered, the program's memory usage would continue to grow until the
+computer run out of RAM. The job of a garbage collector is to automatically detect unused memory and recover it.
+
+The Stack - consecutive block of memory, allocation fast and simple, local variables along parameters passed into a
+function stored on a stack. You have to know exactly how big it is at compile time. When the compiler determines that
+the data can't be stored on the stack, the data the pointer points to _escapes_ the stack and the compiler stores the
+data on the heap.
+
+The Heap - memory managed by the garbage collector. Go's garbage collector favours lower latency (< 500ms, finish as
+quickly as possible) over throughput (find the most garbage possible in a single scan). If your program creates a lot of
+garbage, the garbage collector will not find all the garbage during a cycle, slowing down the collector and increasing
+memory usage.
+
+Go encourages you to use pointers sparingly.We reduce teh workload of the garbage collector by making sure that as much
+as possible is stored on the stack.
