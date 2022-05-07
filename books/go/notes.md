@@ -10,6 +10,7 @@ Book by Jon Bodner
 - [Chapter 4: Blocks, Shadows, and Control Structures](#chapter-4-blocks-shadows-and-control-structures)
 - [Chapter 5: Functions](#chapter-5-functions)
 - [Chapter 6: Pointers](#chapter-6-pointers)
+- [Chapter 7: Types, Methods, and Interfaces](#chapter-7-types-methods-and-interfaces)
 
 ## Chapter 1: Setting Up Your Go Environment
 
@@ -445,3 +446,63 @@ memory usage.
 
 Go encourages you to use pointers sparingly.We reduce teh workload of the garbage collector by making sure that as much
 as possible is stored on the stack.
+
+## Chapter 7: Types, Methods, and Interfaces
+
+Go is designed to encourage the best practices that are advocated by software engineers, avoiding inheritance while
+encouraging composition.
+
+Methods: `func (p Person) String() string`, `(p Person)` is like `self` or `this`, however it is non-idiomatic to
+use `self` or `this`. This is called a _receiver_, usually should have a short name. Methods can not be overloaded. You
+can't add methods to the types you don't control.
+
+- If method modifies the receiver, you _must_ use a pointer receiver
+- If method needs to handle _nil_ instances, you _must_ use a pointer receiver
+- If method doesn't modify the receiver, you can _use_ a value receiver
+
+When a type has any pointer receiver methods, a common practice is to be consistent and use pointer receivers for all
+methods, even the ones that don;t modify the receiver.
+
+Do not write getters/setters. Go encourages you to directly access a field. Reserve methods for business logic.
+
+Defining a user-defined type based on other type, makes code clearer by providing a name for a concept and describing
+the kind of data that is expected (e.g. type `Percentage` vs `int`).
+
+Go doesn't have enumerations, instead it has `iota` - which allows you to assign an increasing value to a set of
+constants. `iota` makes sense when you care about being able to differentiate between a set of values, and don't
+particularly care what the value is behind the scenes. If teh actual value matters, specify it explicitly.
+
+Embedding - promote methods on the embedded type to the containing struct. Embedding support is rare in programming
+languages. Do not mislead embedding with inheritance, they are not the same. If the containing struct has fields/methods
+with the same name, you need to use embedded field type to refer to the obscured fields/methods.
+
+The real star of Go's design - implicit interfaces. `interface` literal lists all methods that must be implemented by a
+concrete type to meet the interface. Interfaces are usually named with `er` endings (`io.Reader`, `io.Closer`
+, `json.Marshaller`, `http.Handler`).
+
+Go blends duck-typing and Java's interfaces. Implicit interfaces give the flexibility of changing implementation and
+make it easier to understand whe the code is doing.
+
+> Interfaces specify what callers need. The client code defines the interface to specify what functionality it requires.
+
+**Accept interfaces, return structs.** The business logic invoked by your functions should be invoked via interfaces,
+but the output of your functions should be a concrete type. Go encourages small interfaces.
+
+Sometimes you need to say that a variable could store any value, Go uses `interface{}` to represent this. It matches
+every type in Go. However, avoid this. Go was designed as a strongly typed language and attempts to work around this are
+unidiomatic.
+
+Dependency injection - code should explicitly specify the functionality it needs to perform its task. Implicit
+interfaces make dependency injection an excellent way to decouple your code.
+
+> "Dependency Injection" is a 25-dollar term for a 5-cent concept. [...] Dependency injection means giving an object its
+> instance variables. [...].
+
+> Dependency injection is basically providing the objects that an object needs (its dependencies) instead of having it
+> construct them itself. It's a very useful technique for testing, since it allows dependencies to be mocked or stubbed
+> out.
+
+Use `Wire` if you think writing dependency injection code by hand is too much work.
+
+Go is not Object-Oriented, nor functional, nor procedural. It is practical. It borrows concepts from many places with
+the overriding goal of creating a language that is simple, readable, and maintainable by large teams for many years.
