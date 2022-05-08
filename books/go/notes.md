@@ -11,6 +11,7 @@ Book by Jon Bodner
 - [Chapter 5: Functions](#chapter-5-functions)
 - [Chapter 6: Pointers](#chapter-6-pointers)
 - [Chapter 7: Types, Methods, and Interfaces](#chapter-7-types-methods-and-interfaces)
+- [Chapter 8: Errors](#chapter-8-errors)
 
 ## Chapter 1: Setting Up Your Go Environment
 
@@ -506,3 +507,34 @@ Use `Wire` if you think writing dependency injection code by hand is too much wo
 
 Go is not Object-Oriented, nor functional, nor procedural. It is practical. It borrows concepts from many places with
 the overriding goal of creating a language that is simple, readable, and maintainable by large teams for many years.
+
+## Chapter 8: Errors
+
+Go handles errors by returning a value of type `error` as the last return value for a function (convention). The Go
+compiler requires that all variables must be read. Making errors returned values forces developers to either check and
+handle error conditions or make it explicit that they are ignoring errors by using an underscore (`_`) for the returned
+error value.
+
+`errors.New("denominator is 0")` - error messages should not be capitalized nor should they end with punctuation or new
+line. Second option is to create error using `fmt.Errorf("denominator is 0")`
+
+_sentinel errors_ - pattern, errors meant to signal that processing cannot continue due to a problem with the current
+state. By convention, their names start with `Err`. Be sure you need a sentinel error beg=fore you define one. It is
+part of your public API and you have committed to it being available in all future backward-compatible releases.
+
+`error` is an interface, you can define your own errors that include additional information for logging or error
+handling. Even when you define your own custom error types, always use `error` as the return type for the error result.
+Be sure you don't return an uninitialized instance (`var genErr StatusErr`), instead, explicitly return `nil`.
+
+_Wrapping the error_ - when you preserve an error while adding additional information. When you have a series of wrapped
+errors, it is called an _error chain_. You don't usually call `errors.Unwrap` directly. Instead, you use `errors.Is`
+and `errors.As` to find specific wrapped error. If you want to wrap an error with your custom error type, your error
+type needs to implement the `Unwrap` method.
+
+- `errors.Is` - to check if the returned error or any error that it wraps match a specific sentinel error instance
+- `errors.As` - allows you to check if a returned error (or any error it wraps) matches a specific type
+
+If there are situations in your programs that are unrecoverable, you can create your won panics. Go provides a way to
+capture a panic to provide a more graceful shutdown or to prevent shutdown at all. Reserve `panic` for fatal situations
+and use `recover` as a way to gracefully handle these situations. If program panics, be careful about trying to continue
+executing after the panic. 
