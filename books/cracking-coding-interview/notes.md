@@ -69,7 +69,7 @@ conversation with your interviewers is your ticket to many job offers.
   proprietary systems (e.g. Google Maps). If you are going to ask a question that sounds "scary", make sure you really
   reassure candidates that it doesn't require the knowledge that they think it does.
 - Offer positive reinforcement. You want candidates to feel comfortable. A candidate who is nervous will perform poorly,
-  and it doesn't mean that they aren't good. Moreover, a good candidate who has a negative reaction to you or tgo the
+  and it doesn't mean that they aren't good. Moreover, a good candidate who has a negative reaction to you or to the
   company is less likely to accept an offer - and they may dissuade their friends from interviewing/accepting as well.
   No matter how poorly a candidate is doing, there is always something they got right. Find a way to infuse some
   positivity into the interview.

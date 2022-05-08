@@ -534,7 +534,7 @@ type needs to implement the `Unwrap` method.
 - `errors.Is` - to check if the returned error or any error that it wraps match a specific sentinel error instance
 - `errors.As` - allows you to check if a returned error (or any error it wraps) matches a specific type
 
-If there are situations in your programs that are unrecoverable, you can create your won panics. Go provides a way to
+If there are situations in your programs that are unrecoverable, you can create your own panics. Go provides a way to
 capture a panic to provide a more graceful shutdown or to prevent shutdown at all. Reserve `panic` for fatal situations
-and use `recover` as a way to gracefully handle these situations. If program panics, be careful about trying to continue
+use `recover` as a way to gracefully handle these situations. If program panics, be careful about trying to continue
 executing after the panic. 

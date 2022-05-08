@@ -90,7 +90,7 @@ _Critical Thinking Tutorial:_
 
 1. Ask the "Five Whys" - ask why at least 5 times. Ask a question and get an answer. Dig deeper by asking "why".
 2. Who does this benefit? - "follow the money" can be a very helpful path to analyze. The benefits to someone else or
-   another organization may be aligned with your won, or not.
+   another organization may be aligned with your own, or not.
 3. What is the context? - everything occurs in its own context. Good for someone, doesn't mean it is good for you.
 4. Why is this a problem? - is there an underlying model? How does the underlying model work?
 

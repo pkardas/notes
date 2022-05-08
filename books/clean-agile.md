@@ -568,7 +568,7 @@ behave ethically and respectfully, advising and working with our clients and emp
 expect a relationship of mutual respect and professionalism.
 
 We will look at our work not as something we need to do as part of a job but as a professional service we provide. We
-will take ownership of our won careers, investing our won time and money to get better at what we do. Craftspeople
+will take ownership of our own careers, investing our own time and money to get better at what we do. Craftspeople
 strive to do the best job they can, not because someone is paying, but based on a desire to do things well.
 
 Developers should not ask for authorization for writing tests. They should not have separate tasks for unit testing or
