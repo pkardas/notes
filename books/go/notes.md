@@ -12,6 +12,7 @@ Book by Jon Bodner
 - [Chapter 6: Pointers](#chapter-6-pointers)
 - [Chapter 7: Types, Methods, and Interfaces](#chapter-7-types-methods-and-interfaces)
 - [Chapter 8: Errors](#chapter-8-errors)
+- [Chapter 9: Modules, Packages, and Imports](#chapter-9-modules-packages-and-imports)
 
 ## Chapter 1: Setting Up Your Go Environment
 
@@ -537,4 +538,47 @@ type needs to implement the `Unwrap` method.
 If there are situations in your programs that are unrecoverable, you can create your own panics. Go provides a way to
 capture a panic to provide a more graceful shutdown or to prevent shutdown at all. Reserve `panic` for fatal situations
 use `recover` as a way to gracefully handle these situations. If program panics, be careful about trying to continue
-executing after the panic. 
+executing after the panic.
+
+## Chapter 9: Modules, Packages, and Imports
+
+A module is the root of a Go library or application, stored in a repository. Modules consist one or more packages, which
+give the module organization and structure.
+
+A collection of Go source code becomes a module when there is a valid `go.mod` file in its root directory
+-- `go mod init MODULE_PATH`. `MODULE_PATH` - globally unique name that identifies your module (e.g. github link).
+
+Go uses capitalization to determine if a package-level identifier is visible outside the package where it is declared.
+Anything you export is part of your package's API. Be sure you want to expose certain things to clients. Document all
+exported identifiers and keep the backward-compatible.
+
+As a general rule, make the name of the package match the name of the directory that contains the package. Package names
+should be descriptive. Don't repeat name in a function and package (`extract.Names` > `extract.ExtractNames`).
+
+If your code is small -- kep it in a single package. Introduce packages ac codebase grows.
+
+In case of conflicting names, you can alias an import (`import crand "crypto/rand`). Usage of `.` (imports all
+identifiers into the current package's namespace) is discouraged -- like usage of `*` in Python.
+
+Go has its own format form writing comments that are automatically converted into documentation -- `godoc` format. Place
+the documentation directly above the item being documented. Start the comment with the name of the item. Use a blank
+comment to break comment into multiple paragraphs. Use indenting.
+
+`go doc PACKAGE_NAME.IDENTIFIER_NAME` - views `godoc`.
+
+When you create a package called `internal`, the exported identifiers are only accessible to the direct parent of
+internal and the sibling packages of `internal`.
+
+You might want to rename or move some identifiers -- to avoid backward-breaking change, don;t remove the original
+identifiers, provide an alternate name instead (`type Bar = Foo`).
+
+SemVer - semantic versioning: _major_._minor_._patch_:
+
+- `patch` - incremented when fixing a bug
+- `minor` - incremented when a new, backward-compatible feature is added
+- `major` - incremented when making a change that breaks backward compatibility
+
+The import compatibility rule says that all minor and patch versions of a module must be backward-compatible. If they
+aren't it is a bug.
+
+`pkg.go.dev` - a single service that gathers together documentation of Go modules.
