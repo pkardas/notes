@@ -446,7 +446,7 @@ quickly as possible) over throughput (find the most garbage possible in a single
 garbage, the garbage collector will not find all the garbage during a cycle, slowing down the collector and increasing
 memory usage.
 
-Go encourages you to use pointers sparingly.We reduce teh workload of the garbage collector by making sure that as much
+Go encourages you to use pointers sparingly. We reduce the workload of the garbage collector by making sure that as much
 as possible is stored on the stack.
 
 ## Chapter 7: Types, Methods, and Interfaces
@@ -472,7 +472,7 @@ the kind of data that is expected (e.g. type `Percentage` vs `int`).
 
 Go doesn't have enumerations, instead it has `iota` - which allows you to assign an increasing value to a set of
 constants. `iota` makes sense when you care about being able to differentiate between a set of values, and don't
-particularly care what the value is behind the scenes. If teh actual value matters, specify it explicitly.
+particularly care what the value is behind the scenes. If the actual value matters, specify it explicitly.
 
 Embedding - promote methods on the embedded type to the containing struct. Embedding support is rare in programming
 languages. Do not mislead embedding with inheritance, they are not the same. If the containing struct has fields/methods
@@ -582,3 +582,78 @@ The import compatibility rule says that all minor and patch versions of a module
 aren't it is a bug.
 
 `pkg.go.dev` - a single service that gathers together documentation of Go modules.
+
+## Chapter 10: Concurrency in Go
+
+Concurrency - the CS term for breaking up a single process into independent components and specifying how these
+components safely share data. Most languages provide concurrency via a library that uses OS-level threads that share
+data by attempting to acquire locks. Go is different, and is based on CCommunicating Sequential Processes.
+
+_Concurrency is not parallelism._ Concurrency is a tool to better structure the problem you are solving - whether
+concurrent code runs in parallel depends on the hardware and if the algorithm allows it.
+
+Whether you should use concurrency depends on how data flows through the steps in your program. Concurrency isn't free,
+it may come with a huge overhead. That's why concurrent code is used for I/O -- a lot of waiting, we can do different
+times in the meantime.
+
+`goroutine` - the core concept in GO's concurrency model. Lightweight processes, managed by the Go runtime. Faster to
+create than thread creation (no system-level resources). Small initial stack size, smaller than thread stack -- grows as
+needed. Switching between _goroutines_ is faster because it happens within the process.
+
+- process - an instance of a program that is being run
+- threads - a process is composed of one or more threads, a thread is a unit of execution that is given some time to run
+  by the OS, threads within a process share resources
+
+Go is able to spawn even tens of thousands of simultaneous _goroutines_. Any function can be launched as a _goroutine_.
+
+Goroutines communicate using _channels_ (`ch := manke(chan int)`) - channels are reference types. Use `<-` to interact
+with a channel (read `<-chan`, write `chan<-`). Each value written to a channel can be read once. If multiple goroutines
+are reading from the same channel, a value will be read by only of them.
+
+By default, channels are unbuffered - every write to an open, unbuffered channel causes the writing goroutine to pause
+until another goroutine reads from the same channel. Buffered channels (`ch := make(chan int, 10)`) - these channels
+buffer a limited number of writes without blocking. Most of the time, use unbuffered channels.
+
+Any time you are reading from a channel that might be closed, use the comma ok idiom to ensure that the chanel is stil
+open.
+
+`select` - teh control structure for concurrency in Go, solves _starvation_ problem. Checks if any of its cases can be
+processed, the deadlock is avoided. Select is often embedded within a for-loop.
+
+Concurrency practices and patterns:
+
+1. Keep your APIS concurrency-free - never export channels or mutexes in your API.
+2. Goroutines, for Loops, and Varying Variables - any time goroutine uses a variable whose value might change, pass the
+   current value of the variable into the goroutine.
+3. Always clean up your goroutines - make sure that it will eventually exit. If a goroutine doesn't exit, the scheduler
+   will periodically give it time to do nothing.
+4. The Done Channel Pattern - provides a way to signal a goroutine that it's time to stop processing. It uses a channel
+   to signal that it is time to exit.
+5. Using a cancel function to terminate a goroutine - return a cancellation function alongside the channel.
+6. WHen to use buffered and unbuffered channels - buffered channels are useful when you know how many goroutines you
+   have launched, want to limit the number of goroutines you will launch, or want to limit the amount of work that is
+   queued up.
+7. Backpressure - systems perform better when their components limit the amount of work they are willing to perform. We
+   can use buffered channel and a select statement to limit the number of simultaneous requests in a system.
+8. Turning off a case in a select - if one of the cases in a _select_ is reading a closed channel, it will always be
+   successful. Use a `nil` channel to disable a case, set the channel's variable to `nil` and then `continue`.
+9. How to time out code - use `case <- time.After(2 * time.Second):`.
+10. Using WaitGroups - sometime some goroutine needs to wait for multiple goroutines to complete their work. If you are
+    waiting for a single goroutine, you can use the done channel pattern that we saw earlier. But if you are waiting gon
+    several goroutines, you need to use a `WaitGroup`.
+11. Running code exactly once - `sync.Once` - a handy type that enables this functionality.
+12. Putting our concurrent tools together - by structuring our code with goroutines, channels and select statements, we
+    separate the individual parts to run and complete in any order and cleanly exchange data between the dependant
+    parts.
+
+`mutex` - mutual exclusion, the job of a mutex is to limit the concurrent execution of some code or access to a shared
+piece of data.This protected part is called the _critical section_.
+
+> Share memory by communicating, do not communicate by sharing memory.
+
+Decision tree - use channels or mutexes:
+
+- If you are coordinating goroutines or tracking a value as it is transformed by a series of goroutines, use channels
+- If you are sharing access to a field in a struct, use mutexes
+- If you discover a critical performance issue when using channels, and you cannot find any other way to fix the issue,
+  modify your code to use a mutex
