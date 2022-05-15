@@ -463,7 +463,7 @@ Agile is for small- to medium-sized teams. period. It works well for such teams.
 teams. The problem of large teams is a problem societies and civilizations. And large teams are a solved problems.
 
 Agile was invented because we did not know how to effectively organize a relatively small group of programmers to be
-effective. SSoftware development needed its own process because software is really like nothing else.
+effective. Software development needed its own process because software is really like nothing else.
 
 The answer to the question of Agile in the large is simply to organize your developers into small Agile teams, then use
 standard management and operations research techniques to manage those teams.
@@ -489,7 +489,7 @@ at being great.:
 - These tools often require constant attention.
 - ALM tools aren't always easily adapted.
 - ALM tools can be expensive.
-- ALM does rarely work the way your team does, and often their default mode is at odds with Agile methods. FOr example
+- ALM does rarely work the way your team does, and often their default mode is at odds with Agile methods. For example
   many ALM tools assume that team members have individual work assignments, which makes them nearly unusable for teams
   who work together in a cross-functional way.
 
@@ -507,7 +507,7 @@ You can try different forms of Agile practices and check which one is the most r
 - Portfolio Kanban - sets work in progress limits at the initiative level in order to ensure that the organization is
   focused on the highest-value work at all times.
 - Minimum Viable Increments - whet is the shortest path to producing the highest value in the shortest time. A growing
-  number of organizations are taking this to extreme by implementing CContinuous Delivery - releasing small updates on a
+  number of organizations are taking this to extreme by implementing Continuous Delivery - releasing small updates on a
   frequent basis, sometimes as frequently as multiple times per day.
 
 Enablers of multiteam coordination:

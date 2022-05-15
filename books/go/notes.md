@@ -13,6 +13,8 @@ Book by Jon Bodner
 - [Chapter 7: Types, Methods, and Interfaces](#chapter-7-types-methods-and-interfaces)
 - [Chapter 8: Errors](#chapter-8-errors)
 - [Chapter 9: Modules, Packages, and Imports](#chapter-9-modules-packages-and-imports)
+- [Chapter 10: Concurrency in Go](#chapter-10-concurrency-in-go)
+- [Chapter 11: The Standard Library](#chapter-11-the-standard-library)
 
 ## Chapter 1: Setting Up Your Go Environment
 
@@ -587,7 +589,7 @@ aren't it is a bug.
 
 Concurrency - the CS term for breaking up a single process into independent components and specifying how these
 components safely share data. Most languages provide concurrency via a library that uses OS-level threads that share
-data by attempting to acquire locks. Go is different, and is based on CCommunicating Sequential Processes.
+data by attempting to acquire locks. Go is different, and is based on Communicating Sequential Processes.
 
 _Concurrency is not parallelism._ Concurrency is a tool to better structure the problem you are solving - whether
 concurrent code runs in parallel depends on the hardware and if the algorithm allows it.
@@ -630,7 +632,7 @@ Concurrency practices and patterns:
 4. The Done Channel Pattern - provides a way to signal a goroutine that it's time to stop processing. It uses a channel
    to signal that it is time to exit.
 5. Using a cancel function to terminate a goroutine - return a cancellation function alongside the channel.
-6. WHen to use buffered and unbuffered channels - buffered channels are useful when you know how many goroutines you
+6. When to use buffered and unbuffered channels - buffered channels are useful when you know how many goroutines you
    have launched, want to limit the number of goroutines you will launch, or want to limit the amount of work that is
    queued up.
 7. Backpressure - systems perform better when their components limit the amount of work they are willing to perform. We
@@ -657,3 +659,34 @@ Decision tree - use channels or mutexes:
 - If you are sharing access to a field in a struct, use mutexes
 - If you discover a critical performance issue when using channels, and you cannot find any other way to fix the issue,
   modify your code to use a mutex
+
+## Chapter 11: The Standard Library
+
+Like Python, Go has "batteries included" philosophy - it provides many of the tools that you need to build an
+application.
+
+`io` - contains one of the most useful interfaces - `io.Writer` and `io.Reader`.
+
+`time` - two main types used to represent time - `time.Duration` (used to represent a period of time,
+e.g.: `2 * time.Hour`) and `time.Time` (used to represent a moment of time). It is possible to extract month, day, year,
+... from `Time`.
+
+Most OS keep track of two different sorts of time:
+
+- the wall clock - current time
+- monotonic clock - counts up from the time the computer was booted
+
+`encoding/json` - Go includes support for converting Go data types to and from JSON.
+
+- marshalling - Go data type -> encoding
+- unmarshalling - encoding -> Go data type
+
+We specify the rules for processing our JSON with _struct tags_, strings that are written after the fields in a
+struct (`tagName: "tagValue"`, e.g.: `json:"id"`).
+
+`net/http` - a production of quality HTTP/2 client and server.
+
+- Client - make HTTP requests and receive HTTP responses
+- Server - responsible for listening for HTTP requests
+
+Even though Go provide the server, use idiomatic third-party modules to enhance the server.

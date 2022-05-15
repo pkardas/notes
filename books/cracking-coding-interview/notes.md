@@ -120,7 +120,7 @@ What questions should you ask the interviewer?
   typically require advance research about the company.
 - Passion Questions: these questions are designed to demonstrate your passion for technology. They show that you are
   interested in learning and will be a strong contributor to the company. E.g.: I am very interested in scalability, and
-  I would love to learn more about it. WHat opportunities are there at this company to learn about this?
+  I would love to learn more about it. What opportunities are there at this company to learn about this?
 
 Be specific, not arrogant. How do you make yourself sound good without being arrogant? Be specific. Specificity means
 giving just the facts and letting the interviewer derive an interpretation.

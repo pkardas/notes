@@ -208,7 +208,7 @@ Class Implementation Refactoring:
 - Extract specialised code into a subclass - if class has code that is used by only a subset of its instances
 - Combine similar code into a superclass - if at least 2 classes have similar code
 
-CLass Interface Refactoring:
+Class Interface Refactoring:
 
 - Eliminate classes not doing too much
 - Hide a delegate - A calling B, A calling C, when really class A should call B and class B should call class C
