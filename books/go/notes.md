@@ -4,6 +4,8 @@
 
 Book by Jon Bodner
 
+Code here: [click](.)
+
 - [Chapter 1: Setting Up Your Go Environment](#chapter-1-setting-up-your-go-environment)
 - [Chapter 2: Primitive Types and Declarations](#chapter-2-primitive-types-and-declarations)
 - [Chapter 3: Composite Types](#chapter-3-composite-types)
@@ -15,6 +17,7 @@ Book by Jon Bodner
 - [Chapter 9: Modules, Packages, and Imports](#chapter-9-modules-packages-and-imports)
 - [Chapter 10: Concurrency in Go](#chapter-10-concurrency-in-go)
 - [Chapter 11: The Standard Library](#chapter-11-the-standard-library)
+- [Chapter 12: The Context](#chapter-12-the-context)
 
 ## Chapter 1: Setting Up Your Go Environment
 
@@ -690,3 +693,26 @@ struct (`tagName: "tagValue"`, e.g.: `json:"id"`).
 - Server - responsible for listening for HTTP requests
 
 Even though Go provide the server, use idiomatic third-party modules to enhance the server.
+
+## Chapter 12: The Context
+
+Servers need a way to handle metadata on individual requests. Go uses a construct called the context.
+
+Context - an instance that meets the Context interface. An empty context us a starting point: each time you add metadata
+to the context, you do so by wrapping the existing context using one of the factory functions in the context package.
+
+Cancellation - a request that spawns several goroutines, each one calling a different HTTP service. If one service
+returns an error that prevents you from returning a valid response, there is no point in continuing to process the other
+goroutines. In go this is called _cancellation_.
+
+There are 4 things a server can do to manage its load:
+
+- Limit simultaneous requests
+- Limit how many requests are queued waiting to run
+- Limit how long a request can run
+- Limit the resources a request can use
+
+Go provides tools to handle the first three - first two -> limit number of goroutines, the context provides a way to
+control how long a request runs.
+
+The context provides a way to pass per-request metadata through your program.
