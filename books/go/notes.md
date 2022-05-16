@@ -18,6 +18,7 @@ Code here: [click](.)
 - [Chapter 10: Concurrency in Go](#chapter-10-concurrency-in-go)
 - [Chapter 11: The Standard Library](#chapter-11-the-standard-library)
 - [Chapter 12: The Context](#chapter-12-the-context)
+- [Chapter 13: Writing Tests](#chapter-13-writing-tests)
 
 ## Chapter 1: Setting Up Your Go Environment
 
@@ -698,7 +699,7 @@ Even though Go provide the server, use idiomatic third-party modules to enhance 
 
 Servers need a way to handle metadata on individual requests. Go uses a construct called the context.
 
-Context - an instance that meets the Context interface. An empty context us a starting point: each time you add metadata
+Context - an instance that meets the Context interface. An empty context is a starting point: each time you add metadata
 to the context, you do so by wrapping the existing context using one of the factory functions in the context package.
 
 Cancellation - a request that spawns several goroutines, each one calling a different HTTP service. If one service
@@ -716,3 +717,41 @@ Go provides tools to handle the first three - first two -> limit number of gorou
 control how long a request runs.
 
 The context provides a way to pass per-request metadata through your program.
+
+## Chapter 13: Writing Tests
+
+Go includes testing support as part of its standard library. The `testing` package provides the types anf unctions to
+write tests, while the `go test` tool runs your tests and generates reports.
+
+Go tests are placed in the same directory and the same package as the production code. Tests are able to access and test
+un-exported functions and variables. If you want to test just the public API, Go has a special convention for this.
+Use `packagename_test` for the package name.
+
+Every test written in a file whose name ends with `_test.go`. Test functions start with the word `Test` and take in a
+single parameter of type `*testing.T`.
+
+It is possible to write set-up and tear-down code.
+
+Use `go-cmp` (third-party module) in order to compare two instances of a compound type.
+
+Adding the `-cover` flag to the `go test` command calculates coverage information and includes a summary in the test
+output. `-coverprofile=c.out` saves the coverage infor to a file. `-html=c.out` generates an HTML representation of your
+source code coverage.
+
+> Code coverage is necessary, but it is not sufficient. You can have 100% code coverage and still have bugs in your
+> code.
+
+> When your code depends on abstractions, it is easier to write unit tests.
+
+A stub returns a canned value for given output, whereas a mock validates that a set of calls happen in the expected
+order with the expected inputs.
+
+`httpest` package to make it easier to stub HTTP services. Even though `httptest` provides a way to avoid testing
+external services, you should still write _integration_ tests - automated tests that connect to other services. These
+validate your understanding of the service's APIs is correct.The challenge is figuring out how to group your automated
+tests - you want to run integration tests when teh support environment is present. Also, integration tests tend to be
+slower than unit tests, so they usually run less frequently.
+
+Go includes a _race checker_ - it helps to find accidental references to a variable from two different goroutines
+without acquiring a lock. It is not guaranteed to find every single data race in your code, but if it finds one, you
+should put proper locks around what it finds. Do not solve race conditions by inserting "sleeps" into the code.
