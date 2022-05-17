@@ -19,6 +19,8 @@ Code here: [click](.)
 - [Chapter 11: The Standard Library](#chapter-11-the-standard-library)
 - [Chapter 12: The Context](#chapter-12-the-context)
 - [Chapter 13: Writing Tests](#chapter-13-writing-tests)
+- [Chapter 14: Here There Be Dragons: Reflect, Unsafe, and Cgo](#chapter-14-here-there-be-dragons-reflect-unsafe-and-cgo)
+- [Chapter 15: A Look at the Future: Generics in Go](#chapter-15-a-look-at-the-future-generics-in-go)
 
 ## Chapter 1: Setting Up Your Go Environment
 
@@ -755,3 +757,59 @@ slower than unit tests, so they usually run less frequently.
 Go includes a _race checker_ - it helps to find accidental references to a variable from two different goroutines
 without acquiring a lock. It is not guaranteed to find every single data race in your code, but if it finds one, you
 should put proper locks around what it finds. Do not solve race conditions by inserting "sleeps" into the code.
+
+## Chapter 14: Here There Be Dragons: Reflect, Unsafe, and Cgo
+
+Go is a safe language, but sometimes your Go programs need to venture out into less defined areas.
+
+Reflection allows us to examine types at runtime. It also provides the ability to examine, modify, and create variables,
+functions, and structs at runtime.
+
+- `database/sql` - uses reflection to send requests to databases and read data back
+- `text/template` and `html/template` - use reflection to process the values that are passed to the templates
+- `fmt` - uses reflection to detect the type of the provided parameters
+- `errors` - uses reflection to implement `errors.Is` and `errors.As`
+- `sort` - uses reflection to implement functions that sort and evaluate slices of any type
+
+Most of these examples have one thing in common - they involve accessing and formatting data that is being imported into
+or exported out of Go program.
+`reflect` package is build around 3 core concepts:
+
+- `types` - `reflect.TypeOf` returns a value of type `reflect.Type`, which represents the type of variable passed into
+  the function
+- `kinds` - `Kind` method on `reflect.Type` returns a value of type `reflect.Kind`, which is a constant that says what
+  the type is made of - a slice, a map, a pointer, a struct, an interface, an array, a function, an int, ...
+- `values` - we can use `reflec.ValueOf` to create a `reflect.Value` instance that represents the value of a variable
+
+Other use cases:
+
+- use reflection to check if an interface's value is nil
+- use reflection to write a data marshaller
+- use reflection to automate repetitive tasks, e.g. create a new function without writing repetitive code
+
+While reflection is essential when converting data at the boundaries of Go, be careful using it in other situations.
+
+`unsafe` - allows to manipulate memory. Very small and very odd. There are 2 common patterns in `unsafe` code:
+
+- conversion between 2 types of variables that are normally not convertable
+- reading/modifying the bytes in a variable
+
+The majority of _unsafe_ usages were motivated by integration with operating systems and C code. Developers also
+frequently use _unsafe_ to write more efficient Go code.
+
+The _unsafe_ package is powerful and low-level! Avoid using it unless you know what you are doing, and you need the
+performance improvements that it provides.
+
+Nearly every programming language provides a way to integrate with C libraries. Go calls its FFI (Foreign Function
+Interface) to C `cgo`. `cgo` is for integration, not performance. `cgo` sin;t fast, and it is not easy to use for
+nontrivial programs, the only reason to use `cgo` is if there is a C library that you must use and there is no suitable
+Go replacement.
+
+## Chapter 15: A Look at the Future: Generics in Go
+
+Generics reduce repetitive code and increase type safety. Generics is the concept that it is sometimes useful to write
+functions where the specific type of parameter or field is specified when it is used.
+
+Many common algorithms, such as map, reduce, and filter had to be reimplemented for different types.
+
+> Properly written, Go is boring... well-written Go programs tend to be straightforward and sometimes a bit repetitive.
