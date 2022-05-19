@@ -104,7 +104,7 @@ tests.
 Flag `--setup-show` shows us the order of operations of tests and fixtures, including the setup and teardown phases of
 the fixtures.
 
-The scope dictates how often the setup and teardown get run whet it is used by multiple test functions:
+The scope dictates how often the setup and teardown get run when it is used by multiple test functions:
 
 - _function_ - (default scope) run once per test function. The setup is run before each test using the fixture. The
   teardown is run after each test using the fixture.

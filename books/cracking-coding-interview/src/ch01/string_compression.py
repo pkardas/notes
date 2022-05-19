@@ -1,15 +1,14 @@
 from dataclasses import dataclass
-from typing import List
+
 import pytest
 
 
-@dataclass
-class Compressed:
-    char: str
-    freq: int
-
-
 def compress_string(text: str) -> str:
+    @dataclass
+    class Compressed:
+        char: str
+        freq: int
+
     compressed = []
 
     for ch in text:

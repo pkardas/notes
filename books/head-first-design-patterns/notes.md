@@ -43,8 +43,8 @@ subclass. A localised update to the code caused a non-local side effect (flying 
   instead, it would be better to have 2 types of ducks: Living and non-living and instead of introducing a single class
   per duck, reuse classes and make them parametrised with a name.
 
-There is one constant in software development. What is the one thing you can always count on in software development. **
-CHANGE**. No matter how well you design an application, over time an application must grow and change, or it will die.
+There is one constant in software development. What is the one thing you can always count on in software development.
+**CHANGE**. No matter how well you design an application, over time an application must grow and change, or it will die.
 
 *List some reasons you have had to change code in your application*:
 
@@ -148,7 +148,7 @@ Bullet points:
 - Patterns don't give you code, they give you general solutions to design problems. You apply them to your specific
   application.
 - Patterns aren't invented, they are discovered.
-- Most patterns and principles address issues of change n software.
+- Most patterns and principles address issues of change in software.
 - Most patterns allow some part of a system to vary independently of all other parts.
 - We often try to take what varies in a system and encapsulate it.
 - Patterns provide language that can maximise the value of your communication with other developers.
@@ -159,7 +159,7 @@ Bullet points:
 
 Observer Pattern: Pattern that keeps your objects in the know when something they care about happens.
 
-Weather-O-Rama, our task is to create an app that uses the WeatherData object top update 3 displays for current
+Weather-O-Rama, our task is to create an app that uses the WeatherData object to update 3 displays for current
 conditions weather stats and a forecast.
 
 *Based on our first implementation, which of the following apply?*
@@ -196,7 +196,7 @@ we can create designs that can handle change better. The Observer Pattern is a g
 
 The ways the pattern achieves loose coupling:
 
-1. The only thing the subject knows about an observer is that is implements a certain interface.
+1. The only thing the subject knows about an observer is that it implements a certain interface.
 2. We can add new observers at any time.
 3. We never need to modify the subject to add new types of observers.
 4. We can reuse subjects or observers independently of each other.
@@ -216,7 +216,7 @@ The Observer Pattern can be used for sending "notifications" so that observers c
 
 Bullet points:
 
-- The Observer Pattern defines a now-to-many relationship between objects.
+- The Observer Pattern defines a one-to-many relationship between objects.
 - Subjects update Observers using a common interface.
 - Observers of any concrete type can participate in the pattern as long they implement the Observer interface.
 - Observers are loosely coupled in that the Subject knows nothing about them, other than that they implement the
@@ -233,7 +233,7 @@ Bullet points:
 
 - Identify the aspects of your application that vary and separate them from what stays the same: Observers and data
   vary.
-- Program to an interface, not an implementation: Subject and Observers are loosely coupled because whet they know about
+- Program to an interface, not an implementation: Subject and Observers are loosely coupled because what they know about
   each other are the interfaces they implement.
 - Favour composition over inheritance: Subject holds a list of observers, observers hold a reference to the subject.
 
@@ -257,7 +257,7 @@ functionality by writing new code, rather than altering existing code. Because I
 changes of introducing bugs or causing unintended side effects in pre-existing code are much reduced. Code should be
 closed to change, yet open to extension.
 
-Design principle - one of the mist important design principles:
+Design principle - one of the most important design principles:
 
 > Classes should be open for extension, but closed for modification.
 
@@ -1236,7 +1236,7 @@ Mediator Uses and Drawbacks:
 The Memento has 2 goals: Saving the important state of a system's key object. Maintaining the key object's
 encapsulation.
 
-Keeping the Single Responsibility Principle n mind, it is also a good idea to keep the state that you are saving
+Keeping the Single Responsibility Principle in mind, it is also a good idea to keep the state that you are saving
 separate from the key object. This separate object that holds the state is known as the Memento object.
 
 Benefits:

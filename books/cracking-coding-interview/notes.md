@@ -35,7 +35,7 @@ well-correlated with being a good developer. Also, it is hard to ask problem-sol
 algorithms and data structures.
 
 Your interviewer develops a feel for your performance by comparing you to other people. Getting a hard question isn't a
-bad thing. When it is harder fot you, it is harder for everyone.
+bad thing. When it is harder for you, it is harder for everyone.
 
 If you haven't heard back from a company within 3-5 business days after interview, check in with your recruiter.
 
@@ -101,7 +101,7 @@ Resume screeners want to know that you are smart, and you can code. You should p
 things. Think twice before cutting more technical lines in order to allow space for your non-technical hobbies.
 
 Keep your resume short, max. 1.5-2 pages. Long resumes are not a reflection of having tons of experience, there are a
-reflection of not understanding hot to prioritize content. A resume should not include a full history of every role you
+reflection of not understanding how to prioritize content. A resume should not include a full history of every role you
 have ever had. Include only the relevant positions - the ones that make you a more impressive candidate.
 
 For each role, try to discuss you accomplishments with the following approach: "_Accomplishment X by implementing Y

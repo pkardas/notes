@@ -506,7 +506,7 @@ You can try different forms of Agile practices and check which one is the most r
   working together toward a common deliverable.
 - Portfolio Kanban - sets work in progress limits at the initiative level in order to ensure that the organization is
   focused on the highest-value work at all times.
-- Minimum Viable Increments - whet is the shortest path to producing the highest value in the shortest time. A growing
+- Minimum Viable Increments - what is the shortest path to producing the highest value in the shortest time. A growing
   number of organizations are taking this to extreme by implementing Continuous Delivery - releasing small updates on a
   frequent basis, sometimes as frequently as multiple times per day.
 
