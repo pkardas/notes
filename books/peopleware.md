@@ -8,6 +8,11 @@ Book by Tom DeMarco and Tim Lister
 - [Chapter 2: Make a cheeseburger, sell a cheeseburger](#chapter-2-make-a-cheeseburger-sell-a-cheeseburger)
 - [Chapter 3: Vienna waits for you](#chapter-3-vienna-waits-for-you)
 - [Chapter 4: Quality - if time permits](#chapter-4-quality---if-time-permits)
+- [Chapter 5: Parkinson's Law revisited](#chapter-5-parkinsons-law-revisited)
+- [Chapter 6: Laetrile](#chapter-6-laetrile)
+- [Chapter 7: The Furniture Police](#chapter-7-the-furniture-police)
+- [Chapter 8: You never get anything done around here between 9 and 5](#chapter-8-you-never-get-anything-done-around-here-between-9-and-5)
+- [Chapter 9: Saving money on space](#chapter-9-saving-money-on-space)
 
 ## Chapter 1: Somewhere today, a project is failing
 
@@ -101,3 +106,78 @@ _Quality, for beyond that required by the end user, is a means to higher product
 In some Japanese companies, the project team has an effective power of veto over delivery of what they believe to be a
 not-yet-ready product. No matter that the client would be willing to accept even a substandard product, the team can
 insist that delivery wait until its own standards are achieved.
+
+## Chapter 5: Parkinson's Law revisited
+
+Parkinson's Law:
+
+> Work expands to fill the time allocated for it
+
+Parkinson's Law gives managers the strongest possible conviction that the only way to get work done at all is to set an
+impossibly optimistic delivery date. Parkinson's Law almost certainly doesn't apply to your people. Treating people as
+Parkinsonian workers doesn't work - it can only demean and demotivate them.
+
+Parkinson's Law didn't catch on because it was so true, it caught on because it was funny.
+
+Programmers seem to be a bit more productive after they have done the estimate themselves, compared to cases in which
+the manager did it without even consulting them.
+
+According to 1985 Jeffery-Lawrence study - projects on which the boss applied no schedule pressure whatsoever ("Just
+wake me up when you are done") had the highest productivity of all.
+
+## Chapter 6: Laetrile
+
+Laetrile - colorless liquid pressed from the apricot pits. Can be used for baking like any extract, in Mexico you can
+buy it for $50 to "cure" fatal cancer.
+
+Similarly, lots of managers fall into a trap of technical laetrile that purports to improve productivity.
+
+The 7 false hopes of software management:
+
+1. There is some new trick you have missed that could send productivity soaring
+2. Other managers are getting gains of 100-200% or more
+3. Technology is moving so swiftly that you are being passed by
+4. Changing languages will give you huge gains
+5. Because of the backlog, you need to double productivity immediately
+6. You automate everything else: isn't it about time you automated away your software development staff?
+7. Your people will work better if you put them under a lot of pressure
+
+What is management:
+
+> The manager's function is not to make people work, but to make it possible for people to work.
+
+## Chapter 7: The Furniture Police
+
+The work space given to intellect workers is usually noisy, interruptive, un-private and sterile. SOme are prettier than
+others, but not much more functional.
+
+Police-mentality planners design workspaces the way they would design prison - optimized for containment at minimal
+cost.
+
+As long as workers are crowded into noisy, sterile, disruptive space, it is not worth improving anything but the
+workspace.
+
+## Chapter 8: You never get anything done around here between 9 and 5
+
+To be productive, people may come in early or stay late or even try to escape entirely, by staying home for a day to
+get a critical piece of work done. Staying late or arriving early or staying home to work in peace is a damning
+indictment of the office environment.
+
+Two people from the same organization tend to perform alike. The best performers are clustering in some organizations
+while the worst performers are clustering in others.
+
+Many companies provide developers with a workplace that is too crowded, noisy, and interruptive as to fill their days
+with frustration. That alone could explain reduced efficiency as well as tendency for good people to migrate elsewhere.
+
+If you participate in or manage a team of people who need to use their brains during the workday, then the environment
+is your business.
+
+## Chapter 9: Saving money on space
+
+It is surprising how little the potential savings are compared to the potential risk. The entire cost of work space for
+developer is a small percentage of the salary paid to the developer - 20:1 ratio.
+
+People need the space and quiet in order to perform optimally. Noise is directly proportional to density, so halving the
+allotment of space per person can be expected to double the noise.
+
+Saving money on space may be costing you a fortune.
