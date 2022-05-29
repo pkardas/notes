@@ -26,6 +26,17 @@ class LinkedList:
             current = current.next
         return result
 
+    @property
+    def tail(self) -> Optional[Node]:
+        node = self.head
+        while node and node.next:
+            node = node.next
+        return node
+
+    @property
+    def length(self) -> int:
+        return len(self.values)
+
     def node_for_value(self, val: int) -> Optional[Node]:
         node = self.head
         while node:
@@ -106,3 +117,15 @@ def test_delete(values, to_delete, expected_result):
 def test_node_for_value(values, value, expected_node_val):
     node = LinkedList(values).node_for_value(value)
     assert node.data if node else node == expected_node_val
+
+
+@pytest.mark.parametrize("values, expected_tail", [
+    # @formatter:off
+    ([],     None),
+    ([1],    1),
+    ([1, 2], 2),
+    # @formatter:on
+])
+def test_tail(values, expected_tail):
+    tail = LinkedList(values).tail
+    assert tail.data == expected_tail if expected_tail else tail is None
