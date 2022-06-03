@@ -13,6 +13,9 @@ Book by Tom DeMarco and Tim Lister
 - [Chapter 7: The Furniture Police](#chapter-7-the-furniture-police)
 - [Chapter 8: You never get anything done around here between 9 and 5](#chapter-8-you-never-get-anything-done-around-here-between-9-and-5)
 - [Chapter 9: Saving money on space](#chapter-9-saving-money-on-space)
+- [Chapter 10: Brain Time versus Body Time](#chapter-10-brain-time-versus-body-time)
+- [Chapter 11: The Telephone](#chapter-11-the-telephone)
+- [Chapter 12: Bring Back the Door](#chapter-12-bring-back-the-door)
 
 ## Chapter 1: Somewhere today, a project is failing
 
@@ -94,7 +97,7 @@ quality of the product is likely to set the emotions of your staff directly agai
 Workers kept under extreme time pressure will begin to sacrifice quality. They will hate what they are doing, but what
 other choice do they have?
 
-> Some of my folks would tinker forever on a task, all in teh name of _QUALITY_. But the market doesn't give a damn
+> Some of my folks would tinker forever on a task, all in the name of _QUALITY_. But the market doesn't give a damn
 > about that much quality - it is screaming for the product to be delivered yesterday and will accept it even in a
 > quick-and-dirty state
 
@@ -181,3 +184,55 @@ People need the space and quiet in order to perform optimally. Noise is directly
 allotment of space per person can be expected to double the noise.
 
 Saving money on space may be costing you a fortune.
+
+## Chapter 10: Brain Time versus Body Time
+
+In the office: 30% of the time, people are noise sensitive, and the rest of the time, they are noise generators.
+
+Each time you are interrupted, you require an additional immersion period to get back into flow. During this immersion,
+you are not really doing work.
+
+People have to be reassured that it is not their fault if they can only manage one or two uninterrupted hours a week -
+rather it is the organization's fault for not providing a flow-conductive environment. None of this data can go to the
+Payroll Department.
+
+The collection of uninterrupted-hour data can give you some meaningful metric evidence of just good or bad your
+environment is.
+
+```
+E-Factor = Uninterrupted Hours / Body-Present Hours
+```
+
+## Chapter 11: The Telephone
+
+When you are doing think-intensive work like design, interruptions are productivity killers. When you are doing sales
+and marketing support, you have to take every single call that comes in. Mixing flow and highly interruptive activities
+is a recipe for nothing but frustration. "Leave me alone, I am working" ethic can emerge. People must learn that it is
+okay sometimes not to answer the phone, and their managers need to understand that as well.
+
+That is the character of knowledge workers' work: The quality of their time is important, not just its quantity.
+
+## Chapter 12: Bring Back the Door
+
+There are some prevalent symbols of success and failure in creating a sensible workplace. The most obvious symbol of
+success is the door. When there are sufficient doors, workers can control noise and interruptibility to suit their
+changing needs.
+
+Don't expect the Establishment to roll over and play dead just because you begin to complain. There at least 3
+counterarguments to surface almost immediately:
+
+- People don't care about glitzy office space. They are too intelligent for that. And the ones who do care are just
+  playing status games.
+    - Appearance is stressed far too much in workplace design. What is more relevant is whether the workplace lets you
+      work or inhibits you.
+- Maybe noise is a problem, but there are cheaper ways to deal with it than mucking around with the physical layout. We
+  could just pipe in white noise of Muzak and cover up the disturbance.
+    - You can either treat the symptom or treat the cause. Treating the cause means choosing isolation in the form of
+      noise barriers - walls and doors - and these cost money. Treating the symptom is much cheaper, when you install
+      Muzak or some other form of pink noise, you can save even more money by ignoring the problem.
+- Enclosed offices don't make for a vital environment. We want people to interact productively, and that is what they
+  want, too. So walls and doors would be a step in the wrong direction.
+    - Enclosed offices don't have to be one-person offices. 2, 3, 4-person office makes a lot more sense.
+
+Management, at its best, should make sure there is enough space, enough quiet, and enough ways to ensure privacy so that
+people can create their own sensible work space.

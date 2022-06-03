@@ -625,7 +625,7 @@ buffer a limited number of writes without blocking. Most of the time, use unbuff
 Any time you are reading from a channel that might be closed, use the comma ok idiom to ensure that the chanel is stil
 open.
 
-`select` - teh control structure for concurrency in Go, solves _starvation_ problem. Checks if any of its cases can be
+`select` - the control structure for concurrency in Go, solves _starvation_ problem. Checks if any of its cases can be
 processed, the deadlock is avoided. Select is often embedded within a for-loop.
 
 Concurrency practices and patterns:
@@ -751,7 +751,7 @@ order with the expected inputs.
 `httpest` package to make it easier to stub HTTP services. Even though `httptest` provides a way to avoid testing
 external services, you should still write _integration_ tests - automated tests that connect to other services. These
 validate your understanding of the service's APIs is correct.The challenge is figuring out how to group your automated
-tests - you want to run integration tests when teh support environment is present. Also, integration tests tend to be
+tests - you want to run integration tests when the support environment is present. Also, integration tests tend to be
 slower than unit tests, so they usually run less frequently.
 
 Go includes a _race checker_ - it helps to find accidental references to a variable from two different goroutines
