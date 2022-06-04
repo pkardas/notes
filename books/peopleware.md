@@ -16,6 +16,10 @@ Book by Tom DeMarco and Tim Lister
 - [Chapter 10: Brain Time versus Body Time](#chapter-10-brain-time-versus-body-time)
 - [Chapter 11: The Telephone](#chapter-11-the-telephone)
 - [Chapter 12: Bring Back the Door](#chapter-12-bring-back-the-door)
+- [Chapter 13: Taking Umbrella Steps](#chapter-13-taking-umbrella-steps)
+- [Chapter 14: The Hornblower Factor](#chapter-14-the-hornblower-factor)
+- [Chapter 15: Let's talk about Leadership](#chapter-15-lets-talk-about-leadership)
+- [Chapter 16: Hiring a Juggler](#chapter-16-hiring-a-juggler)
 
 ## Chapter 1: Somewhere today, a project is failing
 
@@ -67,7 +71,7 @@ Overtime is like sprinting: it makes some sense for the last 100m of the maratho
 you start sprinting in the first kilometer, you are wasting time.
 
 Workaholism is an illness, but common-cold-like, everyone has a bout of it now and then. If a manager tries to exploit
-workaholics, they wil eventually loose them.
+workaholics, they will eventually lose them.
 
 Realization that one has sacrificed a more important value (family, love, home, youth) for a less important value (work)
 is devastating.
@@ -236,3 +240,71 @@ counterarguments to surface almost immediately:
 
 Management, at its best, should make sure there is enough space, enough quiet, and enough ways to ensure privacy so that
 people can create their own sensible work space.
+
+## Chapter 13: Taking Umbrella Steps
+
+> People cannot work effectively if their workspace is too enclosed or too exposed. A good workspace strikes the
+> balance. You feel more comfortable in a workspace if there is a wall behind you. There should be no blank wall closer
+> than 2.5m in front of you (eye relief). You should not be able to hear noises very different from the kind you make,
+> from your workspace. Workspaces should allow you to face in different directions.
+
+> Rooms without a view are like prisons for the people who have to stay in them
+
+~ Christopher Alexander, _A Pattern Language_
+
+## Chapter 14: The Hornblower Factor
+
+Hornblower is the ultimate manager - his career advanced from midshipman to admiral through the same blend of
+cleverness, daring, political maneuvering and good luck.
+
+Managers are supposed to use their leadership skills to bring out untapped qualities in each subordinate - this is not
+realistic. The manager doesn't have enough leverage to make a difference in person's nature. So the people who work for
+you through whatever period will be more or less the same at the end as they were at the beginning. If they are not
+right for the job from the start, they will never be. Getting the right people in the first place is all important.
+
+Most hiring mistakes result from too much attention to appearance. Evolution has planted in each of us a certain
+uneasiness toward people who differ by very much from the norm. The need for uniformity is a sign of insecurity on the
+part of management. Strong managers don't care when team members cut their hair or whether they wear ties. Their pride
+is only to their staff's accomplishments.
+
+Companies sometimes impose standards of dress, they remove considerable discretion from the individual. The effect is
+devastating - people can talk and think of nothing else, all useful work stops dead. The most valuable people begin to
+realize that they aren't appreciated for their contributions, but for haircuts and neckties.
+
+The term _unprofessional_ is often used to characterize surprising and threatening behaviour. Anything that upsets the
+weak manager is almost by definition unprofessional - long hair on male's head, comfortable shoes, dancing around desk,
+laughing, ...
+
+Second thermodynamic law of management: _Entropy is always increasing in the org._ - That's why most elderly
+institutions are tighter and a lot of less fun than sprightly young companies.
+
+## Chapter 15: Let's talk about Leadership
+
+One of the worst dreadful "motivational" posters says: "The speed of the leader sets the rate of the pack" ==
+work-extraction mechanism, purpose is to increase quantity, not quality - work harder, stay loner, stop goofing off.
+
+Leadership is not about extracting anything from somebody - it is about service, while they sometimes set explicit
+directions, their main role is that of a catalyst, not a director.
+
+Rebellious leadership is important in order to innovate - they should supply time to innovate (take a person away from
+doing billable work). Nobody knows enough to give permission to the key innovators to do what needs to be done. That's
+why leadership as a service almost always operates without official permission.
+
+> If companies were more likely inclined to let leadership arise naturally, they wouldn't need to produce so much hot
+> air talking about it.
+
+## Chapter 16: Hiring a Juggler
+
+You are hiring a person to produce, you need to examine a sample of those products to see the quality of work the
+candidate does. Otherwise, the interview is just a talk.
+
+You can show off your portfolio as part of each interview.
+
+Aptitude tests are almost always oriented toward the tasks the person will perform immediately after being hired. They
+test if person is likely to perform immediately after being hired. Aptitude tests are left-brain oriented. The aptitude
+test may give you people who perform better in the short term, but are less likely to succeed later on. Use them, but
+not for hiring.
+
+Hiring process needs to focus on at least some sociological and human communication traits. Ask a candidate to prepare
+10-15 minute presentation on some aspect of past work (technology, management, project) - you will be able to see
+candidate's communication skills.
