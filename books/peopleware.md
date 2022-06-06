@@ -20,6 +20,8 @@ Book by Tom DeMarco and Tim Lister
 - [Chapter 14: The Hornblower Factor](#chapter-14-the-hornblower-factor)
 - [Chapter 15: Let's talk about Leadership](#chapter-15-lets-talk-about-leadership)
 - [Chapter 16: Hiring a Juggler](#chapter-16-hiring-a-juggler)
+- [Chapter 17: Playing well with others](#chapter-17-playing-well-with-others)
+- [Chapter 18: Childhood's end](#chapter-18-childhoods-end)
 
 ## Chapter 1: Somewhere today, a project is failing
 
@@ -308,3 +310,20 @@ not for hiring.
 Hiring process needs to focus on at least some sociological and human communication traits. Ask a candidate to prepare
 10-15 minute presentation on some aspect of past work (technology, management, project) - you will be able to see
 candidate's communication skills.
+
+## Chapter 17: Playing well with others
+
+The capacity of a team to absorb newness has its limits. Team jell takes time, and, during much of that time, the
+composition of the team can't be changing. If you need to use a reactive strategy of labor, your team will probably
+never jell. In fact, the workspace you manage almost certainly will not be a team at all.
+
+## Chapter 18: Childhood's end
+
+For youngest employees, computers, smartphones, the Web, programming, hacking, social networking, and blogging are
+environment, not technology.
+
+Young people divide their attention while their older colleagues tend to focus on one or possibly two tasks at once.
+Continuous partial attention is the opposite of flow. There is a difference between spending 2% of time on Facebook in a
+single block of time vs spending 2% of attention all day on Facebook.
+
+Articulating requirements to young workers is going to be essential to give them a chance to fit in.
