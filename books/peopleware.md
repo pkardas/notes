@@ -22,6 +22,8 @@ Book by Tom DeMarco and Tim Lister
 - [Chapter 16: Hiring a Juggler](#chapter-16-hiring-a-juggler)
 - [Chapter 17: Playing well with others](#chapter-17-playing-well-with-others)
 - [Chapter 18: Childhood's end](#chapter-18-childhoods-end)
+- [Chapter 19: Happy to be here](#chapter-19-happy-to-be-here)
+- [Chapter 20: Human Capital](#chapter-20-human-capital)
 
 ## Chapter 1: Somewhere today, a project is failing
 
@@ -327,3 +329,40 @@ Continuous partial attention is the opposite of flow. There is a difference betw
 single block of time vs spending 2% of attention all day on Facebook.
 
 Articulating requirements to young workers is going to be essential to give them a chance to fit in.
+
+## Chapter 19: Happy to be here
+
+Typical turnover figures are in the range of 80-33%/year => average employee longevity averages between 15 and 36
+months. The average person leaves after a little more than two years. It costs 1.5-2 months' salary to hire a new
+employee (agency or in-house HR).
+
+A new employee is quite useless on Day Zero (or even less than useless), after few months the new person is doing some
+useful work. Within 5 months, he/she is at full working capacity.
+
+The total cost of replacing each person is the equivalent of 4.5-5 months of employee cost or about 20% of the cost of
+keeping that employee for the full 2 years on the job. And the is only the visible cost of turnover.
+
+In companies with high turnover, people ten toward a destructively short-term viewpoint, because they know they just
+aren't going to be there very long. In an organization with high turnover, nobody is willing to take the long view.
+
+If people only stick around for a year or two, the only way to conserve the best people is to promote them quickly. From
+the corporate perspective, late promotion is a sign of health.
+
+Reasons account for most departures:
+
+- A just-passing-through mentality - no feelings of long-term involvement in the job
+- A feeling of disposability - workers as interchangeable parts (since turnover is really high, nobody is indispensable)
+- A sense that loyalty would be ludicrous - who would be loyal to an org that views its people as parts
+
+People leave quickly -> no spending money on training -> no investment in the individual -> individual thinks of moving
+on.
+
+The best companies are consciously striving to be best. People tend to stay at such companies because there is a
+widespread sense that you are expected to stay. A common feature of companies with the lowest turnover is widespread
+retraining (you are forever bumping into managers and officers who started out as secretaries, payroll clerks, or in the
+mailroom).
+
+## Chapter 20: Human Capital
+
+Companies that manage their investment sensibly will prosper in the long run. Companies of knowledge workers have to
+realize that it is their in human capital that matters most. The good ones already do.
