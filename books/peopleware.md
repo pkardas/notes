@@ -24,6 +24,10 @@ Book by Tom DeMarco and Tim Lister
 - [Chapter 18: Childhood's end](#chapter-18-childhoods-end)
 - [Chapter 19: Happy to be here](#chapter-19-happy-to-be-here)
 - [Chapter 20: Human Capital](#chapter-20-human-capital)
+- [Chapter 21: The Whole is greater than the sum of the Parts](#chapter-21-the-whole-is-greater-than-the-sum-of-the-parts)
+- [Chapter 22: The Black Team](#chapter-22-the-black-team)
+- [Chapter 23: Teamicide](#chapter-23-teamicide)
+- [Chapter 24: Teamicide Revisited](#chapter-24-teamicide-revisited)
 
 ## Chapter 1: Somewhere today, a project is failing
 
@@ -366,3 +370,63 @@ mailroom).
 
 Companies that manage their investment sensibly will prosper in the long run. Companies of knowledge workers have to
 realize that it is their in human capital that matters most. The good ones already do.
+
+## Chapter 21: The Whole is greater than the sum of the Parts
+
+Jelled Team - a group of people so strongly knit that the whole is greater than the sum of parts. The production of such
+team is greater than that of the same people working in unjelled team. Once a team begins to jell, the probability of
+success goes up dramatically. They don't need to be managed in the traditional sense, and they certainly don't need to
+be motivated. They have got momentum.
+
+Believing that workers will automatically accept organizational goals is the sign of naive managerial optimism.
+
+> The purpose of a team is not goal attainment but goal alignment
+
+Signs of jelled team:
+
+- low turnover
+- strong sense of identity (colourful name)
+- sense or eliteness (part of something unique, this attitude might be annoying to people outside the group)
+- joint ownership
+
+## Chapter 22: The Black Team
+
+The story about the legendary, jelled team - The Black Team.
+
+## Chapter 23: Teamicide
+
+You can't control jelling - the process is too fragile to be controlled. Exact steps are hard to describe, the opposite
+is easier. Teamicide techniques:
+
+- Defensive management
+    - let your people make mistakes, do not send a message that making errors is forbidden
+    - "My people are too dumb to build systems without me"
+    - people who feel untrusted have little inclination to bond together into a cooperative team
+- Bureaucracy
+    - mindless paper pushing hurts team formation
+- Physical separation
+    - group members may grow stronger bonds to non-group neighbours, just because they see more of them
+    - putting people together gives them opportunity for the casual interaction that is so necessary for team formation
+- Fragmentation of people's time
+    - bad for team formation and efficiency
+    - no one can be part of multiple jelled teams
+- Quality reduction of the product
+    - typical scenario: deliver a product in less time = lower quality
+    - self-esteem and enjoyment are undermined by the necessity of building a product of clearly lower quality than what
+      they are capable of
+- Phony deadlines
+    - the date mentioned is impossible to meet, and everyone knows it
+    - team will not jell in such environment
+- Clique control
+    - there are no jelled teams at managerial level
+    - as you go higher and higher in the organization chart, the concept of jelled teams reduces further into oblivion
+
+## Chapter 24: Teamicide Revisited
+
+2 additional kinds of teamicide:
+
+- motivational posters
+    - are phony enough to make most people's skin crawl
+- overtime
+  - error, burnout, accelerated turnover, and compensatory undertime
+  - disrupts team

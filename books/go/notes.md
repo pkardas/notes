@@ -471,7 +471,7 @@ can't add methods to the types you don't control.
 - If method doesn't modify the receiver, you can _use_ a value receiver
 
 When a type has any pointer receiver methods, a common practice is to be consistent and use pointer receivers for all
-methods, even the ones that don;t modify the receiver.
+methods, even the ones that don't modify the receiver.
 
 Do not write getters/setters. Go encourages you to directly access a field. Reserve methods for business logic.
 
@@ -577,7 +577,7 @@ comment to break comment into multiple paragraphs. Use indenting.
 When you create a package called `internal`, the exported identifiers are only accessible to the direct parent of
 internal and the sibling packages of `internal`.
 
-You might want to rename or move some identifiers -- to avoid backward-breaking change, don;t remove the original
+You might want to rename or move some identifiers -- to avoid backward-breaking change, don't remove the original
 identifiers, provide an alternate name instead (`type Bar = Foo`).
 
 SemVer - semantic versioning: _major_._minor_._patch_:
@@ -801,7 +801,7 @@ The _unsafe_ package is powerful and low-level! Avoid using it unless you know w
 performance improvements that it provides.
 
 Nearly every programming language provides a way to integrate with C libraries. Go calls its FFI (Foreign Function
-Interface) to C `cgo`. `cgo` is for integration, not performance. `cgo` sin;t fast, and it is not easy to use for
+Interface) to C `cgo`. `cgo` is for integration, not performance. `cgo` isn't fast, and it is not easy to use for
 nontrivial programs, the only reason to use `cgo` is if there is a C library that you must use and there is no suitable
 Go replacement.
 
