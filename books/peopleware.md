@@ -28,6 +28,10 @@ Book by Tom DeMarco and Tim Lister
 - [Chapter 22: The Black Team](#chapter-22-the-black-team)
 - [Chapter 23: Teamicide](#chapter-23-teamicide)
 - [Chapter 24: Teamicide Revisited](#chapter-24-teamicide-revisited)
+- [Chapter 25: Competition](#chapter-25-competition)
+- [Chapter 26: A spaghetti dinner](#chapter-26-a-spaghetti-dinner)
+- [Chapter 27: Open Kimono](#chapter-27-open-kimono)
+- [Chapter 28: Chemistry for Team Formation](#chapter-28-chemistry-for-team-formation)
 
 ## Chapter 1: Somewhere today, a project is failing
 
@@ -428,5 +432,57 @@ is easier. Teamicide techniques:
 - motivational posters
     - are phony enough to make most people's skin crawl
 - overtime
-  - error, burnout, accelerated turnover, and compensatory undertime
-  - disrupts team
+    - error, burnout, accelerated turnover, and compensatory undertime
+    - disrupts team
+
+## Chapter 25: Competition
+
+Coaching is an important factor in successful team interaction. It provides coordination, personal growth and feels
+good. We feel a huge debt to those who have coached us in the past. The act of coaching cannot take place if people
+don't feel safe. In competitive atmosphere, you would be crazy to let anyone see you sitting down to be coached. You
+would be similarly crazy to coach someone else, as that person may eventually yse your assistance to pass you by.
+
+Anything the manager does to increase the competition within a team has to be viewed as teamidical.
+
+## Chapter 26: A spaghetti dinner
+
+Good managers provide frequent easy opportunities for the team to succeed together. The opportunities may be tiny pilot
+subprojects, or demonstrations, os simulations, anything that gets the team quickly into the habit of succeeding
+together.
+
+## Chapter 27: Open Kimono
+
+The Open Kimono attitude is the opposite of defensive management. You take no steps to defend yourself from the people
+you have put into positions of trust. A person you can't trust with any autonomy is of no use to you.
+
+If you have got decent people under you, there is probably nothing you can do to improve their chances of success more
+dramatically than to get yourself out their hair occasionally. Visual supervision is for prisoners.
+
+## Chapter 28: Chemistry for Team Formation
+
+Some organizations are famous for their consistent good luck in getting well-knit teams to happen. It isn't luck - it's
+chemistry. These organizations are just plain healthy.
+
+Signs of a health organization:
+
+- people at ease
+- people having a good time
+- people enjoying interactions with their peers
+- no defensiveness
+- the work is a joint product
+- everybody is proud of the quality
+- managers devote their energy to build and maintain healthy chemistry
+
+Chemistry-building strategy:
+
+- Make a cult of quality - cult of quality is the strongest catalyst for team formation
+- Provide lots of satisfying closure - people need reassurance from time to time that they are headed in the right
+  direction
+- Build a sense of eliteness - people require a sense of uniqueness to be at peace with themselves, and they need to be
+  at peace with themselves to let the jelling process begin
+- Allow and encourage heterogeneity - diverse teams are more fun to work in
+- Preserve and protect successful teams
+- Provide strategic but not tactical direction
+
+Managers are usually not part of the teams that they manage. On the best teams, different individuals provide occasional
+leadership, taking charge in areas where they have particular strengths. 

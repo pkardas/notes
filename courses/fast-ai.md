@@ -22,7 +22,7 @@ adding additional layers of neural networks is enough to approximate any mathema
 were too slow and too big to be useful.
 
 **What is ML?** Like regular programming, a way to get computers to complete a specific task. Instead of telling the
-computer the exact steps to solve a problem, show it examples fo the problem to solve and let it figure out how to solve
+computer the exact steps to solve a problem, show it examples of the problem to solve and let it figure out how to solve
 it itself.
 
 *Neural network* - parametrised function that can solve any problem to any level of accuracy (in theory - *universal

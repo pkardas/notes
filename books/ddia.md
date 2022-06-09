@@ -652,7 +652,7 @@ entire rack). EC2 is notorious for having frequent transient network glitches.
 Many systems need to automatically detect fault nodes, for example: load balancer needs to stop sending requests to a
 node that is dead. Unfortunately it is hard to tell whether a node is working or not.
 
-Timeout is the only sure way od detecting a fault. Appropriate duration of timeout is difficult to estimate. The
+Timeout is the only sure way of detecting a fault. Appropriate duration of timeout is difficult to estimate. The
 telephone network uses circuit - a fixed, guaranteed amount of bandwidth between 2 callers. On the other hand TCP
 dynamically adapts the rate of data transfer to the available network capacity. TCP is optimised for busy networks,
 circuit would not work for internet's use case.

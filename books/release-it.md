@@ -219,7 +219,7 @@ despite malfunctioning resource.
 
 Frontend always has the ability to overwhelm the backend, because their capacities are not balanced. However, you can
 not build every service to be large enough to serve enormous load from the frontend - instead you myst build services to
-be resilient in the face of tsunami od requests (e.g. Circuit Breaker, Handshaking, Back-pressure, Bulkheads).
+be resilient in the face of tsunami of requests (e.g. Circuit Breaker, Handshaking, Back-pressure, Bulkheads).
 
 Dog-pile - when a bunch of servers impose transient load all at once (term from American football). Can occur: when
 booting all servers at once, on cron job, when the config management pushes out a change. Use random clock slew to
