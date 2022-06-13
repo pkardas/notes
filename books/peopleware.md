@@ -32,6 +32,7 @@ Book by Tom DeMarco and Tim Lister
 - [Chapter 26: A spaghetti dinner](#chapter-26-a-spaghetti-dinner)
 - [Chapter 27: Open Kimono](#chapter-27-open-kimono)
 - [Chapter 28: Chemistry for Team Formation](#chapter-28-chemistry-for-team-formation)
+- [Chapter 29: The self-healing system](#chapter-29-the-self-healing-system)
 
 ## Chapter 1: Somewhere today, a project is failing
 
@@ -485,4 +486,19 @@ Chemistry-building strategy:
 - Provide strategic but not tactical direction
 
 Managers are usually not part of the teams that they manage. On the best teams, different individuals provide occasional
-leadership, taking charge in areas where they have particular strengths. 
+leadership, taking charge in areas where they have particular strengths.
+
+## Chapter 29: The self-healing system
+
+A Methodology - a general theory of how a whole class of thought-intensive work ought to be conducted. _The people who
+carry write the Methodology are smart. The people who carry it out can be dumb._
+
+There is a big difference between Methodology and methodology - methodology is a basic approach one takes to get a job
+done. It doesn't reside in a fat book, but rather inside the heads of people carrying out the work. Big M Methodology is
+an attempt to centralize thinking. All meaningful decisions are made by the Methodology builders, not by the staff
+assigned to do the work.
+
+> Voluminous documentation is part of the problem, not part of the solution. People should focus on getting things done,
+> instead of building documents.
+
+People might actually do exactly what the Methodology says, and the work would grind nearly to a halt.
