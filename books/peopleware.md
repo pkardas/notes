@@ -33,6 +33,9 @@ Book by Tom DeMarco and Tim Lister
 - [Chapter 27: Open Kimono](#chapter-27-open-kimono)
 - [Chapter 28: Chemistry for Team Formation](#chapter-28-chemistry-for-team-formation)
 - [Chapter 29: The self-healing system](#chapter-29-the-self-healing-system)
+- [Chapter 30: Dancing with Risk](#chapter-30-dancing-with-risk)
+- [Chapter 31: Meetings, Monologues, and Conversations](#chapter-31-meetings-monologues-and-conversations)
+- [Chapter 32: The ultimate management sin is ...](#chapter-32-the-ultimate-management-sin-is-)
 
 ## Chapter 1: Somewhere today, a project is failing
 
@@ -502,3 +505,35 @@ assigned to do the work.
 > instead of building documents.
 
 People might actually do exactly what the Methodology says, and the work would grind nearly to a halt.
+
+## Chapter 30: Dancing with Risk
+
+Our main problems are more likely to be sociological than technological in nature.
+
+Projects that have real value but little or no risk were all done ages ago. The ones that matter today are laden with
+risk.
+
+Risk management: it is not to make the risk go away, but to enable sensible mitigation - planned and provisioned well
+ahead of time.
+
+## Chapter 31: Meetings, Monologues, and Conversations
+
+Some orgs are addicted to meetings, at the other extreme, some orgs refuse to use the "M" word at all.
+
+As orgs age, meeting time increases until there is time for nothing else. Even short stand-ups can be a drag on an
+organization's effectiveness is they lack purpose and focus.
+
+In order to cure meeting-addicted org, start small and eliminate most ceremonial meetings in your area, spend time in
+one-on-one conversations, limit attendance at working meetings. Encourage Open-Space networking to give people the
+chance to have unstructured interaction.
+
+## Chapter 32: The ultimate management sin is ...
+
+wasting people's time.
+
+WHen participants of a meeting take turns interacting with one key figure, the expected rationale for assembling the
+whole group is missing - the boss might as well have interacted separately with each of the subordinates.
+
+Fragmented time is almost certain teamicidal, but also is guaranteed to waste the individual's time.
+
+The human capital invested in your workforce also represents a ton of money.
