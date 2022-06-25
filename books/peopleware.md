@@ -36,6 +36,8 @@ Book by Tom DeMarco and Tim Lister
 - [Chapter 30: Dancing with Risk](#chapter-30-dancing-with-risk)
 - [Chapter 31: Meetings, Monologues, and Conversations](#chapter-31-meetings-monologues-and-conversations)
 - [Chapter 32: The ultimate management sin is ...](#chapter-32-the-ultimate-management-sin-is-)
+- [Chapter 33: E(vil) Mail](#chapter-33-evil-mail)
+- [Chapter 34: Making change possible](#chapter-34-making-change-possible)
 
 ## Chapter 1: Somewhere today, a project is failing
 
@@ -537,3 +539,33 @@ whole group is missing - the boss might as well have interacted separately with 
 Fragmented time is almost certain teamicidal, but also is guaranteed to waste the individual's time.
 
 The human capital invested in your workforce also represents a ton of money.
+
+## Chapter 33: E(vil) Mail
+
+When you over-coordinate the people who work for you, they are too likely to under-coordinate their own efforts. But
+self-coordination and mutual coordination amon peers is the hallmark of graceful teamwork.
+
+Imagine how it would work if every pass could only happen if and when the coach gave the signal from the sideline. A
+decent coach understands that his/her job is to help people learn to self-coordinate.
+
+> Life is short. If you need to know everything in order to do anything, you are not going to get much done.
+
+## Chapter 34: Making change possible
+
+> People hate change, and that is because people hate change. People really hate change, they really, really do.
+
+When we start out to change, it is never certain that we will succeed. The uncertainty is more compelling than the
+possible gain.
+
+> The fundamental response to change is not logical, but emotional
+
+**You can never improve if you can't change at all.**
+
+Change involves at least 4 stages: Old Status Quo -> Chaos -> Practice and Integration -> News Status Quo. Change
+happens upon introduction of a foreign element: a catalyst for a change. Without a catalyst, there is no recognition of
+the desirability of change.
+
+Change won't get even started unless people fell safe - people feel safe when they know they will not be demeaned for
+proposing a change.
+
+Change has only a chance of succeeding if failure is also okay.
