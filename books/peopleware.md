@@ -38,6 +38,8 @@ Book by Tom DeMarco and Tim Lister
 - [Chapter 32: The ultimate management sin is ...](#chapter-32-the-ultimate-management-sin-is-)
 - [Chapter 33: E(vil) Mail](#chapter-33-evil-mail)
 - [Chapter 34: Making change possible](#chapter-34-making-change-possible)
+- [Chapter 35: Organizational learning](#chapter-35-organizational-learning)
+- [Chapter 36: The making of community](#chapter-36-the-making-of-community)
 
 ## Chapter 1: Somewhere today, a project is failing
 
@@ -569,3 +571,28 @@ Change won't get even started unless people fell safe - people feel safe when th
 proposing a change.
 
 Change has only a chance of succeeding if failure is also okay.
+
+## Chapter 35: Organizational learning
+
+Learning is a critical improvement mechanism - non-learners can not expect to prosper for very long without learning.
+
+Experience gets turned into learning when an organization alters itself to take account od what experience has shown.
+
+> Learning is limited by an organization's ability to keep its people
+
+When turnover is high, learning is unlikely to stick or can't take place at all. In such an organization, attempts to
+change skills or to improve redesigned procedures are an exercises in futility.
+
+## Chapter 36: The making of community
+
+What great managers do best? The making of community. A need for community is something that is built right into the
+human firmware.
+
+Community doesn't just happen on the job. It has to be made. The people who make it are the unsung heroes of our work
+experience.
+
+An org that succeeds in building a satisfying community tends to keep its people. No one wants to leave. The investment
+made in human capital is retained, and upper management is willing to invest more. When the company invest more in its
+people, the people perform better and feel better about themselves and about their company.
+
+There is no formula to build community in the workplace. Some experimenting is needed.
