@@ -5,7 +5,6 @@
 👀 In progress:
 
 - [Cracking the Coding Interview](books/cracking-coding-interview/notes.md)
-- [Peopleware: Productive Projects and Teams](books/peopleware.md)
 
 #### ✅ Finished:
 
@@ -24,6 +23,7 @@
 - Process:
     - [Clean Agile: Back to Basics](books/clean-agile.md)
     - [Domain-Driven Design: Tackling Complexity in the Heart of Software](books/ddd.md)
+    - [Peopleware: Productive Projects and Teams](books/peopleware.md)
     - [The Pragmatic Programmer](books/pragmatic-programmer.md)
 
 - ML:

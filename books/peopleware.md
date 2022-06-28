@@ -40,6 +40,9 @@ Book by Tom DeMarco and Tim Lister
 - [Chapter 34: Making change possible](#chapter-34-making-change-possible)
 - [Chapter 35: Organizational learning](#chapter-35-organizational-learning)
 - [Chapter 36: The making of community](#chapter-36-the-making-of-community)
+- [Chapter 37: Chaos and Order](#chapter-37-chaos-and-order)
+- [Chapter 38: Free Electrons](#chapter-38-free-electrons)
+- [Chapter 39: Holgar Dansk](#chapter-39)
 
 ## Chapter 1: Somewhere today, a project is failing
 
@@ -596,3 +599,50 @@ made in human capital is retained, and upper management is willing to invest mor
 people, the people perform better and feel better about themselves and about their company.
 
 There is no formula to build community in the workplace. Some experimenting is needed.
+
+## Chapter 37: Chaos and Order
+
+There is something about human nature that makes us the implacable enemies of chaos. People who were attracted to the
+lack of order, feel nostalgic fondness foe the days when everything wasn't so awfully mechanical.
+
+Some lost disorder can be reintroduced to breath some energy into the work - a policy of constructive reintroduction of
+small amounts of disorder:
+
+1. Pilot projects
+    - set the fat book of standards aside and try some new unproved technique
+    - people get the boost in energy when they are doing something new and different
+2. War games
+    - war games help you evaluate your relative strengths and weaknesses and help the organization to observe its global
+      strengths and weaknesses
+    - a bug fuss should be made over any and all accomplishments
+3. Brainstorming
+    - interactive session, targeted on creative insight
+    - focus on quantity of ideas, not quality, keep proceedings loose, even silly, discourage negative comments
+4. Provocative training experiences
+5. Training, trips, conferences, celebrations, and retreats
+    - everybody relishes a chance to get out of the office
+    - when a team is forming, it makes a good business sense to fight for travel money to get team members out of office
+      together
+    - adventure adds small amounts of constructive disorder
+
+## Chapter 38: Free Electrons
+
+Free electrons - workers having a strong role in choosing their own orbits. Positions with loosely stated
+responsibilities so that the individual has a strong say in defining the work. Companies profit from such people.
+
+Some individuals need to be left alone to work out some matters, or at least free to seek guidance if and when and from
+whomever he or she chooses. The mark of the best manager is an ability to single out the few key spirits who have the
+proper mix of perspective and maturity and then turn them loose.
+
+## Chapter 39: Holgar Dansk
+
+A single person acting alone is not likely to effect any meaningful change. But there is no need to act alone. When
+something is terribly out of kilter, it takes very little to raise people's consciousness of it. Then it is no longer
+you. It is everyone.
+
+It may be small voice saying: "This is unacceptable" -- people know it is true. Once it has been said out loud, they
+can;t ignore it any longer.
+
+Sociology matters more than technology or even money. It is supposed to be productive, satisfying fun to work. If it
+isn't, there is nothing else worth concerning on. Choose your terrain carefully, assemble your facts, and speak up. You
+can make a difference.
