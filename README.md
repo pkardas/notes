@@ -4,6 +4,7 @@
 
 👀 In progress:
 
+- [Fundamentals of Software Architecture](books/fundamentals-of-architecture.md)
 - [Cracking the Coding Interview](books/cracking-coding-interview/notes.md)
 
 #### ✅ Finished:
@@ -37,7 +38,6 @@
 #### ⏳ Queue:
 
 - [Elixir in Action](books/elixir.md)
-- [Fundamentals of Software Architecture](books/fundamentals-of-architecture.md)
 - [Kubernetes in Action](books/kubernetes.md)
 - [Software Architecture: The Hard Parts](books/architecture-hard-parts.md)
 - [Understanding Distributed Systems](books/understanding-distributed-systems.md)
