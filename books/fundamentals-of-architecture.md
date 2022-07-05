@@ -6,6 +6,7 @@ Book by Mark Richards and Neal Ford
 
 - [Preface: Invalidating Axioms](#preface-invalidating-axioms)
 - [Chapter 1: Introduction](#chapter-1-introduction)
+- [Chapter 2: Architectural thinking](#chapter-2-architectural-thinking)
 
 ## Preface: Invalidating Axioms
 
@@ -19,7 +20,7 @@ era requires new practices, tools, measurements, patterns, and a host of other c
 
 ## Chapter 1: Introduction
 
-THe industry does not have a good definition of software architecture.
+The industry does not have a good definition of software architecture.
 
 > Architecture is about the important stuff... whatever that is ~ Ralph Johnson
 
@@ -81,3 +82,43 @@ Laws of Software Architecture:
 - If an architect thinks they have discovered something that isn't a trade-off, more likely they just haven't identified
   the trade-off yet
 - Why is more important than how
+
+## Chapter 2: Architectural thinking
+
+4 main aspects of thinking like an architect:
+
+1. understanding the difference between architecture and design
+    - architecture vs design
+        - architecture: defining architecture characteristics, selecting architecture patterns, creating components
+        - design: class diagrams, user interface, code testing and development
+    - architects and development teams have to form strong bidirectional relationship, be on the same virtual team
+    - where does architecture end and design begin? nowhere
+    - architecture and design must be synchronized by tight collaboration
+2. wide breadth of technical knowledge
+    - developer - significant amount of technical depth
+        - specialised in languages, frameworks and tools
+    - architect - significant amount of technical breadth
+        - broad understanding of technology and how to use it to solve particular problems
+3. understanding, analyzing, and reconciling trade-offs between various solutions and technologies
+    - thinking like an architect is all about seeing trade-offs in every solution
+    - the ultimate answer for architectural questions: _it depends on ..._ (budget, business env, company culture, ...)
+    - look at the benefits of a given solution, but also analyze the negatives
+    - analyze trade-offs and the ask, what is more important, this decision always depend on the environment
+4. understanding the importance of business drivers
+    - business drivers are required for the success of the system
+    - understanding the domain knowledge and ability to translate those requirements into architecture characteristics
+
+_Frozen Caveman Anti-Pattern_: describes an architect who always reverts to their pet irrational concern for every
+architecture. This anti-pattern manifests in architects who have been burned in the past by a poor decision/unexpected
+occurrence, making them particularly cautious in the future.
+
+How an architect can remain hands-on coding skills?
+
+- do frequent proof-of-concepts
+- whenever possible, write best production-quality code (even when doing POCs) -- POC code often remains in the
+  repository and becomes the reference or guiding example
+- tackle technical debt stories or architecture stories, freeing the development team up to work on the critical
+  function user stories
+- work on bug fixes
+- create simple command-line tools and analyzers to help the development team with their day-to-day tasks
+- do code reviews frequently

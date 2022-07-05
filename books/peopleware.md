@@ -579,7 +579,7 @@ Change has only a chance of succeeding if failure is also okay.
 
 Learning is a critical improvement mechanism - non-learners can not expect to prosper for very long without learning.
 
-Experience gets turned into learning when an organization alters itself to take account od what experience has shown.
+Experience gets turned into learning when an organization alters itself to take account of what experience has shown.
 
 > Learning is limited by an organization's ability to keep its people
 
