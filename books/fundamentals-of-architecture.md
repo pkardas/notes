@@ -7,6 +7,7 @@ Book by Mark Richards and Neal Ford
 - [Preface: Invalidating Axioms](#preface-invalidating-axioms)
 - [Chapter 1: Introduction](#chapter-1-introduction)
 - [Chapter 2: Architectural thinking](#chapter-2-architectural-thinking)
+- [Chapter 3: Modularity](#chapter-3-modularity)
 
 ## Preface: Invalidating Axioms
 
@@ -122,3 +123,17 @@ How an architect can remain hands-on coding skills?
 - work on bug fixes
 - create simple command-line tools and analyzers to help the development team with their day-to-day tasks
 - do code reviews frequently
+
+## Chapter 3: Modularity
+
+Modularity is an organizing principle. If an architect designs a system without paying attention to how the pieces wire
+together, they end up creating a system that presents myriad difficulties.
+
+Developers typically use modules as a way to group related code together. For discussions about architecture, we use
+modularity as a general term to denote a related grouping of code: classes, functions, or any other grouping.
+
+_Cohesion_ - refers to what extent the parts of a module should be contained within the same module. It is a measure of
+how related the parts are to one another.
+
+_Abstractness_ is the ratio of abstract artifacts to concrete artifacts. It represents a measure of abstractness versus
+implementation. A code base with no abstractions vs a code base with too many abstractions.
