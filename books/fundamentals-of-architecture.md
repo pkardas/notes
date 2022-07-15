@@ -8,6 +8,7 @@ Book by Mark Richards and Neal Ford
 - [Chapter 1: Introduction](#chapter-1-introduction)
 - [Chapter 2: Architectural thinking](#chapter-2-architectural-thinking)
 - [Chapter 3: Modularity](#chapter-3-modularity)
+- [Chapter 4: Architecture Characteristics Defined](#chapter-1-introduction)
 
 ## Preface: Invalidating Axioms
 
@@ -137,3 +138,57 @@ how related the parts are to one another.
 
 _Abstractness_ is the ratio of abstract artifacts to concrete artifacts. It represents a measure of abstractness versus
 implementation. A code base with no abstractions vs a code base with too many abstractions.
+
+## Chapter 4: Architecture Characteristics Defined
+
+Architects may collaborate on defining the domain or business requirements, but one key responsibility entails defining,
+discovering, and analyzing all the things the software must do that isn't directly related to the domain functionality
+-- architectural characteristics.
+
+Operational Architecture Characteristics:
+
+- Availability - how long the system will need to be available
+- Continuity - disaster recovery capability
+- Performance - stress testing, peak analysis
+- Recoverability - how quickly is the system required to be on-line again?
+- Reliability - if it fails, will it cost the company large sums of money?
+- Robustness - ability to handle error and boundary conditions while running
+- Scalability - ability for the system to perform and operate as the number of users/requests increases
+
+Structural Architecture Characteristics
+
+- Configurability - ability for the end users to easily change aspects of the software's configuration
+- Extensibility - how important it is to plug new pieces of functionality in
+- Installability - ease of system installation on all necessary platforms
+- Localization - support for the multiple languages, currencies, measures
+- Maintainability - how easy it is to apply changes and enhance the system?
+- Portability - does the system need to run on more than one platform?
+- Supportability - what level of technical support is needed by the application?
+- Upgradeability - ability to quickly upgrade from a previous version
+
+Cross-cutting Architecture Characteristics
+
+- Accessibility - access to all users, including those with disabilities
+- Archivability - will the data need to be deleted/archived?
+- Authentication - security requirements to ensure users are who they say they are
+- Authorization - security requirements to ensure users can access only certain functions within application
+- Legal - what legislative constraints is the system operation in?
+- Privacy - ability to hide transactions from internal company employees
+- Security - does the data need to be encrypted in the database, what type of authentication is needed...?
+- Supportability - what level of technical support is needed by the application?
+- Usability - level of training required for users to achieve their goals with the app
+
+Any list of architecture characteristics will be an incomplete list. Any software may invent important architectural
+characteristics based on unique factors. Many of the terms are imprecise and ambiguous. No complete list of standards
+exists.
+
+Applications can support only a few of the architecture characteristics we have listed. Firstly, each of the supported
+characteristics requires design effort. Secondly, each architecture characteristic often has an impact on others.
+Architects rarely encounter the situation where they are able to design a system and maximize every single architecture
+characteristics.
+
+> Never shoot for the best architecture, but rather _the least worst_ architecture.
+
+Too many architecture characteristics lead to generic solutions that are trying to solve every business problem, and
+those architectures rarely work because the design becomes unwieldy. Architecture design should be as iterative as
+possible.
