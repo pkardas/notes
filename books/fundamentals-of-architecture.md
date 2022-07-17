@@ -8,7 +8,8 @@ Book by Mark Richards and Neal Ford
 - [Chapter 1: Introduction](#chapter-1-introduction)
 - [Chapter 2: Architectural thinking](#chapter-2-architectural-thinking)
 - [Chapter 3: Modularity](#chapter-3-modularity)
-- [Chapter 4: Architecture Characteristics Defined](#chapter-1-introduction)
+- [Chapter 4: Architecture Characteristics Defined](#chapter-4-architecture-characteristics-defined)
+- [Chapter 5: Identifying Architectural Characteristics](#chapter-5-identifying-architectural-characteristics)
 
 ## Preface: Invalidating Axioms
 
@@ -192,3 +193,38 @@ characteristics.
 Too many architecture characteristics lead to generic solutions that are trying to solve every business problem, and
 those architectures rarely work because the design becomes unwieldy. Architecture design should be as iterative as
 possible.
+
+## Chapter 5: Identifying Architectural Characteristics
+
+Identifying the correct architectural characteristics for a given problem requires an architect to not only understand
+the domain problem, but also collaborate with the problem domain stakeholders to determine what is truly important from
+a domain perspective.
+
+_Extracting architecture characteristics from domain concerns_: translate domain concerns to identify the right
+architectural characteristics. Do not design a generic architecture, focus on short list of characteristics. Too many
+characteristics leads to greater and greater complexity. Keep design simple. Instead of prioritizing characteristics,
+have the domain stakeholders select the top 3 most important characteristics from the final list.
+
+Translation of domain concerns to architecture characteristics:
+
+- Mergers and acquisition -> Interoperability, scalability, adaptability, extensibility
+- Time to market -> Agility, testability, deployability
+- User satisfaction -> Performance, availability, fault tolerance, testability, deployability, agility, security
+- Competitive advantage -> Agility, testability, deployability, scalability, availability, fault tolerance
+- Time and budget -> Simplicity, feasibility
+
+_Extracting architecture characteristics from requirements_: some characteristics come from explicit statements in
+requirements.
+
+Architecture Katas - in order te become a great architect you need a practice. The Kata exercise provides architects
+with a problem stated in domain terms (description, users, requirements) and additional context. Small teams work 45
+minutes on a design, then show results to the other groups, who vote on who came up with the best architecture. Team
+members ideally get feedback from the experienced architect abut missed trade-offs and alternative designs.
+
+Explicit characteristics - appear in a requirements' specification, e.g. support for particular number of users.
+
+Implicit characteristics - characteristics aren't specified in requirements documents, yet they make up an important
+aspect of the design, e.g. availability - making sure users can access the website, security - no one wants to create
+insecure software, ...
+
+Architects must remember: there is no best design in architecture, only a least worst collection of trade-offs.
