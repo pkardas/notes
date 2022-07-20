@@ -10,6 +10,7 @@ Book by Mark Richards and Neal Ford
 - [Chapter 3: Modularity](#chapter-3-modularity)
 - [Chapter 4: Architecture Characteristics Defined](#chapter-4-architecture-characteristics-defined)
 - [Chapter 5: Identifying Architectural Characteristics](#chapter-5-identifying-architectural-characteristics)
+- [Chapter 6: Measuring and Governing Architecture Characteristics](#chapter-6-measuring-and-governing-architecture-characteristics)
 
 ## Preface: Invalidating Axioms
 
@@ -228,3 +229,38 @@ aspect of the design, e.g. availability - making sure users can access the websi
 insecure software, ...
 
 Architects must remember: there is no best design in architecture, only a least worst collection of trade-offs.
+
+## Chapter 6: Measuring and Governing Architecture Characteristics
+
+- They aren't physics - many characteristics have vague meanings, the industry has wildly differing perspectives
+- Wildly varying definitions - different people may disagree on the definition, without agreeing on a common definition,
+  a proper conversation is difficult
+- Too composite - many characteristics compromise may others at a smaller scale
+
+Operational measures: obvious direct measurements, like performance -- measure response time. High-level teams don't
+just establish hard performance numbers, they base their definitions on statistical analysis.
+
+Structural measures: addressing critical aspects of code structure, like cyclomatic complexity - the measurement for
+code complexity, computed by applying graph theory to code.
+
+> Overly complex code represents a code smell. It hurts almost every of the desirable characteristics of code bases
+> (modularity, testability, deployability, ...). Yet if teams don't keep an eye on gradually growing complexity,
+> that complexity will dominate the code base.
+
+Process measures: some characteristics intersect with software development processes. For example, agility can relate to
+the software development process, ease of deployment and testability requires some emphasis on good modularity and
+isolation at the architecture level.
+
+Governing architecture characteristics - for example, ensuring software quality within an organization falls under the
+heading of architectural governance, because it falls within the scope of architecture, and negligence can lead to
+disastrous quality problems.
+
+_Architecture fitness function_ - **any mechanism** that provides an objective integrity assessment of some architecture
+characteristic or combination of architecture characteristics. Many tools may be used to implement fitness functions:
+metrics, monitors, unit tests, chaos engineering, ...
+
+Rather than a heavyweight governance mechanism, fittness functions provide a mechanism for architects to express
+important architectural principles and automatically verify them. Developer know that they shouldn't release insecure
+code, but that priority competes with dozens or hundreds of other priorities for busy developers. Tools like the
+Security Monkey, and fitness functions generally, allow architects to codify important governance checks into the
+substrate of the architecture.
