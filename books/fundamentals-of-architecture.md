@@ -11,6 +11,7 @@ Book by Mark Richards and Neal Ford
 - [Chapter 4: Architecture Characteristics Defined](#chapter-4-architecture-characteristics-defined)
 - [Chapter 5: Identifying Architectural Characteristics](#chapter-5-identifying-architectural-characteristics)
 - [Chapter 6: Measuring and Governing Architecture Characteristics](#chapter-6-measuring-and-governing-architecture-characteristics)
+- [Chapter 7: Scope of Architecture Characteristics](#chapter-7-scope-of-architecture-characteristics)
 
 ## Preface: Invalidating Axioms
 
@@ -264,3 +265,27 @@ important architectural principles and automatically verify them. Developer know
 code, but that priority competes with dozens or hundreds of other priorities for busy developers. Tools like the
 Security Monkey, and fitness functions generally, allow architects to codify important governance checks into the
 substrate of the architecture.
+
+## Chapter 7: Scope of Architecture Characteristics
+
+When evaluating many operational architecture characteristics, an architect must consider dependent components outside
+the code base that will impact those characteristics.
+
+_Connascence_ - Two components are connascent is a change in one would require the other to be modified in order to
+maintain the overall correctness of the system.
+
+If two services in a microservices architecture share the same class definition of some class, they are statically
+connascent. Dynamic connascence: synchronous - caller needs to wait for the response from the callee, asynchronous calls
+allow fire-and-forget semantics in event-driven architecture.
+
+Component level coupling isn't the only thing that binds software together. Many business concepts semantically bind
+parts of the system together, creating functional cohesion.
+
+_Architecture quantum_ - an independently deployable artifact with high functional cohesion and synchronous connascence.
+
+- independently deployable - all necessary components to function independently from other parts of the architecture (
+  e.g. a database - the system will not function without it)
+- high functional cohesion - how well the contained code is unified in purpose, meaning - an architecture quantum needs
+  to do something purposeful
+- synchronous connascence - synchronous call within an application context of between distributed services that form
+  this architecture quantum.
