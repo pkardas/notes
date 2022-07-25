@@ -12,6 +12,7 @@ Book by Mark Richards and Neal Ford
 - [Chapter 5: Identifying Architectural Characteristics](#chapter-5-identifying-architectural-characteristics)
 - [Chapter 6: Measuring and Governing Architecture Characteristics](#chapter-6-measuring-and-governing-architecture-characteristics)
 - [Chapter 7: Scope of Architecture Characteristics](#chapter-7-scope-of-architecture-characteristics)
+- [Chapter 8: Component-Based Thinking](#chapter-8-component-based-thinking)
 
 ## Preface: Invalidating Axioms
 
@@ -289,3 +290,55 @@ _Architecture quantum_ - an independently deployable artifact with high function
   to do something purposeful
 - synchronous connascence - synchronous call within an application context of between distributed services that form
   this architecture quantum.
+
+## Chapter 8: Component-Based Thinking
+
+Architects typically think in terms of components, the physical manifestation of a module. Typically, the architect
+defines, refines, manages, and governs components within an architecture.
+
+Architecture Partitioning - several styles exist, with different sets of trade-offs (layered architecture, modular
+monolith).
+
+> Convay's Law: Organizations which design systems ... are constrained to produce designs which are copies of
+> the communication structures of these organizations.
+
+This law suggests that when a group of people deigns some technical artifact, the communication structures between the
+people end up replicated in the design.
+
+Technical partitioning - organizing components by technical capabilities (presentation, business rules, persistence).
+
+Domain partitioning - modeling by identifying domains/workflows independent and decouples from another. Microservices
+are based on this philosophy.
+
+Developer should never take components designed by architects as the last words. All software design benefits from
+iteration. Initial design should be viewed as a first draft.
+
+Component identification flow:
+
+- identify initial components
+- assign requirements to components
+- analyze roles and responsibilities
+- analyze architecture characteristics
+- restructure components
+
+Finding proper granularity for components is one of most difficult tasks. Too fine-grained design leads to too much
+communication between components, too coarse-grained encourage high internal coupling.
+
+Discovering components:
+
+- entity trap - anti-pattern when an architect incorrectly identifies the database relationships, this anti-pattern
+  indicates lack of thought about the actual workflows of the application.
+- actor-actions approach - a popular way to map requirements to components, identify actors who perform activities with
+  the application and the actions those actors may perform.
+- event storming - the architect assumes the project will use messages and/or events to communicate between components,
+  the team tries to determine which events occur in the system based on requirements and identified roles, and build
+  components around those event and message handlers.
+- workflow approach - identifies the key roles, the kinds of workflows, and builds components around the identified
+  activities
+
+Monolithic vs Distributed Architecture:
+
+- monolithic: a single deployable unit, all functionality of the system that runs in the process, typically connected to
+  a single database
+- distributed: multiple services running in their onw ecosystem, communicating via network, each service can may have
+  its own release cadence and engineering practices
