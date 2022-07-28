@@ -342,3 +342,59 @@ Monolithic vs Distributed Architecture:
   a single database
 - distributed: multiple services running in their onw ecosystem, communicating via network, each service can may have
   its own release cadence and engineering practices
+
+## Chapter 9: Foundations
+
+Architecture styles (a.k.a. architecture patterns) - describe a named relationship of components covering a variety of
+architecture characteristics. Style name, similar to design patterns, creates a single name that acts as shorthand
+between experienced architects.
+
+Big Ball of Mud - the absence of any discernible architecture structure. The lack of structure makes change increasingly
+difficult. Problematic testing, deployment, scalability, performance, ... Mess because of lack of governance around code
+quality and structure.
+
+Client/Server - separation of responsibilities - backend-frontend/two-tier/client-server.
+
+Architecture styles can be classified into 2 main types:
+
+- monolithic - single deployment of unit code
+    - layered, pipeline, microkernel
+- distributed - multiple deployment units connected through network
+    - service-based, event-driven, space-based, service-oriented, microservices
+    - much more powerful in terms of performance, scalability, and availability, but there are trade-offs
+
+_The Fallacies of Distributed Computing:_
+
+1. The Network is Reliable - fact: networks still remain generally unreliable, this is why things like timeouts and
+   circuit breakers exist between services. The more a system relies on the network, the potentially less reliable it
+   becomes.
+2. Latency is Zero - local call is measured in nanoseconds/microseconds, the same call made through a remote access
+   protocol is measured in milliseconds. Do you know what the average round-trip latency is for a RESTful call in your
+   prod env?
+3. Bandwidth is Infinite - communication between remote services significantly utilizes bandwidth causing networks to
+   slow down. Imagine 2000 req/s, 500 kb each = 1 Gb! Ensuring that the minimal amount of data is passed between
+   services in a distributed architecture is the best way to address this fallacy.
+4. The Network is Secure - the surface area for threats and attacks increases by magnitudes when moving from a
+   monolithic to a distributed architecture, despite measures like VPNs, trusted networks and firewalls.
+5. The Topology Never Changes - network topology (routers, hubs, switches, firewalls, networks, appliances) CAN change,
+   architects must be in constant communication with operations and network administrators to know what is changing and
+   when so they can make adjustments.
+6. There is Only One Administrator - this fallacy points to the complexity of distributed architecture and the amount of
+   coordination that must happen to get everything working correctly. Monoliths do not require this level of
+   communication and collaboration due to the single deployment unit characteristics.
+7. Transport Cost is Zero - transport cost does not refer to latency, but rather to actual cost in terms of money
+   associated with making a simple RESTful call. Distributed architectures cost significantly more than monolithic
+   architectures, primarily due to increased needs for additional hardware, servers, gateways, firewalls, subnets,
+   proxies, ...
+8. The Network is Homogenous - notwork is not made up by one network hardware vendor, not all of this heterogeneous
+   hardware vendors play well together.
+
+Other distributed considerations:
+
+- distributed logging - debugging in a distributed architecture is very difficult and time-consuming, logging
+  consolidation tools may help.
+- distributed transactions - in a monolith it is super easy to perform `commit`/`rollback`, it is much more difficult
+  todo the same in a distributed system. Distributed systems rely on eventual consistency - this is one of the
+  trade-offs. Transactional SAGAs are one way to manage distributed transactions.
+- contract maintenance and versioning - a contract is behaviour and data that is agreed upon by both the client and
+  service, maintenance is hard due to decoupled services owned by different teams and departments.

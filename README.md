@@ -5,7 +5,6 @@
 👀 In progress:
 
 - [Fundamentals of Software Architecture](books/fundamentals-of-architecture.md)
-- [Cracking the Coding Interview](books/cracking-coding-interview/notes.md)
 
 #### ✅ Finished:
 
@@ -33,6 +32,7 @@
 #### ☑️ Finished partially:
 
 - [Code Complete: A Practical Handbook of Software Construction](books/code-complete.md)
+- [Cracking the Coding Interview](books/cracking-coding-interview/notes.md)
 - [Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems](books/hands-on-ml.md)
 
 #### ⏳ Queue:
