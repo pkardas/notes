@@ -207,7 +207,7 @@ marketing department when they are going to send out mass emails - you will be a
 additional instances for increased load). Also be careful with open links to the resources, also watch out for Fight
 Club bugs - increased front-end load causes exponentially increasing backend processing.
 
-WIth point-to-point connections, each instance has to talk directly to every other instance - this means O(n^2) scaling
+With point-to-point connections, each instance has to talk directly to every other instance - this means O(n^2) scaling
 
 - be careful. Point-to-point communication can be replaced by: UDP broadcasts, TCP/UDP multicast, pub/sub messaging,
   message queues.

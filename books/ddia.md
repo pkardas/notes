@@ -958,7 +958,7 @@ Types of time windows:
 - tumbling windows - has a fixed length, and every event belongs to exactly one window. Fo example 1-minute tumbling
   window, events with timestamp between 10:03:00 and 10:03:59 are grouped into one window.
 - hopping window - has a fixed length, but allows windows to overlap in order to provide some smoothing.
-- sliding window - contains all the events that occur within some interval of each other. FOr example. a 5-minute
+- sliding window - contains all the events that occur within some interval of each other. For example. a 5-minute
   sliding window would cover events at 10":03:39 and 10:08:12 because they are less than 5 minutes apart.
 - session window - has no fixed duration, instead it is defined by grouping together all events for the same user that
   occur closely together in time, and the window ends when the user has been inactive for some time.

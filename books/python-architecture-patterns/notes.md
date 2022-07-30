@@ -192,7 +192,7 @@ objects, which leaves us freer to refactor them.
 Most of the time, when we are adding a new feature or fixing a bug, we don't need to make extensive changes to the
 domain mode. IN these cases, we prefer to write tests against service because of the lower coupling and higher coverage.
 
-WHen starting a new project or when hitting a particularly gnarly problem, we will drop back down to writing tests
+When starting a new project or when hitting a particularly gnarly problem, we will drop back down to writing tests
 against the domain model, so we get better feedback and executable documentation of our intent.
 
 Metaphor of shifting gears - when starting a journey, the bicycle needs to be in a low hear, so it can overcome inertia.
@@ -378,7 +378,7 @@ Style of architecture, where we create a microservice per database table and tre
 anemic models, is the most common initial way for people to approach service-oriented design. This works fine for
 systems that are very simple, but it can quickly degrade into a distributed ball of mud.
 
-WHen two things have to be changed together, we say that they are coupled. We can never completely avoid coupling,
+When two things have to be changed together, we say that they are coupled. We can never completely avoid coupling,
 except by having our software not talk to any other software. What we want is to avoid inappropriate coupling.
 
 How do we get appropriate coupling? We should think in terms of verbs, not nouns. Our domain model is about modeling a

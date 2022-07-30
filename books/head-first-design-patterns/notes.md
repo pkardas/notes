@@ -1041,7 +1041,7 @@ A Pattern:
 
 > is a solution to a problem in a context.
 
-- The context is the situation in which the pattern applies. This should beL recurring situation.
+- The context is the situation in which the pattern applies. This should be recurring situation.
 - The problem refers to the goal you are trying to achieve in this context, but it also refers to any constraints that
   occur in the context.
 - The solution is what you are after: a general design that anyone can apply that resolves the goal and set of

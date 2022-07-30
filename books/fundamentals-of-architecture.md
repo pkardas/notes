@@ -76,7 +76,7 @@ Expectations of an architect:
 Iterative process fits the nature of software architecture. Trying to build a modern system such as microservices using
 Waterfall will find a great deal of friction.
 
-Nothing remain static. WHat we need is _evolutionary architecture_ - mutate the solution, evolve new solutions
+Nothing remain static. What we need is _evolutionary architecture_ - mutate the solution, evolve new solutions
 iteratively. Adopting Agile engineering practices (continuous integration, automated machine provisioning, ...) makes
 building resilient architectures easier.
 
@@ -398,3 +398,33 @@ Other distributed considerations:
   trade-offs. Transactional SAGAs are one way to manage distributed transactions.
 - contract maintenance and versioning - a contract is behaviour and data that is agreed upon by both the client and
   service, maintenance is hard due to decoupled services owned by different teams and departments.
+
+## Chapter 10: Layered Architecture Style
+
+The Layered Architecture (n-tiered) - standard for most applications, because of simplicity, familiarity, and low cost.
+The style also falls into several architectural anti-patterns (architecture by implication, accidental architecture).
+
+Most layered architectures consist of 4 standard layers: presentation, business, persistence, and database.
+
+The layered architecture is a technically partitioned architecture (as opposed to domain-partitioned architecture).
+Groups of components, rather than being grouped by domain, are grouped by their technical role in the architecture. As a
+result, any particular business domain is spread throughout all of the layers of the architecture. A domain-driven
+design does not work well with the layered architecture style.
+
+Each layer can be either closed or open.
+
+- closed - a request moves top-down from layer to layer, the request cannot skip any layers
+- open - the request can bypass layers (fast-lane reader pattern)
+
+The layers of isolation - changes made in one layer of the architecture generally don't impact/affect components in
+other layers. Each layer is independent of the other layers, thereby having little or no knowledge of the inner workings
+of other layers in the architecture. Violation of this concept produces very tightly coupled application with layer
+interdependencies between components This type of architecture becomes very brittle, difficult and expensive to change.
+
+This architecture makes for a good starting point for most applications whe it is not known yet exactly which
+architecture will ultimately be used. Be sure to keep reuse at minimum and keep object hierarchies. A good level of
+modularity will help facilitate the move to another architecture style later on.
+
+Watch out for the architecture sinkhole anti-pattern - this anti-pattern occurs when requests move from one layer to
+another as simple pass-through processing with no business logic performed within each layer. For example, the
+presentation layer responds to a simple request from the user to retrieve basic costumer data.
