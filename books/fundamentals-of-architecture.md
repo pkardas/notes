@@ -13,6 +13,9 @@ Book by Mark Richards and Neal Ford
 - [Chapter 6: Measuring and Governing Architecture Characteristics](#chapter-6-measuring-and-governing-architecture-characteristics)
 - [Chapter 7: Scope of Architecture Characteristics](#chapter-7-scope-of-architecture-characteristics)
 - [Chapter 8: Component-Based Thinking](#chapter-8-component-based-thinking)
+- [Chapter 9: Foundations](#chapter-9-foundations)
+- [Chapter 10: Layered Architecture Style](#chapter-10-layered-architecture-style)
+- [Chapter 11: Pipeline Architecture Style](#chapter-11-pipeline-architecture-style)
 
 ## Preface: Invalidating Axioms
 
@@ -428,3 +431,18 @@ modularity will help facilitate the move to another architecture style later on.
 Watch out for the architecture sinkhole anti-pattern - this anti-pattern occurs when requests move from one layer to
 another as simple pass-through processing with no business logic performed within each layer. For example, the
 presentation layer responds to a simple request from the user to retrieve basic costumer data.
+
+## Chapter 11: Pipeline Architecture Style
+
+Pipeline (a.k.a. pipes, filters) architecture: _Filter -(Pipe)-> Filter -(Pipe)-> Filter -(Pipe)-> Filter_
+
+- pipes - for the communication channel between filters, each pipe is usually unidirectional and point-to-point.
+- filters - self-contained, independent from other filters, stateless, should perform one task only. 4 types of filters
+  exist within this architecture style
+    - producer - the starting point of a proces, sometimes called the source
+    - transformer - accepts input, optionally performs a transformation on data, then forwards it to the outbound pipe,
+      also known as "map"
+    - tester - accepts inout, tests criteria, then optionally produces output, also known as "reduce"
+    - consumer - the termination point for the pipeline flow, persist or display the final result
+
+ETL tools leverage the pipeline architecture for the flow and modification of data from one database to another.
