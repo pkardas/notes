@@ -16,6 +16,7 @@ Book by Mark Richards and Neal Ford
 - [Chapter 9: Foundations](#chapter-9-foundations)
 - [Chapter 10: Layered Architecture Style](#chapter-10-layered-architecture-style)
 - [Chapter 11: Pipeline Architecture Style](#chapter-11-pipeline-architecture-style)
+- [Chapter 12: Microkernel Architecture Style](#chapter-12-microkernel-architecture-style)
 
 ## Preface: Invalidating Axioms
 
@@ -446,3 +447,30 @@ Pipeline (a.k.a. pipes, filters) architecture: _Filter -(Pipe)-> Filter -(Pipe)-
     - consumer - the termination point for the pipeline flow, persist or display the final result
 
 ETL tools leverage the pipeline architecture for the flow and modification of data from one database to another.
+
+## Chapter 12: Microkernel Architecture Style
+
+The microkernel architecture style (a.k.a plug-in) - a relatively simple monolithic architecture consisting of two
+components: a core system and plug-in components.
+
+Core system - the minimal functionality required to run the system. Depending on the size and complexity, the core
+system can be implemented as a layered architecture or modular monolith.
+
+Plug-in components - standalone, independent components that contain specialized processing, additional features, and
+custom code meant to enhance or extend the core system. Additionally, they can be used to isolate highly volatile code,
+creating better maintainability and testability within the application. Plug-in components should have no-dependencies
+between them.
+
+Plug-in components do not always have to be point-to-point communication with the core system (REST or messaging can be
+used instead). Each plug-in can be a standalone service (or even microservice) - this topology is still only a single
+architecture quantum due to monolithic core system.
+
+Plug-in Registry - the core system needs to know about which plug-in modules are available and gow to get them. The
+registry contains information about each plug-in (name, data, contract, remote access protocol). The registry can be as
+simple as an internal map structure owned by the core system, or as complex as a registry and discovery tool (like
+ZooKeeper or Consul).
+
+Examples of usages: Eclipse IDE, JIRA, Jenkins, Internet web browsers, ...
+
+Problems that require different configurations for each location or client match extremely well with this architecture
+style. Another example is a product that places a strong emphasis on user customization and feature extensibility.
