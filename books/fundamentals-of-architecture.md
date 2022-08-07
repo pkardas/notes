@@ -17,6 +17,7 @@ Book by Mark Richards and Neal Ford
 - [Chapter 10: Layered Architecture Style](#chapter-10-layered-architecture-style)
 - [Chapter 11: Pipeline Architecture Style](#chapter-11-pipeline-architecture-style)
 - [Chapter 12: Microkernel Architecture Style](#chapter-12-microkernel-architecture-style)
+- [Chapter 13: Service-Based Architecture Style](#chapter-13-service-based-architecture-style)
 
 ## Preface: Invalidating Axioms
 
@@ -474,3 +475,37 @@ Examples of usages: Eclipse IDE, JIRA, Jenkins, Internet web browsers, ...
 
 Problems that require different configurations for each location or client match extremely well with this architecture
 style. Another example is a product that places a strong emphasis on user customization and feature extensibility.
+
+## Chapter 13: Service-Based Architecture Style
+
+A hybrid of the microservices, one of the most pragmatic architecture styles (flexible, simpler and cheaper than
+microservices/even-driven services).
+
+Topology: a distributed macro layered structure consisting of a separately deployed user interface, separately deployed
+coarse-grained services (domain services) and a monolithic database. Because the services typically share a single
+monolithic database, the number of services within an application context range between 4 and 12.
+
+Base on scalability, fault tolerance, and throughput - multiple instances of a domain service can exist. Multiple
+instances require some load-balancing.
+
+Many variants exist within the service-based architecture:
+
+- single monolithic user interface
+- domain-based user interface
+- service-based user interface
+
+Similarly, you can break apart a single monolithic database, going as far as domain-scoped databases.
+
+Service-based architecture uses a centrally shared database. Because of small number of services, database connections
+are not usually an issue. Database changes, can be an issue. If not done properly, a table schema change can impact
+every service, making database changes very costly task in terms of effort and coordination.
+
+One way to mitigate the impact and risk of database changes is to logically partition the database and manifest the
+logical partitioning through federated shared libraries. Changes to a table within a particular logical domain, impacts
+only those services using that shared library.
+
+When making changes to shared tables, lock the common entity objects and restrict change access to only the database
+team. This helps control change and emphasizes the significance of changes to the common tables used by all services.
+
+Service based architecture - one of the most pragmatic architecture styles, natural fit when doing DDD, preserves ACID
+better than any other distributed architecture, good level of architectural modularity.
