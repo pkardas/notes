@@ -18,6 +18,7 @@ Book by Mark Richards and Neal Ford
 - [Chapter 11: Pipeline Architecture Style](#chapter-11-pipeline-architecture-style)
 - [Chapter 12: Microkernel Architecture Style](#chapter-12-microkernel-architecture-style)
 - [Chapter 13: Service-Based Architecture Style](#chapter-13-service-based-architecture-style)
+- [Chapter 14: Event-Driven Architecture Style](#chapter-14-event-driven-architecture-style)
 
 ## Preface: Invalidating Axioms
 
@@ -509,3 +510,35 @@ team. This helps control change and emphasizes the significance of changes to th
 
 Service based architecture - one of the most pragmatic architecture styles, natural fit when doing DDD, preserves ACID
 better than any other distributed architecture, good level of architectural modularity.
+
+## Chapter 14: Event-Driven Architecture Style
+
+A popular distributed asynchronous architecture style used to produce highly scalable and high-performance apps. It can
+be used for small applications as well as large, complex ones. Made up of decoupled event processing components that
+asynchronously receive and process events. It can be used as a standalone style or embedded within other architecture
+style (e.g. event-driven microservices architecture).
+
+2 primary topologies:
+
+- the mediator topology - used when you require control over the workflow of an event process
+    - an event mediator - manages and controls the workflow for initiating events that require the coordination of
+      multiple event processors, usually there are multiple mediators (associated with a particular domain)
+    - if an error occurs (no acknowledgement from on eof event processors), the mediator can take corrective action to
+      fix the problem
+    - the mediator controls the workflow, it can maintain the event state and manage errors
+    - operates on commands (send-email, fulfill-order), rather than on events (email-sent, order-fulfilled)
+    - cons: not as highly decoupled as the broker topology, lower scalability, hard to model complex workflows
+- the broker topology - used when you require a high level of responsiveness
+    - no central event mediator
+    - message flow is distributed across the event processor components in a chain-like broadcasting fashion
+    - a good practice: for each event processor advertise what it did to the rest of the system, regardless of whether
+      any other event processor cares about what that action was
+    - operates on events (email-sent, order-fulfilled), rather than on commands (send-email, fulfill-order)
+    - cons: challenging error handling - no central monitoring/controlling, not possible to restart a business
+      transaction (because actions are taken asynchronously)
+
+ERROR HANDLING: the workflow event pattern - leverages delegation, containment, and repair through the use of a workflow
+delegate. On error, the event consumer immediately delegates the error to the workflow processor and moves on. The
+workflow processor tries to figure out what is wrong with the message (rules, machine learning, ...), once the message
+is repaired it can be sent back to the event processor. In case a very problematic error a human agent can determine
+what is wrong with the message and then re-submit.
