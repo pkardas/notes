@@ -240,7 +240,7 @@ story is developed.
 
 Story points are a unit of estimated effort, not real time. They are not even estimated time - they are estimated
 effort. Velocity is not a commitment. The team is not making a promise to get 30 points done during the iteration. They
-aren't even making the promise to try get 30 points done. This is nothing mor ethan their best guess as to how many
+aren't even making the promise to try get 30 points done. This is nothing more than their best guess as to how many
 points will be complete by the end of the iteration.
 
 The Four-Quadrant Game (The Highest Return of Investment) - the stories that are valuable but cheap will be done right
@@ -543,7 +543,7 @@ A group of developers met in November 2008 in Chicago to create a new movement: 
 
 Manifesto:
 
-As aspiring Software Craftsmen, we are raising the baf or professional software development by practicing it and helping
+As aspiring Software Craftsmen, we are raising the bar or professional software development by practicing it and helping
 others learn the craft. Through this work we have come to value:
 
 - Not only working software, but also well-crafted software.

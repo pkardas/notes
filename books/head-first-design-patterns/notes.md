@@ -607,7 +607,7 @@ Real-world adapters:
 
 When a method in an adapter can not be supported you can throw e.g. `UnsupportedOperationException`.
 
-_Some AC adapters do mor ethan just change the interface - they add other features like surge protection, indicator
+_Some AC adapters do more than just change the interface - they add other features like surge protection, indicator
 lights, and other bells and whistles. If you were going to implement these kinds of features, what pattern would you
 use?_
 

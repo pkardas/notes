@@ -542,3 +542,31 @@ delegate. On error, the event consumer immediately delegates the error to the wo
 workflow processor tries to figure out what is wrong with the message (rules, machine learning, ...), once the message
 is repaired it can be sent back to the event processor. In case a very problematic error a human agent can determine
 what is wrong with the message and then re-submit.
+
+Data loss (lost messages) - a primary concern when dealing with asynchronous communication. Typical data-loss scenarios:
+
+- the message never makes it to the queue or the broker goes does before the event processor can can retrieve the
+  message
+    - solution: leverage persistent message queues (guaranteed delivery), message persisted in the broker's database (
+      not only in the memory)
+- event processor de-queues message and crashes before it can process the message
+    - solution: _client acknowledge mode_ - message is not deleted from the broker immediately, but waits for
+      acknowledgement
+- event processor is unable to persist the message in the database
+    - solution: leverage ACID transactions
+
+Broadcast - the capability to broadcast events without knowledge of who is receiving the message and what they do with
+it. Broadcasting is perhaps the highest level of decoupling between event processors.
+
+In event-driven architecture, synchronous communication is accomplished through **request-reply** messaging. Each event
+channel within request-reply messaging has 2 queues (request + reply queue). 2 primary techniques for implementing
+request-reply messaging:
+
+1. [PREFERRED] Correlation ID - a field in the reply message usually set to the request message ID.
+2. Temporary queue - dedicated for the specific request, created when the request is made, and deleted when the request
+   ends. Does not require Correlation ID. Large message volumes can significantly slow down the message broker and
+   impact performance and responsiveness.
+
+- Request-Based - for well-structured, data-driven requests (e.g. retrieving customer profile data).
+- Event-Based - for flexible, action-based events that require high level of responsiveness and scale, with complex and
+  dynamic processing.
