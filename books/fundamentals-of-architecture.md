@@ -19,6 +19,7 @@ Book by Mark Richards and Neal Ford
 - [Chapter 12: Microkernel Architecture Style](#chapter-12-microkernel-architecture-style)
 - [Chapter 13: Service-Based Architecture Style](#chapter-13-service-based-architecture-style)
 - [Chapter 14: Event-Driven Architecture Style](#chapter-14-event-driven-architecture-style)
+- [Chapter 15: Space-Driven Architecture Style](#chapter-15-space-driven-architecture-style)
 
 ## Preface: Invalidating Axioms
 
@@ -570,3 +571,59 @@ request-reply messaging:
 - Request-Based - for well-structured, data-driven requests (e.g. retrieving customer profile data).
 - Event-Based - for flexible, action-based events that require high level of responsiveness and scale, with complex and
   dynamic processing.
+
+## Chapter 15: Space-Driven Architecture Style
+
+In any high-volume application with a large concurrent load, the database will become a bottleneck, regardless of used
+caching technologies.
+
+The space-based architecture style is specifically designed to address problems involving high scalability, elasticity,
+and high concurrency issues.
+
+_Tuple space_ - the technique of using multiple parallel processors communicating through shared memory.
+
+High scalability, elasticity, and performance are achieved by removing the central database and leveraging replicated
+in-memory data grids. Application data is kept in memory and replicated among all active processing units.
+
+Several architecture components that make up a space-based architecture:
+
+- processing unit: containing the application code
+    - single or multiple processing units
+    - contains in-memory data grid and replication engine usually implemented using: Hazelcast, Apache Ignite, Oracle
+      Coherence
+- virtualized middleware: used to manage and coordinate the processing units
+    - handles the infrastructure concerns (data sync, request handling)
+    - made of:
+        - messaging grid - manages input request and session state, determines which active processing components are
+          available to receive the requests and forwards to one of those processing units (usually implemented using HA
+          Proxy and Nginx)
+        - data grid - implemented within the processing units as a replicated cache
+        - processing grid - (optional component) manages orchestrated request processing when there are multiple
+          processing units involved in a single business request
+        - deployment manager - monitors response times and user loads, starts up new processing units when load
+          increases, and shuts down when the load decreases
+- data pumps: used to synchronously send updated data to the database
+    - is a way of sending data to another processor which then updates data in a database
+    - always asynchronous, provide eventual consistency
+    - when a processing unit receives a request and updates its cache, that processing unit becomes the owner of teh
+      update and is responsible for sending that update through the data pump so that the database can be updated
+      eventually
+    - implemented using messaging; messages usually contain the new data values (diff)
+- data writers: used to perform the updates from the data pumps
+    - accept messages from a data pump and updates the database with the information contained in the message
+- data readers: used to read database data and deliver it to processing units upon startup
+    - responsible for reading data from the database and sending it to the processing units via reverse data pump
+    - invoked in one of 3 situations:
+        - a crash of all processing unit instances of the same named cache
+        - a redeployment of all processing units within the same named cache
+        - retrieving archive data not contained in the replicated cache
+
+Data collision - occurs when data is updated in one cache instance A, and during replication to another cache instance
+B, the same data is updated by that cache B.The local update to B will be overridden by the old data from cache A, cache
+A will be overridden by cache B. Data Collision Rate factors: latency, number of instances, cache size.
+
+_Distributed cache_ - better data consistency. _Replicated cache_ - better performance and fault tolerance.
+
+Example usages of space-based architecture: well suited for applications that experience high spikes in user or request
+volume and apps that have throughput excess of 10k concurrent users - online concert ticketing systems, online auction
+systems.
