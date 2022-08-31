@@ -20,6 +20,7 @@ Book by Mark Richards and Neal Ford
 - [Chapter 13: Service-Based Architecture Style](#chapter-13-service-based-architecture-style)
 - [Chapter 14: Event-Driven Architecture Style](#chapter-14-event-driven-architecture-style)
 - [Chapter 15: Space-Driven Architecture Style](#chapter-15-space-driven-architecture-style)
+- [Chapter 16: Orchestration-Driven Service-Oriented Architecture](#chapter-16-orchestration-driven-service-oriented-architecture)
 
 ## Preface: Invalidating Axioms
 
@@ -627,3 +628,31 @@ _Distributed cache_ - better data consistency. _Replicated cache_ - better perfo
 Example usages of space-based architecture: well suited for applications that experience high spikes in user or request
 volume and apps that have throughput excess of 10k concurrent users - online concert ticketing systems, online auction
 systems.
+
+## Chapter 16: Orchestration-Driven Service-Oriented Architecture
+
+This type appeared in the late 1990s when companies were becoming enterprises and architects were forced to reuse as
+much as possible because of expensive software licenses (no open source alternatives).
+
+Reuse - the dominant philosophy in this architecture.
+
+- Business Services - sit at the top of this architecture and provide the entry point. No code, just input, output and
+  schema information.
+- Enterprise Services - fine-grained, shared implementations - atomic behaviors around particular business domain -
+  CreateCustomer, CalculateQuote, ... - collection of reusable assets - unfortunately, the dynamic nature of reality
+  defies these attempts.
+- Application Services - not all services in the architecture require the same level of granularity, these are one-off,
+  single-implementation services, for example an application a company doesn't want to take the time to make a reusable
+  service.
+- Infrastructure Services - supply the operational concerns - monitoring, logging, auth.
+- Orchestration Engine - the heart of this architecture, defines the relationship between the business and enterprise
+  services, how they map together, and where transaction boundaries lie. It also acts as an integration hub, allowing
+  architects to integrate custom code with package and legacy software systems.
+
+This architecture in practice was mostly a disaster.
+
+When a team builds a system primarily around reuse, they also incur a huge amount of coupling between components. Each
+change had a potential huge ripple effect. That in turn led to the need for coordinated deployments, holistic testing
+and other drags on engineering efficiency.
+
+This architecture manages to find the disadvantages of both monolithic and distributed architectures!
