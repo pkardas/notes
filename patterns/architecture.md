@@ -41,7 +41,7 @@ Reporting Database:
 
 - designed specifically for reports
 
-- can be denormalised, usually read-only - redundant information might speedup queries
+- can be denormalized, usually read-only - redundant information might speed up queries
 - queries on the database don't add to the load on the operational database
 - additional data might be derived from the operational database
 - needs to be synced somehow with the main database (eg. sync data overnight or sync using events)
@@ -60,7 +60,8 @@ inherently atomic. The application reconstructs an entity’s current state by r
 The event log also behaves like message broker. When a service saves an event in the event store, it is delivered to all
 interested subscribers.
 
-> Event sourcing is commonly combined with the CQRS pattern by performing  the data management tasks in response to the events, and by materialising views from the stored events.
+> Event sourcing is commonly combined with the CQRS pattern by performing the data management tasks in response to the
+> events, and by materialising views from the stored events.
 
 In order to maintain consistency in multi-threaded applications, adding a timestamp to every event might help in
 resolving issues, but not in all cases. Better approach is to label each event with an incremental identifier. If two
@@ -97,3 +98,7 @@ made by the preceding local transactions.
 
 For example: Service A creates a new Order with PENDING state and publishes an event that is consumed by another service
 B, service B responds with an event to service A. Service A accepts or rejects new Order.
+
+DON'T: Based on `Chapter 17: Microservices Architecture` @ `Fundamentals of Software Architecture`:
+
+> Don't do transactions in microservices - fix granularity instead.
