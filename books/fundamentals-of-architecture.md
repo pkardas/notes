@@ -21,6 +21,8 @@ Book by Mark Richards and Neal Ford
 - [Chapter 14: Event-Driven Architecture Style](#chapter-14-event-driven-architecture-style)
 - [Chapter 15: Space-Driven Architecture Style](#chapter-15-space-driven-architecture-style)
 - [Chapter 16: Orchestration-Driven Service-Oriented Architecture](#chapter-16-orchestration-driven-service-oriented-architecture)
+- [Chapter 17: Microservices Architecture](#chapter-17-microservices-architecture)
+- [Chapter 18: Choosing the Appropriate Architecture Style](#chapter-18-choosing-the-appropriate-architecture-style)
 
 ## Preface: Invalidating Axioms
 
@@ -741,3 +743,40 @@ Additional references on microservices:
 - Building Microservices
 - Microservices vs. Service-Oriented Architecture
 - Microservices AntiPatterns
+
+## Chapter 18: Choosing the Appropriate Architecture Style
+
+Choosing an architecture style represents the culmination of analysis and thought about trade-offs for architecture
+characteristics, domain considerations, strategic goals, and a host of other things.
+
+Preferred architecture shift over time, driven by:
+
+- observations from the past - rely on experience and observations
+- changes in the ecosystem - constant change is a reliable feature of the software development
+- new capabilities - architects must keep an eye open to not only new tools but new paradigms
+- acceleration - new tools create new engineering practices, which lead to new design and capabilities
+- domain changes - the business continues to evolve
+- technology changes - as technology evolves, organizations have to keep up with at least some of these changes
+- external factors - external factors may force a migration to another option
+
+When choosing an architectural style, an architect must take into account all the various factors that contribute to the
+structure for the domain design. Architects should go into the decision comfortable with the following things:
+
+- the domain - good general understanding of the major aspects of the domain
+- architecture characteristics that impact structure - architect must discover and elucidate the architecture
+  characteristics
+- data architecture - architects and DBAs must collaborate on database, schema and other DB-related concerns
+- organizational factors - external factors may influence design - cost, company's plans, ...
+- knowledge of process, trams, and operational concerns - software development process, interaction with operations and
+  the QA influence a design
+- domain/architecture isomorphism - some problem domains match the topology of the architecture
+
+Several determinations:
+
+- monolith vs distributed
+- where should data live
+- synchronous or asynchronous communication between services
+
+General tip:
+
+> Use synchronous by default, asynchronous when necessary
