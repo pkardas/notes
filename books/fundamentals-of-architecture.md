@@ -23,6 +23,7 @@ Book by Mark Richards and Neal Ford
 - [Chapter 16: Orchestration-Driven Service-Oriented Architecture](#chapter-16-orchestration-driven-service-oriented-architecture)
 - [Chapter 17: Microservices Architecture](#chapter-17-microservices-architecture)
 - [Chapter 18: Choosing the Appropriate Architecture Style](#chapter-18-choosing-the-appropriate-architecture-style)
+- [Chapter 19: Architecture Decisions](#chapter-19-architecture-decisions)
 
 ## Preface: Invalidating Axioms
 
@@ -780,3 +781,48 @@ Several determinations:
 General tip:
 
 > Use synchronous by default, asynchronous when necessary
+
+## Chapter 19: Architecture Decisions
+
+Making architecture decisions involves gathering enough relevant information, justifying the decision, documenting the
+decision, and effectively communicating the decision to the right stakeholders.
+
+Decision anti-patterns:
+
+- covering your assets - occurs when an architect avoids/defers making architecture decisions out of fear of making the
+  wrong choice, 2 ways to overcome:
+    - wait until you have enough information to justify and validate your decision, but waiting too long holds up
+      development teams
+    - continually collaborate with development teams to ensure that the decision can be implemented as expected, quickly
+      respond to change
+- groundhog day - when people don't know why a decision was made, so it keeps getting discussed over and over, architect
+  failed to provide a justification for the decision (technical and business justifications)
+- email-driven architecture - where people lose, forget, or don't even know an architecture decision has been made and
+  therefore cannot implement that decision, notify impacted people directly in order to avoid this anti-pattern
+
+Architecturally significant decisions are those decisions that affect [OR]:
+
+- the structure - impacts the patterns/styles of architecture being used
+- nonfunctional characteristics - architecture characteristics (performance, scalability, ...)
+- dependencies - coupling points between components/services within the system
+- interfaces - how services and components are accessed and orchestrated
+- construction techniques - platforms, frameworks, tools, processes
+
+Architecture Decision Records - ADRs - short text file describing a specific architecture decision. 5 main sections:
+
+- title - numbered sequentially and contains short phrase describing the architecture decisions
+- status - one of: proposed (must be approved-by a higher-level decision maker), accepted (approved & ready for
+  implementation), suspended (decision changed and superseded by another ADR)
+- context - what situation forces me to make this decision, this section also provides a way to document the
+  architecture (clear & concise)
+- decision - the architecture decision, along with full justification for the decision, advised to use following voice:
+  we will do, we will use, ... -- this section allows an architect to place more emphasis on _why_ rather than _how_.
+  Understanding why a decision was made is far more important than understanding how something works.
+- consequences - the overall impact of an architecture decision, this section forces the architect to think about
+  whether those impacts outweigh the benefits of the decision. Another good use is to document the trade-offs' analysis.
+- [additional] compliance - how the architecture decision will be measured and governed from a compliance perspective
+- [additional] notes - various metadata -- author, approval date, approved by, superseded date, last modified date, ...
+
+Authors' recommendation -- store ADRs in a wiki, rather than on Git.
+
+ADRs can be used as an effective means to document a software architecture.
