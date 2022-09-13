@@ -24,6 +24,7 @@ Book by Mark Richards and Neal Ford
 - [Chapter 17: Microservices Architecture](#chapter-17-microservices-architecture)
 - [Chapter 18: Choosing the Appropriate Architecture Style](#chapter-18-choosing-the-appropriate-architecture-style)
 - [Chapter 19: Architecture Decisions](#chapter-19-architecture-decisions)
+- [Chapter 20: Analyzing Architecture Risk](#chapter-20-analyzing-architecture-risk)
 
 ## Preface: Invalidating Axioms
 
@@ -826,3 +827,26 @@ Architecture Decision Records - ADRs - short text file describing a specific arc
 Authors' recommendation -- store ADRs in a wiki, rather than on Git.
 
 ADRs can be used as an effective means to document a software architecture.
+
+## Chapter 20: Analyzing Architecture Risk
+
+Every architecture has risk associated with it -- risk involving availability, scalability, data integrity, ... -- by
+identifying risks, the architect can address deficiencies and take corrective actions.
+
+The Architecture Risk Matrix - 2D array -- the overall impact and the likelihood, each dimension has 3 ratings (low,
+medium, high). When leveraging the risk matrix to qualify the risk, consider the impact dimension first and the
+likelihood dimension second.
+
+Risk Assessment - a summarized report of the overall risk of an architecture (the risk matrix can be used to build it).
+
+Risk Storming - a collaborative exercise used to determine architectural risk within a specific dimension (area of risk)
+-- unproven technology, performance, scalability, availability, data loss, single points of failure, security. Risk
+storming is broken down into 3 primary activities:
+
+1. Identification - each participant individually identifies areas of risk within the architecture, should involve
+   analyzing only one particular dimension
+2. Consensus - highly collaborative activity with the goal of gaining consensus among all participants
+3. Mitigation - involves changes or enhancements to certain areas of the architecture
+
+Risk storming can be used for other aspects of software development -- for example story grooming -- story risk, the
+likelihood that the story will not be completed.

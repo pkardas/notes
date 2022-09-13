@@ -323,7 +323,7 @@ Alternatives to inheritance:
   implements the appropriate interface will be compatible with that type.
 - delegation - has-a is better than is-a. If parent has 20 methods, and the subclass wants to make use of just 2 of
   them, its objects will still have the other 18 just lying around and callable.
-- mixins and traits - use them to share functionality. The basic ide is simple, we want ot be able to extend classes and
+- mixins and traits - use them to share functionality. The basic ide is simple, we want to be able to extend classes and
   objects with new functionality without using inheritance. So we create a set of these functions, give that set a name,
   and then somehow extend a class with them.
 

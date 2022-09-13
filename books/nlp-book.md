@@ -786,7 +786,7 @@ are based around a small number of dimensions:
 - conscientiousness vs unconscientiousness - self-disciplined, organised vs inefficient, careless
 - openness to experience - intellectual, insightful s shallow, unimaginative
 
-Connotation frames - express richer relations ot affective meaning that a predicate encodes about its arguments -
+Connotation frames - express richer relations to affective meaning that a predicate encodes about its arguments -
 Country A violated the sovereignty of Country B.
 
 ## Chapter 21-22

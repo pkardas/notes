@@ -468,7 +468,7 @@ reason for partitioning is scalability - different partitions can be placed on d
 
 Partitioning is usually combined with replication. Copies of each partition are stored on multiple nodes. The goal with
 partitioning is to spread the data and the query load evenly across nodes. If every node takes fair share, e.g. 10 nodes
-should be able to handle 10x much data. If partitioning is unfair ot is called skewed. Skew makes partitioning less
+should be able to handle 10x much data. If partitioning is unfair it is called skewed. Skew makes partitioning less
 effective. In order to reduce skew data needs to be distributed evenly.
 
 One way is to assign a continuous range of keys to each partition (PARTITION 1: A-B, PARTITION 2: C-D, ...). The ranges
