@@ -336,7 +336,7 @@ case.
 You can create a "blank switch" - this allows you to use any boolean comparison for each case. There isn't a lot of
 difference between a series of `if/else` statements and a blank `switch`. Favor blank `switch` statements over `if/else`
 chains when you have multiple related cases. Using a `switch` makes the comparisons more visible and reinforces that
-they ate a related set of concerns.
+they are a related set of concerns.
 
 GOTO - Traditionally `goto` was dangerous because it could jump to nearly anywhere in a program (jump into/out of a
 loop, skip variable definitions, or into the middle of a set of statements in `if`). This made it difficult to

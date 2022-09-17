@@ -25,6 +25,7 @@ Book by Mark Richards and Neal Ford
 - [Chapter 18: Choosing the Appropriate Architecture Style](#chapter-18-choosing-the-appropriate-architecture-style)
 - [Chapter 19: Architecture Decisions](#chapter-19-architecture-decisions)
 - [Chapter 20: Analyzing Architecture Risk](#chapter-20-analyzing-architecture-risk)
+- [Chapter 21: Diagramming and Presenting Architecture](#chapter-21-diagramming-and-presenting-architecture)
 
 ## Preface: Invalidating Axioms
 
@@ -850,3 +851,53 @@ storming is broken down into 3 primary activities:
 
 Risk storming can be used for other aspects of software development -- for example story grooming -- story risk, the
 likelihood that the story will not be completed.
+
+## Chapter 21: Diagramming and Presenting Architecture
+
+Effective communication becomes critical to an architect's success. No matter how brilliant an architect's ideas are, if
+they can't convince managers to fund them and developers to build them.
+
+Diagramming and presenting are 2 critical soft skills for architects.
+
+Irrational Artifact Attachment - is the proportional relationship between a person's attachment to some artifact and
+how long it took to produce.If you spend a lot of time on something , you may have an irrational attachment to that
+artifact (proportional to the time invested). Use Agile approach in order to avoid this anti-pattern - create
+just-in-time artifacts, use simple tools to create diagrams.
+
+Baseline features of a diagram tool:
+
+- layers - used to link a group of items together logically to enable hiding/showing individual layers. An architect can
+  build a diagram where they can hide overwhelming details or to incrementally build pictures for presentations
+- stencils/templates - allow to build up a library of common virtual components (basic shapes with a special meaning,
+  e.g. microservice stencil)
+- magnets - assistance in drawing lines
+
+Diagram Guidelines:
+
+- Titles - all elements of the diagram should have title or are well known to the audience
+- Lines - should be thick enough to be seen, if lines indicate information flow use arrows
+    - solid lines = synchronous communication
+    - dotted lines = asynchronous communication
+- Shapes - each architect tends to make their own standard set of shapes, hint: use 3D boxes to indicate deployable
+  artifacts and rectangles to indicate containership
+- Labels - label each item in a diagram, especially if there is a chance of ambiguity for the readers
+- Color - use colors when it helps to distinguish one artifact from the other
+- Keys - if shapes are ambiguous, include a key on the diagram clearly indicating what each shape represents
+
+Book recommendation: Presentation Patterns
+
+When preparing a presentation - use different type of transition when changing a topic, use the same transition within a
+topic.
+
+When presenting, the presenter has 2 presentation channels: verbal and visual. By placing too much text on the slides
+and then saying the same words, the presenter is overloading one information channel and starving the other.
+
+Using animations and transitions in conjunction with incremental builds (reveal information gradually) allows the
+presenter to make more compelling, entertaining presentations.
+
+Info-decks - slide decks that are not meant to be projected but rather summarize information graphically, essentially
+using a presentation tool as a desktop publishing machine. They contain all the information, are meant to be standalone,
+no need for presenter.
+
+Invisibility - a pattern where the presenter inserts a blank slide within a presentation to refocus attention solely on
+the speaker (turn of one visual channel).

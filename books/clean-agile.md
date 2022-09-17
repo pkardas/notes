@@ -244,7 +244,7 @@ aren't even making the promise to try get 30 points done. This is nothing more t
 points will be complete by the end of the iteration.
 
 The Four-Quadrant Game (The Highest Return of Investment) - the stories that are valuable but cheap will be done right
-away. Those that are valuable but expensive will be done later. Those that ate neither valuable nor expensive might get
+away. Those that are valuable but expensive will be done later. Those that are neither valuable nor expensive might get
 done one day. Those that are not valuable but are expensive will never be done.
 
 Yesterday's weather - the best predictor of today's weather is yesterday's weather. The best predictor of the progress
