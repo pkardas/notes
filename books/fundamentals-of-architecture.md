@@ -26,6 +26,7 @@ Book by Mark Richards and Neal Ford
 - [Chapter 19: Architecture Decisions](#chapter-19-architecture-decisions)
 - [Chapter 20: Analyzing Architecture Risk](#chapter-20-analyzing-architecture-risk)
 - [Chapter 21: Diagramming and Presenting Architecture](#chapter-21-diagramming-and-presenting-architecture)
+- [Chapter 22: Making Teams Effective](#chapter-22-making-teams-effective)
 
 ## Preface: Invalidating Axioms
 
@@ -901,3 +902,42 @@ no need for presenter.
 
 Invisibility - a pattern where the presenter inserts a blank slide within a presentation to refocus attention solely on
 the speaker (turn of one visual channel).
+
+## Chapter 22: Making Teams Effective
+
+A software architect is also responsible for guiding the development team through the implementation of the
+architecture.
+
+Software architect should create and communicate constraints, or the box, in which developers can implement the
+architecture. Tight boundaries = frustration, loose boundaries = confusion, appropriate boundaries = effective teams.
+
+3 basic types of architect personalities:
+
+- a control freak:
+    - controls every detailed aspect of the software development process
+    - too fine-grained and too low-level decisions
+    - may restrict the development team to use specific technology, library, naming convention, class design
+    - steals art of programming away from the developers
+- an armchair architect:
+    - hasn't coded in a very long time and does not take the implementation details into account
+    - creates loose boundaries, in this scenario, development teams end up taking the role of architect, doing the work
+      an architect is supposed to be doing
+    - in order to avoid such behaviour, an architect should be involved in the technology being used on the project
+- an effective architect:
+    - produces the appropriate constraints and boundaries, ensures that the team members are working well together and
+      have the right level of guidance on the team
+    - requires working closely and collaborating with the team, and gaining respect of the team as well
+
+Elastic Leadership - https://www.elasticleadership.com -- knowing how much control to exert on a given development team,
+factors to determine how many teams a software architect can manage at once:
+
+- team familiarity - the better team members know each other, the less control is needed because team members start to
+  become self-organizing, the newer the team members, the more control needed to help facilitate collaboration among
+  team members and reduce cliques within the team
+- team size - the larger the team, teh more control is needed, the smaller the team, less control is needed
+- overall experience - teams with more junior developers require more control and mentoring whereas teams with more
+  senior developers require less control
+- project complexity - highly complex projects require the architect to be more available to the team and to assist with
+  issues that arise, hence more control is needed on the team
+- project duration - the shorter the duration, teh lass control is needed, teh longer the project, the more control is
+  needed
