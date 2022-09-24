@@ -27,6 +27,7 @@ Book by Mark Richards and Neal Ford
 - [Chapter 20: Analyzing Architecture Risk](#chapter-20-analyzing-architecture-risk)
 - [Chapter 21: Diagramming and Presenting Architecture](#chapter-21-diagramming-and-presenting-architecture)
 - [Chapter 22: Making Teams Effective](#chapter-22-making-teams-effective)
+- [Chapter 23: Negotiation and Leadership Skills](#chapter-23-negotiation-and-leadership-skills)
 
 ## Preface: Invalidating Axioms
 
@@ -966,6 +967,51 @@ teams effective is knowing when to leverage checklists and when not to. Most eff
   development life cycle, it helps avoid failed builds, deployments, and it significantly reduces the amount of rish
   associated with releasing software
 
-Many items from the checklists can be automated. 
+Many items from the checklists can be automated.
 
 > Don't worry about stating the obvious in a checklist. It's the obvious stuff that's usually skipped or missed.
+
+## Chapter 23: Negotiation and Leadership Skills
+
+Negotiation is one of the most important skills a software architect can have. Effective software architects understand
+the politics of the organization, have strong negotiation and facilitation skills, and can overcome disagreements when
+they occur to create solutions that all stakeholders agree on.
+
+"We must have zero downtime", "I need these features yesterday", ...:
+
+> Leverage the use of grammar and buzzwords to better understand the situation
+
+Enter the negotiation wit as many arguments as possible:
+
+> Gather as much information as possible _before_ entering into a negotiation
+
+Save this negotiation tactic for last:
+
+> When all else fails, state things in terms of cost and time
+
+Does entire system require 99.999% availability or just some parts?:
+
+> Leverage the "divide and conquer" rule to qualify demands or requirements
+
+Demonstrate your point with a real-life example:
+
+> Always remember that demonstration defeats discussion
+
+> Avoid being too argumentative or letting things get too personal in a negotiation -- calm leadership combined with
+> clear and concise reasoning will always win a negotiation
+
+Ivory Tower architecture anti-pattern - Ivory tower architects are ones who simply dictate from on high, telling
+development teams what to do without regard to their opinion or concerns. This usually leads to a loss of respect for
+the architect and an eventual breakdown of teh team dynamics.
+
+> When convincing developers to adopt an architecture decision or to do a specific task, provide a justification rather
+> than "dictating from on high"
+
+By providing a reason why something needs to be done, developers will more likely agree with the request. Most of the
+time, once a person hears something they disagree with, they stop listening. By stating the reason first, the architect
+is sure that the justification will be heard.
+
+> If a developer disagrees with a decision, have them arrive at the solution on their own
+
+Win-win situation: the developer either fail trying and the architect automatically gets buy-in agreement for the
+architect's decision or the developer finds a better way to address concerns.
