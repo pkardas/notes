@@ -941,3 +941,31 @@ factors to determine how many teams a software architect can manage at once:
   issues that arise, hence more control is needed on the team
 - project duration - the shorter the duration, teh lass control is needed, teh longer the project, the more control is
   needed
+
+3 factors when considering the most effective team size:
+
+- process loss - (Brook's law) the more people you add to a project, the more ime the project will take, example: unable
+  to parallelize work, merge conflicts
+- pluralistic ignorance - when everyone agrees to a norm because they think they are missing something obvious, rather
+  than speaking up, a person chooses to follow the group (similar to "The Emperor's New Clothes" -- the king is naked),
+  an architect should observe body language of all team members and ask each person what they think about the proposed
+  solution
+- diffusion of responsibility - as team size increases, it has a negative impact on communication
+
+An effective architect not only helps guide the development team through the implementation of the architecture, but
+also ensures that the team is healthy, happy, and working together to achieve a common goal.
+
+Checklists work and provide an excellent vehicle for making sure everything is covered and addressed. The key to making
+teams effective is knowing when to leverage checklists and when not to. Most effective checklists:
+
+- code completion checklist - if everything in the checklist is completed, then the developer can claim they are
+  actually done with the code
+- unit and functional testing checklist - contains some of the more unusual and edge-case tests that software developers
+  tend to forget to test
+- software release checklist - releasing software is perhaps one of the most error-prone aspects of the software
+  development life cycle, it helps avoid failed builds, deployments, and it significantly reduces the amount of rish
+  associated with releasing software
+
+Many items from the checklists can be automated. 
+
+> Don't worry about stating the obvious in a checklist. It's the obvious stuff that's usually skipped or missed.
