@@ -28,6 +28,7 @@ Book by Mark Richards and Neal Ford
 - [Chapter 21: Diagramming and Presenting Architecture](#chapter-21-diagramming-and-presenting-architecture)
 - [Chapter 22: Making Teams Effective](#chapter-22-making-teams-effective)
 - [Chapter 23: Negotiation and Leadership Skills](#chapter-23-negotiation-and-leadership-skills)
+- [Chapter 24: Developing a Career Path](#chapter-24-developing-a-career-path)
 
 ## Preface: Invalidating Axioms
 
@@ -1045,4 +1046,25 @@ not.
 Meetings should be either first thing in the morning, right after lunch, or toward the end of the day, but not during
 the day when most developers experience flow state.
 
-> The most important single ingredient is the formula of success is knowing how to get along with people ~ Theodore Roosevelt
+> The most important single ingredient is the formula of success is knowing how to get along with people ~ Theodore
+> Roosevelt
+
+## Chapter 24: Developing a Career Path
+
+An architect must continue to learn throughout their career. Technology breadth is more important to architects than
+depth.
+
+The 20-Minute Rule - devote at least 20 minutes a day to your career as an architect by learning something new or diving
+deeper into a specific topic. Spend min. 20 minutes to Google some unfamiliar buzzwords.
+
+Technology Radar: https://www.thoughtworks.com/radar
+
+You can create your won personal technology radar. It helps to formalize thinking about technology and balance opposing
+decision criteria.
+
+Architects should choose some technologies and/or skills that are widely in demand and track that demand. But they might
+also want to try some technology gambits, like open source or mobile development.
+
+Architects can utilize social media to enhance their technical breadth. Using media like Twitter professionally,
+architects should find technologists whose advice they respect. This allows to build a network on new, interesting
+technologies to assess and keep up with the rapid changes in the technology world.
