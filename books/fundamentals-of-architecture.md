@@ -1015,3 +1015,34 @@ is sure that the justification will be heard.
 
 Win-win situation: the developer either fail trying and the architect automatically gets buy-in agreement for the
 architect's decision or the developer finds a better way to address concerns.
+
+Accidental complexity - we have made a problem hard, architects sometimes do this to prove their worth when things seem
+too simple or to guarantee that they are always kept in the loop on discussions and decisions. Introducing accidental
+complexity into something that is not complex is one of the best ways to become an ineffective leader as an architect.
+An effective way of avoiding accidental complexity is what we call the 4C's of architecture:
+
+- communication
+- collaboration
+- clarity
+- conciseness
+
+Be pragmatic, yet visionary. Visionary - Thinking about or planning the future with imagination or wisdom. Pragmatic -
+Dealing with things sensibly and realistically in a way that is based on practical rather than theoretical
+considerations.
+
+Bad software architects leverage their title to get people to do what they want from them to do. Effective software
+architects get people to do things by not leveraging their title as architect, but rather by leading through example,
+not title. Lead by example, not by title.
+
+To lead a team and become an effective leader, a software architect should try to become the go-to person on the team -
+the person developers go to for their questions and problems. Another technique to start gaining respect as a leader and
+become the go-to person on the team is to host periodic brown-bag lunches to talk about specific technique or
+technology.
+
+Too many meetings? Ask for the meeting agenda ahead of time to help quantify if you are really needed at the meeting or
+not.
+
+Meetings should be either first thing in the morning, right after lunch, or toward the end of the day, but not during
+the day when most developers experience flow state.
+
+> The most important single ingredient is the formula of success is knowing how to get along with people ~ Theodore Roosevelt
