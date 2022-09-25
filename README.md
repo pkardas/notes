@@ -5,6 +5,7 @@
 👀 In progress:
 
 - [Fundamentals of Software Architecture](books/fundamentals-of-architecture.md)
+- [The Kubernetes Book](books/kubernetes-book.md)
 
 #### ✅ Finished:
 
@@ -38,7 +39,7 @@
 #### ⏳ Queue:
 
 - [Elixir in Action](books/elixir.md)
-- [Kubernetes in Action](books/kubernetes.md)
+- [Kubernetes in Action](books/kubernetes-in-action.md)
 - [Software Architecture: The Hard Parts](books/architecture-hard-parts.md)
 - [Understanding Distributed Systems](books/understanding-distributed-systems.md)
 
