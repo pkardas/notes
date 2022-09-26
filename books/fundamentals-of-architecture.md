@@ -29,6 +29,7 @@ Book by Mark Richards and Neal Ford
 - [Chapter 22: Making Teams Effective](#chapter-22-making-teams-effective)
 - [Chapter 23: Negotiation and Leadership Skills](#chapter-23-negotiation-and-leadership-skills)
 - [Chapter 24: Developing a Career Path](#chapter-24-developing-a-career-path)
+- [Self-Assessment Questions](#self-assessment-questions)
 
 ## Preface: Invalidating Axioms
 
@@ -1068,3 +1069,26 @@ also want to try some technology gambits, like open source or mobile development
 Architects can utilize social media to enhance their technical breadth. Using media like Twitter professionally,
 architects should find technologists whose advice they respect. This allows to build a network on new, interesting
 technologies to assess and keep up with the rapid changes in the technology world.
+
+## Self-Assessment Questions
+
+[Chapter 1: Introduction](#chapter-1-introduction)
+
+1. What are the 4 dimensions that define software architecture?
+
+Knowledge of the architecture structure, architecture characteristics, architecture decisions, and design principles.
+
+2. What is the difference between an architecture decision and a design principle?
+
+Decisions: what is and what is not allowed, rules for a system how it should be constructed. Design principles:
+guidelines for constructing systems.
+
+3. List the eight core expectations of a software architect.
+
+Make architecture decisions. Continually analyze the architecture. Keep current with the latest trends. Ensure
+compliance with decisions. Diverse exposure and experience. Have business domain knowledge. Posses interpersonal skills.
+Understand and navigate politics.
+
+4. What is the First Law of Software Architecture.
+
+Everything in software architecture is a trade-off.
