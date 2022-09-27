@@ -1092,3 +1092,39 @@ Understand and navigate politics.
 4. What is the First Law of Software Architecture.
 
 Everything in software architecture is a trade-off.
+
+[Chapter 2: Architectural thinking](#chapter-2-architectural-thinking)
+
+1. Describe the traditional approach of architecture versus development and explain why that approach no longer works.
+
+In a traditional model the architect is disconnected from the development teams, and as such the architecture rarely
+provides what it was originally set out to do. Architect defines architecture characteristics, selects architecture
+patterns and styles, then these artifacts are handed off to the development teams.
+
+Boundaries between architects and developers must be broken down. Unlike the old-school waterfall approaches to static
+and rigid software architecture, the architecture of today's systems changes and evolves every iteration. A tight
+collaboration is essential for the success.
+
+2. List the three levels of knowledge in the knowledge triangle and provide an example of each.
+
+Stuff you know: Python
+
+Stuff you know you don't know: Deep Learning
+
+Stuff you don't know you don't know: 🤷‍
+
+3. Why is it more important for an architect to focus on technical breadth rather than technical depth?
+
+Architects must make decisions that match capabilities to technical constraints, a broad understanding of a wide variety
+of solutions is valuable.
+
+4. What are some of the ways of maintaining your technical depth and remaining hands-on as an architect?
+
+- do frequent proof-of-concepts
+- whenever possible, write best production-quality code (even when doing POCs) -- POC code often remains in the
+  repository and becomes the reference or guiding example
+- tackle technical debt stories or architecture stories, freeing the development team up to work on the critical
+  function user stories
+- work on bug fixes
+- create simple command-line tools and analyzers to help the development team with their day-to-day tasks
+- do code reviews frequently
