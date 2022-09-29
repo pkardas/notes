@@ -6,6 +6,7 @@ Book by Nigel Poulton
 
 - [1: Kubernetes primer](#1-kubernetes-primer)
 - [2: Kubernetes principles of operation](#2-kubernetes-principles-of-operation)
+- [3: Getting Kubernetes](#3-getting-kubernetes)
 
 ## 1: Kubernetes primer
 
@@ -130,3 +131,31 @@ load-balance traffic across a dynamic set of Pods. As Pods come and go, the Serv
 itself, and continues to provide that stable networking endpoint.
 
 Service - a stable network abstraction that provides TCP/UPD load-balancing across a dynamic set of Pods.
+
+## 3: Getting Kubernetes
+
+Hosted Kubernetes: AWS Elastic Kubernetes Service, Google Kubernetes Engine, Azure Kubernetes Service. Managing your own
+Kubernetes cluster isn't a good use of time and other resources. However, it is easy to rack up large bills if you
+forget to turn off infrastructure when not in use.
+
+The hardest way to get a Kubernetes cluster is to build it yourself.
+
+Play with Kubernetes - quick and simple way to get your hands on a development Kubernetes cluster. However, it is time
+limited and sometimes suffers from capacity and performance issues. Link: https://labs.play-with-k8s.com
+
+Docker Desktop - offers a single-node Kubernetes cluster that you can develop and test with.
+
+`kubectl` is the main Kubernetes command-line tool. At a high-level, `kubectl` converts user-friendly commands into HTTP
+REST requests with JSON content required by the Kubernetes API server.
+
+```shell
+kubectl get nodes
+```
+
+```shell
+kubectl config current-context
+```
+
+```shell
+kubectl config use-context docker-desktop
+```
