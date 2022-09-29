@@ -1128,3 +1128,42 @@ of solutions is valuable.
 - work on bug fixes
 - create simple command-line tools and analyzers to help the development team with their day-to-day tasks
 - do code reviews frequently
+
+[Chapter 3: Modularity](#chapter-3-modularity)
+
+1. What is meant by the term _connascence_?
+
+Two components mare connascent if a change in one would require the other to be modified in order to maintain teh
+overall correctness of the system.
+
+Connascence allows us to go beyond the binary of "coupled" and "not coupled", serving as a tool to measure coupling and
+describe how bad it is under different levels and kinds.
+
+2. What is the difference between static and dynamic connascence?
+
+Static connascence refers to source-code-level coupling - name (multiple entities must agree on the name), type (
+multiple entities must agree on the type), meaning (multiple entities must agree on the meaning of particular values),
+position (multiple entities must agree on the order of the values), algorithm (multiple entities must agree on a
+particular algorithm).
+
+Dynamic connascence analyzes calls at runtime - execution (order of execution), timing (timing of the execution of
+multiple components), values (several values relate to one another), identity (several values relate to one another and
+must change together).
+
+3. What does the connascence of type mean? Is it static or dynamic connascence?
+
+[STATIC] Multiple components must agree on the type of entity.
+
+4. What is the strongest form of connascence?
+
+Identity. Multiple components must reference the same entity. For example when 2 independent components must share and
+update a common data source.
+
+5. What is the weakest form of connascence?
+
+Name. Multiple components must agree on the name.
+
+6. Which is preferred within code base -- static or dynamic connascence?
+
+Static. Architects have a harder time determining connascence because we lack tools to analyze runtime calls as
+effectively as we can analyze the call graph.
