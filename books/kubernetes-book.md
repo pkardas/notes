@@ -7,6 +7,7 @@ Book by Nigel Poulton
 - [1: Kubernetes primer](#1-kubernetes-primer)
 - [2: Kubernetes principles of operation](#2-kubernetes-principles-of-operation)
 - [3: Getting Kubernetes](#3-getting-kubernetes)
+- [4: Working with Pods](#4-working-with-pods)
 
 ## 1: Kubernetes primer
 
@@ -159,3 +160,102 @@ kubectl config current-context
 ```shell
 kubectl config use-context docker-desktop
 ```
+
+## 4: Working with Pods
+
+Controllers - infuse Pods with super-powers such as self-healing, scaling, rollouts and rollbacks. Every Controller bas
+a PodTemplate defining the Pods it deploys and manages. You rarely interact with Pods directly.
+
+Pod - the atomic unit of scheduling in Kubernetes. Apps deployed to Kubernetes always run inside Pods. If you deploy an
+app, you deploy it in a Pod. If you terminate an app, you terminate its Pod. If you scale your app up/down, you
+add/remove Pods.
+
+Kubernetes doesn't allow containers to run directly on a cluster, they always have to be wrapped in a Pod.
+
+1. Pods augment containers
+
+- labels - group Pods and associate them with others
+- annotations - add experimental features and integrations with 3rd-party tools
+- probes - test the health and status of Pods and the apps they run, this enables advanced scheduling, updates, and
+  more.
+- affinity and anti-affinity rules - control over where in the cluster Pods are allowed to run
+- termination controls - gracefully terminate Pods and the apps they run
+- security policies - enforce security features
+- resource requests and limits - min. and max. values for CPU, memory, IO, ...
+
+Despite bringing so many features, Pods are super-lightweight and add very little overhead.
+
+```shell
+kubectl explain pods --recursive
+```
+
+```shell
+kubectl explain pod.spec.restartPolicy
+```
+
+2. Pods assist in scheduling
+
+Every container in a Pods is guaranteed to be scheduled to the same worker node.
+
+3. Pods enable resource sharing
+
+Pods provide a shared execution environment for one or more containers (filesystem, network stack, memory, volumes). So
+if a Pod has 2 containers, both containers share the Pod's IP address and can access ony of the Pod's volumes to share
+data.
+
+There are 2 ways to deploy a Pod:
+
+- directly via a Pod manifest
+    - called "Static Pods", no super-powers like self-healing, scaling, or rolling updates
+- indirectly via a controller
+    - have all the benefits of being monitored by a highly-available controller running on the control-plane
+
+Pets vs Cattle paradigm - Pods are cattle, when they die, they get replaced by another. The old one is gone, and a shiny
+new one (with the same config, but a different IP and UID) magically appears and takes its place.
+
+This is why applications should always store state and data outside the Pod. It is also why you should not rely on
+individual Pods - they are ephemeral, here today, gone tomorrow.
+
+Deploying Pods:
+
+1. Define it in a YAML manifest file
+2. Post it to the API server
+3. The API server authenticates and authorizes the request
+4. The configuration (YAML) is validated
+5. The scheduler deploys the Pod to a healthy worker node with enough available resources
+
+If you are using Docker or containerd as your container runtime, a Pod is actually a special type of container - a pause
+container. This means containers running inside of Pods are really containers running inside containers.
+
+The Pod Network is flat, meaning every Pod can talk directly to every other Pod without the need for complex routing and
+port mappings. You should use Kubernetes Network Policies.
+
+Pod deployment is an atomic operation - all-or-nothing - deployment either succeeds or fails. You will never have a
+scenario where a partially deployed Pod is servicing requests.
+
+Pod lifecycle: pending -> running (long-lived Pod) | succeeded (short-lived Pod)
+
+- short-lived - batch jobs, designed to only run until a task completes
+- long-lived - web-servers, remain in the running phase indefinitely, if container fail, the controller may attempt to
+  restart them
+
+Pods are immutable objects. You can't modify them after they are deployed. You always replace a Pod with a new one (in
+case of a failure or update).
+
+If you need to scale an app, you add or remove Pods (horizontal scaling). You never scale an app by adding more of the
+same containers to a Pod. Multi-container Pods are only for co-scheduling and co-locating containers that need tight
+coupling.
+
+Co-locating multiple containers in the same Pod allows containers to be designed with a single responsibility but
+co-operate closely with others.
+
+Kubernetes multi-container Pod patterns:
+
+- Sidecar pattern - (most popular) the job of a sidecar is to augment of perform a secondary task for the main
+  application container
+- Adapter pattern - variation of the sidecar pattern where the helper container takes non-standardized output from the
+  main container and rejigs it into a format required by an external system
+- Ambassador pattern - variation of the sidecar pattern where the helper container brokers connectivity to an external
+  system, ambassador containers interface with external systems on behalf of the main app container
+- Init pattern - runs a special init container that is guaranteed to start and complete before your main app container,
+  it is also guaranteed to run only once
