@@ -2,7 +2,7 @@
 
 # The Kubernetes Book
 
-Book by Nigel Poulton
+Book by Nigel Poulton, https://github.com/nigelpoulton/TheK8sBook
 
 - [1: Kubernetes primer](#1-kubernetes-primer)
 - [2: Kubernetes principles of operation](#2-kubernetes-principles-of-operation)
@@ -259,3 +259,81 @@ Kubernetes multi-container Pod patterns:
   system, ambassador containers interface with external systems on behalf of the main app container
 - Init pattern - runs a special init container that is guaranteed to start and complete before your main app container,
   it is also guaranteed to run only once
+
+```shell
+kubectl get pods
+```
+
+Get pods info with additional info:
+
+```shell
+kubectl get pods -o wide
+```
+
+Get pod info, a full copy of the Pod from the cluster:
+
+```shell
+kubectl get pods -o yaml
+```
+
+Get even more info; spec - desired state, status - observed state:
+
+```shell
+kubectl get pods hello-pod -o yaml
+```
+
+Pod manifest files:
+
+- kind - tells the Kubernetes the type of object being defined
+- apiVersion - defines the schema version to use when creating the object
+- metadata - names, labels, annotations, and a Namespace
+- spec - define the containers the Pod will run
+
+```shell
+kubectl apply -f pod.yml
+```
+
+`kubectl describe` - a nicely formatted multi-line overview of an object: You can add the `--watch` flag to the command
+to monitor it and see when the status changes to _Running_.
+
+```shell
+kubectl describe pods hello-pod
+```
+
+You can see ordering and names of containers using this command.
+
+`kubectl logs` - like other Pod related commands, if you don't specify `--container`, it executes against the first
+container in the pod:
+
+```shell
+kubectl logs hello-pod
+```
+
+```shell
+kubectl logs hello-pod --container hello-ctr
+```
+
+`kubectl exec` - execute commands inside a running Pod
+
+```shell
+kubectl exec hello-pod -- pwd
+```
+
+Get shell access:
+
+```shell
+kubectl exec -it hello-pod hello-pod -- sh
+```
+
+`-it` flag makes the session interactive and connects STDIN and STDOUT on your terminal to STD and STDOUT inside the
+first container in teh Pod.
+
+Pod hostname - every container in a Pod inherits its hostname from the name of the Pod (`metadata.name`). With this in
+mind, you should always set Pod names as valid DNS names (a-z, 0-9, +, -, .).
+
+`spec.initCointainers` block defines one or more containers that Kubernetes guarantees will run and complete before main
+app container starts.
+
+```shell
+kubectl delete pod git-sync
+```

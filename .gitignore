@@ -5,3 +5,4 @@
 .ipynb_checkpoints
 */.pytest_cache/
 git-user.sh
+/excluded_resources/*
