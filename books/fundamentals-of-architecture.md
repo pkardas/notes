@@ -1167,3 +1167,34 @@ Name. Multiple components must agree on the name.
 
 Static. Architects have a harder time determining connascence because we lack tools to analyze runtime calls as
 effectively as we can analyze the call graph.
+
+[Chapter 4: Architecture Characteristics Defined](#chapter-4-architecture-characteristics-defined)
+
+1. What three criteria must an attribute meet to be considered an architecture characteristic?
+
+- specifies a non-domain design consideration
+- influences some structural aspect of the domain
+- is critical or important to application success
+
+2. What is the difference between an implicit characteristic and an explicit one? Provide an example of each.
+
+Implicit - appears in requirements, necessary for project success. Domain knowledge required to uncover such
+characteristics.
+
+Explicit - characteristic listed in the requirements.
+
+3. Provide an example of an operational characteristic.
+
+Availability, Continuity, Performance, Reliability, Recoverability, Scalability, ...
+
+4. Provide an example of a structural characteristic.
+
+Configurability, Extensibility, Maintainability, ...
+
+5. Provide an example of a cross-cutting characteristic.
+
+Accessibility, Authentication, Authorization, Legal, Security, Privacy, ...
+
+6. Which architecture characteristic is more important to strive for -- availability or performance?
+
+The ultimate answer for architectural questions: _it depends on ...
