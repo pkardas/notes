@@ -8,6 +8,7 @@ Book by Nigel Poulton, https://github.com/nigelpoulton/TheK8sBook
 - [2: Kubernetes principles of operation](#2-kubernetes-principles-of-operation)
 - [3: Getting Kubernetes](#3-getting-kubernetes)
 - [4: Working with Pods](#4-working-with-pods)
+- [5: Virtual clusters with Namespaces](#5-virtual-clusters-with-namespaces)
 
 ## 1: Kubernetes primer
 
@@ -336,4 +337,82 @@ app container starts.
 
 ```shell
 kubectl delete pod git-sync
+```
+
+## 5: Virtual clusters with Namespaces
+
+Namespaces are a native way to divide a single Kubernetes cluster into multiple virtual clusters.
+
+Namespaces partition a Kubernetes cluster and are designed as an easy way to apply quotas and policies to groups of
+objects.
+
+See all Kubernetes API resources supported in your cluster:
+
+```shell
+kubectl api-resources
+```
+
+Namespaces are a good way of sharing a single cluster among different departments and environments. For example, a
+single cluster might have the following namespaces: dev, test, qa. Each one can have its own set of users and
+permissions, as well as unique resource quotas.
+
+Namespaces are not good for isolating hostile workloads. A compromised container or Pod in one Namespace can wreak havoc
+in other Namespaces. For example, you shouldn't place competitors such as Pepsi and Coke, in separate Namespaces on the
+same shared cluster.
+
+If you need strong workload isolation, the current method is to use multiple clusters. There are some attempts to do
+something different, but the safest and most common way of isolating workloads is putting them on their own clusters.
+
+Every Kubernetes cluster has a set of pre-created Namespaces (virtual clusters):
+
+```shell
+kubectl get namespaces
+```
+
+- `default` is where newly created objects go if you don't specify a Namespace
+- `kube-system` is where DNS, the metrics server, and other control plane components run
+- `kube-public` is for objects that need to be readable by anyone
+- `kube-node-lease` is used for node heartbeat and managing node leases
+
+```shell
+kubectl describe namespaces default
+```
+
+List service objects in a selected namespace:
+
+```shell
+kubectl get svc --namespace kube-system
+```
+
+```shell
+kubectl get svc --all-namespaces
+```
+
+Create a new Namespace, Pods don't create a Namespace automatically, a Namespace must be created first:
+
+```shell
+kubectl create ns kydra
+```
+
+Switch between Namespaces:
+
+```shell
+kubens shield
+```
+
+There are 2 ways to deploy objects to a specific Namespace:
+
+- imperatively - requires you to add the `-n` or `--namespace` flag to commands
+- declaratively - requires you to specify the Namespace in the YAML
+
+Delete Pods:
+
+```shell
+kubectl detele -f shield.app.yml
+```
+
+Delete Namespace:
+
+```shell
+kubectl delete ns shield
 ```
