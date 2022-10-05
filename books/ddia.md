@@ -280,7 +280,7 @@ CSV:
 - no distinction between numbers and strings
 - no data schema
 
-Despite flaws of JSON, XML and CSV they are good enough for many purposes and thy will remain popular.
+Despite flaws of JSON, XML and CSV they are good enough for many purposes, and they will remain popular.
 
 JSON is less verbose than XMAL, but still uses a lot of space - this might be an issue when you are dealing with
 terabytes of data. This led to the development of binary encodings for JSON - BSON, BJSON, UBJSON, BISON. XMAL has also
