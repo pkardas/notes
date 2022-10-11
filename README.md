@@ -27,6 +27,9 @@
     - [Peopleware: Productive Projects and Teams](books/peopleware.md)
     - [The Pragmatic Programmer](books/pragmatic-programmer.md)
 
+- DevOps:
+    - :eyes:
+
 - ML:
     - [Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics and Speech Recognition](books/nlp-book.md)
 
@@ -38,10 +41,11 @@
 
 #### ⏳ Queue:
 
-- [Elixir in Action](books/elixir.md)
-- [Kubernetes in Action](books/kubernetes-in-action.md)
+- [Docker Deep Dive](books/docker-deep-dive.md)
 - [Software Architecture: The Hard Parts](books/architecture-hard-parts.md)
 - [Understanding Distributed Systems](books/understanding-distributed-systems.md)
+- [Kubernetes in Action](books/kubernetes-in-action.md)
+- [Elixir in Action](books/elixir.md)
 
 ### Case Studies
 
