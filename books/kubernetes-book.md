@@ -9,6 +9,7 @@ Book by Nigel Poulton, https://github.com/nigelpoulton/TheK8sBook
 - [3: Getting Kubernetes](#3-getting-kubernetes)
 - [4: Working with Pods](#4-working-with-pods)
 - [5: Virtual clusters with Namespaces](#5-virtual-clusters-with-namespaces)
+- [6: Kubernetes Deployments](#6-kubernetes-deployments)
 
 ## 1: Kubernetes primer
 
@@ -415,4 +416,159 @@ Delete Namespace:
 
 ```shell
 kubectl delete ns shield
+```
+
+## 6: Kubernetes Deployments
+
+Use Deployments to bring cloud-native features such as self-healing, scaling, rolling updates, and versioned rollbacks
+to stateless apps on Kubernetes.
+
+Kubernetes offers several controllers that augment Pods with important capabilities. The Deployment controller is
+designed for stateless apps.
+
+The Deployment spec is a declarative YAML object where you describe the desired state of a stateless app. The controller
+element operates as a backgrounds loop on the control plane, reconciling observed state with desired state.
+
+You start with a stateless application, package it as a container, then define it in a Pod template. At this point you
+have a static Pod - it does not self-heal, autoscale or is easy to update. That is why you almost always wrap them in a
+Deployment object.
+
+A Deployment object only manages a single Pod template.
+
+Deployments rely heavily on a ReplicaSet. Replica Sets manage Pods and bring self-healing and scaling. Deployments
+manage ReplicaSet and add rollouts and rollbacks. It is not recommended to manage ReplicaSets directly. Think of
+Deployments as managing ReplicaSets, and ReplicaSets as managing Pods.
+
+Deployments:
+
+- if Pods managed by a Deployment fail, they will be replaced (self-healing)
+- if Pods managed by a Deployment see increased or decreased load, they can be scaled
+
+3 concepts fundamental to everything about Kubernetes:
+
+- desired state (what you want)
+- observed state (what you have)
+- reconciliation (if desired state != observed state, a process of reconciliation attempts to bring observed state into
+  sync with desired state)
+
+Declarative model is a method of telling Kubernetes your desired state, while avoiding the detail of how to implement
+it. You leave the _how_ up to Kubernetes.
+
+Zero-downtime rolling-updates of stateless apps are what Deployments are about. They require a couplu of things from
+your microservice applications in order to work properly:
+
+- loose coupling via APIs
+- backwards and forwards compatibility
+
+Each Deployment describes all the following:
+
+- how many Pod replicas
+- what images to use for the Pod's containers
+- what network ports to expose
+- details about how to perform rolling updates
+
+Deploying a new version: update the dame Deployment YAML file with the new image version and re-post it to the API
+server.
+
+Rollback: you wind one of the old ReplicaSets up while you wind the current one down.
+
+Kubernetes gives you fine-grained control over how rollouts and rollbacks proceed - insert delays, control the pace and
+cadence of releases, you can probe the health and status of updated replicas.
+
+YAML components:
+
+- `apiVersion: apps/v1` - Deployments available in the apps/v1 subgroup
+- `kind: Deployment` - Deployment object
+- `metadata.name: hello-deploy` - a valid DNS name
+- `spec` - anything nested below `spec` relates to the Deployment
+- `spec.templates` - the Pod template Deployments uses to stamp out Pod replicas
+- `spec.replicas` - how many Pod replicas the Deployment should create and manage
+- `spec.selector` - a list of labels that Pods must have in order for Deployments to manage them. This tells Kubernetes
+  which Pods to terminate and replace when performing the rollout.
+- `spec.revisionHistoryLimit` - how many older versions/ReplicaSets to keep
+- `spec.progressDeadlineSeconds` - tells Kubernetes how long to wait during a rollout for each new replica to come
+  online
+- `spec.strategy` - tells the Deployment controller how to upgrade the Pods when a rollout occurs
+    - update using the Rolling Update strategy
+    - never have more than one Pod below desired state (`maxUnavailable: 1`) - you will never have less than 9 replicas
+      during the update process
+    - never have more than one Pod above desired state (`maxSurge: 1`) - never have more than qq replicas during the
+      update process
+    - net result - update two Pods at a time, the delta between 9 and 11 is 2
+
+Deploy to the cluster:
+
+```shell
+kubectl apply -f deploy.yml
+```
+
+```shell
+kubectl get deploy hello-deploy
+```
+
+```shell
+kubectl describe deploy hello-deploy
+```
+
+```shell
+kubectl get replicaset
+```
+
+```shell
+kubectl describe replicaset hello-deploy-5cd5dcf7d7
+```
+
+In order to access a web app from a stable name or IP address, or even from outside the cluster, you need a Kubernetes
+service object. A Service provide reliable networking for a set of Pods.
+
+Scaling the number of replicas manually - edit the YAML and set a different number of replicas or use the command:
+
+```shell
+kubectl scale deploy hello-deploy --replicas 5
+```
+
+Performing a rolling update (by replacement because Pods are immutable):
+
+```shell
+kubectl apply -f deploy.yml
+```
+
+```shell
+kubectl rollout status deployment hello-deploy
+```
+
+Pausing & resuming deployment:
+
+```shell
+kubectl rollout pause deploy hello-deploy
+```
+
+```shell
+kubectl rollout resume deploy hello-deploy
+```
+
+Detailed deployment info:
+
+```shell
+kubectl describe deploy hello-deploy
+```
+
+Kubernetes maintains a documented revision history of rollouts:
+
+```shell
+kubectl rollout history deployment hello-deploy
+```
+
+Rolling Updates create new ReplicaSets, old ReplicaSets aren't deleted. The fact the old ones still exist makes them
+ideal for executing rollbacks:
+
+```shell
+kubectl rollout undo deployment hello-deploy --to-revision=1
+```
+
+Modern versions of Kubernetes use the system generated pod-template-hash label so only Pods that were originally created
+by the Deployment/ReplicaSet will be managed:
+
+```shell
+kubectl get pods --show-labels 
 ```
