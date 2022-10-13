@@ -10,6 +10,7 @@ Book by Nigel Poulton, https://github.com/nigelpoulton/TheK8sBook
 - [4: Working with Pods](#4-working-with-pods)
 - [5: Virtual clusters with Namespaces](#5-virtual-clusters-with-namespaces)
 - [6: Kubernetes Deployments](#6-kubernetes-deployments)
+- [7: Kubernetes Services](#7-kubernetes-services)
 
 ## 1: Kubernetes primer
 
@@ -496,6 +497,32 @@ YAML components:
       update process
     - net result - update two Pods at a time, the delta between 9 and 11 is 2
 
+```yaml
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: hello-world
+  revisionHistoryLimit: 5
+  progressDeadlineSeconds: 300
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+        - name: hello-pod
+          image: nigelpoulton/k8sbook:2.0
+          ports:
+            - containerPort: 8080
+```
+
 Deploy to the cluster:
 
 ```shell
@@ -571,4 +598,77 @@ by the Deployment/ReplicaSet will be managed:
 
 ```shell
 kubectl get pods --show-labels 
+```
+
+## 7: Kubernetes Services
+
+Controllers add self-healing, scaling and rollouts. Despite all of this, Pods are still unreliable, and you should never
+connect directly to them.
+
+Services provide stable and reliable networking for a set of unreliable Pods. Every Service gets its onw stable IP
+address, its own DNS name, and its own stable port. The Service fronts the Pods with a stable UP, DNS, and port. It also
+load-balances traffic to Pods with the right labels.
+
+With a Service in place, the Pods can scale up/down, they can fail, and they can be updated and rolled back. Despite all
+of this, clients will continue to access them without interruption. The Service is observing the changes and updating
+its lists of healthy Pods it sends traffic to.
+
+Think of Services as having a static front-end and a dynamic back-end.
+
+Services are loosely coupled with Pods via labels and selectors. This is ihe same technology that loosely couples
+Deployments to Pods.
+
+Every time you create a Service, Kubernetes automatically creates an associated Endpoints object. The Endpoints object
+is used to store a dynamic list of healthy Pods matching the Service's label selector. Any new Pods that match the
+selector get added to the Endpoints object.
+
+Types of Services:
+
+- accessible from inside the cluster
+    - ClusterIP - default type, a stable virtual IP, every service you create gets a ClusterIP
+- accessible from outside the cluster
+    - NodePort - built on top of CLusterIP and allow external clients to hit a dedicated port on every cluster node and
+      reach the Service
+    - LoadBalancer- make external access even easier by integrating with an internet-facing load-balancer on your
+      underlying cloud platform
+
+Example Service object:
+
+```yml
+spec:
+  type: NodePort
+  ports:
+    - port: 8080       -- listen internally on port 8080
+      nodePort: 30001  -- listen externally on 30001
+      targetPort: 8080 -- forward traffic to the application Pods on port 8080
+      protocol: TCP    -- use TCP (default)
+  selector: -- send traffic to all healthy Pods on the cluster with the following metadata.labels
+    chapter: services
+```
+
+Get Endpoint object:
+
+```shell
+kubectl get endpointslices
+```
+
+Get details of each healthy Pods:
+
+```shell
+kubectl describe endpointslice svc-test-xgnsv
+```
+
+If your cluster is on a cloud platform, deploying a Service with `type=LoadBalancer` will provision one of your cloud's
+internet-facing load-balancers and configure it to send traffic to your Service.
+
+```shell
+kubectl get svc --watch
+```
+
+After ~2 minutes the value in the EXTERNAL-IP column will appear.
+
+Delete multiple resources:
+
+```shell
+kubectl delete -f deploy.yml -f lb.yml -f svc.yml
 ```
