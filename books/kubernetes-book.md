@@ -11,6 +11,7 @@ Book by Nigel Poulton, https://github.com/nigelpoulton/TheK8sBook
 - [5: Virtual clusters with Namespaces](#5-virtual-clusters-with-namespaces)
 - [6: Kubernetes Deployments](#6-kubernetes-deployments)
 - [7: Kubernetes Services](#7-kubernetes-services)
+- [8: Ingress](#8-ingress)
 
 ## 1: Kubernetes primer
 
@@ -672,3 +673,29 @@ Delete multiple resources:
 ```shell
 kubectl delete -f deploy.yml -f lb.yml -f svc.yml
 ```
+
+## 8: Ingress
+
+Ingress is all about accessing multiple web applications through a single LoadBalancer Service.
+
+- `Load Balancer` refers to a Kubernetes Service object of `type=LoadBalancer`
+- `load-balancer` refers to the internet-facing load-balancer on the underlying cloud
+
+Ingress exposes multiple Services through a single cloud load-balancer. Cloud load-balancers are expensive.
+
+```shell
+kubectl get ing
+```
+
+Ingress classes allow you to run multiple Ingress controllers on a single cluster:
+
+- assign each Ingress controller to an Ingress class
+- when you create Ingress object, you assign them to an Ingress class
+
+```shell
+kubectl get ingressclass
+```
+
+Ingress is a way to expose multiple applications and Kubernetes Services via a single cloud load-balancer. They are
+stable objects in the API but have feature overlap with a lot of service meshes - if you are running a service mesh you
+may not need Ingress.
