@@ -30,6 +30,9 @@
 - DevOps:
     - :eyes:
 
+- Product:
+    - :eyes:
+
 - ML:
     - [Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics and Speech Recognition](books/nlp-book.md)
 

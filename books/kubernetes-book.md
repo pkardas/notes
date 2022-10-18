@@ -12,6 +12,7 @@ Book by Nigel Poulton, https://github.com/nigelpoulton/TheK8sBook
 - [6: Kubernetes Deployments](#6-kubernetes-deployments)
 - [7: Kubernetes Services](#7-kubernetes-services)
 - [8: Ingress](#8-ingress)
+- [9: Service discovery deep dive](#9-service-discovery-deep-dive)
 
 ## 1: Kubernetes primer
 
@@ -699,3 +700,27 @@ kubectl get ingressclass
 Ingress is a way to expose multiple applications and Kubernetes Services via a single cloud load-balancer. They are
 stable objects in the API but have feature overlap with a lot of service meshes - if you are running a service mesh you
 may not need Ingress.
+
+## 9: Service discovery deep dive
+
+Finding stuff on a crazy-busy platform like Kubernetes is hard. Service discovery makes it simple. Apps need a way to
+find the other apps they work with.
+
+2 components to service discovery:
+
+- registration - is the process of an application listing its connection details in a service registry so other apps can
+  find it and consume it. Kubernetes uses its internal DNS as a service registry. All Kubernetes Services are
+  automatically registered with DNS.
+- discovery - for service discovery to work, apps need to know to the name of the Service fronting the apps they want to
+  connect to (rast is taken care of by Kubernetes)
+
+Get Pods running the cluster DNS:
+
+```shell
+kubectl get pods -n kube-system -l k8s-app=kube-dns
+```
+
+Service discovery works like a typical routing - check your own table, if not found pass it to the next one.
+
+Domain name format: _object-name_._namespace_.svc.cluster.local, object name has to be unique within a Namespace, but
+not across Namespaces.
