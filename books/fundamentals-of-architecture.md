@@ -1198,3 +1198,32 @@ Accessibility, Authentication, Authorization, Legal, Security, Privacy, ...
 6. Which architecture characteristic is more important to strive for -- availability or performance?
 
 The ultimate answer for architectural questions: _it depends on ...
+
+[Chapter 5: Identifying Architectural Characteristics](#chapter-5-identifying-architectural-characteristics)
+
+1. Give a reason why it is a good practice to limit the number of characteristics an architecture should support.
+
+Over-specifying architecture characteristics may kill the project. Example: The Vasa - a Swedish warship, it was
+supposed to be magnificent, turned out to be too heavy, too complicated.
+
+Keep the design simple.
+
+2. True or false: most architecture characteristics come from business requirements and user stories
+
+True.
+
+3. If a business stakeholders states that time-to-market is the most important business concern, which architecture
+   characteristic would the architecture need to support?
+
+Agility, testability, deployability
+
+4. What is the difference between scalability and elasticity?
+
+Scalability - the ability to handle a large number of concurrent users without serious performance degradation.
+
+Elasticity - the ability to handle bursts of requests.
+
+5. You find out that your company is about to undergo several major acquisitions to significantly increase its customer
+   base. Which architectural characteristics should you be worried about?
+
+Interoperability, scalability, adaptability, extensibility.
