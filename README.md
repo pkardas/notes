@@ -6,6 +6,7 @@
 
 - [Fundamentals of Software Architecture](books/fundamentals-of-architecture.md)
 - [The Kubernetes Book](books/kubernetes-book.md)
+- [Comic Agilé](books/comic-agile.md)
 
 #### ✅ Finished:
 
