@@ -13,6 +13,7 @@ Book by Nigel Poulton, https://github.com/nigelpoulton/TheK8sBook
 - [7: Kubernetes Services](#7-kubernetes-services)
 - [8: Ingress](#8-ingress)
 - [9: Service discovery deep dive](#9-service-discovery-deep-dive)
+- [10: Kubernetes storage](#10-kubernetes-storage)
 
 ## 1: Kubernetes primer
 
@@ -331,7 +332,7 @@ kubectl exec -it hello-pod hello-pod -- sh
 ```
 
 `-it` flag makes the session interactive and connects STDIN and STDOUT on your terminal to STD and STDOUT inside the
-first container in teh Pod.
+first container in the Pod.
 
 Pod hostname - every container in a Pod inherits its hostname from the name of the Pod (`metadata.name`). With this in
 mind, you should always set Pod names as valid DNS names (a-z, 0-9, +, -, .).
@@ -457,7 +458,7 @@ Deployments:
 Declarative model is a method of telling Kubernetes your desired state, while avoiding the detail of how to implement
 it. You leave the _how_ up to Kubernetes.
 
-Zero-downtime rolling-updates of stateless apps are what Deployments are about. They require a couplu of things from
+Zero-downtime rolling-updates of stateless apps are what Deployments are about. They require a couple of things from
 your microservice applications in order to work properly:
 
 - loose coupling via APIs
@@ -724,3 +725,50 @@ Service discovery works like a typical routing - check your own table, if not fo
 
 Domain name format: _object-name_._namespace_.svc.cluster.local, object name has to be unique within a Namespace, but
 not across Namespaces.
+
+## 10: Kubernetes storage
+
+Kubernetes supports lots of types of storage from lots of different places. No matter what type of storage, or where is
+comes from, when it is exposed on Kubernetes it is called a volume. All that's required is a plugin allowing their
+storage resources to be surfaced as volumes in Kubernetes.
+
+Container Storage Interface - an open standard aimed at providing a clean storage interface for container orchestrators
+such as Kubernetes.
+
+Core storage-related API objects:
+
+- Persistent Volumes - are how external storage assets are represented in Kubernetes
+- Persistent Volume Claims - like tickets that grant access to a PV
+- Storage Classes - makes it all dynamic
+
+Storage Providers - AWS Elastic Block Store, Azure File, NFS volumes, ...
+
+The CSI is a vital place of the Kubernetes storage, however, unless you are a developer writing a storage plugins, you
+are unlikely to interact with it very often.
+
+Working with Storage Classes:
+
+- Create one or more StorageClasses on Kubernetes
+- Deploy Pods with PVCs that reference those Storage Classes
+
+Other settings:
+
+- Access mode:
+    - ReadWriteOnce - a PV that can be only bound as R/W by a single PVC
+    - ReadWriteMany - a PV that can be bound as R/W by multiple PCVs
+    - ReadOnlyMany - a PV that can be bound as R/O by multiple PVCs
+- Reclaim policy - how to deal with a PV when its PVC is released:
+    - Delete - it deletes the PV and associated storage resource on the external storage system
+    - Retain - keep the associated PV object on the cluster as well as any data stored on the associated external asset
+
+```shell
+kubectl get sc
+```
+
+```shell
+kubectl get pv
+```
+
+```shell
+kubectl get pvc
+```

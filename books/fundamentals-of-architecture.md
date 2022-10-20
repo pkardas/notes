@@ -937,12 +937,12 @@ factors to determine how many teams a software architect can manage at once:
 - team familiarity - the better team members know each other, the less control is needed because team members start to
   become self-organizing, the newer the team members, the more control needed to help facilitate collaboration among
   team members and reduce cliques within the team
-- team size - the larger the team, teh more control is needed, the smaller the team, less control is needed
+- team size - the larger the team, the more control is needed, the smaller the team, less control is needed
 - overall experience - teams with more junior developers require more control and mentoring whereas teams with more
   senior developers require less control
 - project complexity - highly complex projects require the architect to be more available to the team and to assist with
   issues that arise, hence more control is needed on the team
-- project duration - the shorter the duration, teh lass control is needed, teh longer the project, the more control is
+- project duration - the shorter the duration, the lass control is needed, the longer the project, the more control is
   needed
 
 3 factors when considering the most effective team size:
@@ -1004,7 +1004,7 @@ Demonstrate your point with a real-life example:
 
 Ivory Tower architecture anti-pattern - Ivory tower architects are ones who simply dictate from on high, telling
 development teams what to do without regard to their opinion or concerns. This usually leads to a loss of respect for
-the architect and an eventual breakdown of teh team dynamics.
+the architect and an eventual breakdown of the team dynamics.
 
 > When convincing developers to adopt an architecture decision or to do a specific task, provide a justification rather
 > than "dictating from on high"
