@@ -1227,3 +1227,24 @@ Elasticity - the ability to handle bursts of requests.
    base. Which architectural characteristics should you be worried about?
 
 Interoperability, scalability, adaptability, extensibility.
+
+[Chapter 6: Measuring and Governing Architecture Characteristics](#chapter-6-measuring-and-governing-architecture-characteristics)
+
+1. Why is cyclomatic complexity such an important metric to analyze for architecture?
+
+Overly complex code represents a code smell - it harms virtually every one of the desirable characteristics.
+
+2. What is an architecture fitness function? How can they be used to analyze an architecture?
+
+Any mechanism that provides an objective integrity assessment of some architecture characteristic or combination of
+architecture characteristics. Many tools may be used to implement fitness functions: metrics, monitors, unit tests,
+chaos engineering, ...
+
+3. Provide an example of an architecture fitness function to measure the scalability of an architecture?
+
+Code automatic scalability tests and compare results.
+
+4. What is the most important criteria for an architecture characteristic to allow architects and developers to create
+   fitness functions?
+
+Architects must ensure that developers understand the purpose of the fitness function before imposing it on them.
