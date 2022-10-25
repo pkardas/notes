@@ -641,7 +641,7 @@ something is terribly out of kilter, it takes very little to raise people's cons
 you. It is everyone.
 
 It may be small voice saying: "This is unacceptable" -- people know it is true. Once it has been said out loud, they
-can;t ignore it any longer.
+can't ignore it any longer.
 
 Sociology matters more than technology or even money. It is supposed to be productive, satisfying fun to work. If it
 isn't, there is nothing else worth concerning on. Choose your terrain carefully, assemble your facts, and speak up. You

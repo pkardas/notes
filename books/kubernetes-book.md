@@ -772,3 +772,77 @@ kubectl get pv
 ```shell
 kubectl get pvc
 ```
+
+## 11: ConfigMaps and Secrets
+
+Most apps comprise two main parts: the app & the configuration. Coupling the application and the configuration into a
+single easy-to deploy unit is an anti-pattern. De-coupling the application and the configuration has the following
+benefits:
+
+- re-usable application images (you can use the same image on dev, staging, prod)
+- simpler development and testing (easier to spot a mistake when the app and the config are decoupled, e.g. app crash
+  after config change)
+- simpler and fewer disruptive changes
+
+Kubernetes provides an object called a ConfigMap that lets you store configuration data outside a Pod. It also makes
+it easy to inject config into Pods at run-time.
+
+You should not use ConfigMaps to store sensitive data such as certificates and passwords. Kubernetes provides a
+different object, called a Secret, for storing sensitive data.
+
+Behind the scenes, ConfigMaps are a map of key-value pairs, and we call each pair an entry:
+
+- Keys - an arbitrary name that can be created from alphanumerics, dashes, dots, and underscores
+- Values - anything, including multiple lines with carriage returns
+- Keys and Values are separated by a colon -- `key:value`
+
+Data in a ConfigMap, can be injected into containers at run-time via any of the following methods:
+
+- environmental variables (static variables, updates made to the map don't get reflected in running containers, major
+  reason not to use environmental variables)
+- arguments to the container's startup command (the most limited methods, shares environmental variables' limitations)
+- files in a volume (the most flexible method)
+
+ConfigMap object don'§t have the concept of state (desired/actual) - this is why they have a `data` block instead
+of `spec` and `status` blocks.
+
+Creating a ConfigMap declaratively:
+
+```yaml
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: multimap
+data:
+  given: Nigel
+  family: Poulton
+```
+
+```shell
+kubectl apply -f multimap.yml
+```
+
+ConfigMaps are extremely flexible and can be used to insert complex configurations, including JSON files and even
+scripts, into containers at run-time.
+
+View logs from a pod from a container:
+
+```shell
+kubectl logs startup-pod -c args1
+```
+
+ConfigMaps with volumes is the most flexible option. You can reference entire configuration files, as well as make
+updates to the ConfigMap that will be reflected in running containers.
+
+1. Create the ConfigMap
+2. Create a ConfigMap volume in the Pod template
+3. Mount the ConfigMap volume into the container
+4. Entries in the ConfigMap will appear in the container as individual files
+
+Update to a ConfigMap via re-applying ConfigMap YML. 
+
+Check ENV variable value:
+
+```shell
+kubectl exec cmvol -- cat /etc/name/given
+```
