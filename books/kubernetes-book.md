@@ -14,6 +14,7 @@ Book by Nigel Poulton, https://github.com/nigelpoulton/TheK8sBook
 - [8: Ingress](#8-ingress)
 - [9: Service discovery deep dive](#9-service-discovery-deep-dive)
 - [10: Kubernetes storage](#10-kubernetes-storage)
+- [11: ConfigMaps and Secrets](#11-configmaps-and-secrets)
 
 ## 1: Kubernetes primer
 
@@ -839,10 +840,59 @@ updates to the ConfigMap that will be reflected in running containers.
 3. Mount the ConfigMap volume into the container
 4. Entries in the ConfigMap will appear in the container as individual files
 
-Update to a ConfigMap via re-applying ConfigMap YML. 
+Update to a ConfigMap via re-applying ConfigMap YML.
 
 Check ENV variable value:
 
 ```shell
 kubectl exec cmvol -- cat /etc/name/given
 ```
+
+Secrets are almost identical to ConfigMaps - they hold application configuration data that is injected into containers
+at run-time. Secrets are designed for sensitive data such as passwords, certificates, and OAuth tokens.
+
+Despite being designed for sensitive data, Kubernetes does not encrypt Secrets in the cluster store. Fortunately, it is
+possible to configure encryption-ar-rest with EncryptionConfiguration objects. Despite this, many people opt to use
+external 3rd-party tools, such as HasiCorp Vault.
+
+A typical workflow for a Secret is as follows:
+
+1. The Secret is created and persisted to the cluster store as an un-encrypted object
+2. A Pod that uses it gets scheduled to cluster node
+3. The Secret is transferred over the network, un-encrypted, to the node
+4. The kubelet on the node starts the Pod and its containers
+5. The Secret is mounted into the container via in-memory tmpfs filesystem and decoded from base64 to plain text
+6. The application consumes it
+7. When the Pod is deleted, the Secret is deleted from the node
+
+```shell
+kubectl get secrets
+```
+
+Create a Secret manually:
+
+```shell
+kubectl create secret generic creds --from-literal user=piotr --from-literal pwd=qwerty
+```
+
+Decode base-64:
+
+```shell
+echo cGlvdHI= | base64 -d
+```
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: tkb-secret
+  labels:
+    chapter: configmaps
+type: Opaque
+data: -- stringData when using plaintext
+  username: bmlnZWxwb3VsdG9u
+  password: UGFzc3dvcmQxMjM=
+```
+
+The most flexible way to inject a Secret into a Pod is via a special type of volume called a Secret volume. Secret vols
+are automatically mounted as read-only to prevent containers and applications accidentally mutating them.
