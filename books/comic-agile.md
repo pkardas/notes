@@ -6,6 +6,7 @@ Book by Luxshan Ratnaravi, Mikkel Noe-Nygaard
 
 - [1: Transformation](#1-transformation)
 - [4: Team](#4-team)
+- [6: Miscellaneous](#6-miscellaneous)
 
 ## 1: Transformation
 
