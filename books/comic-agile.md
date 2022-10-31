@@ -48,3 +48,20 @@ discussing, reviewing and reflecting. The roles are interchanged.
 
 Stability is the foundation for building the trust needed to become high-preforming teams. If team keeps changing, they
 will have difficulties moving up Tucksman's phases - forming, storming, norming, performing.
+
+## 6: Miscellaneous
+
+In the spirit of openness, you don't have to wait for the Retrospective to bring up potential improvements to your ways
+of working.
+
+Companies with diverse leadership are 45% more likely to grow their market share and 70% more likely to capture new
+markets compared to companies with "non-diverse" leadership. Behavioral diversity is the other half of the equation,
+which includes:
+
+- ensuring everyone is heard
+- making it safe to propose novel ideas
+- giving team members decision-making authority
+- sharing credit for success
+- giving actionable feedback
+- implementing feedback from the team
+

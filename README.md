@@ -6,7 +6,6 @@
 
 - [Fundamentals of Software Architecture](books/fundamentals-of-architecture.md)
 - [The Kubernetes Book](books/kubernetes-book.md)
-- [Comic Agilé](books/comic-agile.md)
 
 #### ✅ Finished:
 
@@ -27,6 +26,7 @@
     - [Domain-Driven Design: Tackling Complexity in the Heart of Software](books/ddd.md)
     - [Peopleware: Productive Projects and Teams](books/peopleware.md)
     - [The Pragmatic Programmer](books/pragmatic-programmer.md)
+    - [Comic Agilé](books/comic-agile.md)
 
 - DevOps:
     - :eyes:
