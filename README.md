@@ -57,6 +57,7 @@
 
 ### Conferences
 
+- [PyCon 2022](conferences/pycon-2022.md)
 - [AWS Innovate: AI/ML Edition 2021](conferences/aws-innovate-ai-ml-21.md)
 - [Brown Bags](conferences/brown-bags.md)
 

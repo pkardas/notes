@@ -65,4 +65,3 @@ which includes:
 - sharing credit for success
 - giving actionable feedback
 - implementing feedback from the team
-
