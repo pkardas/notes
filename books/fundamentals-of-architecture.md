@@ -1248,3 +1248,21 @@ Code automatic scalability tests and compare results.
    fitness functions?
 
 Architects must ensure that developers understand the purpose of the fitness function before imposing it on them.
+
+[Chapter 7: Scope of Architecture Characteristics](#chapter-7-scope-of-architecture-characteristics)
+
+1. What is an architectural quantum, and why is it important to architecture?
+
+The architectural quantum is the smallest possible item that needs to be deployed in order to run an application.
+
+3. Assume a system consisting of a single user interface with four independently deployed services, each containing its
+   own separate database. Would this system have a single quantum or four quanta? Why?
+
+4 because each service can be deployed separately.
+
+4. Assume a system with an administration portion managing static reference data (such as the product catalog, and
+   warehouse information) and a customer-facing portion managing the placement of orders. How many quanta should this
+   system be and why? If you envision multiple quanta, could the admin quantum and customer-facing quantum share a
+   database? If so, in which quantum would the database need to reside?
+
+2 quantas - ordering and a warehouse management, separate databases. 
