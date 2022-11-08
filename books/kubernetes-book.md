@@ -15,6 +15,7 @@ Book by Nigel Poulton, https://github.com/nigelpoulton/TheK8sBook
 - [9: Service discovery deep dive](#9-service-discovery-deep-dive)
 - [10: Kubernetes storage](#10-kubernetes-storage)
 - [11: ConfigMaps and Secrets](#11-configmaps-and-secrets)
+- [12: StatefulSets](#12-statefulsets)
 
 ## 1: Kubernetes primer
 
@@ -896,3 +897,34 @@ data: -- stringData when using plaintext
 
 The most flexible way to inject a Secret into a Pod is via a special type of volume called a Secret volume. Secret vols
 are automatically mounted as read-only to prevent containers and applications accidentally mutating them.
+
+## 12: StatefulSets
+
+Stateful application - application that creates and saves valuable data, for example an app that saves data about client
+sessions and uses it for future sessions, or a database.
+
+StatefulSets guarantee:
+
+- predictable and persistent Pod names
+    - name format: `StatefulSetName-Integer`
+- predictable and persistent DNS hostnames
+- predictable and persistent volume bindings
+
+Failed Pods managed by a StatefulSet will be replaced by new Pods with the exact same Pod name, the exact same DNS
+hostname, and the exact same volumes. This is true even if the replacement is started on a different cluster node. The
+same is not true of Pods managed by a Deployment.
+
+StatefulSets create one Pod at a time, and always wait for previous Pods to be running and ready before creating the
+next.
+
+Knowing the order in which Pods will be scaled down, as well as knowing that Pods will not be terminated in parallel, is
+a game-changer for many stateful apps.
+
+Note: deleting a StatefulSet object does not terminate Pods in order, with this in mind, you may want to scale down a
+StatefulSet to 0 replicas before deleting it.
+
+Headless Service is a regular Kubernetes Service object without an IP address. It becomes a StatefulSet's Governing
+Service when you list it in the StatefulSet config under `spec.serviceName`.
+
+StatefulSets are only a framework. Applications need to be written in ways to take advantage of the way StatefulSets
+behave.
