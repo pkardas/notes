@@ -1265,4 +1265,37 @@ The architectural quantum is the smallest possible item that needs to be deploye
    system be and why? If you envision multiple quanta, could the admin quantum and customer-facing quantum share a
    database? If so, in which quantum would the database need to reside?
 
-2 quantas - ordering and a warehouse management, separate databases. 
+2 quantas - ordering and a warehouse management, separate databases.
+
+[Chapter 8: Component-Based Thinking](#chapter-8-component-based-thinking)
+
+1. We define the term component as a building block of an application - something the application does. A component
+   usually consist of a group of classes or source files. How are components typically manifested within an application
+   or service?
+
+Components - the physical manifestation of a module. Components offer a language-specific mechanism to group artifacts
+together, often nesting them to create stratification. Components also appear as subsystems or layers in architecture,
+as the deployable unit of work for many event processors.
+
+2. What is the difference between technical partitioning and domain partitioning? Provide an example of each.
+
+Technical partitioning - organizing architecture based on technical capabilities (presentation, business, service,
+persistence).
+
+Domain partitioning - a modeling technique for decomposing complex systems. In DDD the architect identifies domains
+independent and decoupled from each other. The microservices architecture is based on this philosophy.
+
+3. What is the advantage of domain partitioning?
+
+Better reflects the kinds of changes that most often occur on projects.
+
+4. Under what circumstances would technical partitioning be a better choice over domain partitioning?
+
+Separation based on technical partitioning enables developers to find certain categories of code base quickly, as it is
+organized by capabilities.
+
+5. What is the entity trap? Why is it not a good approach for component identification?
+
+Arises when the architect incorrectly identifies the database relationships ads workflows in the application, a
+correspondence that rarely manifests in the real world. This anti-pattern indicates lack of thought about the actual
+workflows of the application. Components created with entity-trap tend to be too coarse-grained.
