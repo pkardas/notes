@@ -16,6 +16,7 @@ Book by Nigel Poulton, https://github.com/nigelpoulton/TheK8sBook
 - [10: Kubernetes storage](#10-kubernetes-storage)
 - [11: ConfigMaps and Secrets](#11-configmaps-and-secrets)
 - [12: StatefulSets](#12-statefulsets)
+- [13: API security and RBAC](#13-api-security-and-rbac)
 
 ## 1: Kubernetes primer
 
@@ -928,3 +929,31 @@ Service when you list it in the StatefulSet config under `spec.serviceName`.
 
 StatefulSets are only a framework. Applications need to be written in ways to take advantage of the way StatefulSets
 behave.
+
+## 13: API security and RBAC
+
+Kubernetes is API-centric and the API is served through the API server.
+
+Authentication (authN = "auth en") is about providing your identity. All requests to the API server have to include
+credentials, and the authentication layer is responsible for verifying them. The authentication layer in Kubernetes is
+pluggable, and popular modules include integration with external identity management systems such as Amazon Identity
+Access Management.
+
+In fact, Kubernetes forces you to use external identity management system.
+
+Cluster details and credentials are stored in a `kubeconfig` file.
+
+```shell
+kubectl config view
+```
+
+Authorization (authZ - "auth zee") - RBAC (Role-Based Access Control) - happens immediately after successful
+authorization. It is about three things: users, actions, resources. Which users can perform which actions agains which
+resources.
+
+Admission Control runs immediately after successful Authentication and Authorization and is all about policies. There
+are 2 types of admission controllers: mutating (check for compliance and can modify requests) and validating (check for
+policy compliance, without request modification).
+
+Most real-world clusters will have a lot of admission controllers enabled. Example: a policy to require `env=prod`
+label, admission control can verify presence and add a label when it is missing.
