@@ -17,6 +17,8 @@ Book by Nigel Poulton, https://github.com/nigelpoulton/TheK8sBook
 - [11: ConfigMaps and Secrets](#11-configmaps-and-secrets)
 - [12: StatefulSets](#12-statefulsets)
 - [13: API security and RBAC](#13-api-security-and-rbac)
+- [14: The Kubernetes API](#14-the-kubernetes-api)
+- [15: Threat modeling Kubernetes](#15-threat-modeling-kubernetes)
 
 ## 1: Kubernetes primer
 
@@ -957,3 +959,51 @@ policy compliance, without request modification).
 
 Most real-world clusters will have a lot of admission controllers enabled. Example: a policy to require `env=prod`
 label, admission control can verify presence and add a label when it is missing.
+
+## 14: The Kubernetes API
+
+Kubernetes is API centric. This means everything in Kubernetes is about the API, and everything ges through the API and
+API server. For most part, you will use `kubectl` to send requests, however you can craft them in code.
+
+```shell
+kubectl proxy --port 9000 &
+```
+
+```shell
+curl http://localhost:9000/api/v1/pods
+```
+
+The Kubernetes API is divided into 2 groups:
+
+- the core group - mature objects that were created in the early dats of Kubernetes before the API was divided into
+  groups, located in `api/v1`
+- the named group - the future of the API, all new resources get added to named groups
+
+```shell
+kubectl api-resources
+```
+
+Kubernetes has a strict process for adding new resources to the API. They come in as _alpha_ (experimental, can be
+buggy), progress through _beta_ (pre-release), and eventually reach _stable_.
+
+It is possible to write your custom controller or resource.
+
+## 15: Threat modeling Kubernetes
+
+Threat modeling is the process of identifying vulnerabilities. The STRIDE model:
+
+- Spoofing
+    - pretending to be somebody else with the aim of gaining extra privileges on a system
+- Tampering
+    - the act of changing something in a malicious way, so you can cause one of the following:
+        - denial of service - tampering with the resource to make it unusable
+        - elevation of privilege - tampering with a resource to gain additional privileges
+- Repudiation
+    - creating doubt about something, non-repudiation is proving certain actions were carried out by certain individuals
+- Information disclosure
+    - when sensitive data is leaked
+- Denial of service
+    - making something unavailable, many types of DoS attacks, but a well-known variation is overloading system to the
+      point it can no longer service requests
+- Elevation of privilege
+    - gaining higher access than what is granted, usually in order to cause damage or gain unauthorized access

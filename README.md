@@ -5,7 +5,6 @@
 👀 In progress:
 
 - [Fundamentals of Software Architecture](books/fundamentals-of-architecture.md)
-- [The Kubernetes Book](books/kubernetes-book.md)
 
 #### ✅ Finished:
 
@@ -29,7 +28,7 @@
     - [Comic Agilé](books/comic-agile.md)
 
 - DevOps:
-    - :eyes:
+    - [The Kubernetes Book](books/kubernetes-book.md)
 
 - Product:
     - :eyes:
