@@ -75,7 +75,7 @@ never run long enough in development environment to reveal longevity bugs.
 Failures will happen, you have ability to prepare system for specific failures (like car engineers areas designated to
 protect passengers by failing first). It is possible to create failure modes that protect the rest of the system.
 
-Lees-couples architectures act as shock absorbers, diminishing the effect of the error instead of amplifying them.
+Less-coupled architectures act as shock absorbers, diminishing the effect of the error instead of amplifying them.
 
 Terminology:
 
@@ -144,7 +144,7 @@ scaling by building bigger and bigger servers (more cores, memory and storage).
 RECOGNISE THAT ONE SERVER DOWN JEOPARDISED THE REST - a chain reaction can happen because the death of one server makes
 the others pick up the slack
 
-HUNT FOR RESOURCE LEAK - mos of time, chain reactions happens when application has a memory leak
+HUNT FOR RESOURCE LEAK - most of the time, chain reactions happens when application has a memory leak
 
 HUNT FOR OBSCURE TIMING BUGS - race conditions can be triggered by traffic, if one server dies because of deadlock, the
 increased load on the others makes them more likely to hit the deadlock too
@@ -395,7 +395,7 @@ propagates all the way to the ultimate client, who will be throttled down in spe
 
 TCP uses back pressure - once the window is full, senders are not allowed to send anything until released.
 
-GOVERNOR - machines are great ant performing repetitive tasks, humans are great at perceiving high level situation.
+GOVERNOR - machines are great at performing repetitive tasks, humans are great at perceiving high level situation.
 
 In 18th century steam engineers discovered it is possible to run machines so fast that the metal breaks. The solution
 was the governor - a person which limits the speed of an engine.
@@ -492,7 +492,7 @@ and have it put the binary into a safe repository that nobody else can write int
 Configuration management tools like Chef, Puppet and Ansible are all about applying changes to running machines. They
 use scripts, playbooks or recipes to transition the machine from one state to a new state.
 
-We don't want our instance binaries to change per environment, but we do eat their properties to change. That means the
+We don't want our instance binaries to change per environment, but we do want their properties to change. That means the
 code should look outside the deployment directory to find per-environment configurations.
 
 ZooKeeper and etc are popular choices for a configuration service - but any outage to these systems can cause a lot of
@@ -781,7 +781,7 @@ join old and new versions of the application. For example when migrating databas
 table, new instances will be reading from the new table. Shims can be achieved using SQL triggers - insert to one table
 is propagated to the other.
 
-[MUTABLE INFRASTRUCTURE] We typically update machines in batches. You match choose to divide your machines into
+[MUTABLE INFRASTRUCTURE] We typically update machines in batches. You must choose to divide your machines into
 equal-sized groups. Suppose we have five groups: Alpha, Bravo, Charlie, Delta, Foxtrot. Rollout would go like this:
 
 1. Instruct Alpha to stop accepting new requests

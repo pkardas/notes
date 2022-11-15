@@ -4,6 +4,7 @@
 
 👀 In progress:
 
+- [Build](books/build.md)
 - [Fundamentals of Software Architecture](books/fundamentals-of-architecture.md)
 
 #### ✅ Finished:
