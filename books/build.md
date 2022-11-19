@@ -6,6 +6,8 @@ Book by Tony Fadell
 
 - [1.1 Adulthood](#11-adulthood)
 - [1.2 Get a job](#12-get-a-job)
+- [1.3 Heroes](#13-heroes)
+- [1.4 Don't (only) look down](#14-dont-only-look-down)
 
 ## 1.1 Adulthood
 
@@ -49,3 +51,33 @@ Because one day, if you are truly solving a real issue, when the world is ready 
 
 You don't have to an executive right away, you don't have to get a job at the most amazing, world-changing company out
 of college, but you should have a goal.
+
+## 1.3 Heroes
+
+The only thing that can make a job truly amazing or complete waste of time is the people.
+
+You always have something to offer if you are curious and engaged. You can always trade and barter good ideas; you can
+always be kind and find a way to help.
+
+Try to get into a small company, the sweet spot is a business of 30-100 people building something worth building. You
+could go to Google, Apple, Facebook, or some other giant company, but it will be hard to maneuver yourself to work
+closely with the rock stars.
+
+Smaller companies still have specialization, but usually without silos. And they have a different energy. The whole
+company will be focused on working together to make one precious idea become reality. Anything unnecessary is shunned -
+red tape and politics are typically nonexistent.
+
+Being in that lifeboat with people you deeply respect is a joy. It is the best time you can have at work. It might be
+the best time you can have.
+
+## 1.4 Don't (only) look down
+
+IC - individual contributor - a person who doesn't manage others. As an IC, you need to occasionally do 2 things:
+
+- look up - look beyond the next deadline or project, bne sure the mission still makes sense to you and that the path to
+  reach it seems achievable
+- look around - get out of your comfort zone and away from the immediate team you are on,talk to the other functions in
+  your company to understand their perspectives, needs, and concerns
+
+Don't think doing the work just means locking yourself in a room - a huge part of it is walking with your team. The work
+is reaching your destination together. Or finding a new destination and bringing your team with you.
