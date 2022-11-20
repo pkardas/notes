@@ -8,6 +8,7 @@ Book by Tony Fadell
 - [1.2 Get a job](#12-get-a-job)
 - [1.3 Heroes](#13-heroes)
 - [1.4 Don't (only) look down](#14-dont-only-look-down)
+- [2.1 Just managing](#21-just-managing)
 
 ## 1.1 Adulthood
 
@@ -81,3 +82,37 @@ IC - individual contributor - a person who doesn't manage others. As an IC, you 
 
 Don't think doing the work just means locking yourself in a room - a huge part of it is walking with your team. The work
 is reaching your destination together. Or finding a new destination and bringing your team with you.
+
+## 2.1 Just managing
+
+6 things you should know before becoming a manager:
+
+- You don't have to be a manager to be successful - many people wrongly assume that the only path to more money and
+  stature is managing a team. There are alternatives that will enable you to get a similar paycheck.
+- Remember that once you become a manager, you will stop doing the thing that made you successful in the first place -
+  your job will be communication, communication, communication, recruiting, hiring, firing, setting budgets, reviews,
+  one-to-one meetings, setting goals, keeping people on track, resolving conflicts, mentoring, ...
+- Becoming a manager is a discipline - management is a learned skill, not a talent.
+- Being exacting and expecting great work is not micromanagement - your job is to make sure the team produces
+  high-quality work, it only turns into micromanagement when you dictate the step-by-step process.
+- Honesty is more important than style - you can be successful with any style as long as you never shy away from
+  respectfully telling people the uncomfortable, hard truth needs to be said.
+- Don't worry that your team will outshine you - in fact, it's your goal, you should always be training someone on your
+  team to do your job, the better they are, the easier it is for you to move up and even start managing managers
+
+When you are a manager, you are no longer just responsible for the work. You are responsible for human beings.
+
+A star individual contributor is incredibly valuable. Valuable enough that many companies will pay them just as much as
+they'd pay a manager. A truly great IC will be a leader in their chosen function and also become an informal cultural
+leader, someone who people across the company will seek out for advice and mentorship.
+
+Examining the product in detail and caring deeply about the quality of what your team is producing is not
+micromanagement. That's exactly what you should be doing. Steve Jobs was bringing out a jeweler's loupe and looking at
+individual pixels on a screen to make sure the user interface graphics were properly drawn.
+
+As a manager, you should be focused on making sure the team is producing the best possible product.
+
+It is very easy to turn 1:1s into a friendly chats that go nowhere, so clear meeting agenda can be beneficial.
+
+If you are a manager - congrats, you're now a parent. Not because you should treat your employees like children, but
+because it's now your responsibility to help them work through failure and find success.
