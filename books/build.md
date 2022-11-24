@@ -9,6 +9,7 @@ Book by Tony Fadell
 - [1.3 Heroes](#13-heroes)
 - [1.4 Don't (only) look down](#14-dont-only-look-down)
 - [2.1 Just managing](#21-just-managing)
+- [2.2 Data versus opinion](#22-data-versus-opinion)
 
 ## 1.1 Adulthood
 
@@ -116,3 +117,20 @@ It is very easy to turn 1:1s into a friendly chats that go nowhere, so clear mee
 
 If you are a manager - congrats, you're now a parent. Not because you should treat your employees like children, but
 because it's now your responsibility to help them work through failure and find success.
+
+## 2.2 Data versus opinion
+
+Data driven decisions - you can acquire, study, and debate facts - relatively easy to make.
+
+Opinion-driven - follow your gut and your vision - always hard and always questioned.
+
+Make decisions, not everyone has to agree - it happens when one person has to make the final call. This isn't a
+democracy, nor dictatorship - you can't give orders without explaining yourself.
+
+Storytelling is how you get people to take a leap of faith to do something new. Creating a believable narrative that
+everyone can latch on to is critical to moving forward and making hard choices. It's all that marketing comes down to.
+
+You are selling - vision, guy, opinion.
+
+> It's not data or intuition, it's data and intuition.
+
