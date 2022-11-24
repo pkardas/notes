@@ -1299,3 +1299,25 @@ organized by capabilities.
 Arises when the architect incorrectly identifies the database relationships ads workflows in the application, a
 correspondence that rarely manifests in the real world. This anti-pattern indicates lack of thought about the actual
 workflows of the application. Components created with entity-trap tend to be too coarse-grained.
+
+[Chapter 9: Foundations](#chapter-9-foundations)
+
+1. List the eight fallacies of distributed computing.
+
+Latency is Zero, Bandwidth is Infinite, The Network is Reliable, The Network is Secure, The Topology Never Changes,
+There is Only One Administrator, Transport Cost is Zero, The Network is Homogenous
+
+2. Name three challenges that distributed architectures have that monolithic architectures don't.
+
+Debugging a distributed architecture, Distributed transactions, Contract maintenance and versioning.
+
+3. What is stamp coupling?
+
+Requesting/receiving too much data whereas only a small subset of data is needed -- 2000 req x 10kB VS 2000 req x 100kB
+
+4. What are some ways of addressing stamp coupling?
+
+- create private RESTful API endpoints
+- use field selectors in the contract
+- use GraphQL
+- use internal messaging endpoints
