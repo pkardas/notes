@@ -10,6 +10,7 @@ Book by Tony Fadell
 - [1.4 Don't (only) look down](#14-dont-only-look-down)
 - [2.1 Just managing](#21-just-managing)
 - [2.2 Data versus opinion](#22-data-versus-opinion)
+- [2.3 Assholes](#23-assholes)
 
 ## 1.1 Adulthood
 
@@ -134,3 +135,31 @@ You are selling - vision, guy, opinion.
 
 > It's not data or intuition, it's data and intuition.
 
+## 2.3 Assholes
+
+Up to 12 percent of corporate senior leadership exhibit psychopathic traits. There are different assholes:
+
+- Political assholes - people who master the art of corporate politics, but then do nothing but take credit for everyone
+  else's work. These assholes usually build a coalition of budding assholes around them
+- Controlling assholes - micromanagers who systematically strangle the creativity and juy out of their team. They never
+  give people credit for their work, never praise it, and often steal it.
+- Asshole assholes - they suck at work and everything else, mean jealous, insecure jerks. They cannot deliver, are
+  deeply unproductive, so they do everything possible to deflect attention away from themselves. They are generally out
+  of door pretty quickly.
+- Mission-driven "assholes" - crazy passionate - they are neither easygoing nor easy to work with. Unlike true assholes,
+  they care.
+
+Pushing for greatness doesn't make you an asshole. Not tolerating mediocrity doesn't make you na asshole. You need to
+understand their motivations.
+
+Controlling assholes won't listen. They will never admit they screwed up.
+
+Things you can do when faced with a controlling asshole:
+
+- kill'em with kindness
+- ignore them
+- try to get around them
+- quit
+
+Most people aren't assholes. And even if they are, they are also human. So don't walk into a job trying to get anyone
+fired. Start with kindness. Try to make peace. Assume the best. 
