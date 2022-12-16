@@ -11,6 +11,7 @@ Book by Tony Fadell
 - [2.1 Just managing](#21-just-managing)
 - [2.2 Data versus opinion](#22-data-versus-opinion)
 - [2.3 Assholes](#23-assholes)
+- [2.4 I quit](#24-i-quit)
 
 ## 1.1 Adulthood
 
@@ -162,4 +163,22 @@ Things you can do when faced with a controlling asshole:
 - quit
 
 Most people aren't assholes. And even if they are, they are also human. So don't walk into a job trying to get anyone
-fired. Start with kindness. Try to make peace. Assume the best. 
+fired. Start with kindness. Try to make peace. Assume the best.
+
+## 2.4 I quit
+
+Sometimes you need to quit. Here is how you know:
+
+- You are no longer passionate about the mission - every hour at your desk feels like an eternity
+- You have tried everything - the company is letting you down
+
+Once you do decide to quit, make sure you leave in the right way - try to finish as much as possible, find natural
+breakpoint in your project.
+
+Hating your job is never worth whatever raise, title, or perks they throw at you to stay.
+
+The threat of leaving may be enough to push your company to get serious and make whatever change you are asking for. But
+it might not. Quitting should not be a negotiating tactic - it should be the very last card you play.
+
+Good things take time, big times take longer. If you flit from project to project, company to company, you will never
+have the vital experience of starting and finishing something meaningful.
