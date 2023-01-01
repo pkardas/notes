@@ -12,6 +12,7 @@ Book by Tony Fadell
 - [2.2 Data versus opinion](#22-data-versus-opinion)
 - [2.3 Assholes](#23-assholes)
 - [2.4 I quit](#24-i-quit)
+- [3.1 Make the intangible tangible](#31-make-the-intangible-tangible)
 
 ## 1.1 Adulthood
 
@@ -182,3 +183,19 @@ it might not. Quitting should not be a negotiating tactic - it should be the ver
 
 Good things take time, big times take longer. If you flit from project to project, company to company, you will never
 have the vital experience of starting and finishing something meaningful.
+
+## 3.1 Make the intangible tangible
+
+Don't just make a prototype of your product and think you're done. Prototype as much of the full customer experience as
+possible.
+
+Your product isn't only your product. It's the whole user experience. The customer journey and touchpoints:
+
+- awareness (PR, search, social media, ads)
+- education (website, email, blog, trial/demo)
+- acquisition (partners, payment model)
+- product (design, UX, performance)
+- onboarding (quick guide, account creation, tips, how-to videos)
+- usage (reliability, usability, updates, lifespan)
+- support (troubleshooting, knowledge base, call center, community)
+- loyalty (new product, newsletter, promotions, ratings/reviews)
