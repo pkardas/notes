@@ -199,3 +199,32 @@ Your product isn't only your product. It's the whole user experience. The custom
 - usage (reliability, usability, updates, lifespan)
 - support (troubleshooting, knowledge base, call center, community)
 - loyalty (new product, newsletter, promotions, ratings/reviews)
+
+## 3.2 Why storytelling
+
+Every product should have a story, a narrative that explains why it needs to exist and how will it solve your customer's
+problems. A good product story:
+
+- it appeals to people's rational and emotional sides
+- it takes complicated concepts and makes them simple
+- it reminds people of the problem that's being solved - it focuses on the why
+
+The story of your product, your company, and your vision should drive everything you do.
+
+Virus of a doubt: "it is a way to get into people's heads, remind them about a daily frustration, get them annoyed about
+it all over again. You get them angry about how it works now so they can get excited abut a new way of doing things."
+
+Product's story is its design, features, images, videos, quotes from customers, tips from reviewers. The sum of what
+people see and feel about this thing that you have created.
+
+Why does this thing need to exist? Why does it matter? Why will people need it? Why will they love it? The longer you
+work on something, the more the "what" takes over the "why". When you get wrapped in the "what", you get ahead of
+people. You think everyone can see what you see. But they don't.
+
+Earn their trust by showing that you really know your stuff or understand their needs. Of offer them something useful,
+connect with them in a new way, so they feel assured that they're making the right choice with your company.
+
+Appeal to their emotions, connect with something they care about. Their worries, their fears. Every person is different,
+and everyone will read your story differently.
+
+Analogies can be a useful tool in storytelling. They create a shorthand for complicated concepts.
