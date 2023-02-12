@@ -13,6 +13,8 @@ Book by Tony Fadell
 - [2.3 Assholes](#23-assholes)
 - [2.4 I quit](#24-i-quit)
 - [3.1 Make the intangible tangible](#31-make-the-intangible-tangible)
+- [3.2 Why storytelling](#32-why-storytelling)
+- [3.3 Evolution versus disruption versus execution](#33-evolution-versus-disruption-versus-execution)
 
 ## 1.1 Adulthood
 
@@ -228,3 +230,39 @@ Appeal to their emotions, connect with something they care about. Their worries,
 and everyone will read your story differently.
 
 Analogies can be a useful tool in storytelling. They create a shorthand for complicated concepts.
+
+## 3.3 Evolution versus disruption versus execution
+
+Evolution - a small, incremental step to make something better
+
+Disruption - a fork on the evolutionary tree - something fundamentally new that changes the status quo, usually by
+taking a novel or revolutionary approach to an old problem
+
+Execution - doing what you have promised to do and doing it well
+
+Your version one product should be disruptive, not evolutionary. But disruption alone will not guarantee success.
+Continue to evolve, but always seek out new ways to disrupt yourself.
+
+Disruption should be important for you personally. If you've truly made something disruptive, your competition probably
+won't be able to replicate it quickly.
+
+Just don't overshoot. Don't try to disrupt everything at once.
+
+As your disruptive product, process, or business model begins to gain steam with customers, your competitors will start
+to get worried. They'll start paying attention, they will get pissed. When companies get angry they undercut your
+pricing, try to embarrass you with marketing, use negative press, put in new agreements with sales to lock you out of
+the business.
+
+And they might sue you. If they can't innovate, they litigate. The good news is that a lawsuit means you've officially
+arrived (you are a real threat, and they know it).
+
+Disruptions - extremely delicate balancing act:
+
+- you focus on making one amazing thing but forget that it has to be part of a single, fluid experience
+- beautiful execution on everything else but the one thing that would have differentiated your product withers away
+- you change too many things too fast and regular people can't recognize or understand what you have made, you can't
+  push people too far outside their mental model, not at first
+
+Challenge yourself, over-deliver, create excellent solutions.
+
+If you do it right, one disruption will fuel the next. One revolution will domino another.
