@@ -15,6 +15,7 @@ Book by Tony Fadell
 - [3.1 Make the intangible tangible](#31-make-the-intangible-tangible)
 - [3.2 Why storytelling](#32-why-storytelling)
 - [3.3 Evolution versus disruption versus execution](#33-evolution-versus-disruption-versus-execution)
+- [3.4 Your first adventure - and your second](#34-your-first-adventure---and-your-second)
 
 ## 1.1 Adulthood
 
@@ -266,3 +267,14 @@ Disruptions - extremely delicate balancing act:
 Challenge yourself, over-deliver, create excellent solutions.
 
 If you do it right, one disruption will fuel the next. One revolution will domino another.
+
+## 3.4 Your first adventure - and your second
+
+When releasing V1 you have the following tools to make decisions: Vision, Customer insights, Vision. Once you start
+iterating on an existing product, you will have experience and data, so you can use your existing tools but in different
+order: Data, Customer insights, Vision.
+
+Locking yourself alone in a room to create a manifesto of your single, luminous vision looks and feels indistinguishable
+from completely loosing your mind. Get at least one person - but preferably a small group - to bounce ideas off of.
+Sketch your ideas together, then fulfill it together.
+
