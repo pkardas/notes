@@ -5,7 +5,7 @@
 👀 In progress:
 
 - [Build](books/build.md)
-- [Fundamentals of Software Architecture](books/fundamentals-of-architecture.md)
+- [Coaching Agile Teams](books/coaching-agile-teams.md)
 
 #### ✅ Finished:
 
@@ -20,6 +20,7 @@
     - [Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems](books/ddia.md)
     - [Head First Design Patterns: Building Extensible and Maintainable Object-Oriented Software](books/head-first-design-patterns/notes.md)
     - [Release It! Design and Deploy Production-Ready Software](books/release-it.md)
+    - [Fundamentals of Software Architecture](books/fundamentals-of-architecture.md)
 
 - Process:
     - [Clean Agile: Back to Basics](books/clean-agile.md)
