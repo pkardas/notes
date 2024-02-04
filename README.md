@@ -6,6 +6,7 @@
 
 - [Build](books/build.md)
 - [Coaching Agile Teams](books/coaching-agile-teams.md)
+- [Tidy first?](books/tidy-first.md)
 
 #### ✅ Finished:
 
