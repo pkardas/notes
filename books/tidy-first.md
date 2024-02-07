@@ -13,6 +13,12 @@ Book by Kent Beck
 - [7. Move Declaration and Initialization Together](#7-move-declaration-and-initialization-together)
 - [8. Explaining variables](#8-explaining-variables)
 - [9. Explaining constants](#9-explaining-constants)
+- [10. Explicit parameters](#10-explicit-parameters)
+- [11. Chunk statements](#11-chunk-statements)
+- [12. Extract helper](#12-extract-helper)
+- [13. One pile](#13-one-pile)
+- [14. Explaining comments](#14-explaining-comments)
+- [15. Delete redundant comments](#15-delete-redundant-comments)
 
 ## 1. Guard Classes
 
@@ -91,3 +97,33 @@ required. Make the parameters explicit:
 ```
 foo(params) -> foo(a, b)
 ```
+
+## 11. Chunk statements
+
+The simplest tidying. Put a blank line between 2 parts doing different things. After you've chunked statements, you have
+many paths forward: Explaining Variables, Extract Helper or Explaining Comments.
+
+## 12. Extract helper
+
+A block of code that has an obvious purpose and limited interaction with the rest of the code can be extracted into a
+helper function. Using the helper can be taken care of in another tidying.
+
+## 13. One pile
+
+Sometimes you read the code that has been split into many tine pieces, which makes it hard to understand. The biggest
+cost of code is the cost of reading it, not the cost of writing it.
+
+Sometimes in order to regain the clarity, the code must be merged together, so new, easier-to-understand parts can be
+extracted.
+
+## 14. Explaining comments
+
+Write down only what wasn't obvious from the code. Put yourself in the place of the future reader, or yourself 15
+minutes ago.
+
+Immediately upon finding a defect is a good time to comment. It is much better to add the comment that points out the
+issue, rather than leaving it buried in the sand.
+
+## 15. Delete redundant comments
+
+When you see a comment that says exactly what the code says, remove it.
