@@ -127,3 +127,26 @@ issue, rather than leaving it buried in the sand.
 ## 15. Delete redundant comments
 
 When you see a comment that says exactly what the code says, remove it.
+
+## 16. Separate Tidying
+
+Tidying should go into their own separate PRs, with as few tidyings per PR as possible. Behavior and structure changes
+should be in separate PRs.
+
+## 17. Chaining
+
+Tidying can set up another tidyings. You will begin to flow tidyings together to achieve larger changes to the
+structure of your code. Be wary of changing too much, too fast. A failed tidying is expensive relative to the cost of a
+series of successful tidyings.
+
+## 18. Batch Sizes
+
+The more tidyings per batch, the longer the delay before integrating, and the greater the chance that a tidying collides
+with someone else is doing.
+
+The change of a batch accidentally changing behavior rises with the number of tidyings in the batch.
+
+The more tidyings per batch, the more we are prone to tidying just because, with all the additional costs that creates.
+
+In many orgs, the fixed cost of getting a single change through review and deployment is substantial. Programmers feel
+this cost, so they move right in the trade-off space (despite collisions, interactions, ...).
