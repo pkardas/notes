@@ -19,6 +19,13 @@ Book by Kent Beck
 - [13. One pile](#13-one-pile)
 - [14. Explaining comments](#14-explaining-comments)
 - [15. Delete redundant comments](#15-delete-redundant-comments)
+- [16. Separate Tidying](#16-separate-tidying)
+- [17. Chaining](#17-chaining)
+- [17. Chaining](#18-batch-sizes)
+- [18. Batch Sizes](#18-batch-sizes)
+- [19. Rhythm](#19-rhythm)
+- [20. Getting Untangled](#20-getting-untangled)
+- [21. First, After, Later, Never](#21-first-after-later-never)
 
 ## 1. Guard Classes
 
@@ -150,3 +157,44 @@ The more tidyings per batch, the more we are prone to tidying just because, with
 
 In many orgs, the fixed cost of getting a single change through review and deployment is substantial. Programmers feel
 this cost, so they move right in the trade-off space (despite collisions, interactions, ...).
+
+## 19. Rhythm
+
+More than an hour of tidying at a time before making a behavioral change likely means you've lost track of the minimum
+set of structure changes needed to enable your desired behavior change.
+
+Tidying is a minutes-to-an-hour kind of activity. Sometimes it may take longer, but not for long.
+
+## 20. Getting Untangled
+
+Tidying leads to more and more tidying. What to do? 3 options:
+
+1. Ship as it is [very impolite, prone to errors, but quick]
+2. Untangle the tidyings into separate PRs [more polite, but may require a lot of work]
+3. Start over, tidying first [more work, but leaves a coherent chain of commits]
+
+Re-implementation raises the possibility that you will see something new as you re-implement, letting you squeeze more
+value out of the same set of behavioral changes.
+
+## 21. First, After, Later, Never
+
+**Never**
+
+- you are never changing this code again
+- there is nothing to learn by improving the design
+
+**Later**
+
+- you have a big batch of tidying to do without immediate payoff
+- there is eventual payoff for completing the tidying
+- you can tidy in little batches
+
+**After**
+
+- waiting until next time to tidy first will be more expensive
+- you won't feel a sense of completion if you don't tidy after
+
+**First**
+
+- it will pay off immediately, either in improved comprehension or in cheaper behavior changes
+- you know what to tidy and how
