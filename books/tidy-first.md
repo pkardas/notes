@@ -26,6 +26,8 @@ Book by Kent Beck
 - [19. Rhythm](#19-rhythm)
 - [20. Getting Untangled](#20-getting-untangled)
 - [21. First, After, Later, Never](#21-first-after-later-never)
+- [22. Beneficially Relating Elements](#22-beneficially-relating-elements)
+- [23. Structure and behavior](#23-structure-and-behavior)
 
 ## 1. Guard Classes
 
@@ -198,3 +200,61 @@ value out of the same set of behavioral changes.
 
 - it will pay off immediately, either in improved comprehension or in cheaper behavior changes
 - you know what to tidy and how
+
+## 22. Beneficially Relating Elements
+
+Software design is beneficially relating elements.
+
+Elements: Tokens -> Expressions -> Statements -> FUnctions -> Objects/modules -> Systems. Elements have boundaries.
+
+Relating: In software design we have a handful of relations like:
+
+- invokes
+- publishes
+- listens
+- refers
+
+Beneficially relating elements. Software designers can only:
+
+- Create and delete elements
+- Create and delete relationships
+- Increase the benefit of a relationship
+
+```
+caller()
+    return box.width() + box.height()
+```
+
+This function has 2 relationships with the box. This relationship can be adjusted. we can have `box.area()`.
+
+```
+caller()
+    return box.area()
+```
+
+The benefit is that it is simpler and the cost is that `box` has additional method.
+
+## 23. Structure and behavior
+
+Software creates value in two ways:
+
+- what it does today
+- the possibility of new things we can make it do tomorrow
+
+Behavior creates value. Rather than having to calculate a bunch of numbers by hand, the computer can calculate millions
+of the every second. If running software costs $1, you can charge folks $10 to run it on their behalf, then you have a
+business.
+
+The structure creates options. The structure could make it easy to add new features to our system, or it could make it
+hard.
+
+## 24. Economics: Time Value and Optionality
+
+- A dollar today is worth more than a dollar tomorrow, so earn sooner and spend later
+    - you can't spend it so it's worthless
+    - you can't invest it
+    - there's some chance that you won't get the dollar
+    - in the scope of this book: the time value of money encourages tidy after over tidy first
+- In a chaotic situation, options are better than things, so create options in the face of uncertainty
+
+Software design has to reconcile the imperatives of "earn sooner/spend later" abd "create options, not things".

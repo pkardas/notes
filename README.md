@@ -4,9 +4,7 @@
 
 👀 In progress:
 
-- [Build](books/build.md)
-- [Coaching Agile Teams](books/coaching-agile-teams.md)
-- [Tidy first?](books/tidy-first.md)
+- [System design interview](books/system-design-interview.md)
 
 #### ✅ Finished:
 
@@ -15,6 +13,7 @@
     - [Learning Go: An Idiomatic Approach to Real-World Go Programming](books/go/notes.md)
     - [Python Testing with Pytest](books/pytest/notes.md)
     - [Refactoring: Improving the Design of Existing Code](books/refactoring.md)
+    - [Tidy first?](books/tidy-first.md)
 
 - Architecture:
     - [Architecture Patterns with Python](books/python-architecture-patterns/notes.md)
@@ -44,6 +43,8 @@
 - [Code Complete: A Practical Handbook of Software Construction](books/code-complete.md)
 - [Cracking the Coding Interview](books/cracking-coding-interview/notes.md)
 - [Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems](books/hands-on-ml.md)
+- [Build](books/build.md)
+- [Coaching Agile Teams](books/coaching-agile-teams.md)
 
 #### ⏳ Queue:
 
