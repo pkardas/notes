@@ -1,3 +1,11 @@
+# 👉👉👉 Visit [musicat.fm](https://musicat.fm) 😻
+
+You can connect Spotify and Apple Music to it to discover many cool statistics about your taste!
+
+(I'm the author 🤩)
+
+---
+
 ## Notes
 
 ### Books
